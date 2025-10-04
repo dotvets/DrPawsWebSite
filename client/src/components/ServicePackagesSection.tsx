@@ -88,7 +88,7 @@ export default function ServicePackagesSection() {
               delay="1500"
               state="in-reveal"
               colors="primary:#18ac61,secondary:#264653"
-              style={{width: '70px', height: '70px'}}
+              style={{width: '90px', height: '90px'}}
               data-testid="icon-paw-animated">
             </lord-icon>
             <h2 className="font-display text-4xl font-medium text-foreground" data-testid="text-packages-headline">
