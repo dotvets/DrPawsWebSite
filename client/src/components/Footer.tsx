@@ -25,7 +25,7 @@ export default function Footer() {
           variants={container}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: false, amount: 0.3 }}
           className="grid md:grid-cols-3 gap-12 mb-12"
         >
           <motion.div variants={item}>
@@ -133,7 +133,7 @@ export default function Footer() {
         <motion.div 
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
           transition={{ duration: 0.6, delay: 0.4 }}
           className="border-t border-white/20 pt-8 text-center text-sm text-white/70"
         >

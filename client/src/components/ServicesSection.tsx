@@ -55,7 +55,7 @@ const item = {
 
 export default function ServicesSection() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.2 });
+  const isInView = useInView(ref, { once: false, amount: 0.2 });
 
   return (
     <section ref={ref} className="py-20 bg-[hsl(43,75%,66%)]/5">

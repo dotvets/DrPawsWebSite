@@ -26,7 +26,7 @@ const item = {
 export default function ContactSection() {
   const { toast } = useToast();
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.2 });
+  const isInView = useInView(ref, { once: false, amount: 0.2 });
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
