@@ -6,39 +6,6 @@ import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
-const services = [
-  {
-    icon: Stethoscope,
-    title: 'Wellness Exams',
-    description: 'Comprehensive health checkups to keep your pet in optimal condition.',
-  },
-  {
-    icon: Heart,
-    title: 'Emergency Care',
-    description: '24/7 emergency services for urgent medical situations.',
-  },
-  {
-    icon: Syringe,
-    title: 'Vaccinations',
-    description: 'Complete vaccination programs to protect your pets from diseases.',
-  },
-  {
-    icon: Scissors,
-    title: 'Surgery',
-    description: 'Advanced surgical procedures with state-of-the-art equipment.',
-  },
-  {
-    icon: Activity,
-    title: 'Diagnostics',
-    description: 'Advanced diagnostic imaging and laboratory services.',
-  },
-  {
-    icon: ClipboardList,
-    title: 'Dental Care',
-    description: 'Professional dental cleaning and oral health services.',
-  },
-];
-
 const container = {
   hidden: { opacity: 0 },
   show: {
@@ -58,6 +25,39 @@ export default function ServicesSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false, amount: 0.2 });
   const { t } = useLanguage();
+
+  const services = [
+    {
+      icon: Stethoscope,
+      title: t('services.wellness.title'),
+      description: t('services.wellness.description'),
+    },
+    {
+      icon: Heart,
+      title: t('services.emergency.title'),
+      description: t('services.emergency.description'),
+    },
+    {
+      icon: Syringe,
+      title: t('services.vaccinations.title'),
+      description: t('services.vaccinations.description'),
+    },
+    {
+      icon: Scissors,
+      title: t('services.surgery.title'),
+      description: t('services.surgery.description'),
+    },
+    {
+      icon: Activity,
+      title: t('services.diagnostics.title'),
+      description: t('services.diagnostics.description'),
+    },
+    {
+      icon: ClipboardList,
+      title: t('services.dental.title'),
+      description: t('services.dental.description'),
+    },
+  ];
 
   return (
     <section ref={ref} className="py-20 bg-[hsl(43,75%,66%)]/5">
