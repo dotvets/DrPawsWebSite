@@ -79,8 +79,18 @@ export default function ServicePackagesSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-16 relative"
         >
+          <div className="absolute left-0 top-1/2 -translate-y-1/2 hidden lg:block" data-testid="icon-paw-animated">
+            <lord-icon
+              src="https://cdn.lordicon.com/qopeqxee.json"
+              trigger="loop"
+              delay="1500"
+              stroke="light"
+              colors="primary:#18ac61,secondary:#264653"
+              style={{width: '70px', height: '70px'}}>
+            </lord-icon>
+          </div>
           <h2 className="font-display text-4xl font-medium text-foreground mb-4" data-testid="text-packages-headline">
             Service Packages
           </h2>
