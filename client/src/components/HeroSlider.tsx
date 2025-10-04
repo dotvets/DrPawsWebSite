@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { motion, AnimatePresence } from 'framer-motion';
 import heroImage1 from '@assets/generated_images/Vet_examining_golden_retriever_19654044.png';
 import heroImage2 from '@assets/generated_images/Vet_consultation_with_cat_owner_7978144f.png';
 import heroImage3 from '@assets/generated_images/Modern_veterinary_equipment_room_49dc6345.png';
@@ -36,68 +37,104 @@ export default function HeroSlider() {
 
   return (
     <div className="relative h-[85vh] overflow-hidden">
-      {slides.map((slide, index) => (
-        <div
-          key={index}
-          className={`absolute inset-0 transition-opacity duration-1000 ${
-            index === currentSlide ? 'opacity-100' : 'opacity-0'
-          }`}
-        >
-          <img
-            src={slide.image}
-            alt={slide.alt}
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-[hsl(199,37%,24%)]/70 to-[hsl(199,37%,24%)]/40" />
-        </div>
-      ))}
+      <AnimatePresence mode="wait">
+        {slides.map((slide, index) => (
+          index === currentSlide && (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, scale: 1.1 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 1, ease: "easeInOut" }}
+              className="absolute inset-0"
+            >
+              <img
+                src={slide.image}
+                alt={slide.alt}
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-[hsl(199,37%,24%)]/70 to-[hsl(199,37%,24%)]/40" />
+            </motion.div>
+          )
+        ))}
+      </AnimatePresence>
 
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="max-w-4xl mx-auto px-6 text-center text-white">
-          <h1 className="font-display text-5xl md:text-6xl font-medium mb-4" data-testid="text-hero-headline">
-            Dr. Paws Veterinary Clinic
-          </h1>
-          <p className="text-2xl md:text-3xl mb-3 opacity-90" data-testid="text-hero-subheadline">
-            Compassionate Care for Your Beloved Pets
-          </p>
-          <p className="text-lg md:text-xl mb-8 opacity-80" data-testid="text-hero-subtext">
-            Providing the Highest Quality Veterinary Care
-          </p>
-          <Button
-            size="lg"
-            className="px-8 py-6 text-lg"
-            onClick={scrollToContact}
-            data-testid="button-book-appointment"
+          <motion.h1 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="font-display text-5xl md:text-6xl font-medium mb-4" 
+            data-testid="text-hero-headline"
           >
-            Book your appointment today
-          </Button>
+            Dr. Paws Veterinary Clinic
+          </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-2xl md:text-3xl mb-3 opacity-90" 
+            data-testid="text-hero-subheadline"
+          >
+            Compassionate Care for Your Beloved Pets
+          </motion.p>
+          <motion.p 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="text-lg md:text-xl mb-8 opacity-80" 
+            data-testid="text-hero-subtext"
+          >
+            Providing the Highest Quality Veterinary Care
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+          >
+            <Button
+              size="lg"
+              className="px-8 py-6 text-lg transition-transform hover:scale-105"
+              onClick={scrollToContact}
+              data-testid="button-book-appointment"
+            >
+              Book your appointment today
+            </Button>
+          </motion.div>
         </div>
       </div>
 
-      <button
+      <motion.button
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.95 }}
         onClick={prevSlide}
-        className="absolute left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/20 hover-elevate active-elevate-2 text-white backdrop-blur-sm"
+        className="absolute left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/20 hover-elevate active-elevate-2 text-white backdrop-blur-sm transition-all"
         data-testid="button-prev-slide"
         aria-label="Previous slide"
       >
         <ChevronLeft className="w-6 h-6" />
-      </button>
-      <button
+      </motion.button>
+      <motion.button
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.95 }}
         onClick={nextSlide}
-        className="absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/20 hover-elevate active-elevate-2 text-white backdrop-blur-sm"
+        className="absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/20 hover-elevate active-elevate-2 text-white backdrop-blur-sm transition-all"
         data-testid="button-next-slide"
         aria-label="Next slide"
       >
         <ChevronRight className="w-6 h-6" />
-      </button>
+      </motion.button>
 
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2">
         {slides.map((_, index) => (
-          <button
+          <motion.button
             key={index}
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.9 }}
             onClick={() => setCurrentSlide(index)}
-            className={`w-3 h-3 rounded-full transition-all ${
-              index === currentSlide ? 'bg-white w-8' : 'bg-white/50'
+            className={`h-3 rounded-full transition-all duration-500 ${
+              index === currentSlide ? 'bg-white w-8' : 'bg-white/50 w-3'
             }`}
             data-testid={`button-slide-indicator-${index}`}
             aria-label={`Go to slide ${index + 1}`}
