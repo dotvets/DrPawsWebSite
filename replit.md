@@ -4,7 +4,7 @@
 
 This is a single-page web application for Dr. Paws Veterinary Clinic, a veterinary care provider. The application serves as the clinic's primary digital presence, showcasing services, facilitating contact, and establishing the clinic's brand identity. Built with React, TypeScript, and modern web technologies, the site features a responsive design with smooth animations and an image slider hero section.
 
-The application currently implements only the home page with seven main sections: hero slider, about/intro, services overview, service packages, why choose us, contact form, and footer. The codebase is structured to support future expansion with additional pages and features.
+The application features a sticky header with the Dr. Paws logo and navigation menu (Home, About, Services, Blog, Contact Us), and implements the home page with seven main sections: hero slider, about/intro, services overview, service packages, why choose us, contact form, and footer. The codebase is structured to support future expansion with additional pages and features.
 
 ## User Preferences
 

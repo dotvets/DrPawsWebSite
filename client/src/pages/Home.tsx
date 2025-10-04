@@ -1,3 +1,4 @@
+import Header from '@/components/Header';
 import HeroSlider from '@/components/HeroSlider';
 import AboutSection from '@/components/AboutSection';
 import ServicesSection from '@/components/ServicesSection';
@@ -9,10 +10,15 @@ import Footer from '@/components/Footer';
 export default function Home() {
   return (
     <div className="min-h-screen">
+      <Header />
       <HeroSlider />
-      <AboutSection />
-      <ServicesSection />
-      <ServicePackagesSection />
+      <div id="about">
+        <AboutSection />
+      </div>
+      <div id="services">
+        <ServicesSection />
+        <ServicePackagesSection />
+      </div>
       <WhyChooseUsSection />
       <ContactSection />
       <Footer />
