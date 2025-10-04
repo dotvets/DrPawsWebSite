@@ -116,7 +116,7 @@ export default function ServicesSection() {
             whileTap={{ scale: 0.95 }}
           >
             <Button size="lg" data-testid="button-read-more-services">
-              Read more…
+              {t('services.readMore')}
             </Button>
           </motion.div>
         </motion.div>
