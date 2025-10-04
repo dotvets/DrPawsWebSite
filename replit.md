@@ -127,4 +127,3 @@ Static assets (images) are stored in `attached_assets/` directory and accessed v
 - **2025-10-04**: Enhanced animations and hover effects across all sections
 - **2025-10-04**: Service Packages section completed with three tiers (Basic Care 299 SAR, Complete Care 599 SAR "Most Popular", Premium Care 999 SAR)
 - **2025-10-04**: "Our Media" section added below Service Packages with two clinic videos in professional frames with hover animations
-- **2025-10-04**: Animated background pattern added with paw prints and bone shapes using all four brand colors (Pigment Green #18ac61, Saffron #e9c46a, Sandy Brown #f4a261, Charcoal #264653) for cohesive, elegant aesthetic - subtle 60-second animation loop with four layered patterns
