@@ -44,7 +44,7 @@ export default function Footer() {
               <div className="flex items-start gap-2">
                 <Phone className="w-4 h-4 mt-0.5 flex-shrink-0" />
                 <div>
-                  <p>{t('footer.call')}: {t('footer.generalPhone')}</p>
+                  <p>{t('footer.call')}: <a href="tel:920003045" className="hover:underline" data-testid="link-phone-general">{t('footer.generalPhone')}</a></p>
                   <p className="text-white/70">{t('footer.emergency')}</p>
                 </div>
               </div>
@@ -54,16 +54,14 @@ export default function Footer() {
                 <div>
                   <p className="font-medium">{t('footer.sahafahBranch')}</p>
                   <p className="text-white/70">{t('footer.sahafahAddress')}</p>
-                  <p className="text-white/70">{t('footer.sahafahPhone')}</p>
+                  <p className="text-white/70"><a href="tel:0552030564" className="hover:underline" data-testid="link-phone-sahafa">{t('footer.sahafahPhone')}</a></p>
                 </div>
               </div>
 
               <div className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" />
                 <div>
-                  <p className="font-medium">{t('footer.matherBranch')}</p>
-                  <p className="text-white/70">{t('footer.matherAddress')}</p>
-                  <p className="text-white/70">{t('footer.matherPhone')}</p>
+                  <p className="text-white/70">{t('footer.matherBranch')}</p>
                 </div>
               </div>
             </div>
@@ -82,7 +80,7 @@ export default function Footer() {
               
               <div className="flex items-start gap-2">
                 <Mail className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                <p>{t('footer.email')}</p>
+                <p><a href="mailto:info@drpaws-sa.com" className="hover:underline" data-testid="link-email">{t('footer.email')}</a></p>
               </div>
             </div>
 
