@@ -49,22 +49,38 @@ export default function Footer() {
                 </div>
               </div>
               
-              <div className="flex items-start gap-2">
-                <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                <div>
-                  <p className="font-medium">{t('footer.sahafahBranch')}</p>
-                  <p className="text-white/70">{t('footer.sahafahAddress')}</p>
-                  <p className="text-white/70">{t('footer.mobile')}: <a href="tel:0552030564" className="hover:underline" data-testid="link-phone-sahafa">{t('footer.sahafahPhone')}</a></p>
-                </div>
+              <div className="space-y-1">
+                <a 
+                  href={t('footer.sahafahMapUrl')} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-start gap-2 hover-elevate rounded-md p-1 -m-1 transition-colors"
+                  data-testid="link-location-sahafa"
+                >
+                  <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <p className="font-medium">{t('footer.sahafahBranch')}</p>
+                    <p className="text-white/70">{t('footer.sahafahAddress')}</p>
+                  </div>
+                </a>
+                <p className="text-white/70 ps-6">{t('footer.mobile')}: <a href="tel:0552030564" className="hover:underline" data-testid="link-phone-sahafa">{t('footer.sahafahPhone')}</a></p>
               </div>
 
-              <div className="flex items-start gap-2">
-                <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                <div>
-                  <p className="font-medium">{t('footer.matherBranch')}</p>
-                  <p className="text-white/70">{t('footer.matherAddress')}</p>
-                  <p className="text-white/70">{t('footer.mobile')}: <a href="tel:0531353667" className="hover:underline" data-testid="link-phone-mather">{t('footer.matherPhone')}</a></p>
-                </div>
+              <div className="space-y-1">
+                <a 
+                  href={t('footer.matherMapUrl')} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-start gap-2 hover-elevate rounded-md p-1 -m-1 transition-colors"
+                  data-testid="link-location-mather"
+                >
+                  <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <p className="font-medium">{t('footer.matherBranch')}</p>
+                    <p className="text-white/70">{t('footer.matherAddress')}</p>
+                  </div>
+                </a>
+                <p className="text-white/70 ps-6">{t('footer.mobile')}: <a href="tel:0531353667" className="hover:underline" data-testid="link-phone-mather">{t('footer.matherPhone')}</a></p>
               </div>
             </div>
           </motion.div>
