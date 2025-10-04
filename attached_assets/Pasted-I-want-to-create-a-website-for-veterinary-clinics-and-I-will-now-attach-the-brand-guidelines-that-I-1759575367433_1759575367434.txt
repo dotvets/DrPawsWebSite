@@ -1,0 +1,95 @@
+I want to create a website for veterinary clinics, and I will now attach the brand guidelines that I want the homepage to match exactly.
+For now, I only want to create the Home page (main landing page), and its content is as follows:
+
+Appointment Section Content (directions are written in red for clarification)
+
+Hero Section / Slider
+
+Headline: Dr. Paws Veterinary Clinic
+
+Subheadline: Compassionate Care for Your Beloved Pets
+
+Subtext: Providing the Highest Quality Veterinary Care
+
+Call to Action: Book your appointment today (link to contact page/form)
+
+Intro / About Dr. Paws
+
+Headline: Committed to Your Pet's Well-being, Every Step of the Way
+
+Paragraph: At Dr. Paws Veterinary Clinic, we understand the special bond you share with your pets. Our experienced and compassionate team is dedicated to providing comprehensive, high-quality veterinary care to keep your furry companions healthy and happy throughout their lives. We strive to create a comfortable and welcoming environment for both you and your pet.
+
+Call to Action: Read More… (link to “About Us” page)
+
+Service Categories
+
+Headline: What we offer?
+
+Paragraph: Dr. Paws Veterinary Clinic provides a comprehensive range of services to keep your pets healthy at every stage of life. From routine checkups to advanced diagnostics and surgery, we're here for all your pet's healthcare needs.
+
+Call to Action: Read more… (link to services main page)
+
+Why Choose Us
+
+Headline: Why Choose Dr. Paws Veterinary Clinic?
+
+Points:
+
+Comprehensive & Affectionate Care: We treat every pet as if it were our own, with kindness, respect, and understanding.
+
+Experienced Team: Our veterinarians and support staff have years of experience and are passionate about animal health.
+
+State-of-the-Art Facility: We utilize advanced technology and equipment to provide the best possible care.
+
+Tailored Plan: We tailor our treatment plans to meet the unique needs of each pet.
+
+Call to Action: Read More… (link to “About Us” page)
+
+Contact Us
+(standard contact form requirements)
+
+Headline: Contact Dr. Paws Veterinary Clinic & Schedule Your Pet's Appointment Today!
+
+Form Fields:
+
+Name
+
+Phone Number
+
+Email
+
+Message
+
+Submit (button)
+
+Footer
+
+Logo
+
+Text: From wellness exams to advanced treatments, Dr. Paws provides comprehensive veterinary care for your pet's every need.
+
+Contact info:
+
+Call: 920 003 045
+
+Emergency: 24/7
+
+Al-Sahafa Branch: 05520 30564
+
+Al-Mather Branch: 05313 53667
+
+Email: (missing info)
+
+Address:
+
+Al-Sahafa Branch: Al Thumama Road, Al Sahafa, Riyadh 13315, KSA
+
+Al-Mather Branch: Prince Sultan bin Abdulaziz Road
+
+Working Hours:
+
+Sat – Thu: 09:00 AM – 10:00 PM
+
+Fri: 03:00 PM – 10:00 PM
+
+Stay in touch: Add social media icons and links
