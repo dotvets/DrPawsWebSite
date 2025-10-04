@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const services = [
   {
@@ -56,6 +57,7 @@ const item = {
 export default function ServicesSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false, amount: 0.2 });
+  const { t } = useLanguage();
 
   return (
     <section ref={ref} className="py-20 bg-[hsl(43,75%,66%)]/5">
@@ -67,12 +69,10 @@ export default function ServicesSection() {
           className="text-center mb-16"
         >
           <h2 className="font-display text-4xl font-medium text-foreground mb-4" data-testid="text-services-headline">
-            What we offer?
+            {t('services.headline')}
           </h2>
           <p className="text-lg text-foreground/80 max-w-3xl mx-auto" data-testid="text-services-description">
-            Dr. Paws Veterinary Clinic provides a comprehensive range of services to keep your pets healthy 
-            at every stage of life. From routine checkups to advanced diagnostics and surgery, we're here for 
-            all your pet's healthcare needs.
+            {t('services.description')}
           </p>
         </motion.div>
 

@@ -1,20 +1,23 @@
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Globe } from 'lucide-react';
 import { useState } from 'react';
 import { Link, useLocation } from 'wouter';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { Button } from '@/components/ui/button';
 import logo from '@assets/dr-paws-logo.svg';
-
-const navItems = [
-  { name: 'Home', path: '/' },
-  { name: 'About', path: '#about' },
-  { name: 'Services', path: '#services' },
-  { name: 'Blog', path: '/blog' },
-  { name: 'Contact Us', path: '#contact' },
-];
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [location] = useLocation();
+  const { language, setLanguage, t } = useLanguage();
+
+  const navItems = [
+    { name: t('nav.home'), path: '/' },
+    { name: t('nav.about'), path: '#about' },
+    { name: t('nav.services'), path: '#services' },
+    { name: t('nav.blog'), path: '/blog' },
+    { name: t('nav.contact'), path: '#contact' },
+  ];
 
   const handleNavClick = (path: string) => {
     if (path.startsWith('#')) {
@@ -69,20 +72,40 @@ export default function Header() {
                 </Link>
               )
             ))}
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setLanguage(language === 'en' ? 'ar' : 'en')}
+              className="flex items-center gap-2"
+              data-testid="button-language-switcher"
+            >
+              <Globe className="w-4 h-4" />
+              {language === 'en' ? 'العربية' : 'English'}
+            </Button>
           </div>
 
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 rounded-lg hover-elevate active-elevate-2"
-            data-testid="button-mobile-menu"
-            aria-label="Toggle menu"
-          >
-            {isMobileMenuOpen ? (
-              <X className="w-6 h-6" />
-            ) : (
-              <Menu className="w-6 h-6" />
-            )}
-          </button>
+          <div className="flex items-center gap-2 md:hidden">
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setLanguage(language === 'en' ? 'ar' : 'en')}
+              data-testid="button-language-switcher-mobile"
+            >
+              <Globe className="w-5 h-5" />
+            </Button>
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="p-2 rounded-lg hover-elevate active-elevate-2"
+              data-testid="button-mobile-menu"
+              aria-label="Toggle menu"
+            >
+              {isMobileMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
+            </button>
+          </div>
         </div>
 
         <AnimatePresence>

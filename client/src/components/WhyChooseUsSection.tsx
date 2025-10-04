@@ -3,29 +3,7 @@ import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-
-const features = [
-  {
-    icon: HeartHandshake,
-    title: 'Comprehensive & Affectionate Care',
-    description: 'We treat every pet as if it were our own, with kindness, respect, and understanding.',
-  },
-  {
-    icon: Award,
-    title: 'Experienced Team',
-    description: 'Our veterinarians and support staff have years of experience and are passionate about animal health.',
-  },
-  {
-    icon: Building2,
-    title: 'State-of-the-Art Facility',
-    description: 'We utilize advanced technology and equipment to provide the best possible care.',
-  },
-  {
-    icon: ClipboardCheck,
-    title: 'Tailored Plan',
-    description: 'We tailor our treatment plans to meet the unique needs of each pet.',
-  },
-];
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const container = {
   hidden: { opacity: 0 },
@@ -45,6 +23,30 @@ const item = {
 export default function WhyChooseUsSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false, amount: 0.3 });
+  const { t } = useLanguage();
+
+  const features = [
+    {
+      icon: HeartHandshake,
+      title: t('why.reason1.title'),
+      description: t('why.reason1.description'),
+    },
+    {
+      icon: Award,
+      title: t('why.reason2.title'),
+      description: t('why.reason2.description'),
+    },
+    {
+      icon: Building2,
+      title: t('why.reason3.title'),
+      description: t('why.reason3.description'),
+    },
+    {
+      icon: ClipboardCheck,
+      title: t('why.reason4.title'),
+      description: t('why.reason4.description'),
+    },
+  ];
 
   return (
     <section ref={ref} className="py-20 bg-background">
@@ -56,7 +58,7 @@ export default function WhyChooseUsSection() {
           className="font-display text-4xl font-medium text-foreground text-center mb-16" 
           data-testid="text-why-choose-headline"
         >
-          Why Choose Dr. Paws Veterinary Clinic?
+          {t('why.headline')}
         </motion.h2>
 
         <motion.div 
@@ -102,7 +104,7 @@ export default function WhyChooseUsSection() {
             whileTap={{ scale: 0.95 }}
           >
             <Button variant="outline" size="lg" data-testid="button-read-more-why">
-              Read More…
+              {t('why.readMore')}
             </Button>
           </motion.div>
         </motion.div>

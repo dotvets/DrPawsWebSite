@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLanguage } from '@/contexts/LanguageContext';
 import heroImage1 from '@assets/generated_images/Vet_examining_golden_retriever_19654044.png';
 import heroImage2 from '@assets/generated_images/Vet_consultation_with_cat_owner_7978144f.png';
 import heroImage3 from '@assets/generated_images/Modern_veterinary_equipment_room_49dc6345.png';
@@ -14,6 +15,7 @@ const slides = [
 
 export default function HeroSlider() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -68,7 +70,7 @@ export default function HeroSlider() {
             className="font-display text-5xl md:text-6xl font-medium mb-4" 
             data-testid="text-hero-headline"
           >
-            Dr. Paws Veterinary Clinic
+            {t('hero.headline')}
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 30 }}
@@ -77,7 +79,7 @@ export default function HeroSlider() {
             className="text-2xl md:text-3xl mb-3 opacity-90" 
             data-testid="text-hero-subheadline"
           >
-            Compassionate Care for Your Beloved Pets
+            {t('hero.tagline')}
           </motion.p>
           <motion.p 
             initial={{ opacity: 0, y: 30 }}
@@ -86,7 +88,7 @@ export default function HeroSlider() {
             className="text-lg md:text-xl mb-8 opacity-80" 
             data-testid="text-hero-subtext"
           >
-            Providing the Highest Quality Veterinary Care
+            {t('hero.subheadline')}
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -99,7 +101,7 @@ export default function HeroSlider() {
               onClick={scrollToContact}
               data-testid="button-book-appointment"
             >
-              Book your appointment today
+              {t('hero.cta')}
             </Button>
           </motion.div>
         </div>
