@@ -79,21 +79,22 @@ export default function ServicePackagesSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16 relative"
+          className="text-center mb-16"
         >
-          <div className="absolute left-0 top-1/2 -translate-y-1/2 hidden lg:block" data-testid="icon-paw-animated">
+          <div className="flex items-center justify-center gap-4 mb-4">
             <lord-icon
               src="https://cdn.lordicon.com/qopeqxee.json"
-              trigger="loop"
+              trigger="in"
               delay="1500"
-              stroke="light"
+              state="in-reveal"
               colors="primary:#18ac61,secondary:#264653"
-              style={{width: '70px', height: '70px'}}>
+              style={{width: '70px', height: '70px'}}
+              data-testid="icon-paw-animated">
             </lord-icon>
+            <h2 className="font-display text-4xl font-medium text-foreground" data-testid="text-packages-headline">
+              Service Packages
+            </h2>
           </div>
-          <h2 className="font-display text-4xl font-medium text-foreground mb-4" data-testid="text-packages-headline">
-            Service Packages
-          </h2>
           <p className="text-lg text-foreground/80 max-w-3xl mx-auto" data-testid="text-packages-description">
             Choose the perfect care package for your pet's needs. All packages include comprehensive 
             veterinary care tailored to keep your beloved companion healthy and happy.
