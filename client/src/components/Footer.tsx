@@ -61,7 +61,9 @@ export default function Footer() {
               <div className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" />
                 <div>
-                  <p className="text-white/70">{t('footer.matherBranch')}</p>
+                  <p className="font-medium">{t('footer.matherBranch')}</p>
+                  <p className="text-white/70">{t('footer.matherAddress')}</p>
+                  <p className="text-white/70"><a href="tel:0531353667" className="hover:underline" data-testid="link-phone-mather">{t('footer.matherPhone')}</a></p>
                 </div>
               </div>
             </div>
