@@ -2,6 +2,7 @@ import { MapPin, Phone, Clock, Mail } from 'lucide-react';
 import { SiFacebook, SiInstagram, SiX, SiWhatsapp } from 'react-icons/si';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
+import logoSvg from '@assets/dr-paws-logo.svg';
 
 const container = {
   hidden: { opacity: 0 },
@@ -31,17 +32,17 @@ export default function Footer() {
           className="grid md:grid-cols-3 gap-12 mb-12"
         >
           <motion.div variants={item}>
-            <h3 className="font-display text-2xl font-medium mb-4">Dr. Paws</h3>
+            <img src={logoSvg} alt="Dr. Paws" className="h-16 mb-4" data-testid="img-footer-logo" />
             <p className="text-white/80 text-sm leading-relaxed">
               {t('footer.description')}
             </p>
           </motion.div>
 
           <motion.div variants={item}>
-            <h4 className="font-semibold text-lg mb-4">{t('footer.contact')}</h4>
+            <h4 className="font-semibold text-lg mb-4">{t('footer.contactInfo')}</h4>
             <div className="space-y-3 text-sm">
               <div className="flex items-start gap-2">
-                <Phone className="w-4 h-4 mt-0.5" />
+                <Phone className="w-4 h-4 mt-0.5 flex-shrink-0" />
                 <div>
                   <p>{t('footer.call')}: {t('footer.generalPhone')}</p>
                   <p className="text-white/70">{t('footer.emergency')}</p>
@@ -49,37 +50,39 @@ export default function Footer() {
               </div>
               
               <div className="flex items-start gap-2">
-                <MapPin className="w-4 h-4 mt-0.5" />
+                <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" />
                 <div>
-                  <p className="font-medium">{t('footer.sahafahBranch')}: {t('footer.sahafahPhone')}</p>
+                  <p className="font-medium">{t('footer.sahafahBranch')}</p>
                   <p className="text-white/70">{t('footer.sahafahAddress')}</p>
+                  <p className="text-white/70">{t('footer.sahafahPhone')}</p>
                 </div>
               </div>
 
               <div className="flex items-start gap-2">
-                <MapPin className="w-4 h-4 mt-0.5" />
+                <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" />
                 <div>
-                  <p className="font-medium">{t('footer.matherBranch')}: {t('footer.matherPhone')}</p>
+                  <p className="font-medium">{t('footer.matherBranch')}</p>
                   <p className="text-white/70">{t('footer.matherAddress')}</p>
+                  <p className="text-white/70">{t('footer.matherPhone')}</p>
                 </div>
-              </div>
-
-              <div className="flex items-start gap-2">
-                <Mail className="w-4 h-4 mt-0.5" />
-                <p>info@drpaws.sa</p>
               </div>
             </div>
           </motion.div>
 
           <motion.div variants={item}>
             <h4 className="font-semibold text-lg mb-4">{t('footer.hours')}</h4>
-            <div className="space-y-2 text-sm">
+            <div className="space-y-2 text-sm mb-6">
               <div className="flex items-start gap-2">
-                <Clock className="w-4 h-4 mt-0.5" />
+                <Clock className="w-4 h-4 mt-0.5 flex-shrink-0" />
                 <div>
-                  <p>{t('footer.satThu')}: {t('footer.satThuHours')}</p>
-                  <p>{t('footer.fri')}: {t('footer.friHours')}</p>
+                  <p>{t('footer.satThu')}</p>
+                  <p>{t('footer.fri')}</p>
                 </div>
+              </div>
+              
+              <div className="flex items-start gap-2">
+                <Mail className="w-4 h-4 mt-0.5 flex-shrink-0" />
+                <p>{t('footer.email')}</p>
               </div>
             </div>
 
