@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { motion } from 'framer-motion';
 
 const PawPrint = ({ color, size, top, left, duration, delay }: {
@@ -51,15 +52,17 @@ export default function AnimatedPawBackground() {
     '#f4a261',
   ];
 
-  const pawPrints = Array.from({ length: 18 }, (_, i) => ({
-    id: i,
-    color: brandColors[Math.floor(Math.random() * brandColors.length)],
-    size: Math.random() * 40 + 60,
-    top: `${Math.random() * 100}%`,
-    left: `${Math.random() * 100}%`,
-    duration: Math.random() * 10 + 15,
-    delay: Math.random() * 5,
-  }));
+  const pawPrints = useMemo(() => {
+    return Array.from({ length: 18 }, (_, i) => ({
+      id: i,
+      color: brandColors[Math.floor(Math.random() * brandColors.length)],
+      size: Math.random() * 40 + 60,
+      top: `${Math.random() * 100}%`,
+      left: `${Math.random() * 100}%`,
+      duration: Math.random() * 10 + 15,
+      delay: Math.random() * 5,
+    }));
+  }, []);
 
   return (
     <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
