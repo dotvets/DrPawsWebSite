@@ -5,48 +5,7 @@ import { Badge } from '@/components/ui/badge';
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-
-const packages = [
-  {
-    name: 'Basic Care',
-    price: '299',
-    popular: false,
-    features: [
-      'Annual Wellness Exam',
-      'Basic Vaccinations',
-      'Parasite Prevention',
-      'Dental Consultation',
-      'Nutrition Guidance',
-    ],
-  },
-  {
-    name: 'Complete Care',
-    price: '599',
-    popular: true,
-    features: [
-      'Bi-Annual Wellness Exams',
-      'Complete Vaccination Package',
-      'Advanced Parasite Prevention',
-      'Dental Cleaning Included',
-      'Blood Work & Diagnostics',
-      'Emergency Care Discount',
-    ],
-  },
-  {
-    name: 'Premium Care',
-    price: '999',
-    popular: false,
-    features: [
-      'Quarterly Wellness Exams',
-      'Premium Vaccination Package',
-      'Year-Round Parasite Prevention',
-      'Professional Dental Care',
-      'Comprehensive Lab Work',
-      'Priority Emergency Care',
-      '24/7 Vet Consultation',
-    ],
-  },
-];
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const container = {
   hidden: { opacity: 0 },
@@ -66,6 +25,52 @@ const item = {
 export default function ServicePackagesSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false, amount: 0.2 });
+  const { t } = useLanguage();
+
+  const packages = [
+    {
+      name: t('packages.basic.name'),
+      price: t('packages.basic.price'),
+      period: t('packages.basic.period'),
+      popular: false,
+      features: [
+        t('packages.basic.feature1'),
+        t('packages.basic.feature2'),
+        t('packages.basic.feature3'),
+        t('packages.basic.feature4'),
+        t('packages.basic.feature5'),
+      ],
+    },
+    {
+      name: t('packages.complete.name'),
+      price: t('packages.complete.price'),
+      period: t('packages.complete.period'),
+      popular: true,
+      features: [
+        t('packages.complete.feature1'),
+        t('packages.complete.feature2'),
+        t('packages.complete.feature3'),
+        t('packages.complete.feature4'),
+        t('packages.complete.feature5'),
+        t('packages.complete.feature6'),
+      ],
+    },
+    {
+      name: t('packages.premium.name'),
+      price: t('packages.premium.price'),
+      period: t('packages.premium.period'),
+      popular: false,
+      features: [
+        t('packages.premium.feature1'),
+        t('packages.premium.feature2'),
+        t('packages.premium.feature3'),
+        t('packages.premium.feature4'),
+        t('packages.premium.feature5'),
+        t('packages.premium.feature6'),
+        t('packages.premium.feature7'),
+      ],
+    },
+  ];
 
   const scrollToContact = () => {
     const contactSection = document.getElementById('contact');
@@ -92,12 +97,11 @@ export default function ServicePackagesSection() {
               data-testid="icon-paw-animated">
             </lord-icon>
             <h2 className="font-display text-4xl font-medium text-foreground" data-testid="text-packages-headline">
-              Service Packages
+              {t('packages.headline')}
             </h2>
           </div>
           <p className="text-lg text-foreground/80 max-w-3xl mx-auto" data-testid="text-packages-description">
-            Choose the perfect care package for your pet's needs. All packages include comprehensive 
-            veterinary care tailored to keep your beloved companion healthy and happy.
+            {t('packages.description')}
           </p>
         </motion.div>
 
@@ -117,7 +121,7 @@ export default function ServicePackagesSection() {
                   {pkg.popular && (
                     <div className="absolute -top-3 left-1/2 -translate-x-1/2">
                       <Badge className="bg-primary text-primary-foreground" data-testid="badge-most-popular">
-                        Most Popular
+                        {t('packages.popular')}
                       </Badge>
                     </div>
                   )}
@@ -125,7 +129,7 @@ export default function ServicePackagesSection() {
                     <CardTitle className="text-2xl mb-2" data-testid={`text-package-name-${index}`}>{pkg.name}</CardTitle>
                     <div className="mt-4">
                       <span className="text-4xl font-bold text-primary" data-testid={`text-package-price-${index}`}>{pkg.price}</span>
-                      <span className="text-lg text-foreground/60"> SAR/year</span>
+                      <span className="text-lg text-foreground/60"> {pkg.period}</span>
                     </div>
                   </CardHeader>
                   <CardContent className="flex-1">
@@ -151,7 +155,7 @@ export default function ServicePackagesSection() {
                         onClick={scrollToContact}
                         data-testid={`button-book-now-${index}`}
                       >
-                        Book Now
+                        {t('packages.bookNow')}
                       </Button>
                     </motion.div>
                   </CardFooter>

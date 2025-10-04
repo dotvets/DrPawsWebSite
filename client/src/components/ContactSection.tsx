@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
+import { useLanguage } from '@/contexts/LanguageContext';
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
@@ -25,6 +26,7 @@ const item = {
 
 export default function ContactSection() {
   const { toast } = useToast();
+  const { t } = useLanguage();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false, amount: 0.2 });
   const [formData, setFormData] = useState({
@@ -38,8 +40,8 @@ export default function ContactSection() {
     e.preventDefault();
     console.log('Form submitted:', formData);
     toast({
-      title: 'Message Sent!',
-      description: 'We will get back to you shortly.',
+      title: t('contact.success'),
+      description: '',
     });
     setFormData({ name: '', phone: '', email: '', message: '' });
   };
@@ -54,7 +56,7 @@ export default function ContactSection() {
           className="font-display text-4xl font-medium text-white text-center mb-16" 
           data-testid="text-contact-headline"
         >
-          Contact Dr. Paws Veterinary Clinic & Schedule Your Pet's Appointment Today!
+          {t('contact.subheadline')}
         </motion.h2>
 
         <div className="grid md:grid-cols-2 gap-12">
@@ -67,7 +69,7 @@ export default function ContactSection() {
           >
             <motion.div variants={item}>
               <label className="block text-white/90 mb-2 font-medium" htmlFor="name">
-                Name
+                {t('contact.name')}
               </label>
               <Input
                 id="name"
@@ -82,7 +84,7 @@ export default function ContactSection() {
 
             <motion.div variants={item}>
               <label className="block text-white/90 mb-2 font-medium" htmlFor="phone">
-                Phone Number
+                {t('contact.phone')}
               </label>
               <Input
                 id="phone"
@@ -97,7 +99,7 @@ export default function ContactSection() {
 
             <motion.div variants={item}>
               <label className="block text-white/90 mb-2 font-medium" htmlFor="email">
-                Email
+                {t('contact.email')}
               </label>
               <Input
                 id="email"
@@ -112,7 +114,7 @@ export default function ContactSection() {
 
             <motion.div variants={item}>
               <label className="block text-white/90 mb-2 font-medium" htmlFor="message">
-                Message
+                {t('contact.message')}
               </label>
               <Textarea
                 id="message"
@@ -130,7 +132,7 @@ export default function ContactSection() {
               whileTap={{ scale: 0.98 }}
             >
               <Button type="submit" size="lg" className="w-full" data-testid="button-submit">
-                Submit
+                {t('contact.submit')}
               </Button>
             </motion.div>
           </motion.form>

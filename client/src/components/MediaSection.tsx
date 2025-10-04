@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
+import { useLanguage } from '@/contexts/LanguageContext';
 import { Play } from 'lucide-react';
 import video1 from '@assets/video-2023-03-05.mp4';
 import video2 from '@assets/video-2023-04-08.mp4';
@@ -23,6 +24,7 @@ const item = {
 export default function MediaSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false, amount: 0.2 });
+  const { t } = useLanguage();
 
   return (
     <section ref={ref} className="py-20 bg-[hsl(43,75%,66%)]/5">
@@ -43,12 +45,11 @@ export default function MediaSection() {
               data-testid="icon-media-animated">
             </lord-icon>
             <h2 className="font-display text-4xl font-medium text-foreground" data-testid="text-media-headline">
-              Our Media
+              {t('media.headline')}
             </h2>
           </div>
           <p className="text-lg text-foreground/80 max-w-3xl mx-auto" data-testid="text-media-description">
-            Take a closer look at our state-of-the-art facilities and see how we provide exceptional 
-            care for your beloved pets in a warm and welcoming environment.
+            {t('media.description')}
           </p>
         </motion.div>
 

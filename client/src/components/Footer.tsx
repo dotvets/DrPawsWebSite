@@ -1,6 +1,7 @@
 import { MapPin, Phone, Clock, Mail } from 'lucide-react';
 import { SiFacebook, SiInstagram, SiX, SiWhatsapp } from 'react-icons/si';
 import { motion } from 'framer-motion';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const container = {
   hidden: { opacity: 0 },
@@ -18,6 +19,7 @@ const item = {
 };
 
 export default function Footer() {
+  const { t } = useLanguage();
   return (
     <footer className="bg-[hsl(199,37%,24%)] text-white">
       <div className="max-w-7xl mx-auto px-6 py-16">
@@ -31,35 +33,34 @@ export default function Footer() {
           <motion.div variants={item}>
             <h3 className="font-display text-2xl font-medium mb-4">Dr. Paws</h3>
             <p className="text-white/80 text-sm leading-relaxed">
-              From wellness exams to advanced treatments, Dr. Paws provides comprehensive veterinary 
-              care for your pet's every need.
+              {t('footer.description')}
             </p>
           </motion.div>
 
           <motion.div variants={item}>
-            <h4 className="font-semibold text-lg mb-4">Contact Info</h4>
+            <h4 className="font-semibold text-lg mb-4">{t('footer.contact')}</h4>
             <div className="space-y-3 text-sm">
               <div className="flex items-start gap-2">
                 <Phone className="w-4 h-4 mt-0.5" />
                 <div>
-                  <p>Call: 920 003 045</p>
-                  <p className="text-white/70">Emergency: 24/7</p>
+                  <p>{t('footer.call')}: {t('footer.generalPhone')}</p>
+                  <p className="text-white/70">{t('footer.emergency')}</p>
                 </div>
               </div>
               
               <div className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 mt-0.5" />
                 <div>
-                  <p className="font-medium">Al-Sahafa: 05520 30564</p>
-                  <p className="text-white/70">Al Thumama Road, Al Sahafa, Riyadh 13315</p>
+                  <p className="font-medium">{t('footer.sahafahBranch')}: {t('footer.sahafahPhone')}</p>
+                  <p className="text-white/70">{t('footer.sahafahAddress')}</p>
                 </div>
               </div>
 
               <div className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 mt-0.5" />
                 <div>
-                  <p className="font-medium">Al-Mather: 05313 53667</p>
-                  <p className="text-white/70">Prince Sultan bin Abdulaziz Road</p>
+                  <p className="font-medium">{t('footer.matherBranch')}: {t('footer.matherPhone')}</p>
+                  <p className="text-white/70">{t('footer.matherAddress')}</p>
                 </div>
               </div>
 
@@ -71,19 +72,19 @@ export default function Footer() {
           </motion.div>
 
           <motion.div variants={item}>
-            <h4 className="font-semibold text-lg mb-4">Working Hours</h4>
+            <h4 className="font-semibold text-lg mb-4">{t('footer.hours')}</h4>
             <div className="space-y-2 text-sm">
               <div className="flex items-start gap-2">
                 <Clock className="w-4 h-4 mt-0.5" />
                 <div>
-                  <p>Sat – Thu: 09:00 AM – 10:00 PM</p>
-                  <p>Fri: 03:00 PM – 10:00 PM</p>
+                  <p>{t('footer.satThu')}: {t('footer.satThuHours')}</p>
+                  <p>{t('footer.fri')}: {t('footer.friHours')}</p>
                 </div>
               </div>
             </div>
 
             <div className="mt-6">
-              <h4 className="font-semibold text-lg mb-4">Stay in touch</h4>
+              <h4 className="font-semibold text-lg mb-4">{t('footer.follow')}</h4>
               <div className="flex gap-4">
                 <motion.a
                   whileHover={{ scale: 1.2, rotate: 5 }}
