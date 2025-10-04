@@ -84,7 +84,7 @@ export default function ServicePackagesSection() {
           <div className="flex items-center justify-center gap-4 mb-4">
             <lord-icon
               src="https://cdn.lordicon.com/qopeqxee.json"
-              trigger="in"
+              trigger="loop"
               delay="1500"
               state="in-reveal"
               colors="primary:#18ac61,secondary:#264653"
