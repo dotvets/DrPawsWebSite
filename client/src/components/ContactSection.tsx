@@ -59,7 +59,7 @@ export default function ContactSection() {
           {t('contact.subheadline')}
         </motion.h2>
 
-        <div className="grid md:grid-cols-2 gap-12">
+        <div className="max-w-2xl mx-auto">
           <motion.form 
             variants={container}
             initial="hidden"
