@@ -54,7 +54,7 @@ export default function Footer() {
                 <div>
                   <p className="font-medium">{t('footer.sahafahBranch')}</p>
                   <p className="text-white/70">{t('footer.sahafahAddress')}</p>
-                  <p className="text-white/70"><a href="tel:0552030564" className="hover:underline" data-testid="link-phone-sahafa">{t('footer.sahafahPhone')}</a></p>
+                  <p className="text-white/70">{t('footer.mobile')}: <a href="tel:0552030564" className="hover:underline" data-testid="link-phone-sahafa">{t('footer.sahafahPhone')}</a></p>
                 </div>
               </div>
 
@@ -63,7 +63,7 @@ export default function Footer() {
                 <div>
                   <p className="font-medium">{t('footer.matherBranch')}</p>
                   <p className="text-white/70">{t('footer.matherAddress')}</p>
-                  <p className="text-white/70"><a href="tel:0531353667" className="hover:underline" data-testid="link-phone-mather">{t('footer.matherPhone')}</a></p>
+                  <p className="text-white/70">{t('footer.mobile')}: <a href="tel:0531353667" className="hover:underline" data-testid="link-phone-mather">{t('footer.matherPhone')}</a></p>
                 </div>
               </div>
             </div>
