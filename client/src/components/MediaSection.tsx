@@ -46,7 +46,7 @@ export default function MediaSection() {
           variants={container}
           initial="hidden"
           animate={isInView ? "show" : "hidden"}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12"
+          className="grid md:grid-cols-2 gap-8 lg:gap-12"
         >
           <motion.div variants={item}>
             <motion.div
@@ -83,25 +83,6 @@ export default function MediaSection() {
                   <source src={video2} type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              </div>
-            </motion.div>
-          </motion.div>
-
-          <motion.div variants={item}>
-            <motion.div
-              whileHover={{ y: -8, transition: { duration: 0.3 } }}
-              className="relative group"
-            >
-              <div className="relative rounded-xl overflow-hidden shadow-lg bg-card border border-border aspect-video">
-                <iframe
-                  src="https://www.tiktok.com/embed/v2/7552593633812303122"
-                  className="w-full h-full"
-                  allowFullScreen
-                  scrolling="no"
-                  allow="encrypted-media;"
-                  data-testid="tiktok-embed"
-                ></iframe>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
             </motion.div>
