@@ -127,4 +127,5 @@ Static assets (images) are stored in `attached_assets/` directory and accessed v
 - **2025-10-04**: Enhanced animations and hover effects across all sections
 - **2025-10-04**: Service Packages section completed with three tiers (Basic Care 299 SAR, Complete Care 599 SAR "Most Popular", Premium Care 999 SAR)
 - **2025-10-04**: "Our Media" section added below Service Packages with two clinic videos in professional frames with hover animations
-- **2025-10-04**: Animated paw icon added inline to the left of Service Packages heading using Lord Icon library - 70px size with in-reveal trigger animation in brand colors (1.5-second delay)
+- **2025-10-04**: Animated paw icon added inline to the left of Service Packages heading using Lord Icon library - 90px size with loop animation every 1.5 seconds in brand colors
+- **2025-10-04**: Animated video/media icon added inline to the left of Our Media heading using Lord Icon library - 90px size with loop animation every 1.5 seconds in brand colors

@@ -33,9 +33,19 @@ export default function MediaSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="font-display text-4xl font-medium text-foreground mb-4" data-testid="text-media-headline">
-            Our Media
-          </h2>
+          <div className="flex items-center justify-center gap-4 mb-4">
+            <lord-icon
+              src="https://cdn.lordicon.com/ldyubhgs.json"
+              trigger="loop"
+              delay="1500"
+              colors="primary:#18ac61,secondary:#264653"
+              style={{width: '90px', height: '90px'}}
+              data-testid="icon-media-animated">
+            </lord-icon>
+            <h2 className="font-display text-4xl font-medium text-foreground" data-testid="text-media-headline">
+              Our Media
+            </h2>
+          </div>
           <p className="text-lg text-foreground/80 max-w-3xl mx-auto" data-testid="text-media-description">
             Take a closer look at our state-of-the-art facilities and see how we provide exceptional 
             care for your beloved pets in a warm and welcoming environment.
