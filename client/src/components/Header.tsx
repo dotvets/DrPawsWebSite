@@ -1,4 +1,4 @@
-import { Menu, X, Globe, Phone } from 'lucide-react';
+import { Menu, X, Globe } from 'lucide-react';
 import { useState } from 'react';
 import { Link, useLocation } from 'wouter';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -78,7 +78,13 @@ export default function Header() {
               className="flex items-center gap-2 text-primary font-semibold hover-elevate active-elevate-2 px-4 py-2 rounded-md border border-primary/20"
               data-testid="link-phone"
             >
-              <Phone className="w-4 h-4 phone-shake-animation" />
+              <lord-icon
+                src="https://cdn.lordicon.com/ojbonimq.json"
+                trigger="loop"
+                delay="1500"
+                colors="primary:#18ac61,secondary:#18ac61"
+                style={{ width: '20px', height: '20px' }}
+              />
               <span>920003045</span>
             </motion.a>
             <Button
@@ -100,7 +106,13 @@ export default function Header() {
               className="flex items-center gap-2 text-primary font-semibold hover-elevate active-elevate-2 px-3 py-2 rounded-md border border-primary/20"
               data-testid="link-phone-mobile"
             >
-              <Phone className="w-4 h-4 phone-shake-animation" />
+              <lord-icon
+                src="https://cdn.lordicon.com/ojbonimq.json"
+                trigger="loop"
+                delay="1500"
+                colors="primary:#18ac61,secondary:#18ac61"
+                style={{ width: '20px', height: '20px' }}
+              />
               <span className="text-sm">920003045</span>
             </motion.a>
             <Button
