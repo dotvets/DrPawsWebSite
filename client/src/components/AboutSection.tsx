@@ -3,12 +3,14 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useLocation } from 'wouter';
 import teamImage from '@assets/generated_images/Veterinary_team_professional_photo_a4845f6b.png';
 
 export default function AboutSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false, amount: 0.3 });
   const { t } = useLanguage();
+  const [, setLocation] = useLocation();
 
   return (
     <section ref={ref} className="py-20 bg-background">
@@ -43,7 +45,12 @@ export default function AboutSection() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Button variant="outline" size="lg" data-testid="button-read-more-about">
+              <Button 
+                variant="outline" 
+                size="lg" 
+                onClick={() => setLocation('/about')}
+                data-testid="button-read-more-about"
+              >
                 {t('about.readMore')}
               </Button>
             </motion.div>
