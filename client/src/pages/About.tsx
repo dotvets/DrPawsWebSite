@@ -153,13 +153,19 @@ export default function About() {
                 <h2 className="text-3xl font-bold text-primary" data-testid="text-who-we-are-title">
                   {t('aboutPage.whoWeAre.title')}
                 </h2>
-                <h3 className="text-2xl font-semibold text-foreground" data-testid="text-who-we-are-subtitle">
-                  {t('aboutPage.whoWeAre.subtitle')}
-                </h3>
+                {t('aboutPage.whoWeAre.subtitle') && (
+                  <h3 className="text-2xl font-semibold text-foreground" data-testid="text-who-we-are-subtitle">
+                    {t('aboutPage.whoWeAre.subtitle')}
+                  </h3>
+                )}
                 <div className="space-y-4 text-lg text-foreground/90">
                   <p data-testid="text-who-we-are-para1">{t('aboutPage.whoWeAre.para1')}</p>
-                  <p data-testid="text-who-we-are-para2">{t('aboutPage.whoWeAre.para2')}</p>
-                  <p data-testid="text-who-we-are-para3">{t('aboutPage.whoWeAre.para3')}</p>
+                  {t('aboutPage.whoWeAre.para2') && (
+                    <p data-testid="text-who-we-are-para2">{t('aboutPage.whoWeAre.para2')}</p>
+                  )}
+                  {t('aboutPage.whoWeAre.para3') && (
+                    <p data-testid="text-who-we-are-para3">{t('aboutPage.whoWeAre.para3')}</p>
+                  )}
                 </div>
               </motion.div>
             </div>

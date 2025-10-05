@@ -274,41 +274,41 @@ const translations = {
     'contact.success': 'شكراً لك! سنتواصل معك قريباً.',
     
     // About Page
-    'aboutPage.header': 'مركز د. باوز للعناية البيطرية',
-    'aboutPage.subheader': 'خبرة يمكنك الثقة بها',
-    'aboutPage.whoWeAre.title': 'عن د. باوز – من نحن',
-    'aboutPage.whoWeAre.subtitle': 'عيادة د. باوز البيطرية: شريكك في رعاية حيوانك الأليف',
-    'aboutPage.whoWeAre.para1': 'نؤمن بأن كل حيوان أليف يستحق حياة سعيدة وصحية. نحن أكثر من مجرد عيادة بيطرية، نحن شركاؤكم في رعاية صديقكم ذي الفراء. فريقنا المتفاني ملتزم بتقديم رعاية شاملة وعالية الجودة، من الفحوصات الروتينية إلى الجراحات المعقدة.',
-    'aboutPage.whoWeAre.para2': 'بفضل سنوات من الخبرة في الرعاية البيطرية، تقدم د. باوز مجموعة واسعة من الخدمات لتلبية جميع احتياجات حيوانك الأليف. باستخدام أحدث التقنيات والمعدات، نقوم بتشخيص وعلاج الحالات الصحية المختلفة، مما يضمن صحة ورفاهية حيوانك الأليف طوال حياته. نحن فخورون بكوننا عيادة موثوقة للرعاية البيطرية في الرياض.',
-    'aboutPage.whoWeAre.para3': 'نسعى جاهدين لخلق بيئة ترحيبية ومريحة لك ولرفاقك ذوي الفراء، مما يجعل كل زيارة تجربة إيجابية. نحن فخورون بكوننا مركزاً موثوقاً للرعاية البيطرية في مجتمع الرياض.',
+    'aboutPage.header': 'عيادات د. باوز البيطرية بالرياض',
+    'aboutPage.subheader': 'خبرة نضعها بين أيديكم بكل ثقة',
+    'aboutPage.whoWeAre.title': 'من نحن؟',
+    'aboutPage.whoWeAre.subtitle': '',
+    'aboutPage.whoWeAre.para1': 'تُقدّم عيادات د. باوز، أفضل عيادة بيطرية بالرياض، رعاية بيطرية استثنائية تجمع بين الخبرة والتقنية الحديثة، مع لمسة حانية تُعبّر عن اهتمامنا العميق بصحة حيواناتكم الأليفة. من الفحوصات الروتينية إلى التشخيصات المتقدمة والعلاجات المتخصصة، نُوفّر رعاية شاملة في بيئة مريحة وودية، لضمان تجربة إيجابية لكم ولحيواناتكم الأليفة في كل زيارة.',
+    'aboutPage.whoWeAre.para2': '',
+    'aboutPage.whoWeAre.para3': '',
     'aboutPage.vision.title': 'رؤيتنا',
-    'aboutPage.vision.content': 'تسعى عيادات د. باوز لتكون الوجهة الأولى للعناية بالحيوانات الأليفة، وتقديم أعلى مستويات الرعاية الصحية لأصدقائنا ذوي الفراء.',
+    'aboutPage.vision.content': 'تسعى عيادات دكتور باوز إلى أن تكون المرجع الأول والأفضل في مجال الرعاية البيطرية، حيث تقدم أعلى مستوى من الرعاية الصحية للحيوانات الأليفة.',
     'aboutPage.mission.title': 'مهمتنا',
-    'aboutPage.mission.content': 'مهمتنا هي تقديم رعاية بيطرية متقدمة ورحيمة. نحن ملتزمون بتقديم أعلى جودة من الخدمات الطبية للحيوانات الأليفة، من الفحوصات الروتينية إلى العلاجات المتخصصة، وكلها يتم تنفيذها من قبل فريقنا ذي الخبرة في بيئة رعاية.',
-    'aboutPage.whyChoose.title': 'لماذا تختار عيادة د. باوز البيطرية؟',
-    'aboutPage.whyChoose.reason1.title': 'رعاية حنونة',
-    'aboutPage.whyChoose.reason1.description': 'نعامل كل حيوان أليف كما لو كان ملكنا، بلطف واحترام وتفهم.',
+    'aboutPage.mission.content': 'توفير رعاية بيطرية شاملة وعالية الجودة للحيوانات الأليفة، مع التركيز على صحة ورفاهية الحيوان، وتقديم أفضل الخدمات الطبية للحيوانات الأليفة، بدءًا من الفحوصات الروتينية وحتى الجراحات المعقدة، وذلك من خلال فريق عمل متخصص وبيئة مريحة لأليفك.',
+    'aboutPage.whyChoose.title': 'لماذا تختار عيادات د. باوز البيطرية؟',
+    'aboutPage.whyChoose.reason1.title': 'رعاية شاملة وحنونة',
+    'aboutPage.whyChoose.reason1.description': 'نعامل كل حيوان أليف كما لو كان حيواننا الأليف، باللطف والاحترام والتفهّم.',
     'aboutPage.whyChoose.reason2.title': 'فريق ذو خبرة',
-    'aboutPage.whyChoose.reason2.description': 'أطباؤنا البيطريون وطاقم الدعم لديهم سنوات من الخبرة ومتحمسون لصحة الحيوانات.',
-    'aboutPage.whyChoose.reason3.title': 'منشأة حديثة',
-    'aboutPage.whyChoose.reason3.description': 'نستخدم أحدث التقنيات والمعدات لتوفير أفضل رعاية ممكنة.',
-    'aboutPage.whyChoose.reason4.title': 'نهج شخصي',
-    'aboutPage.whyChoose.reason4.description': 'نقوم بتخصيص خطط العلاج لتلبية الاحتياجات الفريدة لكل حيوان أليف.',
-    'aboutPage.doctors.title': 'أطباؤنا',
-    'aboutPage.doctors.description': 'فريقنا من الأطباء البيطريين ذوي الخبرة والرحمة هو قلب مركز د. باوز للعناية البيطرية. إنهم مكرسون لتقديم أعلى معايير الرعاية ومتحمسون لتحسين حياة الحيوانات. مع مجالات خبرة متنوعة، يعمل أطباؤنا بشكل تعاوني لضمان حصول حيوانك الأليف على أفضل علاج ممكن.',
+    'aboutPage.whyChoose.reason2.description': 'يتمتع أطباؤنا البيطريون وطاقم الدعم لدينا بخبرة سنوات عديدة وشغف تجاه الحيوانات الأليفة.',
+    'aboutPage.whyChoose.reason3.title': 'عيادات متطورة وحديثة',
+    'aboutPage.whyChoose.reason3.description': 'حيث نستخدم أحدث التقنيات والمعدات لتوفير أفضل رعاية ممكنة.',
+    'aboutPage.whyChoose.reason4.title': 'خطة علاجية تناسب أليفك',
+    'aboutPage.whyChoose.reason4.description': 'نُعدل خطط العلاج لتلبية الاحتياجات الفريدة لكل حيوان أليف.',
+    'aboutPage.doctors.title': 'فريق العمل',
+    'aboutPage.doctors.description': 'في عيادات د. باوز، أفضل عيادة بيطرية بالرياض، يجمع فريقنا من الأطباء البيطريين بين الخبرة العالية والتعاطف العميق لتقديم رعاية شاملة ومتخصصة. ملتزمون بتطبيق أعلى معايير الجودة في كل جوانب الرعاية، وشغفهم بصحة الحيوانات هو الدافع الأساسي لعملهم. خبراتهم المتنوعة تُمكّنهم من توفير أفضل الحلول العلاجية لحيوانكم الأليف.',
     'aboutPage.doctors.noInfo': 'ملفات تعريف الأطباء قريباً',
     'aboutPage.partners.title': 'شركاؤنا',
     'aboutPage.partners.noInfo': 'معلومات الشركاء قريباً',
-    'aboutPage.careers.title': 'الوظائف / انضم إلى فريقنا',
-    'aboutPage.careers.description': 'تبحث عن مهنة مجزية في صحة الحيوان؟ يقدم مركز د. باوز للعناية البيطرية فرصاً مثيرة للنمو المهني والتطوير في بيئة ديناميكية وسريعة الخطى.',
+    'aboutPage.careers.title': 'الوظائف',
+    'aboutPage.careers.description': 'عيادة د. باوز، أفضل عيادة بيطرية بالرياض، تدعوك للانضمام إلى فريقها المتميز. نوفر لك بيئة عمل داعمة ومُحفّزة تُساعدك على التطور المهني واكتساب الخبرات القيمة في مجال صحة الحيوان.',
     'aboutPage.careers.personalInfo': 'المعلومات الشخصية',
     'aboutPage.careers.fullName': 'الاسم الكامل',
-    'aboutPage.careers.email': 'عنوان البريد الإلكتروني',
+    'aboutPage.careers.email': 'البريد الإلكتروني',
     'aboutPage.careers.phone': 'رقم الهاتف',
     'aboutPage.careers.professionalInfo': 'المعلومات المهنية',
     'aboutPage.careers.resume': 'تحميل السيرة الذاتية',
-    'aboutPage.careers.coverLetter': 'خطاب التغطية (اختياري)',
-    'aboutPage.careers.position': 'الوظيفة المرغوبة (إن وجدت)',
+    'aboutPage.careers.coverLetter': 'الخطاب التعريفي (اختياري)',
+    'aboutPage.careers.position': 'الوظيفة المطلوبة (إن وجدت)',
     'aboutPage.careers.startDate': 'تاريخ البدء المتاح',
     'aboutPage.careers.experience': 'الخبرة ذات الصلة',
     'aboutPage.careers.experiencePlaceholder': 'مثلاً: فني بيطري، مساعد بيطري، موظف استقبال',
@@ -356,7 +356,14 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   }, [language]);
 
   const t = (key: string): string => {
-    return translations[language][key as keyof typeof translations['en']] || key;
+    const translationKey = key as keyof typeof translations['en'];
+    if (translationKey in translations[language]) {
+      return translations[language][translationKey] as string;
+    }
+    if (translationKey in translations.en) {
+      return translations.en[translationKey] as string;
+    }
+    return key;
   };
 
   return (
