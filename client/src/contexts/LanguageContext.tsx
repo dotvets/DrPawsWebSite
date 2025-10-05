@@ -99,6 +99,9 @@ const translations = {
     'why.reason4.description': 'We tailor our treatment plans to meet the unique needs of each pet.',
     'why.readMore': 'Read More',
     
+    // Reviews
+    'reviews.headline': 'What Our Customers Say',
+    
     // Contact
     'contact.headline': 'Contact Us',
     'contact.subheadline': 'Contact Dr. Paws Veterinary Clinic & Schedule Your Pet\'s Appointment Today!',
@@ -262,6 +265,9 @@ const translations = {
     'why.reason4.title': 'خطة علاجية مخصصة',
     'why.reason4.description': 'نضع خطة علاج تناسب الاحتياجات الفريدة لكل حيوان أليف.',
     'why.readMore': 'اقرأ المزيد',
+    
+    // Reviews
+    'reviews.headline': 'آراء عملائنا',
     
     // Contact
     'contact.headline': 'تواصل معنا',

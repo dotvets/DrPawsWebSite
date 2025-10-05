@@ -5,6 +5,7 @@ import ServicesSection from '@/components/ServicesSection';
 import ServicePackagesSection from '@/components/ServicePackagesSection';
 import MediaSection from '@/components/MediaSection';
 import WhyChooseUsSection from '@/components/WhyChooseUsSection';
+import ReviewsSection from '@/components/ReviewsSection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
 
@@ -22,6 +23,7 @@ export default function Home() {
       </div>
       <MediaSection />
       <WhyChooseUsSection />
+      <ReviewsSection />
       <ContactSection />
       <Footer />
     </div>
