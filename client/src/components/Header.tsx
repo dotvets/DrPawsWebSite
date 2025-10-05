@@ -1,4 +1,4 @@
-import { Menu, X, Globe } from 'lucide-react';
+import { Menu, X, Globe, Phone } from 'lucide-react';
 import { useState } from 'react';
 import { Link, useLocation } from 'wouter';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -72,6 +72,15 @@ export default function Header() {
                 </Link>
               )
             ))}
+            <motion.a
+              href="tel:920003045"
+              whileHover={{ scale: 1.05 }}
+              className="flex items-center gap-2 text-primary font-semibold hover-elevate active-elevate-2 px-4 py-2 rounded-md border border-primary/20"
+              data-testid="link-phone"
+            >
+              <Phone className="w-4 h-4 phone-shake-animation" />
+              <span>920003045</span>
+            </motion.a>
             <Button
               variant="outline"
               size="sm"
@@ -85,6 +94,15 @@ export default function Header() {
           </div>
 
           <div className="flex items-center gap-2 md:hidden">
+            <motion.a
+              href="tel:920003045"
+              whileTap={{ scale: 0.95 }}
+              className="flex items-center gap-2 text-primary font-semibold hover-elevate active-elevate-2 px-3 py-2 rounded-md border border-primary/20"
+              data-testid="link-phone-mobile"
+            >
+              <Phone className="w-4 h-4 phone-shake-animation" />
+              <span className="text-sm">920003045</span>
+            </motion.a>
             <Button
               variant="ghost"
               size="icon"
