@@ -82,8 +82,8 @@ export default function Header() {
                 src="https://cdn.lordicon.com/ojbonimq.json"
                 trigger="loop"
                 delay="1500"
-                colors="primary:#18ac61,secondary:#18ac61"
-                style={{ width: '20px', height: '20px' }}
+                colors="primary:#121331,secondary:#08a88a"
+                style={{ width: '25px', height: '25px' }}
               />
               <span>920003045</span>
             </motion.a>
@@ -110,8 +110,8 @@ export default function Header() {
                 src="https://cdn.lordicon.com/ojbonimq.json"
                 trigger="loop"
                 delay="1500"
-                colors="primary:#18ac61,secondary:#18ac61"
-                style={{ width: '20px', height: '20px' }}
+                colors="primary:#121331,secondary:#08a88a"
+                style={{ width: '25px', height: '25px' }}
               />
               <span className="text-sm">920003045</span>
             </motion.a>
