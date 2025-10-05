@@ -10,6 +10,10 @@ import { useToast } from '@/hooks/use-toast';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Heart, Users, Building2, Stethoscope, Upload } from 'lucide-react';
+import teamImage from '@assets/generated_images/Veterinary_team_professional_photo_a4845f6b.png';
+import vetExamImage from '@assets/generated_images/Vet_examining_golden_retriever_19654044.png';
+import consultationImage from '@assets/generated_images/Vet_consultation_with_cat_owner_7978144f.png';
+import equipmentImage from '@assets/generated_images/Modern_veterinary_equipment_room_49dc6345.png';
 
 export default function About() {
   const { t } = useLanguage();
@@ -88,38 +92,89 @@ export default function About() {
             </p>
           </motion.div>
 
-          <motion.section variants={itemVariants} className="space-y-6">
-            <h2 className="text-3xl font-bold text-primary" data-testid="text-who-we-are-title">
-              {t('aboutPage.whoWeAre.title')}
-            </h2>
-            <h3 className="text-2xl font-semibold text-foreground" data-testid="text-who-we-are-subtitle">
-              {t('aboutPage.whoWeAre.subtitle')}
-            </h3>
-            <div className="space-y-4 text-lg text-foreground/90">
-              <p data-testid="text-who-we-are-para1">{t('aboutPage.whoWeAre.para1')}</p>
-              <p data-testid="text-who-we-are-para2">{t('aboutPage.whoWeAre.para2')}</p>
-              <p data-testid="text-who-we-are-para3">{t('aboutPage.whoWeAre.para3')}</p>
+          <motion.section variants={itemVariants}>
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+              >
+                <motion.img
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.3 }}
+                  src={teamImage}
+                  alt="Dr. Paws veterinary team"
+                  className="rounded-xl w-full h-auto object-cover shadow-md"
+                  data-testid="img-who-we-are"
+                />
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+                className="space-y-6"
+              >
+                <h2 className="text-3xl font-bold text-primary" data-testid="text-who-we-are-title">
+                  {t('aboutPage.whoWeAre.title')}
+                </h2>
+                <h3 className="text-2xl font-semibold text-foreground" data-testid="text-who-we-are-subtitle">
+                  {t('aboutPage.whoWeAre.subtitle')}
+                </h3>
+                <div className="space-y-4 text-lg text-foreground/90">
+                  <p data-testid="text-who-we-are-para1">{t('aboutPage.whoWeAre.para1')}</p>
+                  <p data-testid="text-who-we-are-para2">{t('aboutPage.whoWeAre.para2')}</p>
+                  <p data-testid="text-who-we-are-para3">{t('aboutPage.whoWeAre.para3')}</p>
+                </div>
+              </motion.div>
             </div>
           </motion.section>
 
-          <motion.section variants={itemVariants} className="grid md:grid-cols-2 gap-8">
-            <Card data-testid="card-vision">
-              <CardHeader>
-                <CardTitle className="text-2xl text-primary">{t('aboutPage.vision.title')}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-lg text-foreground/90">{t('aboutPage.vision.content')}</p>
-              </CardContent>
-            </Card>
+          <motion.section variants={itemVariants}>
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+                className="md:order-2"
+              >
+                <motion.img
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.3 }}
+                  src={vetExamImage}
+                  alt="Veterinarian examining dog"
+                  className="rounded-xl w-full h-auto object-cover shadow-md"
+                  data-testid="img-vision-mission"
+                />
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+                className="md:order-1 grid gap-8"
+              >
+                <Card data-testid="card-vision">
+                  <CardHeader>
+                    <CardTitle className="text-2xl text-primary">{t('aboutPage.vision.title')}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-lg text-foreground/90">{t('aboutPage.vision.content')}</p>
+                  </CardContent>
+                </Card>
 
-            <Card data-testid="card-mission">
-              <CardHeader>
-                <CardTitle className="text-2xl text-primary">{t('aboutPage.mission.title')}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-lg text-foreground/90">{t('aboutPage.mission.content')}</p>
-              </CardContent>
-            </Card>
+                <Card data-testid="card-mission">
+                  <CardHeader>
+                    <CardTitle className="text-2xl text-primary">{t('aboutPage.mission.title')}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-lg text-foreground/90">{t('aboutPage.mission.content')}</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            </div>
           </motion.section>
 
           <motion.section variants={itemVariants} className="space-y-8">
@@ -146,18 +201,43 @@ export default function About() {
             </div>
           </motion.section>
 
-          <motion.section variants={itemVariants} className="space-y-6">
-            <h2 className="text-3xl font-bold text-primary" data-testid="text-doctors-title">
-              {t('aboutPage.doctors.title')}
-            </h2>
-            <p className="text-lg text-foreground/90" data-testid="text-doctors-description">
-              {t('aboutPage.doctors.description')}
-            </p>
-            <Card data-testid="card-doctors-placeholder">
-              <CardContent className="py-12 text-center">
-                <p className="text-muted-foreground text-lg">{t('aboutPage.doctors.noInfo')}</p>
-              </CardContent>
-            </Card>
+          <motion.section variants={itemVariants}>
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+              >
+                <motion.img
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.3 }}
+                  src={consultationImage}
+                  alt="Veterinarian consultation with pet owner"
+                  className="rounded-xl w-full h-auto object-cover shadow-md"
+                  data-testid="img-doctors"
+                />
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+                className="space-y-6"
+              >
+                <h2 className="text-3xl font-bold text-primary" data-testid="text-doctors-title">
+                  {t('aboutPage.doctors.title')}
+                </h2>
+                <p className="text-lg text-foreground/90" data-testid="text-doctors-description">
+                  {t('aboutPage.doctors.description')}
+                </p>
+                <Card data-testid="card-doctors-placeholder">
+                  <CardContent className="py-12 text-center">
+                    <p className="text-muted-foreground text-lg">{t('aboutPage.doctors.noInfo')}</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            </div>
           </motion.section>
 
           <motion.section variants={itemVariants} className="space-y-6">
@@ -172,13 +252,37 @@ export default function About() {
           </motion.section>
 
           <motion.section variants={itemVariants} className="space-y-8">
-            <div className="space-y-4">
-              <h2 className="text-3xl font-bold text-primary" data-testid="text-careers-title">
-                {t('aboutPage.careers.title')}
-              </h2>
-              <p className="text-lg text-foreground/90" data-testid="text-careers-description">
-                {t('aboutPage.careers.description')}
-              </p>
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+                className="md:order-2"
+              >
+                <motion.img
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.3 }}
+                  src={equipmentImage}
+                  alt="Modern veterinary equipment"
+                  className="rounded-xl w-full h-auto object-cover shadow-md"
+                  data-testid="img-careers"
+                />
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+                className="md:order-1 space-y-4"
+              >
+                <h2 className="text-3xl font-bold text-primary" data-testid="text-careers-title">
+                  {t('aboutPage.careers.title')}
+                </h2>
+                <p className="text-lg text-foreground/90" data-testid="text-careers-description">
+                  {t('aboutPage.careers.description')}
+                </p>
+              </motion.div>
             </div>
 
             <Card data-testid="card-careers-form">
