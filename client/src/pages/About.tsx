@@ -193,7 +193,7 @@ export default function About() {
                     <CardTitle className="text-2xl text-primary flex items-center gap-3">
                       <lord-icon
                         src="https://cdn.lordicon.com/zywwafpn.json"
-                        trigger="morph"
+                        trigger="loop"
                         delay="1500"
                         state="morph-turn-on"
                         colors="primary:#545454,secondary:#18ac61"
@@ -212,7 +212,8 @@ export default function About() {
                     <CardTitle className="text-2xl text-primary flex items-center gap-3">
                       <lord-icon
                         src="https://cdn.lordicon.com/lagziwcr.json"
-                        trigger="hover"
+                        trigger="loop"
+                        delay="1500"
                         colors="primary:#545454,secondary:#18ac61"
                         style={{ width: '60px', height: '60px' }}
                       />
@@ -282,7 +283,7 @@ export default function About() {
                 <h2 className="text-3xl font-bold text-primary flex items-center gap-3" data-testid="text-doctors-title">
                   <lord-icon
                     src="https://cdn.lordicon.com/jfdtmvil.json"
-                    trigger="in"
+                    trigger="loop"
                     delay="1500"
                     state="in-reveal"
                     colors="primary:#545454,secondary:#18ac61"
@@ -312,7 +313,8 @@ export default function About() {
             >
               <lord-icon
                 src="https://cdn.lordicon.com/rcuovkuy.json"
-                trigger="hover"
+                trigger="loop"
+                delay="1500"
                 colors="primary:#545454,secondary:#18ac61"
                 style={{ width: '60px', height: '60px' }}
               />
@@ -357,7 +359,8 @@ export default function About() {
                 <h2 className="text-3xl font-bold text-primary flex items-center gap-3" data-testid="text-careers-title">
                   <lord-icon
                     src="https://cdn.lordicon.com/dpdqbwcf.json"
-                    trigger="hover"
+                    trigger="loop"
+                    delay="1500"
                     colors="primary:#545454,secondary:#18ac61"
                     style={{ width: '60px', height: '60px' }}
                   />
