@@ -23,7 +23,7 @@ const item = {
 export default function ReviewsSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false, amount: 0.2 });
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   const reviews = [
     {
@@ -100,7 +100,23 @@ export default function ReviewsSection() {
         <motion.div
           variants={container}
           initial="hidden"
-          animate={isInView ? "show" : "hidden"}
+          animate={
+            isInView
+              ? {
+                  opacity: 1,
+                  x: [0, -30, 0],
+                  transition: {
+                    opacity: { duration: 0.6 },
+                    x: {
+                      repeat: Infinity,
+                      repeatType: "loop" as const,
+                      duration: 3,
+                      ease: "easeInOut",
+                    },
+                  },
+                }
+              : { opacity: 0, x: 0 }
+          }
           className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
         >
           {reviews.map((review) => (
@@ -110,16 +126,16 @@ export default function ReviewsSection() {
               className="p-6 rounded-lg border border-border bg-background hover-elevate"
               data-testid={`review-card-${review.id}`}
             >
-              <div className="flex items-center gap-3 mb-4">
+              <div className={`flex items-center gap-3 mb-4 ${language === 'ar' ? 'flex-row-reverse' : ''}`}>
                 <Avatar data-testid={`avatar-${review.id}`}>
                   <AvatarImage src={review.avatar} alt={review.name} />
                   <AvatarFallback>{review.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
                 </Avatar>
-                <div>
+                <div className={language === 'ar' ? 'text-right' : ''}>
                   <h3 className="font-semibold text-foreground" data-testid={`name-${review.id}`}>
                     {review.name}
                   </h3>
-                  <div className="flex gap-0.5">
+                  <div className={`flex gap-0.5 ${language === 'ar' ? 'flex-row-reverse' : ''}`}>
                     {Array.from({ length: 5 }).map((_, i) => (
                       <Star
                         key={i}
@@ -134,7 +150,7 @@ export default function ReviewsSection() {
                   </div>
                 </div>
               </div>
-              <p className="text-foreground/80 text-sm leading-relaxed" data-testid={`text-${review.id}`}>
+              <p className={`text-foreground/80 text-sm leading-relaxed ${language === 'ar' ? 'text-right' : 'text-left'}`} data-testid={`text-${review.id}`}>
                 {review.text}
               </p>
             </motion.div>
