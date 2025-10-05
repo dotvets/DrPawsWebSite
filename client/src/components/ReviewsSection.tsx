@@ -14,63 +14,62 @@ export default function ReviewsSection() {
   const reviews = [
     {
       id: 1,
-      name: 'Ahmed Al-Rashid',
+      name: t('reviews.1.name'),
       avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Ahmed',
       rating: 5,
-      text: 'Excellent service! The staff was very caring and professional with my cat. Highly recommend Dr. Paws!',
+      text: t('reviews.1.text'),
     },
     {
       id: 2,
-      name: 'Sarah Johnson',
+      name: t('reviews.2.name'),
       avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah',
       rating: 5,
-      text: 'My dog received the best care here. The doctors are knowledgeable and the clinic is very clean.',
+      text: t('reviews.2.text'),
     },
     {
       id: 3,
-      name: 'Mohammed Hassan',
+      name: t('reviews.3.name'),
       avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Mohammed',
       rating: 4,
-      text: 'Great experience overall. The veterinarian explained everything clearly and my pet feels much better.',
+      text: t('reviews.3.text'),
     },
     {
       id: 4,
-      name: 'Emily Rodriguez',
+      name: t('reviews.4.name'),
       avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Emily',
       rating: 5,
-      text: 'The emergency service was outstanding. They took care of my rabbit immediately and professionally.',
+      text: t('reviews.4.text'),
     },
     {
       id: 5,
-      name: 'Khalid Abdullah',
+      name: t('reviews.5.name'),
       avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Khalid',
       rating: 5,
-      text: 'Best veterinary clinic in Riyadh! The staff is friendly and they truly care about animals.',
+      text: t('reviews.5.text'),
     },
     {
       id: 6,
-      name: 'Jennifer Lee',
+      name: t('reviews.6.name'),
       avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Jennifer',
       rating: 5,
-      text: 'Very impressed with the facilities and the level of care. My parrot received excellent treatment.',
+      text: t('reviews.6.text'),
     },
     {
       id: 7,
-      name: 'Omar Saeed',
+      name: t('reviews.7.name'),
       avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Omar',
       rating: 4,
-      text: 'Professional team and modern equipment. They made my pet feel comfortable during the visit.',
+      text: t('reviews.7.text'),
     },
     {
       id: 8,
-      name: 'Lisa Martinez',
+      name: t('reviews.8.name'),
       avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Lisa',
       rating: 5,
-      text: 'Wonderful experience! The grooming service was perfect and my dog looks amazing. Thank you!',
+      text: t('reviews.8.text'),
     },
   ];
 
-  // Duplicate reviews for seamless infinite loop
   const duplicatedReviews = [...reviews, ...reviews];
 
   const ReviewCard = ({ review }: { review: typeof reviews[0] }) => (
@@ -118,7 +117,7 @@ export default function ReviewsSection() {
           className="font-display text-4xl font-medium text-foreground text-center mb-16"
           data-testid="text-reviews-headline"
         >
-          {t('reviews.headline') || 'What Our Customers Say'}
+          {t('reviews.headline')}
         </motion.h2>
         
         <div 
@@ -127,6 +126,7 @@ export default function ReviewsSection() {
           onMouseLeave={() => setIsPaused(false)}
         >
           <motion.div
+            key={language}
             className="flex gap-6"
             animate={{
               x: isPaused ? undefined : [0, -((300 + 24) * reviews.length)],

@@ -101,6 +101,22 @@ const translations = {
     
     // Reviews
     'reviews.headline': 'What Our Customers Say',
+    'reviews.1.name': 'Ahmed Al-Rashid',
+    'reviews.1.text': 'Excellent service! The staff was very caring and professional with my cat. Highly recommend Dr. Paws!',
+    'reviews.2.name': 'Sarah Johnson',
+    'reviews.2.text': 'My dog received the best care here. The doctors are knowledgeable and the clinic is very clean.',
+    'reviews.3.name': 'Mohammed Hassan',
+    'reviews.3.text': 'Great experience overall. The veterinarian explained everything clearly and my pet feels much better.',
+    'reviews.4.name': 'Emily Rodriguez',
+    'reviews.4.text': 'The emergency service was outstanding. They took care of my rabbit immediately and professionally.',
+    'reviews.5.name': 'Khalid Abdullah',
+    'reviews.5.text': 'Best veterinary clinic in Riyadh! The staff is friendly and they truly care about animals.',
+    'reviews.6.name': 'Jennifer Lee',
+    'reviews.6.text': 'Very impressed with the facilities and the level of care. My parrot received excellent treatment.',
+    'reviews.7.name': 'Omar Saeed',
+    'reviews.7.text': 'Professional team and modern equipment. They made my pet feel comfortable during the visit.',
+    'reviews.8.name': 'Lisa Martinez',
+    'reviews.8.text': 'Wonderful experience! The grooming service was perfect and my dog looks amazing. Thank you!',
     
     // Contact
     'contact.headline': 'Contact Us',
@@ -268,6 +284,22 @@ const translations = {
     
     // Reviews
     'reviews.headline': 'آراء عملائنا',
+    'reviews.1.name': 'أحمد الرشيد',
+    'reviews.1.text': 'خدمة ممتازة! الطاقم كان رائعًا ومهنيًا جدًا مع قطتي. أنصح بشدة بعيادة د. باوز!',
+    'reviews.2.name': 'سارة جونسون',
+    'reviews.2.text': 'كلبي حصل على أفضل رعاية هنا. الأطباء ذوو خبرة والعيادة نظيفة جدًا.',
+    'reviews.3.name': 'محمد حسن',
+    'reviews.3.text': 'تجربة رائعة بشكل عام. الطبيب البيطري شرح كل شيء بوضوح وحيواني الأليف يشعر بتحسن كبير.',
+    'reviews.4.name': 'إميلي رودريجيز',
+    'reviews.4.text': 'خدمة الطوارئ كانت مميزة. اهتموا بأرنبي فورًا وبشكل احترافي.',
+    'reviews.5.name': 'خالد عبدالله',
+    'reviews.5.text': 'أفضل عيادة بيطرية في الرياض! الطاقم ودود ويهتمون حقًا بالحيوانات.',
+    'reviews.6.name': 'جينيفر لي',
+    'reviews.6.text': 'معجبة جدًا بالمرافق ومستوى الرعاية. ببغائي حصل على علاج ممتاز.',
+    'reviews.7.name': 'عمر سعيد',
+    'reviews.7.text': 'فريق محترف ومعدات حديثة. جعلوا حيواني الأليف يشعر بالراحة خلال الزيارة.',
+    'reviews.8.name': 'ليزا مارتينيز',
+    'reviews.8.text': 'تجربة رائعة! خدمة التجميل كانت مثالية وكلبي يبدو رائعًا. شكرًا لكم!',
     
     // Contact
     'contact.headline': 'تواصل معنا',
