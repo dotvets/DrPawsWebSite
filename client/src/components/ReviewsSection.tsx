@@ -1,29 +1,15 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Star } from 'lucide-react';
-
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1
-    }
-  }
-};
-
-const item = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0 }
-};
 
 export default function ReviewsSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false, amount: 0.2 });
   const { t, language } = useLanguage();
+  const [isPaused, setIsPaused] = useState(false);
 
   const reviews = [
     {
@@ -84,8 +70,46 @@ export default function ReviewsSection() {
     },
   ];
 
+  // Duplicate reviews for seamless infinite loop
+  const duplicatedReviews = [...reviews, ...reviews];
+
+  const ReviewCard = ({ review }: { review: typeof reviews[0] }) => (
+    <div
+      className="p-6 rounded-lg border border-border bg-background hover-elevate flex-shrink-0 w-[300px]"
+      data-testid={`review-card-${review.id}`}
+    >
+      <div className={`flex items-center gap-3 mb-4 ${language === 'ar' ? 'flex-row-reverse' : ''}`}>
+        <Avatar data-testid={`avatar-${review.id}`}>
+          <AvatarImage src={review.avatar} alt={review.name} />
+          <AvatarFallback>{review.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
+        </Avatar>
+        <div className={language === 'ar' ? 'text-right' : ''}>
+          <h3 className="font-semibold text-foreground" data-testid={`name-${review.id}`}>
+            {review.name}
+          </h3>
+          <div className={`flex gap-0.5 ${language === 'ar' ? 'flex-row-reverse' : ''}`}>
+            {Array.from({ length: 5 }).map((_, i) => (
+              <Star
+                key={i}
+                className={`w-4 h-4 ${
+                  i < review.rating
+                    ? 'fill-[#e9c46a] text-[#e9c46a]'
+                    : 'fill-muted text-muted'
+                }`}
+                data-testid={`star-${review.id}-${i}`}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+      <p className={`text-foreground/80 text-sm leading-relaxed ${language === 'ar' ? 'text-right' : 'text-left'}`} data-testid={`text-${review.id}`}>
+        {review.text}
+      </p>
+    </div>
+  );
+
   return (
-    <section ref={ref} className="py-20 bg-card">
+    <section ref={ref} className="py-20 bg-card overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
         <motion.h2 
           initial={{ opacity: 0, y: 30 }}
@@ -97,65 +121,30 @@ export default function ReviewsSection() {
           {t('reviews.headline') || 'What Our Customers Say'}
         </motion.h2>
         
-        <motion.div
-          variants={container}
-          initial="hidden"
-          animate={
-            isInView
-              ? {
-                  opacity: 1,
-                  x: [0, -30, 0],
-                  transition: {
-                    opacity: { duration: 0.6 },
-                    x: {
-                      repeat: Infinity,
-                      repeatType: "loop" as const,
-                      duration: 3,
-                      ease: "easeInOut",
-                    },
-                  },
-                }
-              : { opacity: 0, x: 0 }
-          }
-          className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
+        <div 
+          className="relative"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
         >
-          {reviews.map((review) => (
-            <motion.div
-              key={review.id}
-              variants={item}
-              className="p-6 rounded-lg border border-border bg-background hover-elevate"
-              data-testid={`review-card-${review.id}`}
-            >
-              <div className={`flex items-center gap-3 mb-4 ${language === 'ar' ? 'flex-row-reverse' : ''}`}>
-                <Avatar data-testid={`avatar-${review.id}`}>
-                  <AvatarImage src={review.avatar} alt={review.name} />
-                  <AvatarFallback>{review.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
-                </Avatar>
-                <div className={language === 'ar' ? 'text-right' : ''}>
-                  <h3 className="font-semibold text-foreground" data-testid={`name-${review.id}`}>
-                    {review.name}
-                  </h3>
-                  <div className={`flex gap-0.5 ${language === 'ar' ? 'flex-row-reverse' : ''}`}>
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <Star
-                        key={i}
-                        className={`w-4 h-4 ${
-                          i < review.rating
-                            ? 'fill-[#e9c46a] text-[#e9c46a]'
-                            : 'fill-muted text-muted'
-                        }`}
-                        data-testid={`star-${review.id}-${i}`}
-                      />
-                    ))}
-                  </div>
-                </div>
-              </div>
-              <p className={`text-foreground/80 text-sm leading-relaxed ${language === 'ar' ? 'text-right' : 'text-left'}`} data-testid={`text-${review.id}`}>
-                {review.text}
-              </p>
-            </motion.div>
-          ))}
-        </motion.div>
+          <motion.div
+            className="flex gap-6"
+            animate={{
+              x: isPaused ? undefined : [0, -((300 + 24) * reviews.length)],
+            }}
+            transition={{
+              x: {
+                repeat: Infinity,
+                repeatType: "loop",
+                duration: 40,
+                ease: "linear",
+              },
+            }}
+          >
+            {duplicatedReviews.map((review, index) => (
+              <ReviewCard key={`${review.id}-${index}`} review={review} />
+            ))}
+          </motion.div>
+        </div>
       </div>
     </section>
   );
