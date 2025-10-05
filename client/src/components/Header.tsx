@@ -75,7 +75,7 @@ export default function Header() {
             <motion.a
               href="tel:920003045"
               whileHover={{ scale: 1.05 }}
-              className="flex items-center gap-2 text-primary font-semibold hover-elevate active-elevate-2 px-4 py-2 rounded-md border border-primary/20"
+              className="flex items-center gap-2 text-primary font-semibold hover-elevate active-elevate-2 px-4 py-2 rounded-md"
               data-testid="link-phone"
             >
               <lord-icon
@@ -89,7 +89,7 @@ export default function Header() {
               <span>920003045</span>
             </motion.a>
             <Button
-              variant="outline"
+              variant="ghost"
               size="sm"
               onClick={() => setLanguage(language === 'en' ? 'ar' : 'en')}
               className="flex items-center gap-2"
@@ -104,7 +104,7 @@ export default function Header() {
             <motion.a
               href="tel:920003045"
               whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-2 text-primary font-semibold hover-elevate active-elevate-2 px-3 py-2 rounded-md border border-primary/20"
+              className="flex items-center gap-2 text-primary font-semibold hover-elevate active-elevate-2 px-3 py-2 rounded-md"
               data-testid="link-phone-mobile"
             >
               <lord-icon
