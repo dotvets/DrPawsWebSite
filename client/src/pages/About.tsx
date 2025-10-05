@@ -1,11 +1,11 @@
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useToast } from '@/hooks/use-toast';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -19,6 +19,22 @@ export default function About() {
   const { t } = useLanguage();
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const heroRef = useRef(null);
+  const whoWeAreRef = useRef(null);
+  const visionMissionRef = useRef(null);
+  const whyChooseRef = useRef(null);
+  const doctorsRef = useRef(null);
+  const partnersRef = useRef(null);
+  const careersRef = useRef(null);
+
+  const heroInView = useInView(heroRef, { once: false, amount: 0.3 });
+  const whoWeAreInView = useInView(whoWeAreRef, { once: false, amount: 0.3 });
+  const visionMissionInView = useInView(visionMissionRef, { once: false, amount: 0.3 });
+  const whyChooseInView = useInView(whyChooseRef, { once: false, amount: 0.3 });
+  const doctorsInView = useInView(doctorsRef, { once: false, amount: 0.3 });
+  const partnersInView = useInView(partnersRef, { once: false, amount: 0.3 });
+  const careersInView = useInView(careersRef, { once: false, amount: 0.3 });
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -83,22 +99,37 @@ export default function About() {
           variants={containerVariants}
           className="container mx-auto px-4 py-16 space-y-16"
         >
-          <motion.div variants={itemVariants} className="text-center space-y-4">
-            <h1 className="text-4xl md:text-5xl font-bold text-primary" data-testid="text-about-header">
+          <motion.div
+            ref={heroRef}
+            variants={itemVariants}
+            className="text-center space-y-4"
+          >
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={heroInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.8 }}
+              className="text-4xl md:text-5xl font-bold text-primary"
+              data-testid="text-about-header"
+            >
               {t('aboutPage.header')}
-            </h1>
-            <p className="text-xl text-muted-foreground" data-testid="text-about-subheader">
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={heroInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-xl text-muted-foreground"
+              data-testid="text-about-subheader"
+            >
               {t('aboutPage.subheader')}
-            </p>
+            </motion.p>
           </motion.div>
 
-          <motion.section variants={itemVariants}>
+          <motion.section ref={whoWeAreRef} variants={itemVariants}>
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                animate={whoWeAreInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
                 transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
               >
                 <motion.img
                   whileHover={{ scale: 1.02 }}
@@ -111,9 +142,8 @@ export default function About() {
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
+                animate={whoWeAreInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
                 className="space-y-6"
               >
                 <h2 className="text-3xl font-bold text-primary" data-testid="text-who-we-are-title">
@@ -131,13 +161,12 @@ export default function About() {
             </div>
           </motion.section>
 
-          <motion.section variants={itemVariants}>
+          <motion.section ref={visionMissionRef} variants={itemVariants}>
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <motion.div
                 initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                animate={visionMissionInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
                 transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
                 className="md:order-2"
               >
                 <motion.img
@@ -151,9 +180,8 @@ export default function About() {
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
+                animate={visionMissionInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
                 className="md:order-1 grid gap-8"
               >
                 <Card data-testid="card-vision">
@@ -177,10 +205,16 @@ export default function About() {
             </div>
           </motion.section>
 
-          <motion.section variants={itemVariants} className="space-y-8">
-            <h2 className="text-3xl font-bold text-primary text-center" data-testid="text-why-choose-title">
+          <motion.section ref={whyChooseRef} variants={itemVariants} className="space-y-8">
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              animate={whyChooseInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.8 }}
+              className="text-3xl font-bold text-primary text-center"
+              data-testid="text-why-choose-title"
+            >
               {t('aboutPage.whyChoose.title')}
-            </h2>
+            </motion.h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {whyChooseReasons.map((reason, index) => {
                 const Icon = reason.icon;
@@ -201,13 +235,12 @@ export default function About() {
             </div>
           </motion.section>
 
-          <motion.section variants={itemVariants}>
+          <motion.section ref={doctorsRef} variants={itemVariants}>
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                animate={doctorsInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
                 transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
               >
                 <motion.img
                   whileHover={{ scale: 1.02 }}
@@ -220,9 +253,8 @@ export default function About() {
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
+                animate={doctorsInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
                 className="space-y-6"
               >
                 <h2 className="text-3xl font-bold text-primary" data-testid="text-doctors-title">
@@ -240,24 +272,35 @@ export default function About() {
             </div>
           </motion.section>
 
-          <motion.section variants={itemVariants} className="space-y-6">
-            <h2 className="text-3xl font-bold text-primary" data-testid="text-partners-title">
+          <motion.section ref={partnersRef} variants={itemVariants} className="space-y-6">
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              animate={partnersInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.8 }}
+              className="text-3xl font-bold text-primary"
+              data-testid="text-partners-title"
+            >
               {t('aboutPage.partners.title')}
-            </h2>
-            <Card data-testid="card-partners-placeholder">
-              <CardContent className="py-12 text-center">
-                <p className="text-muted-foreground text-lg">{t('aboutPage.partners.noInfo')}</p>
-              </CardContent>
-            </Card>
+            </motion.h2>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={partnersInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <Card data-testid="card-partners-placeholder">
+                <CardContent className="py-12 text-center">
+                  <p className="text-muted-foreground text-lg">{t('aboutPage.partners.noInfo')}</p>
+                </CardContent>
+              </Card>
+            </motion.div>
           </motion.section>
 
-          <motion.section variants={itemVariants} className="space-y-8">
+          <motion.section ref={careersRef} variants={itemVariants} className="space-y-8">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <motion.div
                 initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                animate={careersInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
                 transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
                 className="md:order-2"
               >
                 <motion.img
@@ -271,9 +314,8 @@ export default function About() {
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
+                animate={careersInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
                 className="md:order-1 space-y-4"
               >
                 <h2 className="text-3xl font-bold text-primary" data-testid="text-careers-title">
@@ -285,8 +327,13 @@ export default function About() {
               </motion.div>
             </div>
 
-            <Card data-testid="card-careers-form">
-              <CardContent className="pt-6">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={careersInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
+              <Card data-testid="card-careers-form">
+                <CardContent className="pt-6">
                 <form onSubmit={handleSubmit} className="space-y-8">
                   <div className="space-y-6">
                     <h3 className="text-xl font-semibold text-primary" data-testid="text-personal-info">
@@ -425,8 +472,9 @@ export default function About() {
                     </Button>
                   </div>
                 </form>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            </motion.div>
           </motion.section>
         </motion.div>
       </main>
