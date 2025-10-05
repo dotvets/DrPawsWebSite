@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useToast } from '@/hooks/use-toast';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -35,6 +35,10 @@ export default function About() {
   const doctorsInView = useInView(doctorsRef, { once: false, amount: 0.3 });
   const partnersInView = useInView(partnersRef, { once: false, amount: 0.3 });
   const careersInView = useInView(careersRef, { once: false, amount: 0.3 });
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -186,7 +190,17 @@ export default function About() {
               >
                 <Card data-testid="card-vision">
                   <CardHeader>
-                    <CardTitle className="text-2xl text-primary">{t('aboutPage.vision.title')}</CardTitle>
+                    <CardTitle className="text-2xl text-primary flex items-center gap-3">
+                      <lord-icon
+                        src="https://cdn.lordicon.com/zywwafpn.json"
+                        trigger="morph"
+                        delay="1500"
+                        state="morph-turn-on"
+                        colors="primary:#545454,secondary:#18ac61"
+                        style={{ width: '60px', height: '60px' }}
+                      />
+                      {t('aboutPage.vision.title')}
+                    </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <p className="text-lg text-foreground/90">{t('aboutPage.vision.content')}</p>
@@ -195,7 +209,15 @@ export default function About() {
 
                 <Card data-testid="card-mission">
                   <CardHeader>
-                    <CardTitle className="text-2xl text-primary">{t('aboutPage.mission.title')}</CardTitle>
+                    <CardTitle className="text-2xl text-primary flex items-center gap-3">
+                      <lord-icon
+                        src="https://cdn.lordicon.com/lagziwcr.json"
+                        trigger="hover"
+                        colors="primary:#545454,secondary:#18ac61"
+                        style={{ width: '60px', height: '60px' }}
+                      />
+                      {t('aboutPage.mission.title')}
+                    </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <p className="text-lg text-foreground/90">{t('aboutPage.mission.content')}</p>
@@ -257,7 +279,15 @@ export default function About() {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="space-y-6"
               >
-                <h2 className="text-3xl font-bold text-primary" data-testid="text-doctors-title">
+                <h2 className="text-3xl font-bold text-primary flex items-center gap-3" data-testid="text-doctors-title">
+                  <lord-icon
+                    src="https://cdn.lordicon.com/jfdtmvil.json"
+                    trigger="in"
+                    delay="1500"
+                    state="in-reveal"
+                    colors="primary:#545454,secondary:#18ac61"
+                    style={{ width: '60px', height: '60px' }}
+                  />
                   {t('aboutPage.doctors.title')}
                 </h2>
                 <p className="text-lg text-foreground/90" data-testid="text-doctors-description">
@@ -277,9 +307,15 @@ export default function About() {
               initial={{ opacity: 0, y: 20 }}
               animate={partnersInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.8 }}
-              className="text-3xl font-bold text-primary"
+              className="text-3xl font-bold text-primary flex items-center gap-3"
               data-testid="text-partners-title"
             >
+              <lord-icon
+                src="https://cdn.lordicon.com/rcuovkuy.json"
+                trigger="hover"
+                colors="primary:#545454,secondary:#18ac61"
+                style={{ width: '60px', height: '60px' }}
+              />
               {t('aboutPage.partners.title')}
             </motion.h2>
             <motion.div
@@ -318,7 +354,13 @@ export default function About() {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="md:order-1 space-y-4"
               >
-                <h2 className="text-3xl font-bold text-primary" data-testid="text-careers-title">
+                <h2 className="text-3xl font-bold text-primary flex items-center gap-3" data-testid="text-careers-title">
+                  <lord-icon
+                    src="https://cdn.lordicon.com/dpdqbwcf.json"
+                    trigger="hover"
+                    colors="primary:#545454,secondary:#18ac61"
+                    style={{ width: '60px', height: '60px' }}
+                  />
                   {t('aboutPage.careers.title')}
                 </h2>
                 <p className="text-lg text-foreground/90" data-testid="text-careers-description">
