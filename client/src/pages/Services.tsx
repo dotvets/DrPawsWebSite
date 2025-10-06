@@ -16,22 +16,40 @@ import {
   Home,
   Heart,
   AlertCircle,
-  Sparkles
+  Sparkles,
+  ChevronDown,
+  ChevronUp
 } from 'lucide-react';
 import servicesHeroImage from '@assets/generated_images/Modern_veterinary_equipment_room_49dc6345.png';
+import teamImage from '@assets/generated_images/Veterinary_team_professional_photo_a4845f6b.png';
+import vetExamImage from '@assets/generated_images/Vet_examining_golden_retriever_19654044.png';
+import consultationImage from '@assets/generated_images/Vet_consultation_with_cat_owner_7978144f.png';
 
 export default function Services() {
   const { t, language } = useLanguage();
+  const [expandedCards, setExpandedCards] = useState<Record<number, boolean>>({});
 
   const heroRef = useRef(null);
-  const servicesRef = useRef(null);
+  const servicesRef1 = useRef(null);
+  const imageRef1 = useRef(null);
+  const servicesRef2 = useRef(null);
+  const imageRef2 = useRef(null);
+  const servicesRef3 = useRef(null);
 
   const heroInView = useInView(heroRef, { once: false, amount: 0.3 });
-  const servicesInView = useInView(servicesRef, { once: false, amount: 0.2 });
+  const servicesInView1 = useInView(servicesRef1, { once: false, amount: 0.2 });
+  const imageInView1 = useInView(imageRef1, { once: false, amount: 0.3 });
+  const servicesInView2 = useInView(servicesRef2, { once: false, amount: 0.2 });
+  const imageInView2 = useInView(imageRef2, { once: false, amount: 0.3 });
+  const servicesInView3 = useInView(servicesRef3, { once: false, amount: 0.2 });
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const toggleExpand = (id: number) => {
+    setExpandedCards(prev => ({ ...prev, [id]: !prev[id] }));
+  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -178,6 +196,126 @@ export default function Services() {
     },
   ];
 
+  const ServiceCard = ({ service }: { service: typeof services[0] }) => {
+    const Icon = service.icon;
+    const isExpanded = expandedCards[service.id];
+    const hasLongContent = service.description.length > 150 || service.features.length > 3;
+
+    return (
+      <motion.div variants={itemVariants} className="h-full">
+        <Card
+          className={`h-full flex flex-col hover-elevate ${
+            service.emergency ? 'border-[#e9c46a]' : ''
+          }`}
+          data-testid={`card-service-${service.id}`}
+        >
+          <CardHeader>
+            <div
+              className={`flex items-center gap-4 mb-2 ${
+                language === 'ar' ? 'flex-row-reverse' : ''
+              }`}
+            >
+              <div className="p-3 rounded-lg bg-[#18ac61]/10">
+                <Icon
+                  className="w-6 h-6 text-[#18ac61]"
+                  data-testid={`icon-service-${service.id}`}
+                />
+              </div>
+            </div>
+            <CardTitle
+              className={`${language === 'ar' ? 'text-right' : 'text-left'}`}
+              data-testid={`title-service-${service.id}`}
+            >
+              {service.title}
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="flex flex-col flex-1">
+            <p
+              className={`text-foreground/80 mb-4 ${
+                language === 'ar' ? 'text-right' : 'text-left'
+              } ${!isExpanded && hasLongContent ? 'line-clamp-2' : ''}`}
+              data-testid={`description-service-${service.id}`}
+            >
+              {service.description}
+            </p>
+
+            <ul
+              className={`space-y-2 mb-4 flex-1 ${
+                language === 'ar' ? 'text-right' : 'text-left'
+              }`}
+            >
+              {(isExpanded ? service.features : service.features.slice(0, 2)).map((feature, idx) => (
+                <li
+                  key={idx}
+                  className={`text-sm text-foreground/70 flex items-start gap-2 ${
+                    language === 'ar' ? 'flex-row-reverse' : ''
+                  }`}
+                  data-testid={`feature-service-${service.id}-${idx}`}
+                >
+                  <span
+                    className={`inline-block w-1.5 h-1.5 rounded-full bg-[#18ac61] mt-2 flex-shrink-0 ${
+                      language === 'ar' ? 'mr-0 ml-2' : 'ml-0 mr-2'
+                    }`}
+                  />
+                  <span>{feature}</span>
+                </li>
+              ))}
+            </ul>
+
+            {hasLongContent && (
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => toggleExpand(service.id)}
+                className={`mb-4 ${language === 'ar' ? 'flex-row-reverse' : ''}`}
+                data-testid={`button-expand-${service.id}`}
+              >
+                {isExpanded ? (
+                  <>
+                    <ChevronUp className="w-4 h-4 mr-1" />
+                    {language === 'ar' ? 'عرض أقل' : 'Show less'}
+                  </>
+                ) : (
+                  <>
+                    <ChevronDown className="w-4 h-4 mr-1" />
+                    {language === 'ar' ? 'عرض المزيد' : 'Read more'}
+                  </>
+                )}
+              </Button>
+            )}
+
+            {service.emergency && (
+              <div
+                className={`mb-4 p-3 bg-[#e9c46a]/10 rounded-md ${
+                  language === 'ar' ? 'text-right' : 'text-left'
+                }`}
+              >
+                <p className="text-sm font-semibold text-[#264653] mb-2">
+                  {t('servicesPage.emergency.numbers')}
+                </p>
+                <p className="text-sm text-foreground/80">
+                  {t('servicesPage.emergency.sahafa')}
+                </p>
+                <p className="text-sm text-foreground/80">
+                  {t('servicesPage.emergency.mather')}
+                </p>
+              </div>
+            )}
+
+            <Link href="/#contact">
+              <Button
+                className="w-full"
+                data-testid={`button-book-${service.id}`}
+              >
+                {t('servicesPage.bookAppointment')}
+              </Button>
+            </Link>
+          </CardContent>
+        </Card>
+      </motion.div>
+    );
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
@@ -205,7 +343,7 @@ export default function Services() {
             initial={{ opacity: 0, y: 30 }}
             animate={heroInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className={`relative z-20 text-center px-6 ${language === 'ar' ? 'text-right' : 'text-left'}`}
+            className="relative z-20 text-center px-6"
           >
             <h1
               className="font-display text-5xl md:text-6xl font-bold text-white mb-4"
@@ -222,108 +360,128 @@ export default function Services() {
           </motion.div>
         </section>
 
-        <section ref={servicesRef} className="py-20 bg-background">
+        <section ref={servicesRef1} className="py-20 bg-background">
           <div className="max-w-7xl mx-auto px-6">
             <motion.div
               variants={containerVariants}
               initial="hidden"
-              animate={servicesInView ? 'visible' : 'hidden'}
+              animate={servicesInView1 ? 'visible' : 'hidden'}
               className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
             >
-              {services.map((service, index) => {
-                const Icon = service.icon;
-                return (
-                  <motion.div key={service.id} variants={itemVariants}>
-                    <Card
-                      className={`h-full hover-elevate ${
-                        service.emergency ? 'border-[#e9c46a]' : ''
-                      }`}
-                      data-testid={`card-service-${service.id}`}
-                    >
-                      <CardHeader>
-                        <div
-                          className={`flex items-center gap-4 mb-2 ${
-                            language === 'ar' ? 'flex-row-reverse' : ''
-                          }`}
-                        >
-                          <div className="p-3 rounded-lg bg-[#18ac61]/10">
-                            <Icon
-                              className="w-6 h-6 text-[#18ac61]"
-                              data-testid={`icon-service-${service.id}`}
-                            />
-                          </div>
-                        </div>
-                        <CardTitle
-                          className={`${language === 'ar' ? 'text-right' : 'text-left'}`}
-                          data-testid={`title-service-${service.id}`}
-                        >
-                          {service.title}
-                        </CardTitle>
-                      </CardHeader>
-                      <CardContent>
-                        <p
-                          className={`text-foreground/80 mb-4 ${
-                            language === 'ar' ? 'text-right' : 'text-left'
-                          }`}
-                          data-testid={`description-service-${service.id}`}
-                        >
-                          {service.description}
-                        </p>
+              {services.slice(0, 3).map((service) => (
+                <ServiceCard key={service.id} service={service} />
+              ))}
+            </motion.div>
+          </div>
+        </section>
 
-                        <ul
-                          className={`space-y-2 mb-6 ${
-                            language === 'ar' ? 'text-right' : 'text-left'
-                          }`}
-                        >
-                          {service.features.map((feature, idx) => (
-                            <li
-                              key={idx}
-                              className={`text-sm text-foreground/70 flex items-start gap-2 ${
-                                language === 'ar' ? 'flex-row-reverse' : ''
-                              }`}
-                              data-testid={`feature-service-${service.id}-${idx}`}
-                            >
-                              <span
-                                className={`inline-block w-1.5 h-1.5 rounded-full bg-[#18ac61] mt-2 flex-shrink-0 ${
-                                  language === 'ar' ? 'mr-0 ml-2' : 'ml-0 mr-2'
-                                }`}
-                              />
-                              <span>{feature}</span>
-                            </li>
-                          ))}
-                        </ul>
+        <motion.section
+          ref={imageRef1}
+          className="py-16 bg-card"
+        >
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                animate={imageInView1 ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
+                transition={{ duration: 0.8 }}
+              >
+                <motion.img
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.3 }}
+                  src={vetExamImage}
+                  alt="Veterinary examination"
+                  className="rounded-xl w-full h-auto object-cover shadow-md"
+                  data-testid="img-services-1"
+                />
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                animate={imageInView1 ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className={`space-y-6 ${language === 'ar' ? 'text-right' : 'text-left'}`}
+              >
+                <h2 className="text-3xl font-bold text-primary">
+                  {language === 'ar' ? 'رعاية شاملة ومتخصصة' : 'Comprehensive & Specialized Care'}
+                </h2>
+                <p className="text-lg text-foreground/90">
+                  {language === 'ar' 
+                    ? 'في عيادات د. باوز، نقدم مجموعة واسعة من الخدمات البيطرية المتخصصة باستخدام أحدث المعدات والتقنيات لضمان صحة وسعادة حيوانك الأليف.'
+                    : 'At Dr. Paws, we offer a wide range of specialized veterinary services using the latest equipment and technology to ensure your pet\'s health and happiness.'
+                  }
+                </p>
+              </motion.div>
+            </div>
+          </div>
+        </motion.section>
 
-                        {service.emergency && (
-                          <div
-                            className={`mb-4 p-3 bg-[#e9c46a]/10 rounded-md ${
-                              language === 'ar' ? 'text-right' : 'text-left'
-                            }`}
-                          >
-                            <p className="text-sm font-semibold text-[#264653] mb-2">
-                              {t('servicesPage.emergency.numbers')}
-                            </p>
-                            <p className="text-sm text-foreground/80">
-                              {t('servicesPage.emergency.sahafa')}
-                            </p>
-                            <p className="text-sm text-foreground/80">
-                              {t('servicesPage.emergency.mather')}
-                            </p>
-                          </div>
-                        )}
+        <section ref={servicesRef2} className="py-20 bg-background">
+          <div className="max-w-7xl mx-auto px-6">
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              animate={servicesInView2 ? 'visible' : 'hidden'}
+              className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+            >
+              {services.slice(3, 7).map((service) => (
+                <ServiceCard key={service.id} service={service} />
+              ))}
+            </motion.div>
+          </div>
+        </section>
 
-                        <Link href="/#contact">
-                          <Button
-                            className="w-full"
-                            data-testid={`button-book-${service.id}`}
-                          >
-                            {t('servicesPage.bookAppointment')}
-                          </Button>
-                        </Link>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-                );
-              })}
+        <motion.section
+          ref={imageRef2}
+          className="py-16 bg-card"
+        >
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                animate={imageInView2 ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
+                transition={{ duration: 0.8 }}
+                className="md:order-2"
+              >
+                <motion.img
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.3 }}
+                  src={consultationImage}
+                  alt="Veterinary consultation"
+                  className="rounded-xl w-full h-auto object-cover shadow-md"
+                  data-testid="img-services-2"
+                />
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                animate={imageInView2 ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className={`space-y-6 md:order-1 ${language === 'ar' ? 'text-right' : 'text-left'}`}
+              >
+                <h2 className="text-3xl font-bold text-primary">
+                  {language === 'ar' ? 'فريق محترف ومتفاني' : 'Professional & Dedicated Team'}
+                </h2>
+                <p className="text-lg text-foreground/90">
+                  {language === 'ar' 
+                    ? 'فريقنا من الأطباء البيطريين ذوي الخبرة ملتزم بتقديم أفضل رعاية ممكنة لحيواناتكم الأليفة مع الاهتمام بكل التفاصيل.'
+                    : 'Our team of experienced veterinarians is committed to providing the best possible care for your pets with attention to every detail.'
+                  }
+                </p>
+              </motion.div>
+            </div>
+          </div>
+        </motion.section>
+
+        <section ref={servicesRef3} className="py-20 bg-background">
+          <div className="max-w-7xl mx-auto px-6">
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              animate={servicesInView3 ? 'visible' : 'hidden'}
+              className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+            >
+              {services.slice(7).map((service) => (
+                <ServiceCard key={service.id} service={service} />
+              ))}
             </motion.div>
           </div>
         </section>
