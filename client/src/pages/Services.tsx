@@ -200,6 +200,7 @@ export default function Services() {
     const Icon = service.icon;
     const isExpanded = expandedCards[service.id];
     const hasLongContent = service.description.length > 150 || service.features.length > 3;
+    const isDentalService = service.id === 5;
 
     return (
       <motion.div variants={itemVariants} className="h-full">
@@ -210,22 +211,21 @@ export default function Services() {
           data-testid={`card-service-${service.id}`}
         >
           <CardHeader>
-            <div
-              className={`flex items-center gap-4 mb-2 ${
-                language === 'ar' ? 'flex-row-reverse' : ''
-              }`}
-            >
-              <div className="p-3 rounded-lg bg-[#18ac61]/10">
-                <Icon
-                  className="w-6 h-6 text-[#18ac61]"
-                  data-testid={`icon-service-${service.id}`}
-                />
-              </div>
-            </div>
             <CardTitle
-              className={`${language === 'ar' ? 'text-right' : 'text-left'}`}
+              className={`${language === 'ar' ? 'text-right' : 'text-left'} ${
+                isDentalService ? 'flex items-center gap-3' : ''
+              } ${language === 'ar' && isDentalService ? 'flex-row-reverse' : ''}`}
               data-testid={`title-service-${service.id}`}
             >
+              {isDentalService && (
+                <lord-icon
+                  src="https://cdn.lordicon.com/qgvewybt.json"
+                  trigger="loop"
+                  delay="1500"
+                  colors="primary:#18ac61,secondary:#264653"
+                  style={{ width: '60px', height: '60px' }}
+                />
+              )}
               {service.title}
             </CardTitle>
           </CardHeader>
