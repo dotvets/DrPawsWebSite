@@ -202,6 +202,9 @@ export default function Services() {
     const hasLongContent = service.description.length > 150 || service.features.length > 3;
     
     const lordIconConfig: Record<number, string> = {
+      1: 'https://cdn.lordicon.com/fdjmqgqo.json', // Examinations
+      2: 'https://cdn.lordicon.com/fdjmqgqo.json', // Grooming
+      3: 'https://cdn.lordicon.com/xtqxtpiq.json', // Diagnostics
       4: 'https://cdn.lordicon.com/ebchswfj.json', // Surgery
       5: 'https://cdn.lordicon.com/qgvewybt.json', // Dental
       6: 'https://cdn.lordicon.com/ssjzuqhe.json', // Vaccination

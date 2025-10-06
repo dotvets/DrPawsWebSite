@@ -229,7 +229,7 @@ const translations = {
     'servicesPage.boarding.therapeutic': 'Therapeutic Pet Hotel: Post-surgery care, chronic condition management, and close monitoring',
     'servicesPage.boarding.fungi': 'Fungi Treatment Hotel: Isolated treatment rooms with specialized disinfection and medication',
     
-    'servicesPage.intensiveCare.title': 'Intensive Care (Non-Communicable Diseases)',
+    'servicesPage.intensiveCare.title': 'Intensive Care',
     'servicesPage.intensiveCare.description': 'Dedicated ICU care for critical pets:',
     'servicesPage.intensiveCare.feature1': 'Organ failure management (kidney, liver, heart)',
     'servicesPage.intensiveCare.feature2': 'Metabolic and endocrine disorders',
@@ -491,7 +491,7 @@ const translations = {
     'servicesPage.boarding.therapeutic': 'فندق الحيوانات العلاجي: رعاية ما بعد الجراحة، إدارة الحالات المزمنة، ومراقبة عن كثب',
     'servicesPage.boarding.fungi': 'فندق علاج الفطريات: غرف علاج معزولة مع تعقيم متخصص وأدوية',
     
-    'servicesPage.intensiveCare.title': 'الرعاية المركزة (الأمراض غير المعدية)',
+    'servicesPage.intensiveCare.title': 'الرعاية المركزة',
     'servicesPage.intensiveCare.description': 'رعاية وحدة العناية المركزة المخصصة للحيوانات الأليفة الحرجة:',
     'servicesPage.intensiveCare.feature1': 'إدارة فشل الأعضاء (الكلى، الكبد، القلب)',
     'servicesPage.intensiveCare.feature2': 'اضطرابات التمثيل الغذائي والغدد الصماء',
