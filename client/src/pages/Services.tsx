@@ -200,7 +200,19 @@ export default function Services() {
     const Icon = service.icon;
     const isExpanded = expandedCards[service.id];
     const hasLongContent = service.description.length > 150 || service.features.length > 3;
-    const isDentalService = service.id === 5;
+    
+    const lordIconConfig: Record<number, string> = {
+      4: 'https://cdn.lordicon.com/ebchswfj.json', // Surgery
+      5: 'https://cdn.lordicon.com/qgvewybt.json', // Dental
+      6: 'https://cdn.lordicon.com/ssjzuqhe.json', // Vaccination
+      7: 'https://cdn.lordicon.com/xvidkckm.json', // Travel
+      8: 'https://cdn.lordicon.com/nejoxqhx.json', // Boarding
+      9: 'https://cdn.lordicon.com/rqeluyar.json', // Intensive Care
+      10: 'https://cdn.lordicon.com/njkwpvad.json', // Emergency
+      11: 'https://cdn.lordicon.com/npehekun.json', // Home Care
+    };
+    
+    const hasLordIcon = lordIconConfig[service.id];
 
     return (
       <motion.div variants={itemVariants} className="h-full">
@@ -213,13 +225,13 @@ export default function Services() {
           <CardHeader>
             <CardTitle
               className={`${language === 'ar' ? 'text-right' : 'text-left'} ${
-                isDentalService ? 'flex items-center gap-3' : ''
-              } ${language === 'ar' && isDentalService ? 'flex-row-reverse' : ''}`}
+                hasLordIcon ? 'flex items-center gap-3' : ''
+              } ${language === 'ar' && hasLordIcon ? 'flex-row-reverse' : ''}`}
               data-testid={`title-service-${service.id}`}
             >
-              {isDentalService && (
+              {hasLordIcon && (
                 <lord-icon
-                  src="https://cdn.lordicon.com/qgvewybt.json"
+                  src={lordIconConfig[service.id]}
                   trigger="loop"
                   delay="1500"
                   colors="primary:#18ac61,secondary:#264653"
