@@ -1,0 +1,166 @@
+I want now to develop the Services page. When clicking on “Services” from the menu, it should open in a new route, similar to the About page.
+
+The page should include a modern animated header image (similar to Home and About pages) and display the following content, clearly structured by sections and service categories.
+
+Section: Introduction
+
+Title: Our Services
+Text:
+Experience exceptional veterinary services at Dr. Paws. We offer a full range of care for your pets, from routine checkups to advanced treatments.
+
+Service Categories (each box clickable, opens detailed page)
+1. Periodic Medical Examinations
+
+At Dr. Paws, we believe preventative care is essential for a long and healthy life for all pets. Our periodic pet examinations, also known as wellness exams or checkups, are a crucial part of our comprehensive veterinary services.
+They allow our veterinarians to assess your pet's overall health, detect potential problems early, and provide personalized recommendations.
+
+Canine Examinations: Vital signs, cardiopulmonary auscultation, ophthalmologic, otoscopic, oral, dermatological, abdominal, and musculoskeletal evaluations.
+Feline Examinations: Gentle checkups covering vital signs, eyes, ears, oral health, abdomen, coat, and skin.
+Avian Examinations: Specialized care including physical examination, feather and beak assessment, weight, gland checks, and abdominal palpation.
+
+➡️ Book an appointment (link to Contact page)
+
+2. Shower & Grooming Services
+
+Maintain your pet’s hygiene and comfort with our grooming and cleaning services.
+Includes:
+
+Nail clipping
+
+Ear cleaning
+
+Bath and drying with safe shampoos
+
+Hair combing and grooming (breed-specific)
+
+➡️ Book an appointment
+
+3. Diagnostic Tests
+
+We provide accurate, rapid diagnostic testing with advanced technology:
+
+Laboratory Testing: Blood chemistry, CBC, urine analysis, parasite and fungal testing
+
+Imaging: X-rays, dental X-rays, ultrasound
+
+Advanced Diagnostics: Microscopy and endoscopy
+
+➡️ Book an appointment
+
+4. Medical Surgeries
+
+Our surgical team performs a wide range of operations using modern, safe techniques:
+
+Sterilization (spay/neuter)
+
+Orthopedic surgery
+
+Digestive system operations
+
+Rhinoplasty (for brachycephalic breeds)
+
+Urinary tract surgery
+
+➡️ Book an appointment
+
+5. Dental Services
+
+Comprehensive dental care to protect your pet’s teeth and gums:
+
+Professional teeth cleaning
+
+Dental check-ups
+
+Scaling and root planing
+
+Tooth extractions and oral surgery
+
+➡️ Book an appointment
+
+6. Periodic Vaccinations
+
+Protect your pets with essential vaccinations and deworming schedules:
+
+Cat vaccines (Trivalent & Quadrivalent)
+
+Dog vaccines (Pentavalent & Rabies)
+
+Deworming medications
+
+➡️ Book an appointment
+
+7. Pet Travel Procedures
+
+Comprehensive travel assistance for domestic and international trips:
+
+Health certificates
+
+Rabies testing and documentation
+
+Assistance with travel forms and destination requirements
+
+➡️ Book an appointment
+
+8. Boarding Services
+
+Comfortable and safe accommodation options for your pets:
+
+Therapeutic Pet Hotel: Post-surgery care, chronic condition management, and close monitoring
+
+Fungi Treatment Hotel: Isolated treatment rooms with specialized disinfection and medication
+
+➡️ Book an appointment
+
+9. Intensive Care (Non-Communicable Diseases)
+
+Dedicated ICU care for critical pets:
+
+Organ failure management (kidney, liver, heart)
+
+Metabolic and endocrine disorders
+
+Severe injuries and trauma
+
+Post-operative care
+
+➡️ Book an appointment
+
+10. Emergency Services
+
+24/7 emergency care for urgent cases such as:
+
+Trauma
+
+Breathing difficulties
+
+Bleeding or poisoning
+
+Seizures and bloat
+
+Emergency Numbers:
+Al-Sahafa Branch: 05520 30564
+Al-Mather Branch: 05313 53667
+
+➡️ Book an appointment
+
+11. Home Care Services
+
+Convenient veterinary care at home:
+
+Wellness exams
+
+Vaccinations
+
+Sample collection (blood, urine, fecal)
+
+➡️ Book an appointment
+
+Design Notes:
+
+Each service section should be visually separated with headers and spacing.
+
+Use the same visual style, typography, and colors as Home and About pages.
+
+Add a top animated image banner related to veterinary care (e.g., pets with doctors, clinic background).
+
+Ensure responsive design and Arabic translation compatibility (RTL).
