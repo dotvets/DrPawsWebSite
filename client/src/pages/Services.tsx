@@ -272,12 +272,12 @@ export default function Services() {
               >
                 {isExpanded ? (
                   <>
-                    <ChevronUp className="w-4 h-4 mr-1" />
+                    <ChevronUp className={`w-4 h-4 ${language === 'ar' ? 'ml-1' : 'mr-1'}`} />
                     {language === 'ar' ? 'عرض أقل' : 'Show less'}
                   </>
                 ) : (
                   <>
-                    <ChevronDown className="w-4 h-4 mr-1" />
+                    <ChevronDown className={`w-4 h-4 ${language === 'ar' ? 'ml-1' : 'mr-1'}`} />
                     {language === 'ar' ? 'عرض المزيد' : 'Read more'}
                   </>
                 )}
