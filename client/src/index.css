@@ -371,12 +371,6 @@
     text-align: left;
   }
 
-  /* Automatically reverse flex direction for RTL */
-  [dir="rtl"] .flex.items-center,
-  [dir="rtl"] .flex.items-start {
-    flex-direction: row-reverse;
-  }
-
   /* Phone shake animation */
   @keyframes phone-shake {
     0%, 100% { transform: rotate(0deg); }
