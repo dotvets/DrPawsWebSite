@@ -59,47 +59,22 @@ export default function Services() {
       icon: Stethoscope,
       title: t('servicesPage.examinations.title'),
       description: t('servicesPage.examinations.description'),
-      subsections: [
-        {
-          title: t('servicesPage.examinations.canineTitle'),
-          intro: t('servicesPage.examinations.canineIntro'),
-          content: t('servicesPage.examinations.canine'),
-        },
-        {
-          title: t('servicesPage.examinations.felineTitle'),
-          intro: t('servicesPage.examinations.felineIntro'),
-          content: t('servicesPage.examinations.feline'),
-        },
-        {
-          title: t('servicesPage.examinations.avianTitle'),
-          intro: t('servicesPage.examinations.avianIntro'),
-          content: t('servicesPage.examinations.avian'),
-        },
+      features: [
+        t('servicesPage.examinations.canine'),
+        t('servicesPage.examinations.feline'),
+        t('servicesPage.examinations.avian'),
       ],
-      closing: t('servicesPage.examinations.closing'),
     },
     {
       id: 2,
       icon: Sparkles,
       title: t('servicesPage.grooming.title'),
       description: t('servicesPage.grooming.description'),
-      subsections: [
-        {
-          title: t('servicesPage.grooming.nailTrimmingTitle'),
-          content: t('servicesPage.grooming.nailTrimming'),
-        },
-        {
-          title: t('servicesPage.grooming.earCleaningTitle'),
-          content: t('servicesPage.grooming.earCleaning'),
-        },
-        {
-          title: t('servicesPage.grooming.bathingTitle'),
-          content: t('servicesPage.grooming.bathing'),
-        },
-        {
-          title: t('servicesPage.grooming.groomingTitle'),
-          content: t('servicesPage.grooming.grooming'),
-        },
+      features: [
+        t('servicesPage.grooming.feature1'),
+        t('servicesPage.grooming.feature2'),
+        t('servicesPage.grooming.feature3'),
+        t('servicesPage.grooming.feature4'),
       ],
     },
     {
@@ -107,113 +82,46 @@ export default function Services() {
       icon: Microscope,
       title: t('servicesPage.diagnostics.title'),
       description: t('servicesPage.diagnostics.description'),
-      subsections: [
-        {
-          title: t('servicesPage.diagnostics.labTitle'),
-          content: t('servicesPage.diagnostics.lab'),
-        },
-        {
-          title: t('servicesPage.diagnostics.imagingTitle'),
-          content: t('servicesPage.diagnostics.imaging'),
-        },
-        {
-          title: t('servicesPage.diagnostics.advancedTitle'),
-          content: t('servicesPage.diagnostics.advanced'),
-        },
+      features: [
+        t('servicesPage.diagnostics.lab'),
+        t('servicesPage.diagnostics.imaging'),
+        t('servicesPage.diagnostics.advanced'),
       ],
-      closing: t('servicesPage.diagnostics.closing'),
     },
     {
       id: 4,
       icon: Scissors,
       title: t('servicesPage.surgery.title'),
       description: t('servicesPage.surgery.description'),
-      subsections: [
-        {
-          title: t('servicesPage.surgery.sterilizationTitle'),
-          content: t('servicesPage.surgery.sterilization'),
-        },
-        {
-          title: t('servicesPage.surgery.orthopedicTitle'),
-          content: t('servicesPage.surgery.orthopedic'),
-        },
-        {
-          title: t('servicesPage.surgery.digestiveTitle'),
-          content: t('servicesPage.surgery.digestive'),
-        },
-        {
-          title: t('servicesPage.surgery.rhinoplastyTitle'),
-          content: t('servicesPage.surgery.rhinoplasty'),
-        },
-        {
-          title: t('servicesPage.surgery.urinaryTitle'),
-          content: t('servicesPage.surgery.urinary'),
-        },
+      features: [
+        t('servicesPage.surgery.feature1'),
+        t('servicesPage.surgery.feature2'),
+        t('servicesPage.surgery.feature3'),
+        t('servicesPage.surgery.feature4'),
+        t('servicesPage.surgery.feature5'),
       ],
-      closing: t('servicesPage.surgery.closing'),
     },
     {
       id: 5,
       icon: Stethoscope,
       title: t('servicesPage.dental.title'),
       description: t('servicesPage.dental.description'),
-      subsections: [
-        {
-          title: t('servicesPage.dental.cleaningTitle'),
-          content: t('servicesPage.dental.cleaning'),
-        },
-        {
-          title: t('servicesPage.dental.examinationsTitle'),
-          content: t('servicesPage.dental.examinations'),
-        },
-        {
-          title: t('servicesPage.dental.scalingTitle'),
-          content: t('servicesPage.dental.scaling'),
-        },
-        {
-          title: t('servicesPage.dental.extractionTitle'),
-          content: t('servicesPage.dental.extraction'),
-        },
-        {
-          title: t('servicesPage.dental.surgeryTitle'),
-          content: t('servicesPage.dental.surgery'),
-        },
+      features: [
+        t('servicesPage.dental.feature1'),
+        t('servicesPage.dental.feature2'),
+        t('servicesPage.dental.feature3'),
+        t('servicesPage.dental.feature4'),
       ],
-      closing: t('servicesPage.dental.closing'),
     },
     {
       id: 6,
       icon: Syringe,
       title: t('servicesPage.vaccination.title'),
       description: t('servicesPage.vaccination.description'),
-      subsections: [
-        {
-          title: t('servicesPage.vaccination.catTripleTitle'),
-          intro: t('servicesPage.vaccination.catTripleDesc'),
-          content: t('servicesPage.vaccination.catTriple'),
-          extra: t('servicesPage.vaccination.catQuad'),
-        },
-        {
-          title: t('servicesPage.vaccination.catBenefitsTitle'),
-          content: t('servicesPage.vaccination.catBenefits'),
-        },
-        {
-          title: t('servicesPage.vaccination.dogPentaTitle'),
-          intro: t('servicesPage.vaccination.dogPentaDesc'),
-          content: t('servicesPage.vaccination.dogPenta'),
-        },
-        {
-          title: t('servicesPage.vaccination.dogBenefitsTitle'),
-          content: t('servicesPage.vaccination.dogBenefits'),
-        },
-        {
-          title: t('servicesPage.vaccination.rabiesTitle'),
-          content: t('servicesPage.vaccination.rabies'),
-        },
-        {
-          title: t('servicesPage.vaccination.dewormTitle'),
-          content: t('servicesPage.vaccination.deworm'),
-        },
+      features: [
+        t('servicesPage.vaccination.feature1'),
+        t('servicesPage.vaccination.feature2'),
+        t('servicesPage.vaccination.feature3'),
       ],
     },
     {
@@ -221,33 +129,20 @@ export default function Services() {
       icon: Plane,
       title: t('servicesPage.travel.title'),
       description: t('servicesPage.travel.description'),
-      subsections: [
-        {
-          title: t('servicesPage.travel.certificatesTitle'),
-          content: t('servicesPage.travel.certificates'),
-        },
-        {
-          title: t('servicesPage.travel.rabiesTitle'),
-          content: t('servicesPage.travel.rabies'),
-        },
-        {
-          title: t('servicesPage.travel.formsTitle'),
-          content: t('servicesPage.travel.forms'),
-        },
+      features: [
+        t('servicesPage.travel.feature1'),
+        t('servicesPage.travel.feature2'),
+        t('servicesPage.travel.feature3'),
       ],
-      closing: t('servicesPage.travel.closing'),
     },
     {
       id: 8,
       icon: Home,
       title: t('servicesPage.boarding.title'),
       description: t('servicesPage.boarding.description'),
-      subsections: [
-        {
-          title: t('servicesPage.boarding.therapeuticTitle'),
-          intro: t('servicesPage.boarding.therapeuticDesc'),
-          content: t('servicesPage.boarding.therapeutic'),
-        },
+      features: [
+        t('servicesPage.boarding.therapeutic'),
+        t('servicesPage.boarding.fungi'),
       ],
     },
     {
@@ -256,10 +151,10 @@ export default function Services() {
       title: t('servicesPage.intensiveCare.title'),
       description: t('servicesPage.intensiveCare.description'),
       features: [
-        t('servicesPage.intensiveCare.organ'),
-        t('servicesPage.intensiveCare.metabolic'),
-        t('servicesPage.intensiveCare.trauma'),
-        t('servicesPage.intensiveCare.postSurgical'),
+        t('servicesPage.intensiveCare.feature1'),
+        t('servicesPage.intensiveCare.feature2'),
+        t('servicesPage.intensiveCare.feature3'),
+        t('servicesPage.intensiveCare.feature4'),
       ],
     },
     {
@@ -268,23 +163,12 @@ export default function Services() {
       title: t('servicesPage.emergency.title'),
       description: t('servicesPage.emergency.description'),
       features: [
-        t('servicesPage.emergency.trauma'),
-        t('servicesPage.emergency.breathing'),
-        t('servicesPage.emergency.bleeding'),
-        t('servicesPage.emergency.seizures'),
+        t('servicesPage.emergency.feature1'),
+        t('servicesPage.emergency.feature2'),
+        t('servicesPage.emergency.feature3'),
+        t('servicesPage.emergency.feature4'),
       ],
       emergency: true,
-      emergencyNumbers: [
-        {
-          label: t('servicesPage.emergency.numbers'),
-        },
-        {
-          label: t('servicesPage.emergency.sahafa'),
-        },
-        {
-          label: t('servicesPage.emergency.mather'),
-        },
-      ],
     },
     {
       id: 11,
@@ -292,14 +176,14 @@ export default function Services() {
       title: t('servicesPage.homeCare.title'),
       description: t('servicesPage.homeCare.description'),
       features: [
-        t('servicesPage.homeCare.wellness'),
-        t('servicesPage.homeCare.vaccinations'),
-        t('servicesPage.homeCare.sample'),
+        t('servicesPage.homeCare.feature1'),
+        t('servicesPage.homeCare.feature2'),
+        t('servicesPage.homeCare.feature3'),
       ],
     },
   ];
 
-  const ServiceCard = ({ service, language }: { service: typeof services[0]; language: string }) => {
+  const ServiceCard = ({ service }: { service: typeof services[0] }) => {
     const Icon = service.icon;
     const isExpanded = expandedCards[service.id];
     
@@ -318,35 +202,30 @@ export default function Services() {
     };
     
     const hasLordIcon = lordIconConfig[service.id];
-    const hasSubsections = 'subsections' in service && service.subsections;
-    const hasFeatures = 'features' in service && service.features;
     
-    // All services should have Show More/Less functionality
-    const hasLongContent = (
-      (hasSubsections && service.subsections!.length > 1) ||
-      (hasFeatures && service.features!.length > 3)
-    );
-
-    // Helper function to split bullet points
-    const splitBulletPoints = (text: string) => {
-      return text.split('•').map(item => item.trim()).filter(item => item);
-    };
+    // Services that should always be expanded: Surgery (4), Dental (5), Intensive Care (9), Emergency (10)
+    const alwaysExpandedServices = [4, 5, 9, 10];
+    const shouldAlwaysExpand = alwaysExpandedServices.includes(service.id);
+    const hasLongContent = !shouldAlwaysExpand && (service.description.length > 150 || service.features.length > 3);
 
     return (
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: 'easeOut' }}
+        className="h-full"
       >
         <Card
-          className={`flex flex-col hover-elevate h-[520px] ${
+          className={`h-full flex flex-col hover-elevate ${
             service.emergency ? 'border-[#e9c46a]' : ''
           }`}
           data-testid={`card-service-${service.id}`}
         >
-          <CardHeader className="pb-3">
+          <CardHeader>
             <CardTitle
-              className="text-[#18ac61] text-left flex items-center gap-3 flex-no-rtl-reverse"
+              className={`text-[#18ac61] ${language === 'ar' ? 'text-right' : 'text-left'} ${
+                hasLordIcon ? 'flex items-center gap-3' : ''
+              } ${language === 'ar' && hasLordIcon ? 'flex-row-reverse' : ''}`}
               data-testid={`title-service-${service.id}`}
             >
               {hasLordIcon && (
@@ -354,98 +233,51 @@ export default function Services() {
                   src={lordIconConfig[service.id]}
                   trigger="loop"
                   delay="1500"
-                  style={{ width: '50px', height: '50px', flexShrink: 0 }}
+                  style={{ width: '60px', height: '60px' }}
                 />
               )}
-              <span className="flex-1">{service.title}</span>
+              {service.title}
             </CardTitle>
           </CardHeader>
-          <CardContent className="flex flex-col flex-1 overflow-hidden">
-            <div className="flex-1 overflow-y-auto text-left">
-              <p
-                className={`text-foreground/80 mb-3 text-sm ${
-                  !isExpanded && hasLongContent ? 'line-clamp-2' : ''
-                }`}
-                data-testid={`description-service-${service.id}`}
-              >
-                {service.description}
-              </p>
+          <CardContent className="flex flex-col flex-1">
+            <p
+              className={`text-foreground/80 mb-4 ${
+                language === 'ar' ? 'text-right' : 'text-left'
+              } ${!isExpanded && hasLongContent ? 'line-clamp-2' : ''}`}
+              data-testid={`description-service-${service.id}`}
+            >
+              {service.description}
+            </p>
 
-              {hasSubsections && (
-                <div className="space-y-3 mb-3">
-                  {(isExpanded ? service.subsections! : service.subsections!.slice(0, 1)).map((subsection: any, idx: number) => (
-                    <div key={idx} className="space-y-1.5">
-                      <h4 className="text-xs font-semibold text-[#18ac61] text-left">
-                        {subsection.title}
-                      </h4>
-                      {subsection.intro && (
-                        <p className="text-xs text-foreground/70 text-left">
-                          {subsection.intro}
-                        </p>
-                      )}
-                      {subsection.content && (
-                        <ul className="space-y-1">
-                          {splitBulletPoints(subsection.content).slice(0, isExpanded ? undefined : 2).map((point: string, pointIdx: number) => (
-                            <li
-                              key={pointIdx}
-                              className="text-xs text-foreground/70 flex items-start gap-1.5 flex-no-rtl-reverse"
-                            >
-                              <span
-                                className="inline-block w-1 h-1 rounded-full bg-[#18ac61] mt-1.5 flex-shrink-0"
-                              />
-                              <span className="text-left">{point}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                      {subsection.extra && (
-                        <p className="text-xs text-foreground/70 italic mt-1.5 text-left">
-                          {subsection.extra}
-                        </p>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              )}
-
-              {hasFeatures && (
-                <ul className="space-y-1.5 mb-3">
-                  {(isExpanded ? service.features! : service.features!.slice(0, 3)).map((feature, idx) => (
-                    <li
-                      key={idx}
-                      className="text-xs text-foreground/70 flex items-start gap-1.5 flex-no-rtl-reverse"
-                      data-testid={`feature-service-${service.id}-${idx}`}
-                    >
-                      <span className="inline-block w-1 h-1 rounded-full bg-[#18ac61] mt-1.5 flex-shrink-0" />
-                      <span className="text-left">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              )}
-
-              {'closing' in service && service.closing && isExpanded && (
-                <p className="text-xs text-foreground/70 mb-3 text-left">
-                  {service.closing}
-                </p>
-              )}
-
-              {service.emergency && 'emergencyNumbers' in service && (
-                <div className="mb-3 p-2 bg-[#e9c46a]/10 rounded-md text-left">
-                  {service.emergencyNumbers!.map((item: any, idx: number) => (
-                    <p key={idx} className={`text-xs ${idx === 0 ? 'font-semibold text-[#264653] mb-1' : 'text-foreground/80'}`}>
-                      {item.label}
-                    </p>
-                  ))}
-                </div>
-              )}
-            </div>
+            <ul
+              className={`space-y-2 mb-4 flex-1 ${
+                language === 'ar' ? 'text-right' : 'text-left'
+              }`}
+            >
+              {(isExpanded || shouldAlwaysExpand ? service.features : service.features.slice(0, 2)).map((feature, idx) => (
+                <li
+                  key={idx}
+                  className={`text-sm text-foreground/70 flex items-start gap-2 ${
+                    language === 'ar' ? 'flex-row-reverse' : ''
+                  }`}
+                  data-testid={`feature-service-${service.id}-${idx}`}
+                >
+                  <span
+                    className={`inline-block w-1.5 h-1.5 rounded-full bg-[#18ac61] mt-2 flex-shrink-0 ${
+                      language === 'ar' ? 'mr-0 ml-2' : 'ml-0 mr-2'
+                    }`}
+                  />
+                  <span>{feature}</span>
+                </li>
+              ))}
+            </ul>
 
             {hasLongContent && (
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={() => toggleExpand(service.id)}
-                className={`mb-2 mt-2 ${language === 'ar' ? 'flex-row-reverse' : ''}`}
+                className={`mb-4 ${language === 'ar' ? 'flex-row-reverse' : ''}`}
                 data-testid={`button-expand-${service.id}`}
               >
                 {isExpanded ? (
@@ -462,10 +294,27 @@ export default function Services() {
               </Button>
             )}
 
+            {service.emergency && (
+              <div
+                className={`mb-4 p-3 bg-[#e9c46a]/10 rounded-md ${
+                  language === 'ar' ? 'text-right' : 'text-left'
+                }`}
+              >
+                <p className="text-sm font-semibold text-[#264653] mb-2">
+                  {t('servicesPage.emergency.numbers')}
+                </p>
+                <p className="text-sm text-foreground/80">
+                  {t('servicesPage.emergency.sahafa')}
+                </p>
+                <p className="text-sm text-foreground/80">
+                  {t('servicesPage.emergency.mather')}
+                </p>
+              </div>
+            )}
+
             <Link href="/#contact">
               <Button
-                className="w-full mt-auto"
-                size="sm"
+                className="w-full"
                 data-testid={`button-book-${service.id}`}
               >
                 {t('servicesPage.bookAppointment')}
@@ -521,11 +370,11 @@ export default function Services() {
           </motion.div>
         </section>
 
-        <section ref={servicesRef1} className="py-20">
+        <section ref={servicesRef1} className="py-20 bg-background">
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {services.slice(0, 3).map((service) => (
-                <ServiceCard key={service.id} service={service} language={language} />
+                <ServiceCard key={service.id} service={service} />
               ))}
             </div>
           </div>
@@ -533,7 +382,7 @@ export default function Services() {
 
         <motion.section
           ref={imageRef1}
-          className="py-16"
+          className="py-16 bg-card"
         >
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -555,7 +404,7 @@ export default function Services() {
                 initial={{ opacity: 0, x: 50 }}
                 animate={imageInView1 ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
                 transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
-                className="space-y-6 text-left"
+                className={`space-y-6 ${language === 'ar' ? 'text-right' : 'text-left'}`}
               >
                 <h2 className="text-3xl font-bold text-primary">
                   {language === 'ar' ? 'رعاية شاملة ومتخصصة' : 'Comprehensive & Specialized Care'}
@@ -571,11 +420,11 @@ export default function Services() {
           </div>
         </motion.section>
 
-        <section ref={servicesRef2} className="py-20">
+        <section ref={servicesRef2} className="py-20 bg-background">
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {services.slice(3, 7).map((service) => (
-                <ServiceCard key={service.id} service={service} language={language} />
+                <ServiceCard key={service.id} service={service} />
               ))}
             </div>
           </div>
@@ -583,7 +432,7 @@ export default function Services() {
 
         <motion.section
           ref={imageRef2}
-          className="py-16"
+          className="py-16 bg-card"
         >
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -606,7 +455,7 @@ export default function Services() {
                 initial={{ opacity: 0, x: -50 }}
                 animate={imageInView2 ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
                 transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
-                className="space-y-6 md:order-1 text-left"
+                className={`space-y-6 md:order-1 ${language === 'ar' ? 'text-right' : 'text-left'}`}
               >
                 <h2 className="text-3xl font-bold text-primary">
                   {language === 'ar' ? 'فريق محترف ومتفاني' : 'Professional & Dedicated Team'}
@@ -622,11 +471,11 @@ export default function Services() {
           </div>
         </motion.section>
 
-        <section ref={servicesRef3} className="py-20">
+        <section ref={servicesRef3} className="py-20 bg-background">
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {services.slice(7, 10).map((service) => (
-                <ServiceCard key={service.id} service={service} language={language} />
+                <ServiceCard key={service.id} service={service} />
               ))}
             </div>
           </div>
@@ -634,7 +483,7 @@ export default function Services() {
 
         <motion.section
           ref={homeCareRef}
-          className="py-16"
+          className="py-16 bg-card"
         >
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid md:grid-cols-3 gap-12 items-center">
@@ -658,7 +507,7 @@ export default function Services() {
                 animate={homeCareInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                 transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
               >
-                <ServiceCard service={services[10]} language={language} />
+                <ServiceCard service={services[10]} />
               </motion.div>
 
               <motion.div

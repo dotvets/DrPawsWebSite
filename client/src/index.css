@@ -371,21 +371,6 @@
     text-align: left;
   }
 
-  /* Automatically reverse flex containers in RTL mode */
-  [dir="rtl"] .flex {
-    flex-direction: row-reverse;
-  }
-
-  /* Restore original direction for flex-col */
-  [dir="rtl"] .flex-col {
-    flex-direction: column !important;
-  }
-
-  /* Keep natural direction for elements with icons/bullets that are already in correct order */
-  [dir="rtl"] .flex-no-rtl-reverse {
-    flex-direction: row !important;
-  }
-
   /* Phone shake animation */
   @keyframes phone-shake {
     0%, 100% { transform: rotate(0deg); }
