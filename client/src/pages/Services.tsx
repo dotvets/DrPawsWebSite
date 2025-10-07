@@ -37,13 +37,13 @@ export default function Services() {
   const servicesRef3 = useRef(null);
   const homeCareRef = useRef(null);
 
-  const heroInView = useInView(heroRef, { once: false, amount: 0.3 });
-  const servicesInView1 = useInView(servicesRef1, { once: false, amount: 0.2 });
-  const imageInView1 = useInView(imageRef1, { once: false, amount: 0.3 });
-  const servicesInView2 = useInView(servicesRef2, { once: false, amount: 0.2 });
-  const imageInView2 = useInView(imageRef2, { once: false, amount: 0.3 });
-  const servicesInView3 = useInView(servicesRef3, { once: false, amount: 0.2 });
-  const homeCareInView = useInView(homeCareRef, { once: false, amount: 0.3 });
+  const heroInView = useInView(heroRef, { once: true, amount: 0.3 });
+  const servicesInView1 = useInView(servicesRef1, { once: true, amount: 0.2 });
+  const imageInView1 = useInView(imageRef1, { once: true, amount: 0.3 });
+  const servicesInView2 = useInView(servicesRef2, { once: true, amount: 0.2 });
+  const imageInView2 = useInView(imageRef2, { once: true, amount: 0.3 });
+  const servicesInView3 = useInView(servicesRef3, { once: true, amount: 0.2 });
+  const homeCareInView = useInView(homeCareRef, { once: true, amount: 0.3 });
 
   useEffect(() => {
     window.scrollTo(0, 0);
