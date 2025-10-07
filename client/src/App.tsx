@@ -4,7 +4,7 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { LanguageProvider } from "@/contexts/LanguageContext";
-import AnimatedPawBackground from "@/components/AnimatedPawBackground";
+import AnimatedServicesBackground from "@/components/AnimatedServicesBackground";
 import Home from "@/pages/Home";
 import About from "@/pages/About";
 import Services from "@/pages/Services";
@@ -26,7 +26,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <LanguageProvider>
         <TooltipProvider>
-          <AnimatedPawBackground />
+          <AnimatedServicesBackground />
           <Toaster />
           <Router />
         </TooltipProvider>
