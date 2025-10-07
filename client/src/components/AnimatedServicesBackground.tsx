@@ -17,7 +17,7 @@ const PawPrint = ({ color, size, top, left, duration, delay }: {
         left,
         width: `${size}px`,
         height: `${size}px`,
-        opacity: 0.06,
+        opacity: 0.08,
       }}
       animate={{
         y: [0, -30, 0],
@@ -37,14 +37,14 @@ const PawPrint = ({ color, size, top, left, duration, delay }: {
         width="100%"
         height="100%"
       >
-        {/* Main pad */}
-        <ellipse cx="50" cy="65" rx="18" ry="22" />
-        {/* Top toe */}
-        <circle cx="50" cy="25" r="10" />
+        {/* Main pad - larger and rounder */}
+        <ellipse cx="50" cy="70" rx="22" ry="25" />
+        {/* Top toe - bigger and rounder */}
+        <circle cx="50" cy="20" r="12" />
         {/* Left toe */}
-        <circle cx="30" cy="40" r="9" />
+        <circle cx="28" cy="38" r="11" />
         {/* Right toe */}
-        <circle cx="70" cy="40" r="9" />
+        <circle cx="72" cy="38" r="11" />
       </svg>
     </motion.div>
   );
@@ -66,7 +66,7 @@ const Bone = ({ color, size, top, left, duration, delay }: {
         left,
         width: `${size}px`,
         height: `${size}px`,
-        opacity: 0.06,
+        opacity: 0.08,
       }}
       animate={{
         y: [0, 30, 0],
@@ -81,19 +81,19 @@ const Bone = ({ color, size, top, left, duration, delay }: {
       }}
     >
       <svg
-        viewBox="0 0 120 120"
+        viewBox="0 0 120 60"
         fill={color}
         width="100%"
         height="100%"
       >
-        {/* Left end circles */}
-        <circle cx="25" cy="35" r="12" />
-        <circle cx="25" cy="55" r="12" />
-        {/* Right end circles */}
-        <circle cx="95" cy="35" r="12" />
-        <circle cx="95" cy="55" r="12" />
-        {/* Center bar connecting both ends */}
-        <rect x="35" y="38" width="50" height="14" rx="7" ry="7" />
+        {/* Left end circles - closer together */}
+        <circle cx="15" cy="20" r="10" />
+        <circle cx="15" cy="40" r="10" />
+        {/* Right end circles - closer together */}
+        <circle cx="105" cy="20" r="10" />
+        <circle cx="105" cy="40" r="10" />
+        {/* Center bar connecting both ends - thicker */}
+        <rect x="20" y="23" width="80" height="14" rx="7" ry="7" />
       </svg>
     </motion.div>
   );
