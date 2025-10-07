@@ -37,13 +37,13 @@ export default function Services() {
   const servicesRef3 = useRef(null);
   const homeCareRef = useRef(null);
 
-  const heroInView = useInView(heroRef, { once: true, amount: 0.3 });
-  const servicesInView1 = useInView(servicesRef1, { once: true, amount: 0.2 });
-  const imageInView1 = useInView(imageRef1, { once: true, amount: 0.3 });
-  const servicesInView2 = useInView(servicesRef2, { once: true, amount: 0.2 });
-  const imageInView2 = useInView(imageRef2, { once: true, amount: 0.3 });
-  const servicesInView3 = useInView(servicesRef3, { once: true, amount: 0.2 });
-  const homeCareInView = useInView(homeCareRef, { once: true, amount: 0.3 });
+  const heroInView = useInView(heroRef, { once: false, amount: 0.3 });
+  const servicesInView1 = useInView(servicesRef1, { once: false, amount: 0.2 });
+  const imageInView1 = useInView(imageRef1, { once: false, amount: 0.3 });
+  const servicesInView2 = useInView(servicesRef2, { once: false, amount: 0.2 });
+  const imageInView2 = useInView(imageRef2, { once: false, amount: 0.3 });
+  const servicesInView3 = useInView(servicesRef3, { once: false, amount: 0.2 });
+  const homeCareInView = useInView(homeCareRef, { once: false, amount: 0.3 });
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -605,7 +605,7 @@ Our home care veterinary services are designed to provide accessible and compass
     },
   ];
 
-  const ServiceCard = ({ service }: { service: typeof services[0] }) => {
+  const ServiceCard = ({ service, isInView }: { service: typeof services[0]; isInView: boolean }) => {
     const Icon = service.icon;
     const isExpanded = expandedCards[service.id];
     
@@ -628,7 +628,7 @@ Our home care veterinary services are designed to provide accessible and compass
     return (
       <motion.div
         initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
         transition={{ duration: 0.6, ease: 'easeOut' }}
         className="h-full"
       >
@@ -803,7 +803,7 @@ Our home care veterinary services are designed to provide accessible and compass
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {services.slice(0, 3).map((service) => (
-                <ServiceCard key={service.id} service={service} />
+                <ServiceCard key={service.id} service={service} isInView={servicesInView1} />
               ))}
             </div>
           </div>
@@ -856,7 +856,7 @@ Our home care veterinary services are designed to provide accessible and compass
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {services.slice(3, 7).map((service) => (
-                <ServiceCard key={service.id} service={service} />
+                <ServiceCard key={service.id} service={service} isInView={servicesInView2} />
               ))}
             </div>
           </div>
@@ -910,7 +910,7 @@ Our home care veterinary services are designed to provide accessible and compass
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {services.slice(7, 10).map((service) => (
-                <ServiceCard key={service.id} service={service} />
+                <ServiceCard key={service.id} service={service} isInView={servicesInView3} />
               ))}
             </div>
           </div>
@@ -943,7 +943,7 @@ Our home care veterinary services are designed to provide accessible and compass
                 animate={homeCareInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                 transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
               >
-                <ServiceCard service={services[10]} />
+                <ServiceCard service={services[10]} isInView={homeCareInView} />
               </motion.div>
 
               <motion.div
