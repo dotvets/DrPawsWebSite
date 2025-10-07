@@ -29,80 +29,42 @@ export default function Footer() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: false, amount: 0.3 }}
-          className="grid md:grid-cols-3 gap-12 mb-12"
+          className="space-y-12 mb-12"
         >
+          {/* Logo Section */}
           <motion.div variants={item}>
             <img src={logoSvg} alt="Dr. Paws" className="h-16 mb-4" data-testid="img-footer-logo" />
-            <p className="text-white/80 text-sm leading-relaxed">
-              {t('footer.description')}
-            </p>
           </motion.div>
 
-          <motion.div variants={item}>
-            <h4 className="font-semibold text-lg mb-4">{t('footer.contactInfo')}</h4>
-            <div className="space-y-3 text-sm">
-              <div className="flex items-start gap-2">
-                <Phone className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                <div>
-                  <p>{t('footer.call')}: <a href="tel:920003045" className="hover:underline" data-testid="link-phone-general">{t('footer.generalPhone')}</a></p>
-                  <p className="text-white/70">{t('footer.emergency')}</p>
-                </div>
-              </div>
-              
-              <div className="space-y-1">
-                <a 
-                  href={t('footer.sahafahMapUrl')} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="flex items-start gap-2 hover-elevate rounded-md p-1 -m-1 transition-colors"
-                  data-testid="link-location-sahafa"
-                >
-                  <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                  <div>
-                    <p className="font-medium">{t('footer.sahafahBranch')}</p>
-                    <p className="text-white/70">{t('footer.sahafahAddress')}</p>
-                  </div>
-                </a>
-                <p className="text-white/70 ps-6">{t('footer.mobile')}: <a href="tel:0552030564" className="hover:underline" data-testid="link-phone-sahafa">{t('footer.sahafahPhone')}</a></p>
-              </div>
-
-              <div className="space-y-1">
-                <a 
-                  href={t('footer.matherMapUrl')} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="flex items-start gap-2 hover-elevate rounded-md p-1 -m-1 transition-colors"
-                  data-testid="link-location-mather"
-                >
-                  <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                  <div>
-                    <p className="font-medium">{t('footer.matherBranch')}</p>
-                    <p className="text-white/70">{t('footer.matherAddress')}</p>
-                  </div>
-                </a>
-                <p className="text-white/70 ps-6">{t('footer.mobile')}: <a href="tel:0531353667" className="hover:underline" data-testid="link-phone-mather">{t('footer.matherPhone')}</a></p>
-              </div>
-            </div>
-          </motion.div>
-
-          <motion.div variants={item}>
-            <h4 className="font-semibold text-lg mb-4">{t('footer.hours')}</h4>
-            <div className="space-y-2 text-sm mb-6">
-              <div className="flex items-start gap-2">
-                <Clock className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                <div>
-                  <p>{t('footer.satThu')}</p>
-                  <p>{t('footer.fri')}</p>
-                </div>
-              </div>
-              
-              <div className="flex items-start gap-2">
-                <Mail className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                <p><a href="mailto:info@drpaws-sa.com" className="hover:underline" data-testid="link-email">{t('footer.email')}</a></p>
-              </div>
+          {/* First Row: Description, Al-Mather Branch, Stay in Touch */}
+          <motion.div variants={item} className="grid md:grid-cols-3 gap-8">
+            {/* Description */}
+            <div>
+              <p className="text-white/80 text-sm leading-relaxed">
+                {t('footer.description')}
+              </p>
             </div>
 
-            <div className="mt-6">
+            {/* Al-Mather Branch */}
+            <div className="text-sm">
+              <a 
+                href={t('footer.matherMapUrl')} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-start gap-2 hover-elevate rounded-md p-1 -m-1 transition-colors"
+                data-testid="link-location-mather"
+              >
+                <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" />
+                <div>
+                  <p className="font-medium">{t('footer.matherBranch')}</p>
+                  <p className="text-white/70">{t('footer.matherAddress')}</p>
+                </div>
+              </a>
+              <p className="text-white/70 ps-6 mt-1">{t('footer.mobile')}: <a href="tel:0531353667" className="hover:underline" data-testid="link-phone-mather">{t('footer.matherPhone')}</a></p>
+            </div>
+
+            {/* Stay in Touch */}
+            <div>
               <h4 className="font-semibold text-lg mb-4">{t('footer.follow')}</h4>
               <div className="flex gap-4">
                 <motion.a
@@ -145,6 +107,59 @@ export default function Footer() {
                 >
                   <SiWhatsapp className="w-5 h-5" />
                 </motion.a>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Second Row: Contact Info and Hours */}
+          <motion.div variants={item} className="grid md:grid-cols-2 gap-8">
+            {/* Contact Info */}
+            <div>
+              <h4 className="font-semibold text-lg mb-4">{t('footer.contactInfo')}</h4>
+              <div className="space-y-3 text-sm">
+                <div className="flex items-start gap-2">
+                  <Phone className="w-4 h-4 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <p>{t('footer.call')}: <a href="tel:920003045" className="hover:underline" data-testid="link-phone-general">{t('footer.generalPhone')}</a></p>
+                    <p className="text-white/70">{t('footer.emergency')}</p>
+                  </div>
+                </div>
+                
+                <div className="space-y-1">
+                  <a 
+                    href={t('footer.sahafahMapUrl')} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-start gap-2 hover-elevate rounded-md p-1 -m-1 transition-colors"
+                    data-testid="link-location-sahafa"
+                  >
+                    <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" />
+                    <div>
+                      <p className="font-medium">{t('footer.sahafahBranch')}</p>
+                      <p className="text-white/70">{t('footer.sahafahAddress')}</p>
+                    </div>
+                  </a>
+                  <p className="text-white/70 ps-6">{t('footer.mobile')}: <a href="tel:0552030564" className="hover:underline" data-testid="link-phone-sahafa">{t('footer.sahafahPhone')}</a></p>
+                </div>
+              </div>
+            </div>
+
+            {/* Hours and Email */}
+            <div>
+              <h4 className="font-semibold text-lg mb-4">{t('footer.hours')}</h4>
+              <div className="space-y-2 text-sm">
+                <div className="flex items-start gap-2">
+                  <Clock className="w-4 h-4 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <p>{t('footer.satThu')}</p>
+                    <p>{t('footer.fri')}</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-2">
+                  <Mail className="w-4 h-4 mt-0.5 flex-shrink-0" />
+                  <p><a href="mailto:info@drpaws-sa.com" className="hover:underline" data-testid="link-email">{t('footer.email')}</a></p>
+                </div>
               </div>
             </div>
           </motion.div>
