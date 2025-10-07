@@ -799,7 +799,7 @@ Our home care veterinary services are designed to provide accessible and compass
         </section>
 
         {/* Services Grid 1 */}
-        <section ref={servicesRef1} className="py-20 bg-background">
+        <section ref={servicesRef1} className="py-20">
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {services.slice(0, 3).map((service) => (
@@ -812,7 +812,7 @@ Our home care veterinary services are designed to provide accessible and compass
         {/* Image Section 1 */}
         <motion.section
           ref={imageRef1}
-          className="py-16 bg-card"
+          className="py-16"
         >
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -852,7 +852,7 @@ Our home care veterinary services are designed to provide accessible and compass
         </motion.section>
 
         {/* Services Grid 2 */}
-        <section ref={servicesRef2} className="py-20 bg-background">
+        <section ref={servicesRef2} className="py-20">
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {services.slice(3, 7).map((service) => (
@@ -865,7 +865,7 @@ Our home care veterinary services are designed to provide accessible and compass
         {/* Image Section 2 */}
         <motion.section
           ref={imageRef2}
-          className="py-16 bg-card"
+          className="py-16"
         >
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -906,7 +906,7 @@ Our home care veterinary services are designed to provide accessible and compass
         </motion.section>
 
         {/* Services Grid 3 */}
-        <section ref={servicesRef3} className="py-20 bg-background">
+        <section ref={servicesRef3} className="py-20">
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {services.slice(7, 10).map((service) => (
@@ -919,7 +919,7 @@ Our home care veterinary services are designed to provide accessible and compass
         {/* Home Care Section */}
         <motion.section
           ref={homeCareRef}
-          className="py-16 bg-card"
+          className="py-16"
         >
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid md:grid-cols-3 gap-12 items-center">
