@@ -157,7 +157,31 @@ export default function Footer() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="border-t border-white/20 pt-8 text-center text-sm text-white/70"
         >
-          <p>&copy; {new Date().getFullYear()} Dr. Paws Veterinary Clinic. All rights reserved.</p>
+          <p className="mb-3">&copy; {new Date().getFullYear()} Dr. Paws Veterinary Clinic. All rights reserved.</p>
+          <p className="mb-2">Powered By DotVets Software</p>
+          <div className="flex items-center justify-center gap-3">
+            <a 
+              href="tel:+966548336693" 
+              className="flex items-center gap-1 hover:text-white transition-colors"
+              data-testid="link-dotvets-call"
+              aria-label="Call DotVets"
+            >
+              <Phone className="w-4 h-4" />
+              <span>+966 548336693</span>
+            </a>
+            <span className="text-white/40">|</span>
+            <a 
+              href="https://wa.me/966548336693" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1 hover:text-white transition-colors"
+              data-testid="link-dotvets-whatsapp"
+              aria-label="WhatsApp DotVets"
+            >
+              <SiWhatsapp className="w-4 h-4" />
+              <span>WhatsApp</span>
+            </a>
+          </div>
         </motion.div>
       </div>
     </footer>
