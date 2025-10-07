@@ -35,6 +35,7 @@ export default function Services() {
   const servicesRef2 = useRef(null);
   const imageRef2 = useRef(null);
   const servicesRef3 = useRef(null);
+  const homeCareRef = useRef(null);
 
   const heroInView = useInView(heroRef, { once: false, amount: 0.3 });
   const servicesInView1 = useInView(servicesRef1, { once: false, amount: 0.2 });
@@ -42,6 +43,7 @@ export default function Services() {
   const servicesInView2 = useInView(servicesRef2, { once: false, amount: 0.2 });
   const imageInView2 = useInView(imageRef2, { once: false, amount: 0.3 });
   const servicesInView3 = useInView(servicesRef3, { once: false, amount: 0.2 });
+  const homeCareInView = useInView(homeCareRef, { once: false, amount: 0.3 });
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -49,21 +51,6 @@ export default function Services() {
 
   const toggleExpand = (id: number) => {
     setExpandedCards(prev => ({ ...prev, [id]: !prev[id] }));
-  };
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 },
   };
 
   const services = [
@@ -199,7 +186,6 @@ export default function Services() {
   const ServiceCard = ({ service }: { service: typeof services[0] }) => {
     const Icon = service.icon;
     const isExpanded = expandedCards[service.id];
-    const hasLongContent = service.description.length > 150 || service.features.length > 3;
     
     const lordIconConfig: Record<number, string> = {
       1: 'https://cdn.lordicon.com/fdjmqgqo.json', // Examinations
@@ -216,9 +202,19 @@ export default function Services() {
     };
     
     const hasLordIcon = lordIconConfig[service.id];
+    
+    // Services that should always be expanded: Surgery (4), Dental (5), Intensive Care (9), Emergency (10)
+    const alwaysExpandedServices = [4, 5, 9, 10];
+    const shouldAlwaysExpand = alwaysExpandedServices.includes(service.id);
+    const hasLongContent = !shouldAlwaysExpand && (service.description.length > 150 || service.features.length > 3);
 
     return (
-      <motion.div variants={itemVariants} className="h-full">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: 'easeOut' }}
+        className="h-full"
+      >
         <Card
           className={`h-full flex flex-col hover-elevate ${
             service.emergency ? 'border-[#e9c46a]' : ''
@@ -227,7 +223,7 @@ export default function Services() {
         >
           <CardHeader>
             <CardTitle
-              className={`${language === 'ar' ? 'text-right' : 'text-left'} ${
+              className={`text-[#18ac61] ${language === 'ar' ? 'text-right' : 'text-left'} ${
                 hasLordIcon ? 'flex items-center gap-3' : ''
               } ${language === 'ar' && hasLordIcon ? 'flex-row-reverse' : ''}`}
               data-testid={`title-service-${service.id}`}
@@ -259,7 +255,7 @@ export default function Services() {
                 language === 'ar' ? 'text-right' : 'text-left'
               }`}
             >
-              {(isExpanded ? service.features : service.features.slice(0, 2)).map((feature, idx) => (
+              {(isExpanded || shouldAlwaysExpand ? service.features : service.features.slice(0, 2)).map((feature, idx) => (
                 <li
                   key={idx}
                   className={`text-sm text-foreground/70 flex items-start gap-2 ${
@@ -377,16 +373,11 @@ export default function Services() {
 
         <section ref={servicesRef1} className="py-20 bg-background">
           <div className="max-w-7xl mx-auto px-6">
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              animate={servicesInView1 ? 'visible' : 'hidden'}
-              className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-            >
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {services.slice(0, 3).map((service) => (
                 <ServiceCard key={service.id} service={service} />
               ))}
-            </motion.div>
+            </div>
           </div>
         </section>
 
@@ -399,7 +390,7 @@ export default function Services() {
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 animate={imageInView1 ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
-                transition={{ duration: 0.8 }}
+                transition={{ duration: 0.8, ease: 'easeOut' }}
               >
                 <motion.img
                   whileHover={{ scale: 1.02 }}
@@ -413,7 +404,7 @@ export default function Services() {
               <motion.div
                 initial={{ opacity: 0, x: 50 }}
                 animate={imageInView1 ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
+                transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
                 className={`space-y-6 ${language === 'ar' ? 'text-right' : 'text-left'}`}
               >
                 <h2 className="text-3xl font-bold text-primary">
@@ -432,16 +423,11 @@ export default function Services() {
 
         <section ref={servicesRef2} className="py-20 bg-background">
           <div className="max-w-7xl mx-auto px-6">
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              animate={servicesInView2 ? 'visible' : 'hidden'}
-              className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-            >
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {services.slice(3, 7).map((service) => (
                 <ServiceCard key={service.id} service={service} />
               ))}
-            </motion.div>
+            </div>
           </div>
         </section>
 
@@ -454,7 +440,7 @@ export default function Services() {
               <motion.div
                 initial={{ opacity: 0, x: 50 }}
                 animate={imageInView2 ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
-                transition={{ duration: 0.8 }}
+                transition={{ duration: 0.8, ease: 'easeOut' }}
                 className="md:order-2"
               >
                 <motion.img
@@ -469,7 +455,7 @@ export default function Services() {
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 animate={imageInView2 ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
+                transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
                 className={`space-y-6 md:order-1 ${language === 'ar' ? 'text-right' : 'text-left'}`}
               >
                 <h2 className="text-3xl font-bold text-primary">
@@ -488,18 +474,60 @@ export default function Services() {
 
         <section ref={servicesRef3} className="py-20 bg-background">
           <div className="max-w-7xl mx-auto px-6">
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              animate={servicesInView3 ? 'visible' : 'hidden'}
-              className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-            >
-              {services.slice(7).map((service) => (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {services.slice(7, 10).map((service) => (
                 <ServiceCard key={service.id} service={service} />
               ))}
-            </motion.div>
+            </div>
           </div>
         </section>
+
+        <motion.section
+          ref={homeCareRef}
+          className="py-16 bg-card"
+        >
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="grid md:grid-cols-3 gap-12 items-center">
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                animate={homeCareInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
+                transition={{ duration: 0.8, ease: 'easeOut' }}
+              >
+                <motion.img
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.3 }}
+                  src={teamImage}
+                  alt="Home Care Services"
+                  className="rounded-xl w-full h-auto object-cover shadow-md"
+                  data-testid="img-home-care-1"
+                />
+              </motion.div>
+              
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={homeCareInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
+              >
+                <ServiceCard service={services[10]} />
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                animate={homeCareInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
+                transition={{ duration: 0.8, ease: 'easeOut' }}
+              >
+                <motion.img
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.3 }}
+                  src={vetExamImage}
+                  alt="Home Care Services"
+                  className="rounded-xl w-full h-auto object-cover shadow-md"
+                  data-testid="img-home-care-2"
+                />
+              </motion.div>
+            </div>
+          </div>
+        </motion.section>
       </main>
 
       <Footer />
