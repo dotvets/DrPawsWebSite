@@ -346,9 +346,7 @@ export default function Services() {
         >
           <CardHeader className="pb-3">
             <CardTitle
-              className={`text-[#18ac61] text-left flex items-center gap-3 ${
-                language === 'ar' ? 'flex-row-reverse' : ''
-              }`}
+              className="text-[#18ac61] text-left flex items-center gap-3"
               data-testid={`title-service-${service.id}`}
             >
               {hasLordIcon && (
@@ -390,12 +388,10 @@ export default function Services() {
                           {splitBulletPoints(subsection.content).slice(0, isExpanded ? undefined : 2).map((point: string, pointIdx: number) => (
                             <li
                               key={pointIdx}
-                              className={`text-xs text-foreground/70 flex items-start gap-1.5 ${
-                                language === 'ar' ? 'flex-row-reverse' : ''
-                              }`}
+                              className="text-xs text-foreground/70 flex items-start gap-1.5"
                             >
                               <span
-                                className={`inline-block w-1 h-1 rounded-full bg-[#18ac61] mt-1.5 flex-shrink-0`}
+                                className="inline-block w-1 h-1 rounded-full bg-[#18ac61] mt-1.5 flex-shrink-0"
                               />
                               <span className="text-left">{point}</span>
                             </li>
@@ -417,12 +413,10 @@ export default function Services() {
                   {(isExpanded ? service.features! : service.features!.slice(0, 3)).map((feature, idx) => (
                     <li
                       key={idx}
-                      className={`text-xs text-foreground/70 flex items-start gap-1.5 ${
-                        language === 'ar' ? 'flex-row-reverse' : ''
-                      }`}
+                      className="text-xs text-foreground/70 flex items-start gap-1.5"
                       data-testid={`feature-service-${service.id}-${idx}`}
                     >
-                      <span className={`inline-block w-1 h-1 rounded-full bg-[#18ac61] mt-1.5 flex-shrink-0`} />
+                      <span className="inline-block w-1 h-1 rounded-full bg-[#18ac61] mt-1.5 flex-shrink-0" />
                       <span className="text-left">{feature}</span>
                     </li>
                   ))}
