@@ -408,7 +408,7 @@ Our home care veterinary services are designed to provide accessible and compass
             </CardTitle>
           </CardHeader>
           <CardContent className="flex flex-col flex-1">
-            {/* Preview text */}
+            {/* Preview text - always visible */}
             <p
               className="text-foreground/80 mb-4"
               data-testid={`preview-service-${service.id}`}
@@ -416,26 +416,36 @@ Our home care veterinary services are designed to provide accessible and compass
               {service.preview}
             </p>
 
-            {/* Full content (shown when expanded) */}
-            {isExpanded && service.fullContent && (
-              <div className="mb-4 text-foreground/80 whitespace-pre-line">
-                {service.fullContent}
-              </div>
-            )}
+            {/* Expanded content - shown when Read More is clicked */}
+            {isExpanded && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.3, ease: 'easeOut' }}
+              >
+                {/* Full content */}
+                {service.fullContent && (
+                  <div className="mb-4 text-foreground/80 whitespace-pre-line">
+                    {service.fullContent}
+                  </div>
+                )}
 
-            {/* Features list */}
-            <ul className="space-y-2 mb-4 flex-1">
-              {service.features.map((feature, idx) => (
-                <li
-                  key={idx}
-                  className="text-sm text-foreground/70 flex items-start gap-2"
-                  data-testid={`feature-service-${service.id}-${idx}`}
-                >
-                  <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#18ac61] mt-2 flex-shrink-0" />
-                  <span>{feature}</span>
-                </li>
-              ))}
-            </ul>
+                {/* Features list */}
+                <ul className="space-y-2 mb-4">
+                  {service.features.map((feature, idx) => (
+                    <li
+                      key={idx}
+                      className="text-sm text-foreground/70 flex items-start gap-2"
+                      data-testid={`feature-service-${service.id}-${idx}`}
+                    >
+                      <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#18ac61] mt-2 flex-shrink-0" />
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            )}
 
             {/* Read More / Show Less button */}
             {service.fullContent && (
@@ -443,7 +453,7 @@ Our home care veterinary services are designed to provide accessible and compass
                 variant="ghost"
                 size="sm"
                 onClick={() => toggleExpand(service.id)}
-                className="mb-4"
+                className="mb-4 mt-auto"
                 data-testid={`button-expand-${service.id}`}
               >
                 {isExpanded ? (
