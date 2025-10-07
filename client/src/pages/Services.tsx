@@ -57,21 +57,45 @@ export default function Services() {
     {
       id: 1,
       icon: Stethoscope,
-      title: 'Periodic Medical Examination',
-      preview: 'At Dr. Paws, we believe preventative care is essential for a long and healthy life for all pets. Our periodic pet examinations, also known as wellness exams or checkups, are a crucial part of our comprehensive veterinary services.',
-      fullContent: `These routine visits allow our veterinarians to assess your pet's overall health, detect potential problems early, and provide personalized recommendations for their ongoing care.
+      title: language === 'ar' ? 'الفحص الطبي الدوري' : 'Periodic Medical Examination',
+      preview: language === 'ar' 
+        ? 'في د. باوز، نؤمن بأن الرعاية الوقائية أساسية لحياة صحية مديدة لجميع الحيوانات الأليفة. فحوصاتنا الدورية، المعروفة أيضًا باسم فحوصات الصحة العامة أو الفحوصات الروتينية، تُعدّ جزءًا حيويًا من خدماتنا البيطرية الشاملة.'
+        : 'At Dr. Paws, we believe preventative care is essential for a long and healthy life for all pets. Our periodic pet examinations, also known as wellness exams or checkups, are a crucial part of our comprehensive veterinary services.',
+      fullContent: language === 'ar'
+        ? `تُتيح هذه الزيارات الروتينية لأطبائنا تقييم صحة حيوانك الأليف بشكل عام، واكتشاف المشاكل المحتملة في وقت مبكر، وتقديم توصيات مُخصّصة لرعايتهم المُستمرة.
+
+**الفحوصات الدورية للكلاب:**
+خلال الفحص الطبي الدوري للكلاب، نُجري فحصًا بدنيًا شاملاً.
+
+**الفحوصات الدورية للقطط:**
+تُجرى الفحوصات الطبية الدورية للقطط بنهج لطيف وصبور، لتقليل التوتر على قطتك.
+
+**الفحوصات الدورية للطيور:**
+تتطلب الفحوصات الطبية الدورية للطيور معرفة متخصصة وتقنيات تعامل خاصة.
+
+الفحوصات المنتظمة ضرورية للحفاظ على صحة حيوانك الأليف ومنع المشاكل الصحية الخطيرة.`
+        : `These routine visits allow our veterinarians to assess your pet's overall health, detect potential problems early, and provide personalized recommendations for their ongoing care.
 
 **Canine Periodic Pet Examinations:**
-During a canine periodic medical examination, we perform a thorough physical examination, including:
+During a canine periodic medical examination, we perform a thorough physical examination.
 
 **Feline Periodic Pet Examinations:**
-Feline periodic medical examinations are performed with a gentle and patient approach, minimizing stress for your cat. The examination includes vital signs, cardiopulmonary auscultation, ophthalmologic and otoscopic examinations, oral examination, palpation of the abdomen and lymph nodes, and assessment of coat and skin.
+Feline periodic medical examinations are performed with a gentle and patient approach, minimizing stress for your cat.
 
 **Avian Periodic Pet Examinations:**
-Avian periodic medical examinations require specialized knowledge and handling techniques. Our avian exams include physical examination, weight and body condition scoring, examination of the uropygial gland, and palpation of the abdomen.
+Avian periodic medical examinations require specialized knowledge and handling techniques.
 
-Regular checkups are vital for maintaining your pet's well-being and preventing serious health issues. We recommend the frequency of these exams based on your pet's species, age, breed, and health history.`,
-      features: [
+Regular checkups are vital for maintaining your pet's well-being and preventing serious health issues.`,
+      features: language === 'ar' ? [
+        'العلامات الحيوية: فحص درجة الحرارة والنبض ومعدل التنفس',
+        'سماع القلب والرئتين: الاستماع إلى القلب والرئتين',
+        'فحص العيون: فحص العيون للكشف عن إعتام عدسة العين أو الجلوكوما',
+        'فحص الأذنين: فحص الأذنين للكشف عن الالتهابات أو العث',
+        'فحص الفم: تقييم الأسنان واللثة للكشف عن تراكم الجير',
+        'فحص الجلد: فحص الجلد والفراء',
+        'جس البطن: جس البطن للتحقق من تضخم الأعضاء',
+        'تقييم الجهاز العضلي الهيكلي: تقييم المفاصل والعضلات'
+      ] : [
         'Vital Signs: Checking temperature, pulse, and respiration rate',
         'Cardiopulmonary Auscultation: Listening to the heart and lungs',
         'Ophthalmologic Examination: Examining the eyes for cataracts, glaucoma',
@@ -85,12 +109,23 @@ Regular checkups are vital for maintaining your pet's well-being and preventing 
     {
       id: 2,
       icon: Sparkles,
-      title: 'Shower & Grooming Services',
-      preview: 'Maintaining your pet\'s hygiene and appearance contributes significantly to their overall health, comfort, and well-being. At Dr. Paws, we offer a range of gentle and effective pet clean up services, designed to keep your pet looking and feeling their best.',
-      fullContent: `These pet clean up services, while not strictly medical, are an important part of preventative care and complement our other veterinary services.
+      title: language === 'ar' ? 'خدمات العناية بالنظافة والمظهر' : 'Shower & Grooming Services',
+      preview: language === 'ar'
+        ? 'يُساهم الحفاظ على نظافة ومظهر حيوانك الأليف بشكل كبير في صحته العامة وراحته ورفاهيته. في د. باوز، نُقدّم مجموعة من خدمات عيادة رعاية نظافة الحيوانات الفعّالة والمُصمّمة للحفاظ على مظهر حيوانك الأليف بأفضل حال.'
+        : 'Maintaining your pet\'s hygiene and appearance contributes significantly to their overall health, comfort, and well-being. At Dr. Paws, we offer a range of gentle and effective pet clean up services, designed to keep your pet looking and feeling their best.',
+      fullContent: language === 'ar'
+        ? `هذه الخدمات، على الرغم من أنها ليست طبية بحتة، إلا أنها جزء مهم من الرعاية الوقائية وتُكمّل خدماتنا البيطرية الأخرى.
+
+خدماتنا للعناية بالنظافة تساعد في منع الانزعاج المؤلم والالتهابات ومشاكل الجلد مع الحفاظ على راحة حيوانك الأليف وصحته. نستخدم منتجات عالية الجودة وآمنة للحيوانات الأليفة وتقنيات تُقلّل التوتر.`
+        : `These pet clean up services, while not strictly medical, are an important part of preventative care and complement our other veterinary services.
 
 Our grooming services help prevent painful discomfort, infections, and skin problems while keeping your pet comfortable and healthy. We use high-quality, pet-safe products and techniques that minimize stress for your beloved companion.`,
-      features: [
+      features: language === 'ar' ? [
+        'تقليم الأظافر: تقليم منتظم لمنع النمو الزائد ومشاكل المفاصل',
+        'تنظيف الأذنين: تنظيف لطيف لمنع الالتهابات وإزالة تراكم الشمع',
+        'الاستحمام والتجفيف: خدمات مُهدّئة باستخدام شامبو وبلسم آمن',
+        'تمشيط وقص الشعر: قصات شعر خاصة بالسلالات وخدمات فك التشابك'
+      ] : [
         'Nail Clipping: Regular nail trims to prevent overgrowth and joint problems',
         'Ear Cleaning: Gentle cleaning to prevent infections and remove wax buildup',
         'Bath and Drying: Soothing services using pet-safe shampoos and conditioners',
@@ -100,9 +135,32 @@ Our grooming services help prevent painful discomfort, infections, and skin prob
     {
       id: 3,
       icon: Microscope,
-      title: 'Diagnostic Tests',
-      preview: 'Accurate and timely diagnosis is crucial for effective treatment. At Dr. Paws, we offer a comprehensive range of diagnostic veterinary services to quickly and accurately assess your pet\'s health.',
-      fullContent: `Our state-of-the-art facility is equipped with advanced diagnostic technology, allowing us to perform a variety of tests.
+      title: language === 'ar' ? 'الاختبارات التشخيصية' : 'Diagnostic Tests',
+      preview: language === 'ar'
+        ? 'يُعدّ التشخيص الدقيق وفي الوقت المناسب أمرًا بالغ الأهمية للعلاج الفعّال. في مركز تحليل الحيوانات في د.باوز، نُقدّم مجموعة شاملة من خدمات التشخيص البيطرية لتقييم صحة حيوانك الأليف بسرعة ودقة.'
+        : 'Accurate and timely diagnosis is crucial for effective treatment. At Dr. Paws, we offer a comprehensive range of diagnostic veterinary services to quickly and accurately assess your pet\'s health.',
+      fullContent: language === 'ar'
+        ? `مركز تحليل الحيوانات في د.باوز مُجهز بأحدث تقنيات التشخيص، مما يُتيح لنا إجراء مجموعة مُتنوعة من الاختبارات.
+
+**التحاليل:**
+• اختبارات الدم الكيميائية: تقييم وظائف الأعضاء (الكبد والكلى والبنكرياس)
+• صورة الدم الكاملة: معلومات حول خلايا الدم والمكونات
+• تحليل البول: تقييم وظائف الكلى والكشف عن الالتهابات
+• فحوصات الطفيليات المعوية: فحص مجهري لعينات البراز
+• فحوصات الأمراض الفطرية: اختبارات متنوعة
+• فحوصات الأمراض الفيروسية: طرق تشخيصية متنوعة
+
+**التصوير:**
+• الأشعة السينية: صور تفصيلية للعظام والمفاصل والأعضاء
+• أشعة الأسنان: تقييم صحة الأسنان
+• الموجات فوق الصوتية: صور حية للأعضاء الداخلية
+
+**التشخيصات المتقدمة:**
+• الفحص المجهري: تحديد الخلايا والبكتيريا والطفيليات
+• التنظير الداخلي والخارجي: رؤية داخل الأعضاء
+
+تُمكّن هذه الخدمات التشخيصية البيطرية الشاملة أطباءنا من تحديد سبب مرض أو إصابة حيوانك الأليف ووضع خطة علاج دقيقة وفعّالة.`
+        : `Our state-of-the-art facility is equipped with advanced diagnostic technology, allowing us to perform a variety of tests.
 
 **Laboratory Testing:**
 • Chemical Blood Tests: Evaluate organ function (liver, kidneys, pancreas)
@@ -122,7 +180,12 @@ Our grooming services help prevent painful discomfort, infections, and skin prob
 • Internal and External Endoscopy: Visualize inside of organs or body cavities
 
 These comprehensive diagnostic veterinary services enable our veterinarians to pinpoint the cause of your pet's illness or injury and develop a precise and effective treatment plan.`,
-      features: [
+      features: language === 'ar' ? [
+        'التحاليل: فحوصات الدم، صورة الدم الكاملة، تحليل البول',
+        'التصوير: الأشعة السينية، أشعة الأسنان، الموجات فوق الصوتية',
+        'التشخيصات المتقدمة: الفحص المجهري، التنظير',
+        'الكشف عن الطفيليات والأمراض: فحوصات شاملة'
+      ] : [
         'Laboratory Testing: Blood tests, CBC, urine analysis',
         'Imaging: X-rays, Dental X-rays, Ultrasound',
         'Advanced Diagnostics: Microscopy, Endoscopy',
@@ -132,24 +195,48 @@ These comprehensive diagnostic veterinary services enable our veterinarians to p
     {
       id: 4,
       icon: Scissors,
-      title: 'Medical Surgeries',
-      preview: 'At Dr. Paws, our experienced veterinarians perform a wide range of medical surgeries using the latest techniques and state-of-the-art equipment. We understand that pet surgery can be a stressful time for both pets and their owners.',
-      fullContent: `We are committed to providing a safe, comfortable, and supportive environment throughout the entire process.
+      title: language === 'ar' ? 'العمليات الجراحية' : 'Medical Surgeries',
+      preview: language === 'ar'
+        ? 'في د. باوز، يُجري أطباؤنا ذوو الخبرة الواسعة مجموعة واسعة من العمليات الجراحية باستخدام أحدث التقنيات والمعدات المتطورة. نتفهم أن جراحة الحيوانات الأليفة قد تكون وقتًا عصيبًا لكل من الحيوانات الأليفة وأصحابها.'
+        : 'At Dr. Paws, our experienced veterinarians perform a wide range of medical surgeries using the latest techniques and state-of-the-art equipment. We understand that pet surgery can be a stressful time for both pets and their owners.',
+      fullContent: language === 'ar'
+        ? `نحن ملتزمون بتوفير بيئة آمنة ومريحة وداعمة طوال العملية.
+
+**تشمل خدمات عيادة الجراحة البيطرية:**
+
+• **عمليات التعقيم (الخصي/استئصال المبيض):** إجراءات روتينية تساعد في منع الحمل غير المرغوب فيه وتوفر فوائد صحية عديدة.
+
+• **جراحة العظام للحيوانات الأليفة:** نعالج الكسور وتمزق الأربطة (تمزق الرباط الصليبي) وخلل تنسج الورك والكوع.
+
+• **عمليات الجهاز الهضمي:** علاج حالات المعدة والأمعاء والكبد والبنكرياس بما في ذلك إزالة الأجسام الغريبة والخزعات.
+
+• **تجميل الأنف (للسلالات قصيرة الأنف):** مصمم للسلالات قصيرة الأنف مثل كلاب البولدوج والباج والبوكسر لتحسين التنفس.
+
+• **عمليات المسالك البولية:** معالجة حصوات المثانة وانسداد المسالك البولية.
+
+قبل أي إجراء جراحي، نُجري تقييمًا شاملاً قبل الجراحة. نُعطي الأولوية لإدارة الألم طوال العملية الجراحية ونوفر رعاية شاملة بعد العملية.`
+        : `We are committed to providing a safe, comfortable, and supportive environment throughout the entire process.
 
 **Our comprehensive pet surgery services include:**
 
-• **Sterilization Operations (Spay/Neuter):** Routine procedures that prevent unwanted litters and offer numerous health benefits, including reducing the risk of certain cancers and behavioral problems.
+• **Sterilization Operations (Spay/Neuter):** Routine procedures that prevent unwanted litters and offer numerous health benefits.
 
-• **Orthopedic surgery for pets:** We address fractures, ligament tears (cruciate ligament ruptures), hip and elbow dysplasia, and other orthopedic issues to restore mobility and improve quality of life.
+• **Orthopedic surgery for pets:** We address fractures, ligament tears (cruciate ligament ruptures), hip and elbow dysplasia to restore mobility.
 
-• **Digestive System Operations:** Treatment of conditions affecting the stomach, intestines, liver, pancreas including foreign body removal, biopsies, and bloat treatment.
+• **Digestive System Operations:** Treatment of conditions affecting the stomach, intestines, liver, pancreas including foreign body removal and biopsies.
 
-• **Rhinoplasty (for Brachycephalic Breeds):** Designed for short-nosed breeds like Bulldogs, Pugs, and Boxers to improve breathing and alleviate BOAS.
+• **Rhinoplasty (for Brachycephalic Breeds):** Designed for short-nosed breeds like Bulldogs, Pugs, and Boxers to improve breathing.
 
 • **Urinary Tract Operations:** Address bladder stones, urinary obstructions, and other urinary system issues.
 
-Prior to any pet surgery procedure, we conduct a thorough pre-surgical evaluation, including a physical exam, blood work, and other necessary tests. We prioritize pain management throughout the surgical process and provide comprehensive post-operative care to ensure a smooth and comfortable recovery.`,
-      features: [
+Prior to any pet surgery procedure, we conduct a thorough pre-surgical evaluation. We prioritize pain management throughout the surgical process and provide comprehensive post-operative care.`,
+      features: language === 'ar' ? [
+        'عمليات التعقيم (الخصي/استئصال المبيض)',
+        'جراحة العظام: الكسور وتمزق الأربطة وخلل التنسج',
+        'عمليات الجهاز الهضمي: إزالة الأجسام الغريبة والخزعات',
+        'تجميل الأنف للسلالات قصيرة الأنف',
+        'عمليات المسالك البولية: حصوات المثانة والانسداد'
+      ] : [
         'Sterilization Operations (Spay/Neuter)',
         'Orthopedic Surgery: Fractures, ligament repairs, dysplasia',
         'Digestive System Operations: Foreign body removal, biopsies',
@@ -160,24 +247,48 @@ Prior to any pet surgery procedure, we conduct a thorough pre-surgical evaluatio
     {
       id: 5,
       icon: Stethoscope,
-      title: 'Dental Services',
-      preview: 'Good oral hygiene is crucial for your pet\'s overall health and well-being. Dr. Paws offers comprehensive dental veterinary services designed to keep your pet\'s teeth and gums healthy throughout their lives.',
-      fullContent: `Our dental services are essential for preventing periodontal disease, which can lead to serious health problems affecting the heart, kidneys, and other organs.
+      title: language === 'ar' ? 'خدمات طب الأسنان' : 'Dental Services',
+      preview: language === 'ar'
+        ? 'تُعدّ صحة الفم الجيدة أمرًا بالغ الأهمية لصحة ورفاهية حيوانك الأليف بشكل عام. يُقدّم د. باوز خدمات بيطرية شاملة للأسنان مُصمّمة للحفاظ على صحة أسنان ولثة حيوانك الأليف طوال حياته.'
+        : 'Good oral hygiene is crucial for your pet\'s overall health and well-being. Dr. Paws offers comprehensive dental veterinary services designed to keep your pet\'s teeth and gums healthy throughout their lives.',
+      fullContent: language === 'ar'
+        ? `خدماتنا ضرورية لمنع أمراض اللثة التي يُمكن أن تُؤدّي إلى مشاكل صحية خطيرة تؤثر على القلب والكلى.
+
+**تشمل خدماتنا:**
+
+• **تنظيف الأسنان الاحترافي (الوقاية):** حجر الزاوية في الرعاية الوقائية للأسنان. نزيل تراكم البلاك والجير من فوق وتحت خط اللثة ونُلمّع الأسنان.
+
+• **الفحوصات الشاملة للأسنان:** فحوصات منتظمة للكشف المُبكّر عن مشاكل الأسنان وقد نوصي بأشعة سينية للأسنان.
+
+• **كشط وتنعيم الجذور:** يُزيل تراكم الجير ويُنعّم أسطح جذور الأسنان لعلاج أمراض اللثة.
+
+• **خلع الأسنان:** في حالات أمراض الأسنان الشديدة، يُجري أطباؤنا عمليات الخلع مع الاهتمام الدقيق بإدارة الألم.
+
+• **جراحة الفم:** إجراءات متقدمة لمشاكل الأسنان المعقدة مثل أورام الفم أو كسور الفك.
+
+العناية المنتظمة بالأسنان ضرورية للحفاظ على صحة فم حيوانك الأليف وتحسين جودة حياته.`
+        : `Our dental services are essential for preventing periodontal disease, which can lead to serious health problems affecting the heart, kidneys, and other organs.
 
 **Our services include:**
 
-• **Professional Teeth Cleaning (Prophylaxis):** The cornerstone of preventative dental care. We remove plaque and tartar buildup from above and below the gum line using specialized instruments, then polish teeth to create a smooth surface less susceptible to plaque.
+• **Professional Teeth Cleaning (Prophylaxis):** The cornerstone of preventative dental care. We remove plaque and tartar buildup from above and below the gum line, then polish teeth.
 
-• **Comprehensive Dental Check-ups:** Regular examinations for early detection of dental problems, checking for gum disease, tooth decay, oral tumors, and other abnormalities. We may recommend dental X-rays to evaluate tooth roots and surrounding bone.
+• **Comprehensive Dental Check-ups:** Regular examinations for early detection of dental problems. We may recommend dental X-rays to evaluate tooth roots and surrounding bone.
 
-• **Scaling and Root Planing:** Removes tartar buildup and smooths tooth root surfaces, making it more difficult for plaque to adhere. Particularly important for treating periodontal disease.
+• **Scaling and Root Planing:** Removes tartar buildup and smooths tooth root surfaces. Particularly important for treating periodontal disease.
 
-• **Tooth Extractions:** In cases of severe dental disease or fractured teeth, performed with careful attention to pain management and patient comfort.
+• **Tooth Extractions:** In cases of severe dental disease or fractured teeth, performed with careful attention to pain management.
 
 • **Oral Surgery:** Advanced procedures for complex dental issues such as oral tumors or jaw fractures.
 
 Regular dental care is essential for maintaining your pet's oral health, improving their quality of life, and contributing to their overall well-being.`,
-      features: [
+      features: language === 'ar' ? [
+        'تنظيف الأسنان الاحترافي (الوقاية)',
+        'الفحوصات الشاملة للأسنان والأشعة السينية',
+        'كشط وتنعيم الجذور',
+        'خلع الأسنان',
+        'جراحة الفم المتقدمة'
+      ] : [
         'Professional Teeth Cleaning (Prophylaxis)',
         'Comprehensive Dental Check-ups and X-rays',
         'Scaling and Root Planing',
@@ -188,14 +299,34 @@ Regular dental care is essential for maintaining your pet's oral health, improvi
     {
       id: 6,
       icon: Syringe,
-      title: 'Periodic Vaccinations',
-      preview: 'Pet vaccinations are a cornerstone of preventative veterinary services, protecting your pet from a range of contagious and potentially life-threatening diseases. At Dr. Paws, we tailor our vaccination protocols based on your pet\'s unique needs.',
-      fullContent: `We understand that every pet is unique, so we customize protocols based on your pet's species, age, lifestyle, and individual risk factors.
+      title: language === 'ar' ? 'التطعيمات الدورية' : 'Periodic Vaccinations',
+      preview: language === 'ar'
+        ? 'تُعدّ تطعيمات الحيوانات الأليفة حجر الزاوية في الخدمات البيطرية الوقائية، حيث تحمي حيوانك الأليف من مجموعة من الأمراض المُعدية التي يُحتمل أن تُهدّد حياته. في د. باوز، نُخصّص بروتوكولات تطعيماتنا بناءً على احتياجات حيوانك الفريدة.'
+        : 'Pet vaccinations are a cornerstone of preventative veterinary services, protecting your pet from a range of contagious and potentially life-threatening diseases. At Dr. Paws, we tailor our vaccination protocols based on your pet\'s unique needs.',
+      fullContent: language === 'ar'
+        ? `نتفهم أن كل حيوان أليف فريد من نوعه، لذلك نُخصّص بروتوكولاتنا بناءً على نوع حيوانك وعمره ونمط حياته.
+
+**تطعيمات القطط الثلاثي والرباعي:**
+الحماية ضد فيروس الهربس (التهابات الجهاز التنفسي) والكاليسيفايروس (مشاكل تنفسية) والبانليفوبينيا (طاعون القطط). التطعيم الرباعي يضيف الحماية ضد لوكيميا القطط.
+
+الفوائد: الحماية من الأمراض القاتلة، تقوية جهاز المناعة، الوقاية من انتشار الأمراض بين القطط.
+
+**تطعيم الكلاب الخماسي:**
+الحماية ضد خمسة أمراض: داء الكلب، داء البارفو، داء الأدنو الفيروسي، داء البارافلو، وداء البورديتيلا.
+
+الفوائد: الحماية من الأمراض القاتلة، تقوية المناعة، منع انتشار الأمراض بين الكلاب.
+
+**تطعيم السعار:**
+من أهم التطعيمات للكلاب والقطط، يحمي من مرض فيروسي يصيب الجهاز العصبي ويمكن انتقاله للإنسان.
+
+**تطعيمات الديدان:**
+أدوية للقضاء على الديدان المعوية تُعطى بشكل دوري حسب توجيهات الطبيب البيطري.`
+        : `We understand that every pet is unique, so we customize protocols based on your pet's species, age, lifestyle, and individual risk factors.
 
 **Trivalent and Quadrivalent Cat Vaccines:**
 Protection against feline herpesvirus (upper respiratory infections), calicivirus (respiratory problems), and panleukopenia (feline distemper). The quadrivalent vaccine adds protection against Feline Leukemia.
 
-Benefits: Protection from fatal diseases, strengthening the immune system, preventing disease spread among cats.
+Benefits: Protection from fatal diseases, strengthening immunity, preventing disease spread among cats.
 
 **Canine Pentavalent Vaccine:**
 Protection against five diseases: Rabies, Parvovirus, Adenovirus, Parainfluenza, and Bordetella.
@@ -203,13 +334,16 @@ Protection against five diseases: Rabies, Parvovirus, Adenovirus, Parainfluenza,
 Benefits: Protection from fatal diseases, strengthening immunity, preventing disease spread among dogs.
 
 **Rabies Vaccine:**
-One of the most important vaccines for both dogs and cats, protecting against this viral disease that affects the nervous system and can be transmitted to humans.
+One of the most important vaccines for both dogs and cats, protecting against this viral disease that can be transmitted to humans.
 
 **Deworming Medications:**
-Medications to eliminate intestinal worms, given periodically as directed by the veterinarian.
-
-Our veterinary services team will discuss the appropriate vaccination and deworming schedule for your pet and answer any questions you may have.`,
-      features: [
+Medications to eliminate intestinal worms, given periodically as directed by the veterinarian.`,
+      features: language === 'ar' ? [
+        'تطعيمات القطط الثلاثي والرباعي',
+        'تطعيم الكلاب الخماسي',
+        'تطعيم السعار للكلاب والقطط',
+        'أدوية الديدان'
+      ] : [
         'Trivalent & Quadrivalent Cat Vaccines',
         'Canine Pentavalent Vaccine',
         'Rabies Vaccine for Dogs and Cats',
@@ -219,20 +353,38 @@ Our veterinary services team will discuss the appropriate vaccination and deworm
     {
       id: 7,
       icon: Plane,
-      title: 'Pet Travel Procedures',
-      preview: 'Traveling with your pet can be a rewarding experience, but it requires careful planning and adherence to specific regulations. Dr. Paws offers comprehensive pet travel procedures services to ensure smooth and safe pet travel.',
-      fullContent: `We understand that each destination has unique requirements, and our experienced team is here to guide you through the process, both domestically and internationally.
+      title: language === 'ar' ? 'إجراءات سفر الحيوانات الأليفة' : 'Pet Travel Procedures',
+      preview: language === 'ar'
+        ? 'يُمكن أن يكون السفر مع حيوانك الأليف تجربة مُجزية، ولكنه يتطلب تخطيطًا دقيقًا والالتزام بلوائح مُحددة. يُقدّم د. باوز خدمات شاملة لإجراءات سفر الحيوانات الأليفة لضمان سفر سلس وآمن.'
+        : 'Traveling with your pet can be a rewarding experience, but it requires careful planning and adherence to specific regulations. Dr. Paws offers comprehensive pet travel procedures services to ensure smooth and safe pet travel.',
+      fullContent: language === 'ar'
+        ? `نتفهم أن لكل وجهة متطلبات فريدة، وفريقنا ذو الخبرة هنا لإرشادك سواء في الداخل أو دوليًا.
+
+**تشمل خدماتنا البيطرية لإجراءات سفر الحيوانات الأليفة:**
+
+• **الشهادات الصحية:** وثيقة رسمية تُثبت أن حيوانك الأليف يتمتع بصحة جيدة وخالٍ من الأمراض المُعدية، مطلوبة للسفر عبر حدود الولايات أو دوليًا. نُجري فحصًا بدنيًا شاملاً.
+
+• **اختبار داء الكَلَب لأغراض السفر:** العديد من البلدان تتطلب إثباتًا للتطعيم ضد داء الكَلَب و/أو اختبارًا لمعايرة داء الكَلَب. نُقدّم الوثائق الرسمية المطلوبة للسفر الدولي. ملاحظة: غالبًا ما تكون هناك فترات انتظار.
+
+• **ملء نماذج الشهادات:** نساعدك في ملء نماذج الشهادات الضرورية بدقة وكفاءة. نبقى على اطلاع بأحدث اللوائح بما في ذلك الدول الأوروبية والشهادات المُصدّقة من USDA APHIS.
+
+نوصي بالاتصال بنا قبل أسابيع أو حتى أشهر من موعد سفرك لإتاحة وقت كافٍ للفحوصات والاختبارات والأوراق.`
+        : `We understand that each destination has unique requirements, and our experienced team is here to guide you through the process, both domestically and internationally.
 
 **Our pet travel veterinary services include:**
 
-• **Health Certificates:** Official document verifying that your pet is healthy and free from contagious diseases, required for travel across state lines or internationally. We perform thorough physical examinations to ensure compliance with health standards.
+• **Health Certificates:** Official document verifying that your pet is healthy and free from contagious diseases, required for travel across state lines or internationally. We perform thorough physical examinations.
 
-• **Rabies Testing for Travel Purposes:** Many countries require proof of rabies vaccination and/or a rabies titer test. We administer vaccinations and perform titer tests, providing official documentation that meets specific country requirements. Note: waiting periods often apply after vaccination or testing.
+• **Rabies Testing for Travel Purposes:** Many countries require proof of rabies vaccination and/or a rabies titer test. We administer vaccinations and perform titer tests, providing official documentation. Note: waiting periods often apply.
 
-• **Filling out Certificate Forms:** Our experienced team assists with completing complex paperwork for international pet travel. We stay up-to-date on regulations for various destinations, including European countries and those requiring USDA APHIS endorsed certificates.
+• **Filling out Certificate Forms:** Our experienced team assists with completing complex paperwork. We stay up-to-date on regulations for various destinations, including European countries and those requiring USDA APHIS endorsed certificates.
 
-These veterinary services are designed to make the process as stress-free as possible. We recommend contacting us several weeks or even months before your planned travel date to allow ample time for examinations, testing, and paperwork.`,
-      features: [
+We recommend contacting us several weeks or even months before your planned travel date to allow ample time for examinations, testing, and paperwork.`,
+      features: language === 'ar' ? [
+        'الشهادات الصحية للسفر المحلي والدولي',
+        'اختبار وتطعيم داء الكَلَب للسفر',
+        'ملء نماذج الشهادات والتصديق من USDA'
+      ] : [
         'Health Certificates for domestic and international travel',
         'Rabies Testing and Vaccination for Travel',
         'Certificate Forms completion and USDA endorsement'
@@ -241,12 +393,31 @@ These veterinary services are designed to make the process as stress-free as pos
     {
       id: 8,
       icon: Home,
-      title: 'Boarding Services',
-      preview: 'At Dr. Paws, we understand that leaving your pet behind can be stressful. That\'s why we offer comfortable and caring boarding services as part of our comprehensive veterinary services, providing a true home away from home.',
-      fullContent: `We cater to a variety of needs with specialized boarding options:
+      title: language === 'ar' ? 'خدمات الإقامة' : 'Boarding Services',
+      preview: language === 'ar'
+        ? 'في د. باوز، نتفهم أن ترك حيوانك الأليف قد يكون مُرهقًا. لهذا السبب نُقدّم خدمات الإقامة وفندقة الحيوانات المُريحة والرعاية كجزء من خدماتنا البيطرية الشاملة.'
+        : 'At Dr. Paws, we understand that leaving your pet behind can be stressful. That\'s why we offer comfortable and caring boarding services as part of our comprehensive veterinary services, providing a true home away from home.',
+      fullContent: language === 'ar'
+        ? `نُلبي مجموعة مُتنوعة من الاحتياجات مع خيارات إقامة مُتخصّصة:
+
+**فندق علاجي للحيوانات الأليفة:**
+مصمم للحيوانات الأليفة التي تتطلب رعاية طبية مُتخصّصة:
+• التعافي بعد الجراحة: مُراقبة دقيقة وإدارة للألم ومُساعدة في الحركة
+• إدارة الحالات المُزمنة: رعاية فردية للسكري وأمراض الكلى والقلب
+• الحيوانات التي تتطلب مُراقبة دقيقة: ملاحظة مُتكررة ومراقبة العلامات الحيوية
+
+**فندق للحيوانات وعلاج الفطريات:**
+إيواء متخصص للحيوانات التي تخضع لعلاج من الالتهابات الفطرية:
+• العزل: بيئة مُنفصلة ومعزولة لمنع انتقال العدوى
+• بروتوكولات تنظيف وتطهير متخصصة: نظافة صارمة
+• إعطاء الأدوية المُضادة للفطريات: وفقًا لتعليمات الطبيب
+• مُراقبة تقدّم العلاج: ملاحظة دقيقة لضمان الفعالية
+
+خدمات الإقامة لدينا تضمن حصول حيوانك الأليف على رعاية احترافية وانتباه أثناء غيابك.`
+        : `We cater to a variety of needs with specialized boarding options:
 
 **Therapeutic Pet Hotel:**
-Designed for pets requiring specialized medical care during their stay:
+Designed for pets requiring specialized medical care:
 • Post-surgical recovery: Close monitoring, pain management, mobility assistance
 • Management of chronic conditions: Individualized care for diabetes, kidney disease, heart disease
 • Pets requiring close monitoring: Frequent observation, vital signs monitoring, medication administration
@@ -259,7 +430,10 @@ Specialized boarding for pets undergoing fungal infection treatment:
 • Monitoring of treatment progress: Close observation to ensure treatment effectiveness
 
 Our boarding services ensure your pet receives professional care and attention while you're away.`,
-      features: [
+      features: language === 'ar' ? [
+        'فندق علاجي: التعافي بعد الجراحة وإدارة الحالات المزمنة',
+        'إقامة متخصصة لعلاج الفطريات: بيئة معزولة مع بروتوكولات صارمة'
+      ] : [
         'Therapeutic Pet Hotel: Post-surgical recovery and chronic condition management',
         'Specialized Fungi Treatment Boarding: Isolated environment with strict protocols'
       ],
@@ -267,9 +441,30 @@ Our boarding services ensure your pet receives professional care and attention w
     {
       id: 9,
       icon: Heart,
-      title: 'Intensive Care',
-      preview: 'At Dr. Paws Veterinary Clinic, we understand that critical illnesses and injuries require specialized care. Our pet intensive care unit (ICU) is a dedicated space designed to provide advanced monitoring and treatment for pets in life-threatening conditions.',
-      fullContent: `Our experienced veterinary team is trained in critical care medicine and utilizes state-of-the-art equipment to provide around-the-clock care.
+      title: language === 'ar' ? 'العناية المركزة' : 'Intensive Care',
+      preview: language === 'ar'
+        ? 'في عيادة د. باوز البيطرية، نتفهم أن الأمراض والإصابات الخطيرة تتطلب رعاية مُتخصّصة. وحدة العناية المركزة للحيوانات الأليفة لدينا مُصمّمة لتوفير مُراقبة وعلاج مُتقدّمين للحيوانات الأليفة في الحالات التي تُهدّد حياتها.'
+        : 'At Dr. Paws Veterinary Clinic, we understand that critical illnesses and injuries require specialized care. Our pet intensive care unit (ICU) is a dedicated space designed to provide advanced monitoring and treatment for pets in life-threatening conditions.',
+      fullContent: language === 'ar'
+        ? `فريقنا البيطري مُدرّب على طب الحالات الحرجة ويستخدم أحدث المُعدّات لتوفير رعاية على مدار الساعة.
+
+**تُركّز خدمات مركز العناية بالحيوانات على إدارة وعلاج:**
+
+• **فشل الأعضاء:**
+  - الفشل الكلوي: علاج مُتقدّم بالسوائل وإدارة للكهارل ورعاية داعمة
+  - الفشل الكبدي: علاجات متخصصة لدعم وظائف الكبد
+  - فشل القلب: مُراقبة مُتقدّمة للقلب وعلاج بالأكسجين
+
+• **الاضطرابات الأيضية:** إدارة حالات معقدة مثل داء السكري ومرض كوشينغ ومرض أديسون.
+
+• **أمراض الغدد الصماء:** رعاية متخصصة لقصور الغدة الدرقية وفرط نشاط الغدة الدرقية والسكري الكاذب.
+
+• **الإصابات الشديدة:** رعاية فورية شاملة للكسور والإصابات الداخلية والجروح الشديدة.
+
+• **حالات حرجة أخرى:** الإنتان، ضيق التنفس، الحالات العصبية، مُضاعفات ما بعد الجراحة.
+
+فريقنا مُكرس لتوفير رعاية بيطرية مركزة لإعطاء حيوانك الأليف أفضل فرصة للتعافي.`
+        : `Our experienced veterinary team is trained in critical care medicine and utilizes state-of-the-art equipment to provide around-the-clock care.
 
 **Our ICU services focus on managing and treating:**
 
@@ -278,16 +473,22 @@ Our boarding services ensure your pet receives professional care and attention w
   - Liver Failure: Specialized treatments to support liver function and manage complications
   - Heart Failure: Advanced cardiac monitoring, oxygen therapy, medication management
 
-• **Metabolic Disorders:** Management of complex conditions such as diabetes mellitus, Cushing's disease, and Addison's disease through careful monitoring and nutritional support.
+• **Metabolic Disorders:** Management of complex conditions such as diabetes mellitus, Cushing's disease, and Addison's disease.
 
 • **Endocrine Diseases:** Specialized care for hypothyroidism, hyperthyroidism, and diabetes insipidus to regulate hormone levels.
 
-• **Severe Injuries:** Immediate comprehensive care for traumatic injuries, including fractures, internal injuries, and severe wounds with pain management and surgical intervention.
+• **Severe Injuries:** Immediate comprehensive care for traumatic injuries, including fractures, internal injuries, and severe wounds.
 
 • **Other Critical Conditions:** Sepsis, respiratory distress, neurological conditions, post-operative complications.
 
 Our team is dedicated to providing compassionate and intensive veterinary services to give your pet the best possible chance of recovery.`,
-      features: [
+      features: language === 'ar' ? [
+        'علاج فشل الأعضاء: الكلى والكبد والقلب',
+        'الاضطرابات الأيضية: السكري وكوشينغ وأديسون',
+        'أمراض الغدد الصماء: اضطرابات الغدة الدرقية والسكري الكاذب',
+        'الإصابات الشديدة: الكسور والإصابات الداخلية',
+        'حالات حرجة: الإنتان وضيق التنفس والرعاية العصبية'
+      ] : [
         'Organ Failure Treatment: Kidney, Liver, Heart',
         'Metabolic Disorders: Diabetes, Cushing\'s, Addison\'s disease',
         'Endocrine Diseases: Thyroid disorders, diabetes insipidus',
@@ -298,15 +499,39 @@ Our team is dedicated to providing compassionate and intensive veterinary servic
     {
       id: 10,
       icon: AlertCircle,
-      title: 'Emergency Services',
-      preview: 'Pet emergencies can be a frightening experience for both you and your beloved companion. At Dr. Paws, we understand the urgency and stress of these situations. We provide veterinary services through our emergency pet clinic during our regular business hours.',
-      fullContent: `Our dedicated team is prepared to handle a wide range of urgent medical situations.
+      title: language === 'ar' ? 'خدمات الطوارئ' : 'Emergency Services',
+      preview: language === 'ar'
+        ? 'يُمكن أن تكون حالات الطوارئ للحيوانات الأليفة تجربة مُخيفة. في د. باوز، نتفهم مدى إلحاح وضغط هذه المواقف. نُقدّم خدمات بيطرية من خلال عيادة بيطرية طوارئ للحيوانات الأليفة.'
+        : 'Pet emergencies can be a frightening experience for both you and your beloved companion. At Dr. Paws, we understand the urgency and stress of these situations. We provide veterinary services through our emergency pet clinic during our regular business hours.',
+      fullContent: language === 'ar'
+        ? `فريقنا المُتخصّص مُستعد للتعامل مع مجموعة واسعة من الحالات الطبية الطارئة.
+
+**أمثلة على حالات الطوارئ التي نُعالجها:**
+
+• **الصدمات (الاصطدام بسيارة، السقوط):** تقييم وعلاج فوري للكسور والإصابات الداخلية والحالات المُتعلّقة بالصدمات.
+
+• **صعوبة التنفس:** حالة طارئة تُهدّد الحياة. إذا كان حيوانك الأليف يُعاني من صعوبة في التنفس أو يلهث أو لديه لثة زرقاء، اطلب رعاية فورية.
+
+• **نزيف حاد:** تدخل بيطري سريع للنزيف غير المُسيطر عليه.
+
+• **التسمم:** علاج لابتلاع مواد سامة. اتصل بنا أو بخط المُساعدة الخاص بالتسمم فورًا.
+
+• **النوبات:** تحديد السبب والعلاج المُناسب للنوبات العصبية أو الأيضية.
+
+• **الانتفاخ (توسع المعدة والالتواء):** حالة تُهدّد الحياة شائعة في الكلاب الكبيرة تتطلب تدخلاً فوريًا.
+
+**أرقام الطوارئ:**
+فرع الصحافة: 05520 30564
+فرع الماثر: 05313 53667
+
+سيُقدّم فريقنا إرشادات ويستعد لوصولك. هدفنا توفير رعاية سريعة وفعّالة عندما يكون حيوانك الأليف في أمس الحاجة إليها.`
+        : `Our dedicated team is prepared to handle a wide range of urgent medical situations.
 
 **Examples of emergencies we treat include:**
 
 • **Trauma (Hit by Car, Falls):** Immediate assessment and treatment of fractures, internal injuries, and trauma-related conditions.
 
-• **Difficulty Breathing:** Life-threatening respiratory distress requiring immediate veterinary care.
+• **Difficulty Breathing:** Life-threatening respiratory distress. If your pet is struggling to breathe, gasping, or has blue-tinged gums, seek immediate care.
 
 • **Severe Bleeding:** Prompt intervention for uncontrolled internal or external bleeding.
 
@@ -317,11 +542,18 @@ Our team is dedicated to providing compassionate and intensive veterinary servic
 • **Bloat (Gastric Dilatation-Volvulus):** Life-threatening condition requiring immediate intervention, common in large breed dogs.
 
 **Emergency Contact:**
-Al-Sahafa Branch Emergency: 05520 30564
-Al-Mather Branch Emergency: 05313 53667
+Al-Sahafa Branch: 05520 30564
+Al-Mather Branch: 05313 53667
 
 If your pet is experiencing any urgent medical issues, please call our emergency pet clinic immediately. Our emergency team will provide guidance and prepare for your arrival. Our goal is to provide swift, effective, and compassionate care when your pet needs it most.`,
-      features: [
+      features: language === 'ar' ? [
+        'الصدمات: الاصطدام بسيارة، السقوط، الحوادث',
+        'صعوبة التنفس: ضيق التنفس',
+        'نزيف حاد: داخلي وخارجي',
+        'التسمم: ابتلاع مواد سامة',
+        'النوبات: طوارئ عصبية',
+        'الانتفاخ: توسع المعدة والالتواء'
+      ] : [
         'Trauma: Hit by car, falls, accidents',
         'Difficulty Breathing: Respiratory distress',
         'Severe Bleeding: Internal and external',
@@ -334,9 +566,23 @@ If your pet is experiencing any urgent medical issues, please call our emergency
     {
       id: 11,
       icon: Pill,
-      title: 'Home Care Services',
-      preview: 'We understand that visiting a veterinary clinic can be challenging for some pets and their owners. Whether your pet experiences anxiety during travel, has mobility issues, or you simply prefer the convenience of in-home care, Dr. Paws offers compassionate home care veterinary services.',
-      fullContent: `We bring our expertise directly to you, ensuring your pet receives the necessary attention while minimizing stress.
+      title: language === 'ar' ? 'خدمات الرعاية المنزلية' : 'Home Care Services',
+      preview: language === 'ar'
+        ? 'نتفهم أن زيارة عيادة بيطرية قد تكون صعبة بالنسبة لبعض الحيوانات الأليفة وأصحابها. سواء كان حيوانك الأليف يُعاني من القلق أثناء السفر أو لديه مشاكل في الحركة أو كنت تُفضّل راحة الرعاية في المنزل، يُقدّم د. باوز خدمات بيطرية للرعاية المنزلية.'
+        : 'We understand that visiting a veterinary clinic can be challenging for some pets and their owners. Whether your pet experiences anxiety during travel, has mobility issues, or you simply prefer the convenience of in-home care, Dr. Paws offers compassionate home care veterinary services.',
+      fullContent: language === 'ar'
+        ? `نجلب خبرتنا إليك مُباشرةً، مما يضمن حصول حيوانك الأليف على الاهتمام الضروري مع تقليل التوتر.
+
+**قد تشمل خدمات الرعاية المنزلية:**
+
+• **الفحوصات الصحية:** فحوصات صحية روتينية في راحة منزلك، تقييم صحة حيوانك الأليف بشكل عام وفحص العلامات الحيوية. مُفيد بشكل خاص للحيوانات الأليفة الكبيرة في السن أو تلك التي تُعاني من قيود في الحركة.
+
+• **التطعيمات:** إعطاء التطعيمات الضرورية في المنزل، حماية حيوانك الأليف من الأمراض دون ضغوط زيارة العيادة.
+
+• **جمع العينات:** جمع عينات الدم أو البول أو البراز في منزلك للاختبارات التشخيصية، مما يُقلّل من التوتر على حيوانك الأليف.
+
+خدماتنا البيطرية للرعاية المنزلية مُصمّمة لتوفير رعاية يسهل الوصول إليها، مما يضمن حصول حيوانك الأليف على الاهتمام الضروري في بيئة مألوفة ومريحة. يُرجى الاتصال بنا لمُناقشة احتياجات حيوانك الأليف.`
+        : `We bring our expertise directly to you, ensuring your pet receives the necessary attention while minimizing stress.
 
 **Our home care services may include:**
 
@@ -347,7 +593,11 @@ If your pet is experiencing any urgent medical issues, please call our emergency
 • **Sample Collection:** Collect blood, urine, or fecal samples in your home for diagnostic testing, minimizing stress for your pet.
 
 Our home care veterinary services are designed to provide accessible and compassionate care, ensuring your pet receives the necessary attention in a familiar, comfortable environment. Please contact us to discuss your pet's needs and determine if a home visit is the right option.`,
-      features: [
+      features: language === 'ar' ? [
+        'الفحوصات الصحية: تقييمات صحية روتينية في المنزل',
+        'التطعيمات: خدمات التطعيم في المنزل',
+        'جمع العينات: الدم والبول والبراز للاختبارات'
+      ] : [
         'Wellness Exams: Routine health assessments at home',
         'Vaccinations: In-home vaccination services',
         'Sample Collection: Blood, urine, fecal samples for testing'
@@ -474,13 +724,13 @@ Our home care veterinary services are designed to provide accessible and compass
             {service.emergency && (
               <div className="mb-4 p-3 bg-[#e9c46a]/10 rounded-md">
                 <p className="text-sm font-semibold text-[#264653] mb-2">
-                  Emergency Numbers:
+                  {language === 'ar' ? 'أرقام الطوارئ:' : 'Emergency Numbers:'}
                 </p>
                 <p className="text-sm text-foreground/80">
-                  Al-Sahafa Branch: 05520 30564
+                  {language === 'ar' ? 'فرع الصحافة: ' : 'Al-Sahafa Branch: '}05520 30564
                 </p>
                 <p className="text-sm text-foreground/80">
-                  Al-Mather Branch: 05313 53667
+                  {language === 'ar' ? 'فرع الماثر: ' : 'Al-Mather Branch: '}05313 53667
                 </p>
               </div>
             )}
@@ -541,7 +791,7 @@ Our home care veterinary services are designed to provide accessible and compass
               data-testid="text-services-subheader"
             >
               {language === 'ar' 
-                ? 'رعاية شاملة ومتخصصة لحيواناتكم الأليفة'
+                ? 'نقدم نطاقًا كاملاً من الرعاية لحيواناتكم الأليفة، من الفحوصات الروتينية إلى العلاجات المتقدمة'
                 : 'Comprehensive & Specialized Care for Your Pets'
               }
             </p>
