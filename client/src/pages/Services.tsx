@@ -57,128 +57,300 @@ export default function Services() {
     {
       id: 1,
       icon: Stethoscope,
-      title: t('servicesPage.examinations.title'),
-      description: t('servicesPage.examinations.description'),
+      title: 'Periodic Medical Examination',
+      preview: 'At Dr. Paws, we believe preventative care is essential for a long and healthy life for all pets. Our periodic pet examinations, also known as wellness exams or checkups, are a crucial part of our comprehensive veterinary services.',
+      fullContent: `These routine visits allow our veterinarians to assess your pet's overall health, detect potential problems early, and provide personalized recommendations for their ongoing care.
+
+**Canine Periodic Pet Examinations:**
+During a canine periodic medical examination, we perform a thorough physical examination, including:
+
+**Feline Periodic Pet Examinations:**
+Feline periodic medical examinations are performed with a gentle and patient approach, minimizing stress for your cat. The examination includes vital signs, cardiopulmonary auscultation, ophthalmologic and otoscopic examinations, oral examination, palpation of the abdomen and lymph nodes, and assessment of coat and skin.
+
+**Avian Periodic Pet Examinations:**
+Avian periodic medical examinations require specialized knowledge and handling techniques. Our avian exams include physical examination, weight and body condition scoring, examination of the uropygial gland, and palpation of the abdomen.
+
+Regular checkups are vital for maintaining your pet's well-being and preventing serious health issues. We recommend the frequency of these exams based on your pet's species, age, breed, and health history.`,
       features: [
-        t('servicesPage.examinations.canine'),
-        t('servicesPage.examinations.feline'),
-        t('servicesPage.examinations.avian'),
+        'Vital Signs: Checking temperature, pulse, and respiration rate',
+        'Cardiopulmonary Auscultation: Listening to the heart and lungs',
+        'Ophthalmologic Examination: Examining the eyes for cataracts, glaucoma',
+        'Otoscopic Examination: Examining the ears for infections, mites',
+        'Oral Examination: Assessing teeth and gums for tartar buildup',
+        'Dermatological Examination: Examining skin and coat',
+        'Abdominal Palpation: Checking for organ enlargement, masses',
+        'Musculoskeletal Evaluation: Assessing joints and muscles'
       ],
     },
     {
       id: 2,
       icon: Sparkles,
-      title: t('servicesPage.grooming.title'),
-      description: t('servicesPage.grooming.description'),
+      title: 'Shower & Grooming Services',
+      preview: 'Maintaining your pet\'s hygiene and appearance contributes significantly to their overall health, comfort, and well-being. At Dr. Paws, we offer a range of gentle and effective pet clean up services, designed to keep your pet looking and feeling their best.',
+      fullContent: `These pet clean up services, while not strictly medical, are an important part of preventative care and complement our other veterinary services.
+
+Our grooming services help prevent painful discomfort, infections, and skin problems while keeping your pet comfortable and healthy. We use high-quality, pet-safe products and techniques that minimize stress for your beloved companion.`,
       features: [
-        t('servicesPage.grooming.feature1'),
-        t('servicesPage.grooming.feature2'),
-        t('servicesPage.grooming.feature3'),
-        t('servicesPage.grooming.feature4'),
+        'Nail Clipping: Regular nail trims to prevent overgrowth and joint problems',
+        'Ear Cleaning: Gentle cleaning to prevent infections and remove wax buildup',
+        'Bath and Drying: Soothing services using pet-safe shampoos and conditioners',
+        'Hair Combing and Cutting: Breed-specific haircuts and de-matting services'
       ],
     },
     {
       id: 3,
       icon: Microscope,
-      title: t('servicesPage.diagnostics.title'),
-      description: t('servicesPage.diagnostics.description'),
+      title: 'Diagnostic Tests',
+      preview: 'Accurate and timely diagnosis is crucial for effective treatment. At Dr. Paws, we offer a comprehensive range of diagnostic veterinary services to quickly and accurately assess your pet\'s health.',
+      fullContent: `Our state-of-the-art facility is equipped with advanced diagnostic technology, allowing us to perform a variety of tests.
+
+**Laboratory Testing:**
+• Chemical Blood Tests: Evaluate organ function (liver, kidneys, pancreas)
+• Complete Blood Count (CBC): Information about blood cells and components
+• Urine Analysis: Assess kidney function and detect infections
+• Intestinal Parasite Examinations: Microscopic examination of fecal samples
+• Fungal Disease Examinations: Tests including microscopic examination and cultures
+• Viral Disease Examinations: Various diagnostic methods to detect viral infections
+
+**Imaging:**
+• X-rays (Radiography): Detailed images of bones, joints, and internal organs
+• Dental X-rays: Assess health of teeth and surrounding bone structures
+• Ultrasound: Real-time images of internal organs
+
+**Advanced Diagnostics:**
+• Microscopic Examination: Identify cells, bacteria, parasites, or abnormalities
+• Internal and External Endoscopy: Visualize inside of organs or body cavities
+
+These comprehensive diagnostic veterinary services enable our veterinarians to pinpoint the cause of your pet's illness or injury and develop a precise and effective treatment plan.`,
       features: [
-        t('servicesPage.diagnostics.lab'),
-        t('servicesPage.diagnostics.imaging'),
-        t('servicesPage.diagnostics.advanced'),
+        'Laboratory Testing: Blood tests, CBC, urine analysis',
+        'Imaging: X-rays, Dental X-rays, Ultrasound',
+        'Advanced Diagnostics: Microscopy, Endoscopy',
+        'Parasite & Disease Detection: Comprehensive examinations'
       ],
     },
     {
       id: 4,
       icon: Scissors,
-      title: t('servicesPage.surgery.title'),
-      description: t('servicesPage.surgery.description'),
+      title: 'Medical Surgeries',
+      preview: 'At Dr. Paws, our experienced veterinarians perform a wide range of medical surgeries using the latest techniques and state-of-the-art equipment. We understand that pet surgery can be a stressful time for both pets and their owners.',
+      fullContent: `We are committed to providing a safe, comfortable, and supportive environment throughout the entire process.
+
+**Our comprehensive pet surgery services include:**
+
+• **Sterilization Operations (Spay/Neuter):** Routine procedures that prevent unwanted litters and offer numerous health benefits, including reducing the risk of certain cancers and behavioral problems.
+
+• **Orthopedic surgery for pets:** We address fractures, ligament tears (cruciate ligament ruptures), hip and elbow dysplasia, and other orthopedic issues to restore mobility and improve quality of life.
+
+• **Digestive System Operations:** Treatment of conditions affecting the stomach, intestines, liver, pancreas including foreign body removal, biopsies, and bloat treatment.
+
+• **Rhinoplasty (for Brachycephalic Breeds):** Designed for short-nosed breeds like Bulldogs, Pugs, and Boxers to improve breathing and alleviate BOAS.
+
+• **Urinary Tract Operations:** Address bladder stones, urinary obstructions, and other urinary system issues.
+
+Prior to any pet surgery procedure, we conduct a thorough pre-surgical evaluation, including a physical exam, blood work, and other necessary tests. We prioritize pain management throughout the surgical process and provide comprehensive post-operative care to ensure a smooth and comfortable recovery.`,
       features: [
-        t('servicesPage.surgery.feature1'),
-        t('servicesPage.surgery.feature2'),
-        t('servicesPage.surgery.feature3'),
-        t('servicesPage.surgery.feature4'),
-        t('servicesPage.surgery.feature5'),
+        'Sterilization Operations (Spay/Neuter)',
+        'Orthopedic Surgery: Fractures, ligament repairs, dysplasia',
+        'Digestive System Operations: Foreign body removal, biopsies',
+        'Rhinoplasty for Brachycephalic Breeds',
+        'Urinary Tract Operations: Bladder stones, obstructions'
       ],
     },
     {
       id: 5,
       icon: Stethoscope,
-      title: t('servicesPage.dental.title'),
-      description: t('servicesPage.dental.description'),
+      title: 'Dental Services',
+      preview: 'Good oral hygiene is crucial for your pet\'s overall health and well-being. Dr. Paws offers comprehensive dental veterinary services designed to keep your pet\'s teeth and gums healthy throughout their lives.',
+      fullContent: `Our dental services are essential for preventing periodontal disease, which can lead to serious health problems affecting the heart, kidneys, and other organs.
+
+**Our services include:**
+
+• **Professional Teeth Cleaning (Prophylaxis):** The cornerstone of preventative dental care. We remove plaque and tartar buildup from above and below the gum line using specialized instruments, then polish teeth to create a smooth surface less susceptible to plaque.
+
+• **Comprehensive Dental Check-ups:** Regular examinations for early detection of dental problems, checking for gum disease, tooth decay, oral tumors, and other abnormalities. We may recommend dental X-rays to evaluate tooth roots and surrounding bone.
+
+• **Scaling and Root Planing:** Removes tartar buildup and smooths tooth root surfaces, making it more difficult for plaque to adhere. Particularly important for treating periodontal disease.
+
+• **Tooth Extractions:** In cases of severe dental disease or fractured teeth, performed with careful attention to pain management and patient comfort.
+
+• **Oral Surgery:** Advanced procedures for complex dental issues such as oral tumors or jaw fractures.
+
+Regular dental care is essential for maintaining your pet's oral health, improving their quality of life, and contributing to their overall well-being.`,
       features: [
-        t('servicesPage.dental.feature1'),
-        t('servicesPage.dental.feature2'),
-        t('servicesPage.dental.feature3'),
-        t('servicesPage.dental.feature4'),
+        'Professional Teeth Cleaning (Prophylaxis)',
+        'Comprehensive Dental Check-ups and X-rays',
+        'Scaling and Root Planing',
+        'Tooth Extractions',
+        'Advanced Oral Surgery'
       ],
     },
     {
       id: 6,
       icon: Syringe,
-      title: t('servicesPage.vaccination.title'),
-      description: t('servicesPage.vaccination.description'),
+      title: 'Periodic Vaccinations',
+      preview: 'Pet vaccinations are a cornerstone of preventative veterinary services, protecting your pet from a range of contagious and potentially life-threatening diseases. At Dr. Paws, we tailor our vaccination protocols based on your pet\'s unique needs.',
+      fullContent: `We understand that every pet is unique, so we customize protocols based on your pet's species, age, lifestyle, and individual risk factors.
+
+**Trivalent and Quadrivalent Cat Vaccines:**
+Protection against feline herpesvirus (upper respiratory infections), calicivirus (respiratory problems), and panleukopenia (feline distemper). The quadrivalent vaccine adds protection against Feline Leukemia.
+
+Benefits: Protection from fatal diseases, strengthening the immune system, preventing disease spread among cats.
+
+**Canine Pentavalent Vaccine:**
+Protection against five diseases: Rabies, Parvovirus, Adenovirus, Parainfluenza, and Bordetella.
+
+Benefits: Protection from fatal diseases, strengthening immunity, preventing disease spread among dogs.
+
+**Rabies Vaccine:**
+One of the most important vaccines for both dogs and cats, protecting against this viral disease that affects the nervous system and can be transmitted to humans.
+
+**Deworming Medications:**
+Medications to eliminate intestinal worms, given periodically as directed by the veterinarian.
+
+Our veterinary services team will discuss the appropriate vaccination and deworming schedule for your pet and answer any questions you may have.`,
       features: [
-        t('servicesPage.vaccination.feature1'),
-        t('servicesPage.vaccination.feature2'),
-        t('servicesPage.vaccination.feature3'),
+        'Trivalent & Quadrivalent Cat Vaccines',
+        'Canine Pentavalent Vaccine',
+        'Rabies Vaccine for Dogs and Cats',
+        'Deworming Medications'
       ],
     },
     {
       id: 7,
       icon: Plane,
-      title: t('servicesPage.travel.title'),
-      description: t('servicesPage.travel.description'),
+      title: 'Pet Travel Procedures',
+      preview: 'Traveling with your pet can be a rewarding experience, but it requires careful planning and adherence to specific regulations. Dr. Paws offers comprehensive pet travel procedures services to ensure smooth and safe pet travel.',
+      fullContent: `We understand that each destination has unique requirements, and our experienced team is here to guide you through the process, both domestically and internationally.
+
+**Our pet travel veterinary services include:**
+
+• **Health Certificates:** Official document verifying that your pet is healthy and free from contagious diseases, required for travel across state lines or internationally. We perform thorough physical examinations to ensure compliance with health standards.
+
+• **Rabies Testing for Travel Purposes:** Many countries require proof of rabies vaccination and/or a rabies titer test. We administer vaccinations and perform titer tests, providing official documentation that meets specific country requirements. Note: waiting periods often apply after vaccination or testing.
+
+• **Filling out Certificate Forms:** Our experienced team assists with completing complex paperwork for international pet travel. We stay up-to-date on regulations for various destinations, including European countries and those requiring USDA APHIS endorsed certificates.
+
+These veterinary services are designed to make the process as stress-free as possible. We recommend contacting us several weeks or even months before your planned travel date to allow ample time for examinations, testing, and paperwork.`,
       features: [
-        t('servicesPage.travel.feature1'),
-        t('servicesPage.travel.feature2'),
-        t('servicesPage.travel.feature3'),
+        'Health Certificates for domestic and international travel',
+        'Rabies Testing and Vaccination for Travel',
+        'Certificate Forms completion and USDA endorsement'
       ],
     },
     {
       id: 8,
       icon: Home,
-      title: t('servicesPage.boarding.title'),
-      description: t('servicesPage.boarding.description'),
+      title: 'Boarding Services',
+      preview: 'At Dr. Paws, we understand that leaving your pet behind can be stressful. That\'s why we offer comfortable and caring boarding services as part of our comprehensive veterinary services, providing a true home away from home.',
+      fullContent: `We cater to a variety of needs with specialized boarding options:
+
+**Therapeutic Pet Hotel:**
+Designed for pets requiring specialized medical care during their stay:
+• Post-surgical recovery: Close monitoring, pain management, mobility assistance
+• Management of chronic conditions: Individualized care for diabetes, kidney disease, heart disease
+• Pets requiring close monitoring: Frequent observation, vital signs monitoring, medication administration
+
+**Pet Hotel and Fungi Treatment:**
+Specialized boarding for pets undergoing fungal infection treatment:
+• Isolation: Separate environment to prevent cross-contamination
+• Specialized cleaning and disinfection protocols: Strict hygiene to prevent fungal spores
+• Administration of antifungal medications: Prescribed medications according to veterinarian's instructions
+• Monitoring of treatment progress: Close observation to ensure treatment effectiveness
+
+Our boarding services ensure your pet receives professional care and attention while you're away.`,
       features: [
-        t('servicesPage.boarding.therapeutic'),
-        t('servicesPage.boarding.fungi'),
+        'Therapeutic Pet Hotel: Post-surgical recovery and chronic condition management',
+        'Specialized Fungi Treatment Boarding: Isolated environment with strict protocols'
       ],
     },
     {
       id: 9,
       icon: Heart,
-      title: t('servicesPage.intensiveCare.title'),
-      description: t('servicesPage.intensiveCare.description'),
+      title: 'Intensive Care',
+      preview: 'At Dr. Paws Veterinary Clinic, we understand that critical illnesses and injuries require specialized care. Our pet intensive care unit (ICU) is a dedicated space designed to provide advanced monitoring and treatment for pets in life-threatening conditions.',
+      fullContent: `Our experienced veterinary team is trained in critical care medicine and utilizes state-of-the-art equipment to provide around-the-clock care.
+
+**Our ICU services focus on managing and treating:**
+
+• **Organ Failure:**
+  - Kidney Failure: Advanced fluid therapy, electrolyte management, supportive care
+  - Liver Failure: Specialized treatments to support liver function and manage complications
+  - Heart Failure: Advanced cardiac monitoring, oxygen therapy, medication management
+
+• **Metabolic Disorders:** Management of complex conditions such as diabetes mellitus, Cushing's disease, and Addison's disease through careful monitoring and nutritional support.
+
+• **Endocrine Diseases:** Specialized care for hypothyroidism, hyperthyroidism, and diabetes insipidus to regulate hormone levels.
+
+• **Severe Injuries:** Immediate comprehensive care for traumatic injuries, including fractures, internal injuries, and severe wounds with pain management and surgical intervention.
+
+• **Other Critical Conditions:** Sepsis, respiratory distress, neurological conditions, post-operative complications.
+
+Our team is dedicated to providing compassionate and intensive veterinary services to give your pet the best possible chance of recovery.`,
       features: [
-        t('servicesPage.intensiveCare.feature1'),
-        t('servicesPage.intensiveCare.feature2'),
-        t('servicesPage.intensiveCare.feature3'),
-        t('servicesPage.intensiveCare.feature4'),
+        'Organ Failure Treatment: Kidney, Liver, Heart',
+        'Metabolic Disorders: Diabetes, Cushing\'s, Addison\'s disease',
+        'Endocrine Diseases: Thyroid disorders, diabetes insipidus',
+        'Severe Injuries: Trauma care, fractures, internal injuries',
+        'Critical Conditions: Sepsis, respiratory distress, neurological care'
       ],
     },
     {
       id: 10,
       icon: AlertCircle,
-      title: t('servicesPage.emergency.title'),
-      description: t('servicesPage.emergency.description'),
+      title: 'Emergency Services',
+      preview: 'Pet emergencies can be a frightening experience for both you and your beloved companion. At Dr. Paws, we understand the urgency and stress of these situations. We provide veterinary services through our emergency pet clinic during our regular business hours.',
+      fullContent: `Our dedicated team is prepared to handle a wide range of urgent medical situations.
+
+**Examples of emergencies we treat include:**
+
+• **Trauma (Hit by Car, Falls):** Immediate assessment and treatment of fractures, internal injuries, and trauma-related conditions.
+
+• **Difficulty Breathing:** Life-threatening respiratory distress requiring immediate veterinary care.
+
+• **Severe Bleeding:** Prompt intervention for uncontrolled internal or external bleeding.
+
+• **Poisoning:** Treatment for toxic substance ingestion. Contact us or the Pet Poison Helpline immediately if suspected.
+
+• **Seizures:** Evaluation and treatment to determine cause and appropriate management.
+
+• **Bloat (Gastric Dilatation-Volvulus):** Life-threatening condition requiring immediate intervention, common in large breed dogs.
+
+**Emergency Contact:**
+Al-Sahafa Branch Emergency: 05520 30564
+Al-Mather Branch Emergency: 05313 53667
+
+If your pet is experiencing any urgent medical issues, please call our emergency pet clinic immediately. Our emergency team will provide guidance and prepare for your arrival. Our goal is to provide swift, effective, and compassionate care when your pet needs it most.`,
       features: [
-        t('servicesPage.emergency.feature1'),
-        t('servicesPage.emergency.feature2'),
-        t('servicesPage.emergency.feature3'),
-        t('servicesPage.emergency.feature4'),
+        'Trauma: Hit by car, falls, accidents',
+        'Difficulty Breathing: Respiratory distress',
+        'Severe Bleeding: Internal and external',
+        'Poisoning: Toxic substance ingestion',
+        'Seizures: Neurological emergencies',
+        'Bloat: Gastric Dilatation-Volvulus'
       ],
       emergency: true,
     },
     {
       id: 11,
       icon: Pill,
-      title: t('servicesPage.homeCare.title'),
-      description: t('servicesPage.homeCare.description'),
+      title: 'Home Care Services',
+      preview: 'We understand that visiting a veterinary clinic can be challenging for some pets and their owners. Whether your pet experiences anxiety during travel, has mobility issues, or you simply prefer the convenience of in-home care, Dr. Paws offers compassionate home care veterinary services.',
+      fullContent: `We bring our expertise directly to you, ensuring your pet receives the necessary attention while minimizing stress.
+
+**Our home care services may include:**
+
+• **Wellness Exams:** Routine wellness exams in the comfort of your home, assessing overall health, checking vital signs, and discussing any concerns. Especially beneficial for senior pets or those with mobility limitations.
+
+• **Vaccinations:** Administer necessary vaccinations at home, protecting your pet from preventable diseases without the stress of a clinic visit.
+
+• **Sample Collection:** Collect blood, urine, or fecal samples in your home for diagnostic testing, minimizing stress for your pet.
+
+Our home care veterinary services are designed to provide accessible and compassionate care, ensuring your pet receives the necessary attention in a familiar, comfortable environment. Please contact us to discuss your pet's needs and determine if a home visit is the right option.`,
       features: [
-        t('servicesPage.homeCare.feature1'),
-        t('servicesPage.homeCare.feature2'),
-        t('servicesPage.homeCare.feature3'),
+        'Wellness Exams: Routine health assessments at home',
+        'Vaccinations: In-home vaccination services',
+        'Sample Collection: Blood, urine, fecal samples for testing'
       ],
     },
   ];
@@ -188,25 +360,20 @@ export default function Services() {
     const isExpanded = expandedCards[service.id];
     
     const lordIconConfig: Record<number, string> = {
-      1: 'https://cdn.lordicon.com/fdjmqgqo.json', // Examinations
-      2: 'https://cdn.lordicon.com/qrbnmuva.json', // Grooming
-      3: 'https://cdn.lordicon.com/xtqxtpiq.json', // Diagnostics
-      4: 'https://cdn.lordicon.com/ebchswfj.json', // Surgery
-      5: 'https://cdn.lordicon.com/qgvewybt.json', // Dental
-      6: 'https://cdn.lordicon.com/ssjzuqhe.json', // Vaccination
-      7: 'https://cdn.lordicon.com/xvidkckm.json', // Travel
-      8: 'https://cdn.lordicon.com/nejoxqhx.json', // Boarding
-      9: 'https://cdn.lordicon.com/rqeluyar.json', // Intensive Care
-      10: 'https://cdn.lordicon.com/njkwpvad.json', // Emergency
-      11: 'https://cdn.lordicon.com/npehekun.json', // Home Care
+      1: 'https://cdn.lordicon.com/fdjmqgqo.json',
+      2: 'https://cdn.lordicon.com/qrbnmuva.json',
+      3: 'https://cdn.lordicon.com/xtqxtpiq.json',
+      4: 'https://cdn.lordicon.com/ebchswfj.json',
+      5: 'https://cdn.lordicon.com/qgvewybt.json',
+      6: 'https://cdn.lordicon.com/ssjzuqhe.json',
+      7: 'https://cdn.lordicon.com/xvidkckm.json',
+      8: 'https://cdn.lordicon.com/nejoxqhx.json',
+      9: 'https://cdn.lordicon.com/rqeluyar.json',
+      10: 'https://cdn.lordicon.com/njkwpvad.json',
+      11: 'https://cdn.lordicon.com/npehekun.json',
     };
     
     const hasLordIcon = lordIconConfig[service.id];
-    
-    // Services that should always be expanded: Surgery (4), Dental (5), Intensive Care (9), Emergency (10)
-    const alwaysExpandedServices = [4, 5, 9, 10];
-    const shouldAlwaysExpand = alwaysExpandedServices.includes(service.id);
-    const hasLongContent = !shouldAlwaysExpand && (service.description.length > 150 || service.features.length > 3);
 
     return (
       <motion.div
@@ -241,15 +408,24 @@ export default function Services() {
             </CardTitle>
           </CardHeader>
           <CardContent className="flex flex-col flex-1">
+            {/* Preview text */}
             <p
-              className={`text-foreground/80 mb-4 ${!isExpanded && hasLongContent ? 'line-clamp-2' : ''}`}
-              data-testid={`description-service-${service.id}`}
+              className="text-foreground/80 mb-4"
+              data-testid={`preview-service-${service.id}`}
             >
-              {service.description}
+              {service.preview}
             </p>
 
+            {/* Full content (shown when expanded) */}
+            {isExpanded && service.fullContent && (
+              <div className="mb-4 text-foreground/80 whitespace-pre-line">
+                {service.fullContent}
+              </div>
+            )}
+
+            {/* Features list */}
             <ul className="space-y-2 mb-4 flex-1">
-              {(isExpanded || shouldAlwaysExpand ? service.features : service.features.slice(0, 2)).map((feature, idx) => (
+              {service.features.map((feature, idx) => (
                 <li
                   key={idx}
                   className="text-sm text-foreground/70 flex items-start gap-2"
@@ -261,7 +437,8 @@ export default function Services() {
               ))}
             </ul>
 
-            {hasLongContent && (
+            {/* Read More / Show Less button */}
+            {service.fullContent && (
               <Button
                 variant="ghost"
                 size="sm"
@@ -277,32 +454,34 @@ export default function Services() {
                 ) : (
                   <>
                     <ChevronDown className="w-4 h-4 mr-1" />
-                    {language === 'ar' ? 'عرض المزيد' : 'Read more'}
+                    {language === 'ar' ? 'اقرأ المزيد' : 'Read more'}
                   </>
                 )}
               </Button>
             )}
 
+            {/* Emergency contact info */}
             {service.emergency && (
               <div className="mb-4 p-3 bg-[#e9c46a]/10 rounded-md">
                 <p className="text-sm font-semibold text-[#264653] mb-2">
-                  {t('servicesPage.emergency.numbers')}
+                  Emergency Numbers:
                 </p>
                 <p className="text-sm text-foreground/80">
-                  {t('servicesPage.emergency.sahafa')}
+                  Al-Sahafa Branch: 05520 30564
                 </p>
                 <p className="text-sm text-foreground/80">
-                  {t('servicesPage.emergency.mather')}
+                  Al-Mather Branch: 05313 53667
                 </p>
               </div>
             )}
 
+            {/* Book appointment button */}
             <Link href="/#contact">
               <Button
                 className="w-full"
                 data-testid={`button-book-${service.id}`}
               >
-                {t('servicesPage.bookAppointment')}
+                {language === 'ar' ? 'احجز موعد' : 'Book an Appointment'}
               </Button>
             </Link>
           </CardContent>
@@ -316,6 +495,7 @@ export default function Services() {
       <Header />
 
       <main className="flex-1 relative z-10">
+        {/* Hero Section */}
         <section
           ref={heroRef}
           className="relative h-[400px] flex items-center justify-center overflow-hidden"
@@ -344,17 +524,21 @@ export default function Services() {
               className="font-display text-5xl md:text-6xl font-bold text-white mb-4"
               data-testid="text-services-header"
             >
-              {t('servicesPage.header')}
+              {language === 'ar' ? 'خدماتنا' : 'Our Services'}
             </h1>
             <p
               className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto"
               data-testid="text-services-subheader"
             >
-              {t('servicesPage.subheader')}
+              {language === 'ar' 
+                ? 'رعاية شاملة ومتخصصة لحيواناتكم الأليفة'
+                : 'Comprehensive & Specialized Care for Your Pets'
+              }
             </p>
           </motion.div>
         </section>
 
+        {/* Services Grid 1 */}
         <section ref={servicesRef1} className="py-20 bg-background">
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -365,6 +549,7 @@ export default function Services() {
           </div>
         </section>
 
+        {/* Image Section 1 */}
         <motion.section
           ref={imageRef1}
           className="py-16 bg-card"
@@ -406,6 +591,7 @@ export default function Services() {
           </div>
         </motion.section>
 
+        {/* Services Grid 2 */}
         <section ref={servicesRef2} className="py-20 bg-background">
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -416,6 +602,7 @@ export default function Services() {
           </div>
         </section>
 
+        {/* Image Section 2 */}
         <motion.section
           ref={imageRef2}
           className="py-16 bg-card"
@@ -458,6 +645,7 @@ export default function Services() {
           </div>
         </motion.section>
 
+        {/* Services Grid 3 */}
         <section ref={servicesRef3} className="py-20 bg-background">
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -468,6 +656,7 @@ export default function Services() {
           </div>
         </section>
 
+        {/* Home Care Section */}
         <motion.section
           ref={homeCareRef}
           className="py-16 bg-card"
@@ -483,12 +672,12 @@ export default function Services() {
                   whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.3 }}
                   src={teamImage}
-                  alt="Home Care Services"
+                  alt="Veterinary team"
                   className="rounded-xl w-full h-auto object-cover shadow-md"
-                  data-testid="img-home-care-1"
+                  data-testid="img-home-care-left"
                 />
               </motion.div>
-              
+
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={homeCareInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
@@ -506,9 +695,9 @@ export default function Services() {
                   whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.3 }}
                   src={vetExamImage}
-                  alt="Home Care Services"
+                  alt="Home care service"
                   className="rounded-xl w-full h-auto object-cover shadow-md"
-                  data-testid="img-home-care-2"
+                  data-testid="img-home-care-right"
                 />
               </motion.div>
             </div>
