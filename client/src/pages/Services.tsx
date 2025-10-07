@@ -321,12 +321,9 @@ export default function Services() {
     const hasSubsections = 'subsections' in service && service.subsections;
     const hasFeatures = 'features' in service && service.features;
     
-    // Services that should always be expanded: Surgery (4), Dental (5), Vaccination (6), Intensive Care (9), Emergency (10)
-    const alwaysExpandedServices = [4, 5, 6, 9, 10];
-    const shouldAlwaysExpand = alwaysExpandedServices.includes(service.id);
-    const hasLongContent = !shouldAlwaysExpand && (
-      service.description.length > 150 || 
-      (hasSubsections && service.subsections!.length > 2) ||
+    // All services should have Show More/Less functionality
+    const hasLongContent = (
+      (hasSubsections && service.subsections!.length > 1) ||
       (hasFeatures && service.features!.length > 3)
     );
 
@@ -348,11 +345,10 @@ export default function Services() {
           data-testid={`card-service-${service.id}`}
         >
           <CardHeader className="pb-3">
-            <CardTitle
-              className={`text-[#18ac61] text-left ${
-                hasLordIcon ? 'flex items-center gap-3' : ''
-              } ${language === 'ar' ? 'flex-row-reverse' : ''}`}
-              data-testid={`title-service-${service.id}`}
+            <div
+              className={`flex items-center gap-3 text-[#18ac61] ${
+                language === 'ar' ? 'flex-row-reverse' : ''
+              }`}
             >
               {hasLordIcon && (
                 <lord-icon
@@ -362,8 +358,13 @@ export default function Services() {
                   style={{ width: '50px', height: '50px' }}
                 />
               )}
-              <span>{service.title}</span>
-            </CardTitle>
+              <CardTitle
+                className="text-[#18ac61] text-left"
+                data-testid={`title-service-${service.id}`}
+              >
+                {service.title}
+              </CardTitle>
+            </div>
           </CardHeader>
           <CardContent className="flex flex-col flex-1 overflow-hidden">
             <div className="flex-1 overflow-y-auto text-left">
@@ -378,7 +379,7 @@ export default function Services() {
 
               {hasSubsections && (
                 <div className="space-y-3 mb-3">
-                  {(isExpanded || shouldAlwaysExpand ? service.subsections! : service.subsections!.slice(0, 1)).map((subsection: any, idx: number) => (
+                  {(isExpanded ? service.subsections! : service.subsections!.slice(0, 1)).map((subsection: any, idx: number) => (
                     <div key={idx} className="space-y-1.5">
                       <h4 className="text-xs font-semibold text-[#18ac61] text-left">
                         {subsection.title}
@@ -390,7 +391,7 @@ export default function Services() {
                       )}
                       {subsection.content && (
                         <ul className="space-y-1">
-                          {splitBulletPoints(subsection.content).slice(0, isExpanded || shouldAlwaysExpand ? undefined : 2).map((point: string, pointIdx: number) => (
+                          {splitBulletPoints(subsection.content).slice(0, isExpanded ? undefined : 2).map((point: string, pointIdx: number) => (
                             <li
                               key={pointIdx}
                               className={`text-xs text-foreground/70 flex items-start gap-1.5 ${
@@ -417,7 +418,7 @@ export default function Services() {
 
               {hasFeatures && (
                 <ul className="space-y-1.5 mb-3">
-                  {(isExpanded || shouldAlwaysExpand ? service.features! : service.features!.slice(0, 3)).map((feature, idx) => (
+                  {(isExpanded ? service.features! : service.features!.slice(0, 3)).map((feature, idx) => (
                     <li
                       key={idx}
                       className={`text-xs text-foreground/70 flex items-start gap-1.5 ${
@@ -432,7 +433,7 @@ export default function Services() {
                 </ul>
               )}
 
-              {'closing' in service && service.closing && (isExpanded || shouldAlwaysExpand) && (
+              {'closing' in service && service.closing && isExpanded && (
                 <p className="text-xs text-foreground/70 mb-3 text-left">
                   {service.closing}
                 </p>
@@ -564,7 +565,7 @@ export default function Services() {
                 initial={{ opacity: 0, x: 50 }}
                 animate={imageInView1 ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
                 transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
-                className={`space-y-6 ${language === 'ar' ? 'text-right' : 'text-left'}`}
+                className="space-y-6 text-left"
               >
                 <h2 className="text-3xl font-bold text-primary">
                   {language === 'ar' ? 'رعاية شاملة ومتخصصة' : 'Comprehensive & Specialized Care'}
@@ -615,7 +616,7 @@ export default function Services() {
                 initial={{ opacity: 0, x: -50 }}
                 animate={imageInView2 ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
                 transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
-                className={`space-y-6 md:order-1 ${language === 'ar' ? 'text-right' : 'text-left'}`}
+                className="space-y-6 md:order-1 text-left"
               >
                 <h2 className="text-3xl font-bold text-primary">
                   {language === 'ar' ? 'فريق محترف ومتفاني' : 'Professional & Dedicated Team'}
