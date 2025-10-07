@@ -220,12 +220,13 @@ export default function Services() {
             service.emergency ? 'border-[#e9c46a]' : ''
           }`}
           data-testid={`card-service-${service.id}`}
+          dir={language === 'ar' ? 'rtl' : 'ltr'}
         >
           <CardHeader>
             <CardTitle
-              className={`text-[#18ac61] ${language === 'ar' ? 'text-right' : 'text-left'} ${
+              className={`text-[#18ac61] ${
                 hasLordIcon ? 'flex items-center gap-3' : ''
-              } ${language === 'ar' && hasLordIcon ? 'flex-row-reverse' : ''}`}
+              }`}
               data-testid={`title-service-${service.id}`}
             >
               {hasLordIcon && (
@@ -241,32 +242,20 @@ export default function Services() {
           </CardHeader>
           <CardContent className="flex flex-col flex-1">
             <p
-              className={`text-foreground/80 mb-4 ${
-                language === 'ar' ? 'text-right' : 'text-left'
-              } ${!isExpanded && hasLongContent ? 'line-clamp-2' : ''}`}
+              className={`text-foreground/80 mb-4 ${!isExpanded && hasLongContent ? 'line-clamp-2' : ''}`}
               data-testid={`description-service-${service.id}`}
             >
               {service.description}
             </p>
 
-            <ul
-              className={`space-y-2 mb-4 flex-1 ${
-                language === 'ar' ? 'text-right' : 'text-left'
-              }`}
-            >
+            <ul className="space-y-2 mb-4 flex-1">
               {(isExpanded || shouldAlwaysExpand ? service.features : service.features.slice(0, 2)).map((feature, idx) => (
                 <li
                   key={idx}
-                  className={`text-sm text-foreground/70 flex items-start gap-2 ${
-                    language === 'ar' ? 'flex-row-reverse' : ''
-                  }`}
+                  className="text-sm text-foreground/70 flex items-start gap-2"
                   data-testid={`feature-service-${service.id}-${idx}`}
                 >
-                  <span
-                    className={`inline-block w-1.5 h-1.5 rounded-full bg-[#18ac61] mt-2 flex-shrink-0 ${
-                      language === 'ar' ? 'mr-0 ml-2' : 'ml-0 mr-2'
-                    }`}
-                  />
+                  <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#18ac61] mt-2 flex-shrink-0" />
                   <span>{feature}</span>
                 </li>
               ))}
@@ -277,17 +266,17 @@ export default function Services() {
                 variant="ghost"
                 size="sm"
                 onClick={() => toggleExpand(service.id)}
-                className={`mb-4 ${language === 'ar' ? 'flex-row-reverse' : ''}`}
+                className="mb-4"
                 data-testid={`button-expand-${service.id}`}
               >
                 {isExpanded ? (
                   <>
-                    <ChevronUp className={`w-4 h-4 ${language === 'ar' ? 'ml-1' : 'mr-1'}`} />
+                    <ChevronUp className="w-4 h-4 mr-1" />
                     {language === 'ar' ? 'عرض أقل' : 'Show less'}
                   </>
                 ) : (
                   <>
-                    <ChevronDown className={`w-4 h-4 ${language === 'ar' ? 'ml-1' : 'mr-1'}`} />
+                    <ChevronDown className="w-4 h-4 mr-1" />
                     {language === 'ar' ? 'عرض المزيد' : 'Read more'}
                   </>
                 )}
@@ -295,11 +284,7 @@ export default function Services() {
             )}
 
             {service.emergency && (
-              <div
-                className={`mb-4 p-3 bg-[#e9c46a]/10 rounded-md ${
-                  language === 'ar' ? 'text-right' : 'text-left'
-                }`}
-              >
+              <div className="mb-4 p-3 bg-[#e9c46a]/10 rounded-md">
                 <p className="text-sm font-semibold text-[#264653] mb-2">
                   {t('servicesPage.emergency.numbers')}
                 </p>
@@ -404,7 +389,8 @@ export default function Services() {
                 initial={{ opacity: 0, x: 50 }}
                 animate={imageInView1 ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
                 transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
-                className={`space-y-6 ${language === 'ar' ? 'text-right' : 'text-left'}`}
+                className="space-y-6"
+                dir={language === 'ar' ? 'rtl' : 'ltr'}
               >
                 <h2 className="text-3xl font-bold text-primary">
                   {language === 'ar' ? 'رعاية شاملة ومتخصصة' : 'Comprehensive & Specialized Care'}
@@ -455,7 +441,8 @@ export default function Services() {
                 initial={{ opacity: 0, x: -50 }}
                 animate={imageInView2 ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
                 transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
-                className={`space-y-6 md:order-1 ${language === 'ar' ? 'text-right' : 'text-left'}`}
+                className="space-y-6 md:order-1"
+                dir={language === 'ar' ? 'rtl' : 'ltr'}
               >
                 <h2 className="text-3xl font-bold text-primary">
                   {language === 'ar' ? 'فريق محترف ومتفاني' : 'Professional & Dedicated Team'}
