@@ -1,0 +1,100 @@
+It was completed successfully. Now I want to change the icons for each service, keeping the same size and animation behavior (looping every 1.5 seconds):
+
+Periodic Medical Examinations:
+
+<script src="https://cdn.lordicon.com/lordicon.js"></script>
+<lord-icon
+    src="https://cdn.lordicon.com/fdjmqgqo.json"
+    trigger="hover"
+    style="width:250px;height:250px">
+</lord-icon>
+
+
+Shower & Grooming Services:
+
+<script src="https://cdn.lordicon.com/lordicon.js"></script>
+<lord-icon
+    src="https://cdn.lordicon.com/qrbnmuva.json"
+    trigger="hover"
+    style="width:250px;height:250px">
+</lord-icon>
+
+
+Diagnostic Tests:
+
+<script src="https://cdn.lordicon.com/lordicon.js"></script>
+<lord-icon
+    src="https://cdn.lordicon.com/xtqxtpiq.json"
+    trigger="hover"
+    style="width:250px;height:250px">
+</lord-icon>
+
+
+Medical Surgeries:
+
+<script src="https://cdn.lordicon.com/lordicon.js"></script>
+<lord-icon
+    src="https://cdn.lordicon.com/ebchswfj.json"
+    trigger="hover"
+    style="width:250px;height:250px">
+</lord-icon>
+
+
+Dental Services:
+
+<script src="https://cdn.lordicon.com/lordicon.js"></script>
+<lord-icon
+    src="https://cdn.lordicon.com/qgvewybt.json"
+    trigger="hover"
+    style="width:250px;height:250px">
+</lord-icon>
+
+
+Periodic Vaccinations:
+
+<script src="https://cdn.lordicon.com/lordicon.js"></script>
+<lord-icon
+    src="https://cdn.lordicon.com/ssjzuqhe.json"
+    trigger="hover"
+    style="width:250px;height:250px">
+</lord-icon>
+
+
+Boarding Services:
+
+<script src="https://cdn.lordicon.com/lordicon.js"></script>
+<lord-icon
+    src="https://cdn.lordicon.com/nejoxqhx.json"
+    trigger="hover"
+    style="width:250px;height:250px">
+</lord-icon>
+
+
+(Unnamed Service)
+
+<script src="https://cdn.lordicon.com/lordicon.js"></script>
+<lord-icon
+    src="https://cdn.lordicon.com/rqeluyar.json"
+    trigger="hover"
+    style="width:250px;height:250px">
+</lord-icon>
+
+
+Emergency Services:
+
+<script src="https://cdn.lordicon.com/lordicon.js"></script>
+<lord-icon
+    src="https://cdn.lordicon.com/njkwpvad.json"
+    trigger="hover"
+    style="width:250px;height:250px">
+</lord-icon>
+
+
+Home Care Services:
+
+<script src="https://cdn.lordicon.com/lordicon.js"></script>
+<lord-icon
+    src="https://cdn.lordicon.com/npehekun.json"
+    trigger="hover"
+    style="width:250px;height:250px">
+</lord-icon>
