@@ -345,26 +345,22 @@ export default function Services() {
           data-testid={`card-service-${service.id}`}
         >
           <CardHeader className="pb-3">
-            <div
-              className={`flex items-center gap-3 text-[#18ac61] ${
+            <CardTitle
+              className={`text-[#18ac61] text-left flex items-center gap-3 ${
                 language === 'ar' ? 'flex-row-reverse' : ''
               }`}
+              data-testid={`title-service-${service.id}`}
             >
               {hasLordIcon && (
                 <lord-icon
                   src={lordIconConfig[service.id]}
                   trigger="loop"
                   delay="1500"
-                  style={{ width: '50px', height: '50px' }}
+                  style={{ width: '50px', height: '50px', flexShrink: 0 }}
                 />
               )}
-              <CardTitle
-                className="text-[#18ac61] text-left"
-                data-testid={`title-service-${service.id}`}
-              >
-                {service.title}
-              </CardTitle>
-            </div>
+              <span className="flex-1">{service.title}</span>
+            </CardTitle>
           </CardHeader>
           <CardContent className="flex flex-col flex-1 overflow-hidden">
             <div className="flex-1 overflow-y-auto text-left">
