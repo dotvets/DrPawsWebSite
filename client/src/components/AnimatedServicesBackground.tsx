@@ -37,14 +37,20 @@ const PawPrint = ({ color, size, top, left, duration, delay }: {
         width="100%"
         height="100%"
       >
-        {/* Main pad - large oval at bottom */}
-        <ellipse cx="50" cy="75" rx="20" ry="22" />
-        {/* Five toe marks in an arc */}
-        <circle cx="50" cy="25" r="10" />
-        <circle cx="32" cy="35" r="9" />
-        <circle cx="68" cy="35" r="9" />
-        <circle cx="20" cy="50" r="8" />
-        <circle cx="80" cy="50" r="8" />
+        {/* Main pad with curved bottom - matching the image */}
+        <path d="M 30 65 Q 30 45, 50 45 Q 70 45, 70 65 Q 72 80, 60 85 Q 50 90, 40 85 Q 28 80, 30 65 Z" />
+        
+        {/* Four toe pads - ovals arranged around the main pad */}
+        {/* Top center toe */}
+        <ellipse cx="50" cy="20" rx="8" ry="12" />
+        {/* Left toe */}
+        <ellipse cx="28" cy="32" rx="7" ry="11" transform="rotate(-25 28 32)" />
+        {/* Right toe */}
+        <ellipse cx="72" cy="32" rx="7" ry="11" transform="rotate(25 72 32)" />
+        {/* Bottom left toe */}
+        <ellipse cx="18" cy="50" rx="6" ry="10" transform="rotate(-35 18 50)" />
+        {/* Bottom right toe */}
+        <ellipse cx="82" cy="50" rx="6" ry="10" transform="rotate(35 82 50)" />
       </svg>
     </motion.div>
   );
