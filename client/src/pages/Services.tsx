@@ -59,22 +59,47 @@ export default function Services() {
       icon: Stethoscope,
       title: t('servicesPage.examinations.title'),
       description: t('servicesPage.examinations.description'),
-      features: [
-        t('servicesPage.examinations.canine'),
-        t('servicesPage.examinations.feline'),
-        t('servicesPage.examinations.avian'),
+      subsections: [
+        {
+          title: t('servicesPage.examinations.canineTitle'),
+          intro: t('servicesPage.examinations.canineIntro'),
+          content: t('servicesPage.examinations.canine'),
+        },
+        {
+          title: t('servicesPage.examinations.felineTitle'),
+          intro: t('servicesPage.examinations.felineIntro'),
+          content: t('servicesPage.examinations.feline'),
+        },
+        {
+          title: t('servicesPage.examinations.avianTitle'),
+          intro: t('servicesPage.examinations.avianIntro'),
+          content: t('servicesPage.examinations.avian'),
+        },
       ],
+      closing: t('servicesPage.examinations.closing'),
     },
     {
       id: 2,
       icon: Sparkles,
       title: t('servicesPage.grooming.title'),
       description: t('servicesPage.grooming.description'),
-      features: [
-        t('servicesPage.grooming.feature1'),
-        t('servicesPage.grooming.feature2'),
-        t('servicesPage.grooming.feature3'),
-        t('servicesPage.grooming.feature4'),
+      subsections: [
+        {
+          title: t('servicesPage.grooming.nailTrimmingTitle'),
+          content: t('servicesPage.grooming.nailTrimming'),
+        },
+        {
+          title: t('servicesPage.grooming.earCleaningTitle'),
+          content: t('servicesPage.grooming.earCleaning'),
+        },
+        {
+          title: t('servicesPage.grooming.bathingTitle'),
+          content: t('servicesPage.grooming.bathing'),
+        },
+        {
+          title: t('servicesPage.grooming.groomingTitle'),
+          content: t('servicesPage.grooming.grooming'),
+        },
       ],
     },
     {
@@ -82,46 +107,113 @@ export default function Services() {
       icon: Microscope,
       title: t('servicesPage.diagnostics.title'),
       description: t('servicesPage.diagnostics.description'),
-      features: [
-        t('servicesPage.diagnostics.lab'),
-        t('servicesPage.diagnostics.imaging'),
-        t('servicesPage.diagnostics.advanced'),
+      subsections: [
+        {
+          title: t('servicesPage.diagnostics.labTitle'),
+          content: t('servicesPage.diagnostics.lab'),
+        },
+        {
+          title: t('servicesPage.diagnostics.imagingTitle'),
+          content: t('servicesPage.diagnostics.imaging'),
+        },
+        {
+          title: t('servicesPage.diagnostics.advancedTitle'),
+          content: t('servicesPage.diagnostics.advanced'),
+        },
       ],
+      closing: t('servicesPage.diagnostics.closing'),
     },
     {
       id: 4,
       icon: Scissors,
       title: t('servicesPage.surgery.title'),
       description: t('servicesPage.surgery.description'),
-      features: [
-        t('servicesPage.surgery.feature1'),
-        t('servicesPage.surgery.feature2'),
-        t('servicesPage.surgery.feature3'),
-        t('servicesPage.surgery.feature4'),
-        t('servicesPage.surgery.feature5'),
+      subsections: [
+        {
+          title: t('servicesPage.surgery.sterilizationTitle'),
+          content: t('servicesPage.surgery.sterilization'),
+        },
+        {
+          title: t('servicesPage.surgery.orthopedicTitle'),
+          content: t('servicesPage.surgery.orthopedic'),
+        },
+        {
+          title: t('servicesPage.surgery.digestiveTitle'),
+          content: t('servicesPage.surgery.digestive'),
+        },
+        {
+          title: t('servicesPage.surgery.rhinoplastyTitle'),
+          content: t('servicesPage.surgery.rhinoplasty'),
+        },
+        {
+          title: t('servicesPage.surgery.urinaryTitle'),
+          content: t('servicesPage.surgery.urinary'),
+        },
       ],
+      closing: t('servicesPage.surgery.closing'),
     },
     {
       id: 5,
       icon: Stethoscope,
       title: t('servicesPage.dental.title'),
       description: t('servicesPage.dental.description'),
-      features: [
-        t('servicesPage.dental.feature1'),
-        t('servicesPage.dental.feature2'),
-        t('servicesPage.dental.feature3'),
-        t('servicesPage.dental.feature4'),
+      subsections: [
+        {
+          title: t('servicesPage.dental.cleaningTitle'),
+          content: t('servicesPage.dental.cleaning'),
+        },
+        {
+          title: t('servicesPage.dental.examinationsTitle'),
+          content: t('servicesPage.dental.examinations'),
+        },
+        {
+          title: t('servicesPage.dental.scalingTitle'),
+          content: t('servicesPage.dental.scaling'),
+        },
+        {
+          title: t('servicesPage.dental.extractionTitle'),
+          content: t('servicesPage.dental.extraction'),
+        },
+        {
+          title: t('servicesPage.dental.surgeryTitle'),
+          content: t('servicesPage.dental.surgery'),
+        },
       ],
+      closing: t('servicesPage.dental.closing'),
     },
     {
       id: 6,
       icon: Syringe,
       title: t('servicesPage.vaccination.title'),
       description: t('servicesPage.vaccination.description'),
-      features: [
-        t('servicesPage.vaccination.feature1'),
-        t('servicesPage.vaccination.feature2'),
-        t('servicesPage.vaccination.feature3'),
+      subsections: [
+        {
+          title: t('servicesPage.vaccination.catTripleTitle'),
+          intro: t('servicesPage.vaccination.catTripleDesc'),
+          content: t('servicesPage.vaccination.catTriple'),
+          extra: t('servicesPage.vaccination.catQuad'),
+        },
+        {
+          title: t('servicesPage.vaccination.catBenefitsTitle'),
+          content: t('servicesPage.vaccination.catBenefits'),
+        },
+        {
+          title: t('servicesPage.vaccination.dogPentaTitle'),
+          intro: t('servicesPage.vaccination.dogPentaDesc'),
+          content: t('servicesPage.vaccination.dogPenta'),
+        },
+        {
+          title: t('servicesPage.vaccination.dogBenefitsTitle'),
+          content: t('servicesPage.vaccination.dogBenefits'),
+        },
+        {
+          title: t('servicesPage.vaccination.rabiesTitle'),
+          content: t('servicesPage.vaccination.rabies'),
+        },
+        {
+          title: t('servicesPage.vaccination.dewormTitle'),
+          content: t('servicesPage.vaccination.deworm'),
+        },
       ],
     },
     {
@@ -129,20 +221,33 @@ export default function Services() {
       icon: Plane,
       title: t('servicesPage.travel.title'),
       description: t('servicesPage.travel.description'),
-      features: [
-        t('servicesPage.travel.feature1'),
-        t('servicesPage.travel.feature2'),
-        t('servicesPage.travel.feature3'),
+      subsections: [
+        {
+          title: t('servicesPage.travel.certificatesTitle'),
+          content: t('servicesPage.travel.certificates'),
+        },
+        {
+          title: t('servicesPage.travel.rabiesTitle'),
+          content: t('servicesPage.travel.rabies'),
+        },
+        {
+          title: t('servicesPage.travel.formsTitle'),
+          content: t('servicesPage.travel.forms'),
+        },
       ],
+      closing: t('servicesPage.travel.closing'),
     },
     {
       id: 8,
       icon: Home,
       title: t('servicesPage.boarding.title'),
       description: t('servicesPage.boarding.description'),
-      features: [
-        t('servicesPage.boarding.therapeutic'),
-        t('servicesPage.boarding.fungi'),
+      subsections: [
+        {
+          title: t('servicesPage.boarding.therapeuticTitle'),
+          intro: t('servicesPage.boarding.therapeuticDesc'),
+          content: t('servicesPage.boarding.therapeutic'),
+        },
       ],
     },
     {
@@ -151,10 +256,10 @@ export default function Services() {
       title: t('servicesPage.intensiveCare.title'),
       description: t('servicesPage.intensiveCare.description'),
       features: [
-        t('servicesPage.intensiveCare.feature1'),
-        t('servicesPage.intensiveCare.feature2'),
-        t('servicesPage.intensiveCare.feature3'),
-        t('servicesPage.intensiveCare.feature4'),
+        t('servicesPage.intensiveCare.organ'),
+        t('servicesPage.intensiveCare.metabolic'),
+        t('servicesPage.intensiveCare.trauma'),
+        t('servicesPage.intensiveCare.postSurgical'),
       ],
     },
     {
@@ -163,12 +268,23 @@ export default function Services() {
       title: t('servicesPage.emergency.title'),
       description: t('servicesPage.emergency.description'),
       features: [
-        t('servicesPage.emergency.feature1'),
-        t('servicesPage.emergency.feature2'),
-        t('servicesPage.emergency.feature3'),
-        t('servicesPage.emergency.feature4'),
+        t('servicesPage.emergency.trauma'),
+        t('servicesPage.emergency.breathing'),
+        t('servicesPage.emergency.bleeding'),
+        t('servicesPage.emergency.seizures'),
       ],
       emergency: true,
+      emergencyNumbers: [
+        {
+          label: t('servicesPage.emergency.numbers'),
+        },
+        {
+          label: t('servicesPage.emergency.sahafa'),
+        },
+        {
+          label: t('servicesPage.emergency.mather'),
+        },
+      ],
     },
     {
       id: 11,
@@ -176,9 +292,9 @@ export default function Services() {
       title: t('servicesPage.homeCare.title'),
       description: t('servicesPage.homeCare.description'),
       features: [
-        t('servicesPage.homeCare.feature1'),
-        t('servicesPage.homeCare.feature2'),
-        t('servicesPage.homeCare.feature3'),
+        t('servicesPage.homeCare.wellness'),
+        t('servicesPage.homeCare.vaccinations'),
+        t('servicesPage.homeCare.sample'),
       ],
     },
   ];
@@ -202,11 +318,22 @@ export default function Services() {
     };
     
     const hasLordIcon = lordIconConfig[service.id];
+    const hasSubsections = 'subsections' in service && service.subsections;
+    const hasFeatures = 'features' in service && service.features;
     
-    // Services that should always be expanded: Surgery (4), Dental (5), Intensive Care (9), Emergency (10)
-    const alwaysExpandedServices = [4, 5, 9, 10];
+    // Services that should always be expanded: Surgery (4), Dental (5), Vaccination (6), Intensive Care (9), Emergency (10)
+    const alwaysExpandedServices = [4, 5, 6, 9, 10];
     const shouldAlwaysExpand = alwaysExpandedServices.includes(service.id);
-    const hasLongContent = !shouldAlwaysExpand && (service.description.length > 150 || service.features.length > 3);
+    const hasLongContent = !shouldAlwaysExpand && (
+      service.description.length > 150 || 
+      (hasSubsections && service.subsections!.length > 2) ||
+      (hasFeatures && service.features!.length > 3)
+    );
+
+    // Helper function to split bullet points
+    const splitBulletPoints = (text: string) => {
+      return text.split('•').map(item => item.trim()).filter(item => item);
+    };
 
     return (
       <motion.div
@@ -249,28 +376,77 @@ export default function Services() {
               {service.description}
             </p>
 
-            <ul
-              className={`space-y-2 mb-4 flex-1 ${
-                language === 'ar' ? 'text-right' : 'text-left'
-              }`}
-            >
-              {(isExpanded || shouldAlwaysExpand ? service.features : service.features.slice(0, 2)).map((feature, idx) => (
-                <li
-                  key={idx}
-                  className={`text-sm text-foreground/70 flex items-start gap-2 ${
-                    language === 'ar' ? 'flex-row-reverse' : ''
-                  }`}
-                  data-testid={`feature-service-${service.id}-${idx}`}
-                >
-                  <span
-                    className={`inline-block w-1.5 h-1.5 rounded-full bg-[#18ac61] mt-2 flex-shrink-0 ${
-                      language === 'ar' ? 'mr-0 ml-2' : 'ml-0 mr-2'
+            {hasSubsections && (
+              <div className={`space-y-4 mb-4 flex-1 ${language === 'ar' ? 'text-right' : 'text-left'}`}>
+                {(isExpanded || shouldAlwaysExpand ? service.subsections! : service.subsections!.slice(0, 2)).map((subsection: any, idx: number) => (
+                  <div key={idx} className="space-y-2">
+                    <h4 className={`text-sm font-semibold text-[#18ac61] ${language === 'ar' ? 'text-right' : 'text-left'}`}>
+                      {subsection.title}
+                    </h4>
+                    {subsection.intro && (
+                      <p className={`text-sm text-foreground/70 ${language === 'ar' ? 'text-right' : 'text-left'}`}>
+                        {subsection.intro}
+                      </p>
+                    )}
+                    {subsection.content && (
+                      <ul className={`space-y-1.5 ${language === 'ar' ? 'text-right' : 'text-left'}`}>
+                        {splitBulletPoints(subsection.content).map((point: string, pointIdx: number) => (
+                          <li
+                            key={pointIdx}
+                            className={`text-sm text-foreground/70 flex items-start gap-2 ${
+                              language === 'ar' ? 'flex-row-reverse' : ''
+                            }`}
+                          >
+                            <span
+                              className={`inline-block w-1.5 h-1.5 rounded-full bg-[#18ac61] mt-2 flex-shrink-0 ${
+                                language === 'ar' ? 'mr-0 ml-2' : 'ml-0 mr-2'
+                              }`}
+                            />
+                            <span>{point}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                    {subsection.extra && (
+                      <p className={`text-sm text-foreground/70 italic mt-2 ${language === 'ar' ? 'text-right' : 'text-left'}`}>
+                        {subsection.extra}
+                      </p>
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {hasFeatures && (
+              <ul
+                className={`space-y-2 mb-4 flex-1 ${
+                  language === 'ar' ? 'text-right' : 'text-left'
+                }`}
+              >
+                {(isExpanded || shouldAlwaysExpand ? service.features! : service.features!.slice(0, 2)).map((feature, idx) => (
+                  <li
+                    key={idx}
+                    className={`text-sm text-foreground/70 flex items-start gap-2 ${
+                      language === 'ar' ? 'flex-row-reverse' : ''
                     }`}
-                  />
-                  <span>{feature}</span>
-                </li>
-              ))}
-            </ul>
+                    data-testid={`feature-service-${service.id}-${idx}`}
+                  >
+                    <span
+                      className={`inline-block w-1.5 h-1.5 rounded-full bg-[#18ac61] mt-2 flex-shrink-0 ${
+                        language === 'ar' ? 'mr-0 ml-2' : 'ml-0 mr-2'
+                      }`}
+                    />
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+
+            {'closing' in service && service.closing && (isExpanded || shouldAlwaysExpand) && (
+              <p className={`text-sm text-foreground/70 mb-4 ${language === 'ar' ? 'text-right' : 'text-left'}`}>
+                {service.closing}
+              </p>
+            )}
 
             {hasLongContent && (
               <Button
@@ -294,21 +470,17 @@ export default function Services() {
               </Button>
             )}
 
-            {service.emergency && (
+            {service.emergency && 'emergencyNumbers' in service && (
               <div
                 className={`mb-4 p-3 bg-[#e9c46a]/10 rounded-md ${
                   language === 'ar' ? 'text-right' : 'text-left'
                 }`}
               >
-                <p className="text-sm font-semibold text-[#264653] mb-2">
-                  {t('servicesPage.emergency.numbers')}
-                </p>
-                <p className="text-sm text-foreground/80">
-                  {t('servicesPage.emergency.sahafa')}
-                </p>
-                <p className="text-sm text-foreground/80">
-                  {t('servicesPage.emergency.mather')}
-                </p>
+                {service.emergencyNumbers!.map((item: any, idx: number) => (
+                  <p key={idx} className={`text-sm ${idx === 0 ? 'font-semibold text-[#264653] mb-2' : 'text-foreground/80'}`}>
+                    {item.label}
+                  </p>
+                ))}
               </div>
             )}
 
