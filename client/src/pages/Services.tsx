@@ -233,7 +233,6 @@ export default function Services() {
                   src={lordIconConfig[service.id]}
                   trigger="loop"
                   delay="1500"
-                  colors="primary:#18ac61,secondary:#264653"
                   style={{ width: '60px', height: '60px' }}
                 />
               )}
