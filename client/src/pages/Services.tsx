@@ -349,9 +349,9 @@ export default function Services() {
         >
           <CardHeader className="pb-3">
             <CardTitle
-              className={`text-[#18ac61] ${
+              className={`text-[#18ac61] text-left ${
                 hasLordIcon ? 'flex items-center gap-3' : ''
-              } ${language === 'ar' ? 'flex-row-reverse text-right' : 'text-left'}`}
+              } ${language === 'ar' ? 'flex-row-reverse' : ''}`}
               data-testid={`title-service-${service.id}`}
             >
               {hasLordIcon && (
@@ -362,11 +362,11 @@ export default function Services() {
                   style={{ width: '50px', height: '50px' }}
                 />
               )}
-              <span className={language === 'ar' ? 'text-right' : 'text-left'}>{service.title}</span>
+              <span>{service.title}</span>
             </CardTitle>
           </CardHeader>
           <CardContent className="flex flex-col flex-1 overflow-hidden">
-            <div className={`flex-1 overflow-y-auto ${language === 'ar' ? 'text-right' : 'text-left'}`}>
+            <div className="flex-1 overflow-y-auto text-left">
               <p
                 className={`text-foreground/80 mb-3 text-sm ${
                   !isExpanded && hasLongContent ? 'line-clamp-2' : ''
@@ -380,11 +380,11 @@ export default function Services() {
                 <div className="space-y-3 mb-3">
                   {(isExpanded || shouldAlwaysExpand ? service.subsections! : service.subsections!.slice(0, 1)).map((subsection: any, idx: number) => (
                     <div key={idx} className="space-y-1.5">
-                      <h4 className="text-xs font-semibold text-[#18ac61]">
+                      <h4 className="text-xs font-semibold text-[#18ac61] text-left">
                         {subsection.title}
                       </h4>
                       {subsection.intro && (
-                        <p className="text-xs text-foreground/70">
+                        <p className="text-xs text-foreground/70 text-left">
                           {subsection.intro}
                         </p>
                       )}
@@ -394,19 +394,19 @@ export default function Services() {
                             <li
                               key={pointIdx}
                               className={`text-xs text-foreground/70 flex items-start gap-1.5 ${
-                                language === 'ar' ? 'flex-row-reverse text-right' : 'text-left'
+                                language === 'ar' ? 'flex-row-reverse' : ''
                               }`}
                             >
                               <span
                                 className={`inline-block w-1 h-1 rounded-full bg-[#18ac61] mt-1.5 flex-shrink-0`}
                               />
-                              <span className={language === 'ar' ? 'text-right' : 'text-left'}>{point}</span>
+                              <span className="text-left">{point}</span>
                             </li>
                           ))}
                         </ul>
                       )}
                       {subsection.extra && (
-                        <p className="text-xs text-foreground/70 italic mt-1.5">
+                        <p className="text-xs text-foreground/70 italic mt-1.5 text-left">
                           {subsection.extra}
                         </p>
                       )}
@@ -421,25 +421,25 @@ export default function Services() {
                     <li
                       key={idx}
                       className={`text-xs text-foreground/70 flex items-start gap-1.5 ${
-                        language === 'ar' ? 'flex-row-reverse text-right' : 'text-left'
+                        language === 'ar' ? 'flex-row-reverse' : ''
                       }`}
                       data-testid={`feature-service-${service.id}-${idx}`}
                     >
                       <span className={`inline-block w-1 h-1 rounded-full bg-[#18ac61] mt-1.5 flex-shrink-0`} />
-                      <span className={language === 'ar' ? 'text-right' : 'text-left'}>{feature}</span>
+                      <span className="text-left">{feature}</span>
                     </li>
                   ))}
                 </ul>
               )}
 
               {'closing' in service && service.closing && (isExpanded || shouldAlwaysExpand) && (
-                <p className="text-xs text-foreground/70 mb-3">
+                <p className="text-xs text-foreground/70 mb-3 text-left">
                   {service.closing}
                 </p>
               )}
 
               {service.emergency && 'emergencyNumbers' in service && (
-                <div className="mb-3 p-2 bg-[#e9c46a]/10 rounded-md">
+                <div className="mb-3 p-2 bg-[#e9c46a]/10 rounded-md text-left">
                   {service.emergencyNumbers!.map((item: any, idx: number) => (
                     <p key={idx} className={`text-xs ${idx === 0 ? 'font-semibold text-[#264653] mb-1' : 'text-foreground/80'}`}>
                       {item.label}
