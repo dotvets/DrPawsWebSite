@@ -6,6 +6,7 @@ import { useState, useRef, useEffect } from 'react';
 import { Link } from 'wouter';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import AnimatedServicesBackground from '@/components/AnimatedServicesBackground';
 import {
   Stethoscope,
   Scissors,
@@ -328,6 +329,7 @@ export default function Services() {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <AnimatedServicesBackground />
       <Header />
 
       <main className="flex-1 relative z-10">
