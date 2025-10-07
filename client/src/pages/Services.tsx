@@ -354,7 +354,8 @@ export default function Services() {
                   src={lordIconConfig[service.id]}
                   trigger="loop"
                   delay="1500"
-                  style={{ width: '50px', height: '50px', flexShrink: 0 }}
+                  colors="primary:#18ac61"
+                  style={{ width: '60px', height: '60px', flexShrink: 0 }}
                 />
               )}
               <span className="flex-1">{service.title}</span>
