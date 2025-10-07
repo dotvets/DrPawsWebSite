@@ -370,7 +370,7 @@ export default function Services() {
           </motion.div>
         </section>
 
-        <section ref={servicesRef1} className="py-20 bg-background">
+        <section ref={servicesRef1} className="py-20">
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {services.slice(0, 3).map((service) => (
@@ -382,7 +382,7 @@ export default function Services() {
 
         <motion.section
           ref={imageRef1}
-          className="py-16 bg-card"
+          className="py-16"
         >
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -420,7 +420,7 @@ export default function Services() {
           </div>
         </motion.section>
 
-        <section ref={servicesRef2} className="py-20 bg-background">
+        <section ref={servicesRef2} className="py-20">
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {services.slice(3, 7).map((service) => (
@@ -432,7 +432,7 @@ export default function Services() {
 
         <motion.section
           ref={imageRef2}
-          className="py-16 bg-card"
+          className="py-16"
         >
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -471,7 +471,7 @@ export default function Services() {
           </div>
         </motion.section>
 
-        <section ref={servicesRef3} className="py-20 bg-background">
+        <section ref={servicesRef3} className="py-20">
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {services.slice(7, 10).map((service) => (
@@ -483,7 +483,7 @@ export default function Services() {
 
         <motion.section
           ref={homeCareRef}
-          className="py-16 bg-card"
+          className="py-16"
         >
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid md:grid-cols-3 gap-12 items-center">
