@@ -347,7 +347,6 @@ export default function Services() {
           <CardHeader className="pb-3">
             <CardTitle
               className="text-[#18ac61] text-left flex items-center gap-3"
-              style={{ flexDirection: language === 'ar' ? 'row-reverse' : 'row' }}
               data-testid={`title-service-${service.id}`}
             >
               {hasLordIcon && (
@@ -390,7 +389,6 @@ export default function Services() {
                             <li
                               key={pointIdx}
                               className="text-xs text-foreground/70 flex items-start gap-1.5"
-                              style={{ flexDirection: language === 'ar' ? 'row-reverse' : 'row' }}
                             >
                               <span
                                 className="inline-block w-1 h-1 rounded-full bg-[#18ac61] mt-1.5 flex-shrink-0"
@@ -416,7 +414,6 @@ export default function Services() {
                     <li
                       key={idx}
                       className="text-xs text-foreground/70 flex items-start gap-1.5"
-                      style={{ flexDirection: language === 'ar' ? 'row-reverse' : 'row' }}
                       data-testid={`feature-service-${service.id}-${idx}`}
                     >
                       <span className="inline-block w-1 h-1 rounded-full bg-[#18ac61] mt-1.5 flex-shrink-0" />
