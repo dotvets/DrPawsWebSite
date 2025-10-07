@@ -381,6 +381,18 @@
     flex-direction: column !important;
   }
 
+  /* Ensure flex items with icons reverse properly in RTL */
+  [dir="rtl"] .flex.items-center,
+  [dir="rtl"] .flex.items-start {
+    flex-direction: row-reverse !important;
+  }
+
+  /* Ensure list items with bullet points reverse properly in RTL */
+  [dir="rtl"] li.flex,
+  [dir="rtl"] ul .flex {
+    flex-direction: row-reverse !important;
+  }
+
   /* Phone shake animation */
   @keyframes phone-shake {
     0%, 100% { transform: rotate(0deg); }
