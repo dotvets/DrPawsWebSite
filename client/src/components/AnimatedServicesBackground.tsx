@@ -32,13 +32,19 @@ const PawPrint = ({ color, size, top, left, duration, delay }: {
       }}
     >
       <svg
-        viewBox="0 0 24 24"
+        viewBox="0 0 100 100"
         fill={color}
         width="100%"
         height="100%"
       >
-        <path d="M12 8c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm-6 4c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm12 0c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm-9 6c0-1.66 1.34-3 3-3s3 1.34 3 3H9zm-3 2c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm12 0c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/>
-        <ellipse cx="12" cy="20" rx="4" ry="2.5"/>
+        {/* Main pad */}
+        <ellipse cx="50" cy="65" rx="18" ry="22" />
+        {/* Top toe */}
+        <circle cx="50" cy="25" r="10" />
+        {/* Left toe */}
+        <circle cx="30" cy="40" r="9" />
+        {/* Right toe */}
+        <circle cx="70" cy="40" r="9" />
       </svg>
     </motion.div>
   );
@@ -75,12 +81,19 @@ const Bone = ({ color, size, top, left, duration, delay }: {
       }}
     >
       <svg
-        viewBox="0 0 24 24"
+        viewBox="0 0 120 120"
         fill={color}
         width="100%"
         height="100%"
       >
-        <path d="M17.5 4c-1.38 0-2.5 1.12-2.5 2.5 0 .69.28 1.31.73 1.76L8.27 15.73C7.82 15.28 7.19 15 6.5 15c-1.38 0-2.5 1.12-2.5 2.5S5.12 20 6.5 20s2.5-1.12 2.5-2.5c0-.69-.28-1.31-.73-1.76l7.46-7.47c.45.45 1.08.73 1.77.73 1.38 0 2.5-1.12 2.5-2.5S18.88 4 17.5 4zM6.5 18c-.28 0-.5-.22-.5-.5s.22-.5.5-.5.5.22.5.5-.22.5-.5.5zm11-9c-.28 0-.5-.22-.5-.5s.22-.5.5-.5.5.22.5.5-.22.5-.5.5z"/>
+        {/* Left end circles */}
+        <circle cx="25" cy="35" r="12" />
+        <circle cx="25" cy="55" r="12" />
+        {/* Right end circles */}
+        <circle cx="95" cy="35" r="12" />
+        <circle cx="95" cy="55" r="12" />
+        {/* Center bar connecting both ends */}
+        <rect x="35" y="38" width="50" height="14" rx="7" ry="7" />
       </svg>
     </motion.div>
   );
