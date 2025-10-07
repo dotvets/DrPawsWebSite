@@ -299,7 +299,7 @@ export default function Services() {
     },
   ];
 
-  const ServiceCard = ({ service }: { service: typeof services[0] }) => {
+  const ServiceCard = ({ service, language }: { service: typeof services[0]; language: string }) => {
     const Icon = service.icon;
     const isExpanded = expandedCards[service.id];
     
@@ -525,7 +525,7 @@ export default function Services() {
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {services.slice(0, 3).map((service) => (
-                <ServiceCard key={service.id} service={service} />
+                <ServiceCard key={service.id} service={service} language={language} />
               ))}
             </div>
           </div>
@@ -575,7 +575,7 @@ export default function Services() {
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {services.slice(3, 7).map((service) => (
-                <ServiceCard key={service.id} service={service} />
+                <ServiceCard key={service.id} service={service} language={language} />
               ))}
             </div>
           </div>
@@ -626,7 +626,7 @@ export default function Services() {
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {services.slice(7, 10).map((service) => (
-                <ServiceCard key={service.id} service={service} />
+                <ServiceCard key={service.id} service={service} language={language} />
               ))}
             </div>
           </div>
@@ -658,7 +658,7 @@ export default function Services() {
                 animate={homeCareInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                 transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
               >
-                <ServiceCard service={services[10]} />
+                <ServiceCard service={services[10]} language={language} />
               </motion.div>
 
               <motion.div
