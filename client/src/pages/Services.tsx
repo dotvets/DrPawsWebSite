@@ -340,19 +340,18 @@ export default function Services() {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: 'easeOut' }}
-        className="h-full"
       >
         <Card
-          className={`h-full flex flex-col hover-elevate ${
+          className={`flex flex-col hover-elevate h-[520px] ${
             service.emergency ? 'border-[#e9c46a]' : ''
           }`}
           data-testid={`card-service-${service.id}`}
         >
-          <CardHeader>
+          <CardHeader className="pb-3">
             <CardTitle
-              className={`text-[#18ac61] ${language === 'ar' ? 'text-right' : 'text-left'} ${
+              className={`text-[#18ac61] ${
                 hasLordIcon ? 'flex items-center gap-3' : ''
-              } ${language === 'ar' && hasLordIcon ? 'flex-row-reverse' : ''}`}
+              } ${language === 'ar' ? 'flex-row-reverse text-right' : 'text-left'}`}
               data-testid={`title-service-${service.id}`}
             >
               {hasLordIcon && (
@@ -360,100 +359,102 @@ export default function Services() {
                   src={lordIconConfig[service.id]}
                   trigger="loop"
                   delay="1500"
-                  style={{ width: '60px', height: '60px' }}
+                  style={{ width: '50px', height: '50px' }}
                 />
               )}
-              {service.title}
+              <span className={language === 'ar' ? 'text-right' : 'text-left'}>{service.title}</span>
             </CardTitle>
           </CardHeader>
-          <CardContent className="flex flex-col flex-1">
-            <p
-              className={`text-foreground/80 mb-4 ${
-                language === 'ar' ? 'text-right' : 'text-left'
-              } ${!isExpanded && hasLongContent ? 'line-clamp-2' : ''}`}
-              data-testid={`description-service-${service.id}`}
-            >
-              {service.description}
-            </p>
-
-            {hasSubsections && (
-              <div className={`space-y-4 mb-4 flex-1 ${language === 'ar' ? 'text-right' : 'text-left'}`}>
-                {(isExpanded || shouldAlwaysExpand ? service.subsections! : service.subsections!.slice(0, 2)).map((subsection: any, idx: number) => (
-                  <div key={idx} className="space-y-2">
-                    <h4 className={`text-sm font-semibold text-[#18ac61] ${language === 'ar' ? 'text-right' : 'text-left'}`}>
-                      {subsection.title}
-                    </h4>
-                    {subsection.intro && (
-                      <p className={`text-sm text-foreground/70 ${language === 'ar' ? 'text-right' : 'text-left'}`}>
-                        {subsection.intro}
-                      </p>
-                    )}
-                    {subsection.content && (
-                      <ul className={`space-y-1.5 ${language === 'ar' ? 'text-right' : 'text-left'}`}>
-                        {splitBulletPoints(subsection.content).map((point: string, pointIdx: number) => (
-                          <li
-                            key={pointIdx}
-                            className={`text-sm text-foreground/70 flex items-start gap-2 ${
-                              language === 'ar' ? 'flex-row-reverse' : ''
-                            }`}
-                          >
-                            <span
-                              className={`inline-block w-1.5 h-1.5 rounded-full bg-[#18ac61] mt-2 flex-shrink-0 ${
-                                language === 'ar' ? 'mr-0 ml-2' : 'ml-0 mr-2'
-                              }`}
-                            />
-                            <span>{point}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                    {subsection.extra && (
-                      <p className={`text-sm text-foreground/70 italic mt-2 ${language === 'ar' ? 'text-right' : 'text-left'}`}>
-                        {subsection.extra}
-                      </p>
-                    )}
-                  </div>
-                ))}
-              </div>
-            )}
-
-            {hasFeatures && (
-              <ul
-                className={`space-y-2 mb-4 flex-1 ${
-                  language === 'ar' ? 'text-right' : 'text-left'
+          <CardContent className="flex flex-col flex-1 overflow-hidden">
+            <div className={`flex-1 overflow-y-auto ${language === 'ar' ? 'text-right' : 'text-left'}`}>
+              <p
+                className={`text-foreground/80 mb-3 text-sm ${
+                  !isExpanded && hasLongContent ? 'line-clamp-2' : ''
                 }`}
+                data-testid={`description-service-${service.id}`}
               >
-                {(isExpanded || shouldAlwaysExpand ? service.features! : service.features!.slice(0, 2)).map((feature, idx) => (
-                  <li
-                    key={idx}
-                    className={`text-sm text-foreground/70 flex items-start gap-2 ${
-                      language === 'ar' ? 'flex-row-reverse' : ''
-                    }`}
-                    data-testid={`feature-service-${service.id}-${idx}`}
-                  >
-                    <span
-                      className={`inline-block w-1.5 h-1.5 rounded-full bg-[#18ac61] mt-2 flex-shrink-0 ${
-                        language === 'ar' ? 'mr-0 ml-2' : 'ml-0 mr-2'
-                      }`}
-                    />
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
-            )}
-
-            {'closing' in service && service.closing && (isExpanded || shouldAlwaysExpand) && (
-              <p className={`text-sm text-foreground/70 mb-4 ${language === 'ar' ? 'text-right' : 'text-left'}`}>
-                {service.closing}
+                {service.description}
               </p>
-            )}
+
+              {hasSubsections && (
+                <div className="space-y-3 mb-3">
+                  {(isExpanded || shouldAlwaysExpand ? service.subsections! : service.subsections!.slice(0, 1)).map((subsection: any, idx: number) => (
+                    <div key={idx} className="space-y-1.5">
+                      <h4 className="text-xs font-semibold text-[#18ac61]">
+                        {subsection.title}
+                      </h4>
+                      {subsection.intro && (
+                        <p className="text-xs text-foreground/70">
+                          {subsection.intro}
+                        </p>
+                      )}
+                      {subsection.content && (
+                        <ul className="space-y-1">
+                          {splitBulletPoints(subsection.content).slice(0, isExpanded || shouldAlwaysExpand ? undefined : 2).map((point: string, pointIdx: number) => (
+                            <li
+                              key={pointIdx}
+                              className={`text-xs text-foreground/70 flex items-start gap-1.5 ${
+                                language === 'ar' ? 'flex-row-reverse text-right' : 'text-left'
+                              }`}
+                            >
+                              <span
+                                className={`inline-block w-1 h-1 rounded-full bg-[#18ac61] mt-1.5 flex-shrink-0`}
+                              />
+                              <span className={language === 'ar' ? 'text-right' : 'text-left'}>{point}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                      {subsection.extra && (
+                        <p className="text-xs text-foreground/70 italic mt-1.5">
+                          {subsection.extra}
+                        </p>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {hasFeatures && (
+                <ul className="space-y-1.5 mb-3">
+                  {(isExpanded || shouldAlwaysExpand ? service.features! : service.features!.slice(0, 3)).map((feature, idx) => (
+                    <li
+                      key={idx}
+                      className={`text-xs text-foreground/70 flex items-start gap-1.5 ${
+                        language === 'ar' ? 'flex-row-reverse text-right' : 'text-left'
+                      }`}
+                      data-testid={`feature-service-${service.id}-${idx}`}
+                    >
+                      <span className={`inline-block w-1 h-1 rounded-full bg-[#18ac61] mt-1.5 flex-shrink-0`} />
+                      <span className={language === 'ar' ? 'text-right' : 'text-left'}>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+
+              {'closing' in service && service.closing && (isExpanded || shouldAlwaysExpand) && (
+                <p className="text-xs text-foreground/70 mb-3">
+                  {service.closing}
+                </p>
+              )}
+
+              {service.emergency && 'emergencyNumbers' in service && (
+                <div className="mb-3 p-2 bg-[#e9c46a]/10 rounded-md">
+                  {service.emergencyNumbers!.map((item: any, idx: number) => (
+                    <p key={idx} className={`text-xs ${idx === 0 ? 'font-semibold text-[#264653] mb-1' : 'text-foreground/80'}`}>
+                      {item.label}
+                    </p>
+                  ))}
+                </div>
+              )}
+            </div>
 
             {hasLongContent && (
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={() => toggleExpand(service.id)}
-                className={`mb-4 ${language === 'ar' ? 'flex-row-reverse' : ''}`}
+                className={`mb-2 mt-2 ${language === 'ar' ? 'flex-row-reverse' : ''}`}
                 data-testid={`button-expand-${service.id}`}
               >
                 {isExpanded ? (
@@ -470,23 +471,10 @@ export default function Services() {
               </Button>
             )}
 
-            {service.emergency && 'emergencyNumbers' in service && (
-              <div
-                className={`mb-4 p-3 bg-[#e9c46a]/10 rounded-md ${
-                  language === 'ar' ? 'text-right' : 'text-left'
-                }`}
-              >
-                {service.emergencyNumbers!.map((item: any, idx: number) => (
-                  <p key={idx} className={`text-sm ${idx === 0 ? 'font-semibold text-[#264653] mb-2' : 'text-foreground/80'}`}>
-                    {item.label}
-                  </p>
-                ))}
-              </div>
-            )}
-
             <Link href="/#contact">
               <Button
-                className="w-full"
+                className="w-full mt-auto"
+                size="sm"
                 data-testid={`button-book-${service.id}`}
               >
                 {t('servicesPage.bookAppointment')}
