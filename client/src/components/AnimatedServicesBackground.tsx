@@ -37,14 +37,14 @@ const PawPrint = ({ color, size, top, left, duration, delay }: {
         width="100%"
         height="100%"
       >
-        {/* Main pad - larger and rounder */}
-        <ellipse cx="50" cy="70" rx="22" ry="25" />
-        {/* Top toe - bigger and rounder */}
-        <circle cx="50" cy="20" r="12" />
-        {/* Left toe */}
-        <circle cx="28" cy="38" r="11" />
-        {/* Right toe */}
-        <circle cx="72" cy="38" r="11" />
+        {/* Main pad - large oval at bottom */}
+        <ellipse cx="50" cy="75" rx="20" ry="22" />
+        {/* Five toe marks in an arc */}
+        <circle cx="50" cy="25" r="10" />
+        <circle cx="32" cy="35" r="9" />
+        <circle cx="68" cy="35" r="9" />
+        <circle cx="20" cy="50" r="8" />
+        <circle cx="80" cy="50" r="8" />
       </svg>
     </motion.div>
   );
@@ -81,19 +81,19 @@ const Bone = ({ color, size, top, left, duration, delay }: {
       }}
     >
       <svg
-        viewBox="0 0 120 60"
+        viewBox="0 0 100 50"
         fill={color}
         width="100%"
         height="100%"
       >
-        {/* Left end circles - closer together */}
-        <circle cx="15" cy="20" r="10" />
-        <circle cx="15" cy="40" r="10" />
-        {/* Right end circles - closer together */}
-        <circle cx="105" cy="20" r="10" />
-        <circle cx="105" cy="40" r="10" />
-        {/* Center bar connecting both ends - thicker */}
-        <rect x="20" y="23" width="80" height="14" rx="7" ry="7" />
+        {/* Left bone end - two circles */}
+        <circle cx="12" cy="18" r="8" />
+        <circle cx="12" cy="32" r="8" />
+        {/* Right bone end - two circles */}
+        <circle cx="88" cy="18" r="8" />
+        <circle cx="88" cy="32" r="8" />
+        {/* Center connecting bar */}
+        <rect x="16" y="20" width="68" height="10" rx="5" ry="5" />
       </svg>
     </motion.div>
   );
