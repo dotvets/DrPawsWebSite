@@ -26,10 +26,10 @@ export default function HeartbeatDivider() {
                 repeatCount="indefinite"
               />
               <path
-                d="M0,50 L60,50 L65,45 L70,50 L75,50 L80,50 L85,30 L90,70 L95,50 L100,50 L105,55 L110,50 L115,50 L400,50"
+                d="M0,50 L50,50 L60,48 L70,50 L80,45 L95,85 L110,20 L125,50 L250,50 L260,48 L270,50 L280,42 L295,88 L310,18 L325,50 L400,50"
                 fill="none"
                 stroke="#18ac61"
-                strokeWidth="2.5"
+                strokeWidth="3"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
