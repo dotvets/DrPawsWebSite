@@ -1,10 +1,10 @@
 export default function HeartbeatDivider() {
   return (
     <div className="my-10 w-full overflow-hidden">
-      <div className="relative h-24 flex items-center justify-center">
+      <div className="relative h-20 flex items-center justify-center">
         <svg
           className="w-full h-full"
-          viewBox="0 0 1200 120"
+          viewBox="0 0 1200 100"
           preserveAspectRatio="xMidYMid slice"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -14,7 +14,7 @@ export default function HeartbeatDivider() {
               x="0"
               y="0"
               width="400"
-              height="120"
+              height="100"
               patternUnits="userSpaceOnUse"
             >
               <animateTransform
@@ -35,14 +35,15 @@ export default function HeartbeatDivider() {
               />
               <text
                 x="97"
-                y="95"
+                y="62"
                 fill="black"
                 fillOpacity="0.8"
-                fontSize="16"
+                fontSize="12"
                 fontFamily="Poppins, sans-serif"
                 fontWeight="300"
-                letterSpacing="1"
+                letterSpacing="0.5"
                 textAnchor="middle"
+                className="ecg-text-svg"
               >
                 all about we care
               </text>
@@ -53,11 +54,25 @@ export default function HeartbeatDivider() {
             x="-400"
             y="0"
             width="2000"
-            height="120"
+            height="100"
             fill="url(#ecg-pattern)"
           />
         </svg>
       </div>
+      
+      <style>{`
+        @media (min-width: 768px) {
+          .ecg-text-svg {
+            font-size: 14px;
+          }
+        }
+        
+        @media (min-width: 1024px) {
+          .ecg-text-svg {
+            font-size: 16px;
+          }
+        }
+      `}</style>
     </div>
   );
 }
