@@ -9,7 +9,7 @@ import { Link } from 'wouter';
 import dogImage from '@assets/Summer Care Tips for Dogs_1759926617301.png';
 import catImage from '@assets/Why Regular Check-ups Matter for Cats_1759926617300.png';
 import birdImage from '@assets/Caring for Your Pet Birds at Home_1759926617299.png';
-import vaccineImage from '@assets/Importance of Vaccinations for Pets_1759926617296.png';
+import vaccineImage from '@assets/Importance of Vaccinations for Pets (2)_1759928686852.png';
 import nutritionImage from '@assets/stock_images/dog_cat_eating_natur_d19edd3f.jpg';
 import blogHeroImage from '@assets/Dr Paws Blog_1759927269597.png';
 
