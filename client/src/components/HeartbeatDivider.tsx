@@ -1,11 +1,11 @@
 export default function HeartbeatDivider() {
   return (
     <div className="my-10 w-full overflow-hidden">
-      <div className="relative h-24 flex items-center justify-center">
+      <div className="relative h-28 md:h-32 flex items-center justify-center">
         <svg
           className="w-full h-full"
-          viewBox="0 0 1200 120"
-          preserveAspectRatio="xMidYMid slice"
+          viewBox="0 0 1200 140"
+          preserveAspectRatio="xMidYMid meet"
           xmlns="http://www.w3.org/2000/svg"
         >
           <defs>
@@ -14,7 +14,7 @@ export default function HeartbeatDivider() {
               x="0"
               y="0"
               width="400"
-              height="120"
+              height="140"
               patternUnits="userSpaceOnUse"
             >
               <animateTransform
@@ -35,7 +35,7 @@ export default function HeartbeatDivider() {
               />
               <text
                 x="97"
-                y="95"
+                y="100"
                 fill="black"
                 fillOpacity="0.8"
                 fontSize="16"
@@ -53,7 +53,7 @@ export default function HeartbeatDivider() {
             x="-400"
             y="0"
             width="2000"
-            height="120"
+            height="140"
             fill="url(#ecg-pattern)"
           />
         </svg>
