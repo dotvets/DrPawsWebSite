@@ -11,6 +11,7 @@ import catImage from '@assets/Why Regular Check-ups Matter for Cats_175992661730
 import birdImage from '@assets/Caring for Your Pet Birds at Home_1759926617299.png';
 import vaccineImage from '@assets/Importance of Vaccinations for Pets_1759926617296.png';
 import nutritionImage from '@assets/stock_images/dog_cat_eating_natur_d19edd3f.jpg';
+import blogHeroImage from '@assets/Dr Paws Blog_1759927269597.png';
 
 interface BlogPost {
   id: number;
@@ -215,9 +216,11 @@ export default function Blog() {
         {/* Hero Section */}
         <section
           ref={heroRef}
-          className="relative py-20 bg-gradient-to-br from-[#18ac61]/5 to-[#e9c46a]/5"
+          className="relative py-32 bg-cover bg-center"
+          style={{ backgroundImage: `url(${blogHeroImage})` }}
         >
-          <div className="max-w-7xl mx-auto px-6">
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50" />
+          <div className="max-w-7xl mx-auto px-6 relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={heroInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
@@ -226,13 +229,13 @@ export default function Blog() {
               dir={language === 'ar' ? 'rtl' : 'ltr'}
             >
               <h1
-                className="font-display text-5xl md:text-6xl font-bold text-[#264653] mb-6"
+                className="font-display text-5xl md:text-6xl font-bold text-white mb-6"
                 data-testid="text-blog-header"
               >
                 {language === 'ar' ? 'مدونة د. باوز' : 'Dr. Paws Blog'}
               </h1>
               <p
-                className="text-xl md:text-2xl text-foreground/80 max-w-3xl mx-auto"
+                className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto"
                 data-testid="text-blog-subheader"
               >
                 {language === 'ar' 
