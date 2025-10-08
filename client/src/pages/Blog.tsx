@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { useRef, useEffect } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { Calendar, User } from 'lucide-react';
+import { Calendar, User, Dog, Cat, Bird, Syringe, UtensilsCrossed, type LucideIcon } from 'lucide-react';
 import { Link } from 'wouter';
 
 interface BlogPost {
@@ -14,7 +14,7 @@ interface BlogPost {
   titleAr: string;
   contentEn: string;
   contentAr: string;
-  emoji: string;
+  icon: LucideIcon;
   date: string;
   author: string;
   category: string;
@@ -41,7 +41,7 @@ export default function Blog() {
       titleAr: "نصائح العناية الصيفية للكلاب",
       contentEn: "Hot Saudi summers can be tough for dogs! Make sure your furry friend stays cool by keeping them hydrated, walking during early mornings, and avoiding hot pavements. Regular grooming helps reduce body heat and keeps them comfortable. Visit Dr. Paws for a summer health check and professional grooming.",
       contentAr: "الصيف في السعودية قد يكون صعبًا على الكلاب! احرص على بقاء كلبك رطبًا، ونزهه في الصباح الباكر وتجنب الطرق الساخنة. العناية الدورية بالشعر تساعد على تقليل حرارة الجسم وجعل كلبك مرتاحًا. قم بزيارة عيادات د. باوز لفحص صيفي شامل وخدمة تجميل احترافية.",
-      emoji: "🐕",
+      icon: Dog,
       date: "2025-01-15",
       author: "Dr. Paws Team",
       category: "Pet Care",
@@ -53,7 +53,7 @@ export default function Blog() {
       titleAr: "أهمية الفحوصات الدورية للقطط",
       contentEn: "Cats often hide signs of illness. Regular veterinary check-ups can detect problems early, keeping your cat healthy and happy. Dr. Paws offers gentle, stress-free examinations to ensure your feline friend's well-being.",
       contentAr: "القطط غالبًا ما تُخفي علامات المرض، لذلك الفحص البيطري الدوري يساعد في اكتشاف أي مشكلة مبكرًا لضمان صحتها وسعادتها. في عيادات د. باوز، نقدم فحوصات لطيفة وخالية من التوتر لحيوانك الأليف.",
-      emoji: "🐱",
+      icon: Cat,
       date: "2025-01-10",
       author: "Dr. Paws Team",
       category: "Health",
@@ -65,7 +65,7 @@ export default function Blog() {
       titleAr: "رعاية طيورك الأليفة في المنزل",
       contentEn: "Birds need special care — clean cages, fresh food, and daily interaction. Watch for changes in feathers or appetite, as they can indicate illness. Dr. Paws provides expert avian care and health consultations for all bird species.",
       contentAr: "الطيور تحتاج إلى عناية خاصة — نظّف القفص بانتظام، وقدّم طعامًا طازجًا وتفاعل معها يوميًا. راقب أي تغيّر في الريش أو الشهية لأنها قد تدل على مرض. يقدم د. باوز رعاية متخصصة واستشارات صحية لجميع أنواع الطيور.",
-      emoji: "🐦",
+      icon: Bird,
       date: "2025-01-05",
       author: "Dr. Paws Team",
       category: "Pet Care",
@@ -77,7 +77,7 @@ export default function Blog() {
       titleAr: "أهمية التطعيمات للحيوانات الأليفة",
       contentEn: "Vaccines protect your pet from dangerous diseases like rabies and parvovirus. Keeping vaccinations up to date ensures long-term safety. Schedule your pet's vaccination today at Dr. Paws and keep them protected year-round.",
       contentAr: "اللقاحات تحمي حيوانك الأليف من الأمراض الخطيرة مثل السعار والبارفو. الالتزام بجدول التطعيمات يحافظ على صحته على المدى الطويل. احجز موعد التطعيم اليوم في عيادات د. باوز لضمان حمايته طوال العام.",
-      emoji: "💉",
+      icon: Syringe,
       date: "2024-12-28",
       author: "Dr. Paws Team",
       category: "Health",
@@ -89,7 +89,7 @@ export default function Blog() {
       titleAr: "نصائح التغذية الصحية للقطط والكلاب والطيور",
       contentEn: "A balanced diet supports immunity, energy, and mood. Choose vet-approved food suitable for your pet's species, age, and activity level. Dr. Paws nutrition experts can guide you to the perfect feeding plan.",
       contentAr: "النظام الغذائي المتوازن يعزز المناعة والطاقة والمزاج العام. اختر طعامًا معتمدًا من الطبيب البيطري ومناسبًا لنوع الحيوان وعمره ونشاطه. يمكن لخبراء التغذية في د. باوز مساعدتك في إعداد النظام الغذائي المثالي.",
-      emoji: "🍽️",
+      icon: UtensilsCrossed,
       date: "2024-12-20",
       author: "Dr. Paws Team",
       category: "Nutrition",
@@ -101,6 +101,7 @@ export default function Blog() {
     const title = language === 'ar' ? post.titleAr : post.titleEn;
     const content = language === 'ar' ? post.contentAr : post.contentEn;
     const category = language === 'ar' ? post.categoryAr : post.category;
+    const Icon = post.icon;
 
     return (
       <motion.div
@@ -114,7 +115,9 @@ export default function Blog() {
         >
           <CardHeader className="space-y-4">
             <div className="flex items-center justify-between gap-4 flex-wrap">
-              <span className="text-4xl" data-testid={`emoji-${post.id}`}>{post.emoji}</span>
+              <div className="w-12 h-12 rounded-lg bg-[#18ac61]/10 flex items-center justify-center">
+                <Icon className="w-6 h-6 text-[#18ac61]" data-testid={`icon-${post.id}`} />
+              </div>
               <span 
                 className="px-3 py-1 rounded-full text-sm font-medium bg-[#18ac61]/10 text-[#18ac61]"
                 data-testid={`category-${post.id}`}
@@ -235,7 +238,7 @@ export default function Blog() {
             <Link href="/#contact">
               <Button 
                 size="lg"
-                className="bg-[#18ac61] hover:bg-[#18ac61]/90 text-white px-8 py-6 text-lg"
+                className="bg-[#18ac61] text-white"
                 data-testid="button-contact-cta"
               >
                 {language === 'ar' ? 'تواصل معنا' : 'Contact Us'}
