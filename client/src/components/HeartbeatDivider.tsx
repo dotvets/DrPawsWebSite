@@ -46,7 +46,7 @@ export default function HeartbeatDivider() {
         </svg>
         
         <div className="relative z-10 ecg-text-container">
-          <p className="ecg-text text-2xl font-semibold text-black">
+          <p className="ecg-text text-2xl font-light tracking-wide text-black/80">
             all about we care
           </p>
         </div>
@@ -54,7 +54,7 @@ export default function HeartbeatDivider() {
       
       <style>{`
         .ecg-text-container {
-          animation: ecg-text-scroll 7s linear infinite;
+          animation: ecg-text-scroll 12s ease-in-out infinite;
         }
         
         @keyframes ecg-text-scroll {
@@ -68,6 +68,7 @@ export default function HeartbeatDivider() {
         
         .ecg-text {
           white-space: nowrap;
+          font-family: 'Poppins', sans-serif;
         }
       `}</style>
     </div>
