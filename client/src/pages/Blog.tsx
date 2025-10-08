@@ -1,12 +1,16 @@
 import { motion, useInView } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useRef, useEffect } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Calendar, User, Dog, Cat, Bird, Syringe, UtensilsCrossed, type LucideIcon } from 'lucide-react';
 import { Link } from 'wouter';
+import dogImage from '@assets/stock_images/happy_dog_in_summer__34840402.jpg';
+import catImage from '@assets/stock_images/cat_at_veterinary_cl_2d6fa36d.jpg';
+import birdImage from '@assets/stock_images/colorful_pet_bird_in_005b8ff4.jpg';
+import vaccineImage from '@assets/stock_images/veterinarian_giving__8106b6b1.jpg';
+import nutritionImage from '@assets/stock_images/pet_food_bowl_health_877112fb.jpg';
 
 interface BlogPost {
   id: number;
@@ -15,6 +19,7 @@ interface BlogPost {
   contentEn: string;
   contentAr: string;
   icon: LucideIcon;
+  image: string;
   date: string;
   author: string;
   category: string;
@@ -42,6 +47,7 @@ export default function Blog() {
       contentEn: "Hot Saudi summers can be tough for dogs! Make sure your furry friend stays cool by keeping them hydrated, walking during early mornings, and avoiding hot pavements. Regular grooming helps reduce body heat and keeps them comfortable. Visit Dr. Paws for a summer health check and professional grooming.",
       contentAr: "الصيف في السعودية قد يكون صعبًا على الكلاب! احرص على بقاء كلبك رطبًا، ونزهه في الصباح الباكر وتجنب الطرق الساخنة. العناية الدورية بالشعر تساعد على تقليل حرارة الجسم وجعل كلبك مرتاحًا. قم بزيارة عيادات د. باوز لفحص صيفي شامل وخدمة تجميل احترافية.",
       icon: Dog,
+      image: dogImage,
       date: "2025-01-15",
       author: "Dr. Paws Team",
       category: "Pet Care",
@@ -54,6 +60,7 @@ export default function Blog() {
       contentEn: "Cats often hide signs of illness. Regular veterinary check-ups can detect problems early, keeping your cat healthy and happy. Dr. Paws offers gentle, stress-free examinations to ensure your feline friend's well-being.",
       contentAr: "القطط غالبًا ما تُخفي علامات المرض، لذلك الفحص البيطري الدوري يساعد في اكتشاف أي مشكلة مبكرًا لضمان صحتها وسعادتها. في عيادات د. باوز، نقدم فحوصات لطيفة وخالية من التوتر لحيوانك الأليف.",
       icon: Cat,
+      image: catImage,
       date: "2025-01-10",
       author: "Dr. Paws Team",
       category: "Health",
@@ -66,6 +73,7 @@ export default function Blog() {
       contentEn: "Birds need special care — clean cages, fresh food, and daily interaction. Watch for changes in feathers or appetite, as they can indicate illness. Dr. Paws provides expert avian care and health consultations for all bird species.",
       contentAr: "الطيور تحتاج إلى عناية خاصة — نظّف القفص بانتظام، وقدّم طعامًا طازجًا وتفاعل معها يوميًا. راقب أي تغيّر في الريش أو الشهية لأنها قد تدل على مرض. يقدم د. باوز رعاية متخصصة واستشارات صحية لجميع أنواع الطيور.",
       icon: Bird,
+      image: birdImage,
       date: "2025-01-05",
       author: "Dr. Paws Team",
       category: "Pet Care",
@@ -78,6 +86,7 @@ export default function Blog() {
       contentEn: "Vaccines protect your pet from dangerous diseases like rabies and parvovirus. Keeping vaccinations up to date ensures long-term safety. Schedule your pet's vaccination today at Dr. Paws and keep them protected year-round.",
       contentAr: "اللقاحات تحمي حيوانك الأليف من الأمراض الخطيرة مثل السعار والبارفو. الالتزام بجدول التطعيمات يحافظ على صحته على المدى الطويل. احجز موعد التطعيم اليوم في عيادات د. باوز لضمان حمايته طوال العام.",
       icon: Syringe,
+      image: vaccineImage,
       date: "2024-12-28",
       author: "Dr. Paws Team",
       category: "Health",
@@ -90,6 +99,7 @@ export default function Blog() {
       contentEn: "A balanced diet supports immunity, energy, and mood. Choose vet-approved food suitable for your pet's species, age, and activity level. Dr. Paws nutrition experts can guide you to the perfect feeding plan.",
       contentAr: "النظام الغذائي المتوازن يعزز المناعة والطاقة والمزاج العام. اختر طعامًا معتمدًا من الطبيب البيطري ومناسبًا لنوع الحيوان وعمره ونشاطه. يمكن لخبراء التغذية في د. باوز مساعدتك في إعداد النظام الغذائي المثالي.",
       icon: UtensilsCrossed,
+      image: nutritionImage,
       date: "2024-12-20",
       author: "Dr. Paws Team",
       category: "Nutrition",
@@ -97,42 +107,62 @@ export default function Blog() {
     }
   ];
 
-  const BlogCard = ({ post, index }: { post: BlogPost; index: number }) => {
+  const BlogPost = ({ post, index }: { post: BlogPost; index: number }) => {
     const title = language === 'ar' ? post.titleAr : post.titleEn;
     const content = language === 'ar' ? post.contentAr : post.contentEn;
     const category = language === 'ar' ? post.categoryAr : post.category;
     const Icon = post.icon;
+    const isEven = index % 2 === 0;
+    const imageOnLeft = language === 'ar' ? !isEven : isEven;
 
     return (
-      <motion.div
+      <motion.article
         initial={{ opacity: 0, y: 30 }}
         animate={postsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-        transition={{ duration: 0.6, delay: index * 0.1, ease: 'easeOut' }}
+        transition={{ duration: 0.6, delay: index * 0.15, ease: 'easeOut' }}
+        className="mb-24 last:mb-0"
+        dir={language === 'ar' ? 'rtl' : 'ltr'}
       >
-        <Card 
-          className="h-full flex flex-col hover-elevate transition-all duration-300"
-          dir={language === 'ar' ? 'rtl' : 'ltr'}
-        >
-          <CardHeader className="space-y-4">
-            <div className="flex items-center justify-between gap-4 flex-wrap">
-              <div className="w-12 h-12 rounded-lg bg-[#18ac61]/10 flex items-center justify-center">
-                <Icon className="w-6 h-6 text-[#18ac61]" data-testid={`icon-${post.id}`} />
+        <div className={`flex flex-col ${imageOnLeft ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 lg:gap-12 items-center`}>
+          {/* Image */}
+          <div className="w-full lg:w-1/2">
+            <div className="relative overflow-hidden rounded-md group">
+              <img 
+                src={post.image} 
+                alt={title}
+                className="w-full h-[400px] object-cover transition-transform duration-500 group-hover:scale-105"
+                data-testid={`img-post-${post.id}`}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            </div>
+          </div>
+
+          {/* Content */}
+          <div className="w-full lg:w-1/2 space-y-6">
+            {/* Icon and Category */}
+            <div className="flex items-center gap-4 flex-wrap">
+              <div className="w-14 h-14 rounded-md bg-[#18ac61]/10 flex items-center justify-center">
+                <Icon className="w-7 h-7 text-[#18ac61]" data-testid={`icon-${post.id}`} />
               </div>
               <span 
-                className="px-3 py-1 rounded-full text-sm font-medium bg-[#18ac61]/10 text-[#18ac61]"
+                className="px-4 py-1.5 rounded-full text-sm font-medium bg-[#18ac61]/10 text-[#18ac61]"
                 data-testid={`category-${post.id}`}
               >
                 {category}
               </span>
             </div>
-            <CardTitle 
-              className="text-2xl font-display text-[#264653]"
+
+            {/* Title */}
+            <h2 
+              className="font-display text-3xl md:text-4xl font-bold text-[#264653]"
               data-testid={`title-${post.id}`}
             >
               {title}
-            </CardTitle>
-            <div className={`flex items-center gap-4 text-sm text-muted-foreground flex-wrap ${language === 'ar' ? 'flex-row-reverse' : ''}`}>
-              <div className={`flex items-center gap-1 ${language === 'ar' ? 'flex-row-reverse' : ''}`}>
+            </h2>
+
+            {/* Meta */}
+            <div className={`flex items-center gap-6 text-sm text-muted-foreground flex-wrap ${language === 'ar' ? 'flex-row-reverse' : ''}`}>
+              <div className={`flex items-center gap-2 ${language === 'ar' ? 'flex-row-reverse' : ''}`}>
                 <Calendar className="w-4 h-4" />
                 <span data-testid={`date-${post.id}`}>
                   {new Date(post.date).toLocaleDateString(language === 'ar' ? 'ar-SA' : 'en-US', {
@@ -142,30 +172,38 @@ export default function Blog() {
                   })}
                 </span>
               </div>
-              <div className={`flex items-center gap-1 ${language === 'ar' ? 'flex-row-reverse' : ''}`}>
+              <div className={`flex items-center gap-2 ${language === 'ar' ? 'flex-row-reverse' : ''}`}>
                 <User className="w-4 h-4" />
                 <span data-testid={`author-${post.id}`}>{post.author}</span>
               </div>
             </div>
-          </CardHeader>
-          <CardContent className="flex-1 flex flex-col">
+
+            {/* Content */}
             <p 
-              className="text-foreground/80 leading-relaxed mb-6"
+              className="text-lg text-foreground/70 leading-relaxed"
               data-testid={`content-${post.id}`}
             >
               {content}
             </p>
+
+            {/* CTA Button */}
             <Link href="/#contact">
               <Button 
-                className="w-full mt-auto"
+                size="lg"
+                className="bg-[#18ac61] text-white"
                 data-testid={`button-book-${post.id}`}
               >
                 {language === 'ar' ? 'احجز موعد' : 'Book an Appointment'}
               </Button>
             </Link>
-          </CardContent>
-        </Card>
-      </motion.div>
+          </div>
+        </div>
+
+        {/* Separator Line */}
+        {index < blogPosts.length - 1 && (
+          <div className="mt-24 border-t border-border/40" />
+        )}
+      </motion.article>
     );
   };
 
@@ -206,14 +244,12 @@ export default function Blog() {
           </div>
         </section>
 
-        {/* Blog Posts Grid */}
+        {/* Blog Posts */}
         <section ref={postsRef} className="py-20">
           <div className="max-w-7xl mx-auto px-6">
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {blogPosts.map((post, index) => (
-                <BlogCard key={post.id} post={post} index={index} />
-              ))}
-            </div>
+            {blogPosts.map((post, index) => (
+              <BlogPost key={post.id} post={post} index={index} />
+            ))}
           </div>
         </section>
 
