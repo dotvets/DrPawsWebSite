@@ -4,7 +4,7 @@ import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useLocation } from 'wouter';
-import teamImage from '@assets/stock_images/veterinary_team_medi_9f3760a5.jpg';
+import teamImage from '@assets/generated_images/Veterinary_team_professional_photo_a4845f6b.png';
 
 export default function AboutSection() {
   const ref = useRef(null);
