@@ -6,10 +6,10 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Calendar, User, Dog, Cat, Bird, Syringe, UtensilsCrossed, type LucideIcon } from 'lucide-react';
 import { Link } from 'wouter';
-import dogImage from '@assets/stock_images/dog_drinking_water_s_9e3c82f3.jpg';
-import catImage from '@assets/stock_images/cat_at_veterinary_cl_2d6fa36d.jpg';
-import birdImage from '@assets/stock_images/colorful_parrot_pet__2598ac21.jpg';
-import vaccineImage from '@assets/stock_images/veterinarian_vaccine_230397c8.jpg';
+import dogImage from '@assets/Summer Care Tips for Dogs_1759926617301.png';
+import catImage from '@assets/Why Regular Check-ups Matter for Cats_1759926617300.png';
+import birdImage from '@assets/Caring for Your Pet Birds at Home_1759926617299.png';
+import vaccineImage from '@assets/Importance of Vaccinations for Pets_1759926617296.png';
 import nutritionImage from '@assets/stock_images/dog_cat_eating_natur_d19edd3f.jpg';
 
 interface BlogPost {
