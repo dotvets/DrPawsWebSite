@@ -1,7 +1,7 @@
 export default function HeartbeatDivider() {
   return (
     <div className="my-10 w-full overflow-hidden">
-      <div className="relative h-20 flex items-center justify-center">
+      <div className="relative h-20 flex items-end justify-start pb-2">
         <svg
           className="w-full h-full absolute inset-0"
           viewBox="0 0 1200 100"
@@ -46,7 +46,7 @@ export default function HeartbeatDivider() {
         </svg>
         
         <div className="relative z-10 ecg-text-container">
-          <p className="ecg-text text-2xl font-light tracking-wide text-black/80">
+          <p className="ecg-text text-xl font-light tracking-wide text-black/80">
             all about we care
           </p>
         </div>
@@ -54,15 +54,15 @@ export default function HeartbeatDivider() {
       
       <style>{`
         .ecg-text-container {
-          animation: ecg-text-scroll 12s ease-in-out infinite;
+          animation: ecg-text-scroll 18s linear infinite;
         }
         
         @keyframes ecg-text-scroll {
           0% {
-            transform: translateX(-100%);
+            transform: translateX(0);
           }
           100% {
-            transform: translateX(100vw);
+            transform: translateX(calc(100vw - 100%));
           }
         }
         
