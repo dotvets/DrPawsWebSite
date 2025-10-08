@@ -12,6 +12,7 @@ import birdImage from '@assets/Caring for Your Pet Birds at Home_1759926617299.p
 import vaccineImage from '@assets/Importance of Vaccinations for Pets (2)_1759928686852.png';
 import nutritionImage from '@assets/stock_images/dog_cat_eating_natur_d19edd3f.jpg';
 import blogHeroImage from '@assets/Dr Paws Blog_1759927269597.png';
+import HeartbeatDivider from '@/components/HeartbeatDivider';
 
 interface BlogPost {
   id: number;
@@ -255,6 +256,9 @@ export default function Blog() {
             ))}
           </div>
         </section>
+
+        {/* Heartbeat Divider */}
+        <HeartbeatDivider />
 
         {/* CTA Section */}
         <motion.section
