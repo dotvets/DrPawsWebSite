@@ -1,10 +1,10 @@
 export default function HeartbeatDivider() {
   return (
     <div className="my-10 w-full overflow-hidden">
-      <div className="relative h-20 flex items-end justify-start pb-2">
+      <div className="relative h-24 flex items-center justify-center">
         <svg
-          className="w-full h-full absolute inset-0"
-          viewBox="0 0 1200 100"
+          className="w-full h-full"
+          viewBox="0 0 1200 120"
           preserveAspectRatio="xMidYMid slice"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -14,7 +14,7 @@ export default function HeartbeatDivider() {
               x="0"
               y="0"
               width="400"
-              height="100"
+              height="120"
               patternUnits="userSpaceOnUse"
             >
               <animateTransform
@@ -33,6 +33,19 @@ export default function HeartbeatDivider() {
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
+              <text
+                x="97"
+                y="95"
+                fill="black"
+                fillOpacity="0.8"
+                fontSize="16"
+                fontFamily="Poppins, sans-serif"
+                fontWeight="300"
+                letterSpacing="1"
+                textAnchor="middle"
+              >
+                all about we care
+              </text>
             </pattern>
           </defs>
           
@@ -40,37 +53,11 @@ export default function HeartbeatDivider() {
             x="-400"
             y="0"
             width="2000"
-            height="100"
+            height="120"
             fill="url(#ecg-pattern)"
           />
         </svg>
-        
-        <div className="relative z-10 ecg-text-container">
-          <p className="ecg-text text-xl font-light tracking-wide text-black/80">
-            all about we care
-          </p>
-        </div>
       </div>
-      
-      <style>{`
-        .ecg-text-container {
-          animation: ecg-text-scroll 18s linear infinite;
-        }
-        
-        @keyframes ecg-text-scroll {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(calc(100vw - 100%));
-          }
-        }
-        
-        .ecg-text {
-          white-space: nowrap;
-          font-family: 'Poppins', sans-serif;
-        }
-      `}</style>
     </div>
   );
 }
