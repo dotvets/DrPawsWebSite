@@ -22,11 +22,11 @@ export default function HeartbeatDivider() {
                 type="translate"
                 from="0 0"
                 to="400 0"
-                dur="3s"
+                dur="5.5s"
                 repeatCount="indefinite"
               />
               <path
-                d="M0,50 L80,50 L90,50 L95,20 L100,80 L105,50 L115,50 L120,40 L125,60 L130,50 L400,50"
+                d="M0,50 L60,50 L65,45 L70,50 L75,50 L80,50 L85,30 L90,70 L95,50 L100,50 L105,55 L110,50 L115,50 L400,50"
                 fill="none"
                 stroke="#18ac61"
                 strokeWidth="2.5"
