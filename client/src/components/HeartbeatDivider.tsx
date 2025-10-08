@@ -3,7 +3,7 @@ export default function HeartbeatDivider() {
     <div className="my-10 w-full overflow-hidden">
       <div className="relative h-20 flex items-center justify-center">
         <svg
-          className="w-full h-full"
+          className="w-full h-full absolute inset-0"
           viewBox="0 0 1200 100"
           preserveAspectRatio="xMidYMid slice"
           xmlns="http://www.w3.org/2000/svg"
@@ -22,7 +22,7 @@ export default function HeartbeatDivider() {
                 type="translate"
                 from="0 0"
                 to="400 0"
-                dur="5.5s"
+                dur="7s"
                 repeatCount="indefinite"
               />
               <path
@@ -44,7 +44,32 @@ export default function HeartbeatDivider() {
             fill="url(#ecg-pattern)"
           />
         </svg>
+        
+        <div className="relative z-10 ecg-text-container">
+          <p className="ecg-text text-2xl font-semibold text-black">
+            all about we care
+          </p>
+        </div>
       </div>
+      
+      <style>{`
+        .ecg-text-container {
+          animation: ecg-text-scroll 7s linear infinite;
+        }
+        
+        @keyframes ecg-text-scroll {
+          0% {
+            transform: translateX(-100%);
+          }
+          100% {
+            transform: translateX(100vw);
+          }
+        }
+        
+        .ecg-text {
+          white-space: nowrap;
+        }
+      `}</style>
     </div>
   );
 }
