@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { useState, useRef, useEffect } from 'react';
 import { Link } from 'wouter';
 import Header from '@/components/Header';
+import HeartbeatDivider from '@/components/HeartbeatDivider';
 import Footer from '@/components/Footer';
 import {
   Stethoscope,
@@ -965,6 +966,7 @@ Our home care veterinary services are designed to provide accessible and compass
         </motion.section>
       </main>
 
+      <HeartbeatDivider />
       <Footer />
     </div>
   );

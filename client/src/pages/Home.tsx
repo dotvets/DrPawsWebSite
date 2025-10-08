@@ -7,6 +7,7 @@ import MediaSection from '@/components/MediaSection';
 import WhyChooseUsSection from '@/components/WhyChooseUsSection';
 import ReviewsSection from '@/components/ReviewsSection';
 import ContactSection from '@/components/ContactSection';
+import HeartbeatDivider from '@/components/HeartbeatDivider';
 import Footer from '@/components/Footer';
 
 export default function Home() {
@@ -25,6 +26,7 @@ export default function Home() {
       <WhyChooseUsSection />
       <ReviewsSection />
       <ContactSection />
+      <HeartbeatDivider />
       <Footer />
     </div>
   );

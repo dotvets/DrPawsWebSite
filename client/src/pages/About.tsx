@@ -8,6 +8,7 @@ import { Label } from '@/components/ui/label';
 import { useState, useRef, useEffect } from 'react';
 import { useToast } from '@/hooks/use-toast';
 import Header from '@/components/Header';
+import HeartbeatDivider from '@/components/HeartbeatDivider';
 import Footer from '@/components/Footer';
 import { Heart, Users, Building2, Stethoscope, Upload } from 'lucide-react';
 import teamImage from '@assets/generated_images/Veterinary_team_professional_photo_a4845f6b.png';
@@ -530,6 +531,7 @@ export default function About() {
         </motion.div>
       </main>
 
+      <HeartbeatDivider />
       <Footer />
     </div>
   );
