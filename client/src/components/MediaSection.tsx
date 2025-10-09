@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef, useState, useCallback, useEffect } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Play, Pause, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Play, Pause } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import useEmblaCarousel from 'embla-carousel-react';
 
@@ -48,20 +48,6 @@ export default function MediaSection() {
     });
     setIsPlaying(tiktokVideos.map(() => false));
   }, []);
-
-  const scrollPrev = useCallback(() => {
-    if (emblaApi) {
-      pauseAllVideos();
-      emblaApi.scrollPrev();
-    }
-  }, [emblaApi, pauseAllVideos]);
-
-  const scrollNext = useCallback(() => {
-    if (emblaApi) {
-      pauseAllVideos();
-      emblaApi.scrollNext();
-    }
-  }, [emblaApi, pauseAllVideos]);
 
   const onSelect = useCallback(() => {
     if (!emblaApi) return;
@@ -176,26 +162,6 @@ export default function MediaSection() {
                 ))}
               </div>
             </div>
-
-            <Button
-              size="icon"
-              variant="outline"
-              onClick={scrollPrev}
-              className="absolute left-2 top-1/2 transform -translate-y-1/2 z-20 rounded-full shadow-lg bg-background/80 backdrop-blur-sm"
-              data-testid="button-carousel-prev"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </Button>
-
-            <Button
-              size="icon"
-              variant="outline"
-              onClick={scrollNext}
-              className="absolute right-2 top-1/2 transform -translate-y-1/2 z-20 rounded-full shadow-lg bg-background/80 backdrop-blur-sm"
-              data-testid="button-carousel-next"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </Button>
 
             <div className="flex justify-center gap-2 mt-4">
               {tiktokVideos.map((_, index) => (
