@@ -21,8 +21,13 @@ export default function Header() {
 
   const handleNavClick = (path: string) => {
     if (path.startsWith('#')) {
-      const element = document.getElementById(path.substring(1));
-      element?.scrollIntoView({ behavior: 'smooth' });
+      if (path === '#contact') {
+        const footer = document.querySelector('footer');
+        footer?.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        const element = document.getElementById(path.substring(1));
+        element?.scrollIntoView({ behavior: 'smooth' });
+      }
       setIsMobileMenuOpen(false);
     } else {
       setIsMobileMenuOpen(false);

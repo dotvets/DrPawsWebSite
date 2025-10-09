@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { Link } from 'wouter';
 
 const container = {
   hidden: { opacity: 0 },
@@ -99,14 +100,16 @@ export default function WhyChooseUsSection() {
           transition={{ duration: 0.6, delay: 0.6 }}
           className="text-center"
         >
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <Button variant="outline" size="lg" data-testid="button-read-more-why">
-              {t('why.readMore')}
-            </Button>
-          </motion.div>
+          <Link href="/about">
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Button variant="outline" size="lg" data-testid="button-read-more-why">
+                {t('why.readMore')}
+              </Button>
+            </motion.div>
+          </Link>
         </motion.div>
       </div>
     </section>
