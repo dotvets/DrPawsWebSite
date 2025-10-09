@@ -37,38 +37,46 @@ export default function MediaSection() {
     if (emblaApi) emblaApi.scrollNext();
   }, [emblaApi]);
 
-  const handlePlayPause = (index: number) => {
+  const pauseAllVideos = useCallback(() => {
+    videoRefs.current.forEach((video) => {
+      if (video && !video.paused) {
+        video.pause();
+      }
+    });
+    setPlayingIndex(null);
+  }, []);
+
+  const handlePlayPause = useCallback(async (index: number) => {
     const video = videoRefs.current[index];
     if (!video) return;
 
-    if (playingIndex === index) {
-      video.pause();
-      setPlayingIndex(null);
-    } else {
-      // Pause all other videos
-      videoRefs.current.forEach((v, i) => {
-        if (v && i !== index) {
-          v.pause();
-        }
-      });
-      video.play();
-      setPlayingIndex(index);
+    try {
+      if (playingIndex === index) {
+        video.pause();
+        setPlayingIndex(null);
+      } else {
+        // First pause all videos
+        pauseAllVideos();
+        
+        // Small delay to ensure pause completes
+        await new Promise(resolve => setTimeout(resolve, 50));
+        
+        // Then play the selected video
+        setPlayingIndex(index);
+        await video.play();
+      }
+    } catch (error) {
+      // Silently handle play interruption errors
+      console.log('Video playback handling:', error);
     }
-  };
+  }, [playingIndex, pauseAllVideos]);
 
   useEffect(() => {
     if (emblaApi) {
       const onSelect = () => {
         const index = emblaApi.selectedScrollSnap();
         setSelectedIndex(index);
-        
-        // Pause all videos when slide changes
-        videoRefs.current.forEach((video, i) => {
-          if (video && i !== index) {
-            video.pause();
-          }
-        });
-        setPlayingIndex(null);
+        pauseAllVideos();
       };
 
       emblaApi.on('select', onSelect);
@@ -78,7 +86,7 @@ export default function MediaSection() {
         emblaApi.off('select', onSelect);
       };
     }
-  }, [emblaApi]);
+  }, [emblaApi, pauseAllVideos]);
 
   return (
     <section ref={ref} className="py-20 bg-[hsl(43,75%,66%)]/5">
@@ -130,6 +138,7 @@ export default function MediaSection() {
                         className="w-full h-[500px] md:h-[600px] object-cover"
                         poster=""
                         playsInline
+                        preload="metadata"
                         data-testid={`video-${video.id}`}
                       >
                         <source src={video.src} type="video/mp4" />
