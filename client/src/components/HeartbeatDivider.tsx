@@ -1,9 +1,11 @@
+import drPawsLogo from '@assets/dr-paws-logo.svg';
+
 export default function HeartbeatDivider() {
   return (
     <div className="my-10 w-full overflow-hidden">
       <div className="relative h-28 md:h-32 flex items-center justify-center">
         <svg
-          className="w-full h-full ecg-svg"
+          className="w-full h-full ecg-svg absolute inset-0"
           viewBox="0 0 1200 140"
           preserveAspectRatio="xMidYMid meet"
           xmlns="http://www.w3.org/2000/svg"
@@ -34,14 +36,6 @@ export default function HeartbeatDivider() {
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
-              <image
-                href="/attached_assets/dr-paws-logo.svg"
-                x="62"
-                y="68"
-                width="70"
-                height="22"
-                preserveAspectRatio="xMidYMid meet"
-              />
               <text
                 x="97"
                 y="105"
@@ -66,12 +60,36 @@ export default function HeartbeatDivider() {
             fill="url(#ecg-pattern)"
           />
         </svg>
+        
+        <div className="relative z-10 ecg-logo-container">
+          <img 
+            src={drPawsLogo} 
+            alt="Dr. Paws" 
+            className="h-6 md:h-7"
+          />
+        </div>
       </div>
       
       <style>{`
         @media (min-width: 768px) {
           .ecg-path {
             stroke-width: 2.5;
+          }
+        }
+        
+        .ecg-logo-container {
+          animation: ecg-logo-scroll 7s linear infinite;
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+        
+        @keyframes ecg-logo-scroll {
+          0% {
+            left: 0%;
+          }
+          100% {
+            left: 100%;
           }
         }
       `}</style>
