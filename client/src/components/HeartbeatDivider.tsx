@@ -1,10 +1,12 @@
+import drPawsLogo from '@assets/dr-paws-logo.svg';
+
 export default function HeartbeatDivider() {
   return (
     <div className="my-10 w-full overflow-hidden">
       <div className="relative h-32 md:h-36 flex items-center justify-center">
         <svg
-          className="w-full h-full ecg-svg"
-          viewBox="0 0 1200 150"
+          className="w-full h-full ecg-svg absolute inset-0"
+          viewBox="0 0 1200 140"
           preserveAspectRatio="xMidYMid meet"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -14,7 +16,7 @@ export default function HeartbeatDivider() {
               x="0"
               y="0"
               width="400"
-              height="150"
+              height="140"
               patternUnits="userSpaceOnUse"
             >
               <animateTransform
@@ -34,26 +36,6 @@ export default function HeartbeatDivider() {
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
-              <text
-                x="97"
-                y="105"
-                fill="black"
-                fillOpacity="0.8"
-                fontSize="16"
-                fontFamily="Poppins, sans-serif"
-                fontWeight="300"
-                letterSpacing="1"
-                textAnchor="middle"
-              >
-                all about we care
-              </text>
-              <image
-                href="/attached_assets/dr-paws-logo.svg"
-                x="57"
-                y="115"
-                width="80"
-                height="20"
-              />
             </pattern>
           </defs>
           
@@ -61,16 +43,45 @@ export default function HeartbeatDivider() {
             x="-400"
             y="0"
             width="2000"
-            height="150"
+            height="140"
             fill="url(#ecg-pattern)"
           />
         </svg>
+        
+        <div className="relative z-10 ecg-content-container">
+          <div className="flex flex-col items-center gap-2">
+            <p className="text-xl font-light tracking-wide text-black/80" style={{ fontFamily: 'Poppins, sans-serif' }}>
+              all about we care
+            </p>
+            <img 
+              src={drPawsLogo} 
+              alt="Dr. Paws" 
+              className="h-5 md:h-6"
+            />
+          </div>
+        </div>
       </div>
       
       <style>{`
         @media (min-width: 768px) {
           .ecg-path {
             stroke-width: 2.5;
+          }
+        }
+        
+        .ecg-content-container {
+          animation: ecg-content-scroll 7s linear infinite;
+          position: absolute;
+          top: 55%;
+          transform: translateY(-50%);
+        }
+        
+        @keyframes ecg-content-scroll {
+          0% {
+            left: 0%;
+          }
+          100% {
+            left: 100%;
           }
         }
       `}</style>
