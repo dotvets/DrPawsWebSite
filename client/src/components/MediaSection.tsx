@@ -7,10 +7,12 @@ import { Button } from '@/components/ui/button';
 import useEmblaCarousel from 'embla-carousel-react';
 import video1 from '@assets/video-2023-03-05.mp4';
 import video2 from '@assets/video-2023-04-08.mp4';
+import video3 from '@assets/1_1760013073118.mp4';
 
 const videos = [
   { src: video1, id: 1 },
   { src: video2, id: 2 },
+  { src: video3, id: 3 },
 ];
 
 export default function MediaSection() {
