@@ -102,7 +102,7 @@ export default function MediaSection() {
           <motion.div variants={item}>
             <motion.div
               whileHover={{ y: -8, transition: { duration: 0.3 } }}
-              className="relative group mx-auto w-64"
+              className="relative group mx-auto w-80"
             >
               <div className="relative rounded-xl overflow-hidden shadow-lg bg-card border border-border">
                 <div className="w-full h-[500px] overflow-hidden">
