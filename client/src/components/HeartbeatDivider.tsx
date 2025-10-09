@@ -35,7 +35,7 @@ export default function HeartbeatDivider() {
                 strokeLinejoin="round"
               />
               <text
-                x="97"
+                x="20"
                 y="100"
                 fill="black"
                 fillOpacity="0.8"
@@ -43,7 +43,7 @@ export default function HeartbeatDivider() {
                 fontFamily="Poppins, sans-serif"
                 fontWeight="300"
                 letterSpacing="1"
-                textAnchor="middle"
+                textAnchor="start"
               >
                 all about we care
               </text>
