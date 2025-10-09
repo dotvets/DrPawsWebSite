@@ -65,7 +65,7 @@ export default function HeartbeatDivider() {
           <img 
             src={drPawsLogo} 
             alt="Dr. Paws" 
-            className="h-6 md:h-7"
+            className="h-5 md:h-6"
           />
         </div>
       </div>
@@ -80,8 +80,7 @@ export default function HeartbeatDivider() {
         .ecg-logo-container {
           animation: ecg-logo-scroll 7s linear infinite;
           position: absolute;
-          top: 50%;
-          transform: translateY(-50%);
+          bottom: 8px;
         }
         
         @keyframes ecg-logo-scroll {
