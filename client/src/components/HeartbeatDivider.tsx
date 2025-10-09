@@ -35,7 +35,7 @@ export default function HeartbeatDivider() {
                 strokeLinejoin="round"
               />
               <text
-                x="20"
+                x="-20"
                 y="100"
                 fill="black"
                 fillOpacity="0.8"
