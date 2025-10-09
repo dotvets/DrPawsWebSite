@@ -1,9 +1,10 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { useRef, useState, useCallback, useEffect } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Play, Pause } from 'lucide-react';
+import { Play, Pause, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import useEmblaCarousel from 'embla-carousel-react';
 import video1 from '@assets/video-2023-03-05.mp4';
 import video2 from '@assets/video-2023-04-08.mp4';
 
@@ -22,21 +23,55 @@ const item = {
   show: { opacity: 1, y: 0 }
 };
 
+const tiktokVideos = [
+  { id: '7552593633812303122', title: 'Dr. Paws TikTok Video 1' },
+  { id: '7557361343527963911', title: 'Dr. Paws TikTok Video 2' }
+];
+
 export default function MediaSection() {
   const ref = useRef(null);
-  const tiktokIframeRef = useRef<HTMLIFrameElement>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
+  const tiktokIframeRefs = useRef<(HTMLIFrameElement | null)[]>([]);
+  const [isPlaying, setIsPlaying] = useState<boolean[]>(tiktokVideos.map(() => false));
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
+  const [selectedIndex, setSelectedIndex] = useState(0);
   const isInView = useInView(ref, { once: false, amount: 0.2 });
   const { t } = useLanguage();
 
-  const handlePlayPause = () => {
-    if (tiktokIframeRef.current) {
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev();
+  }, [emblaApi]);
+
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext();
+  }, [emblaApi]);
+
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setSelectedIndex(emblaApi.selectedScrollSnap());
+  }, [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    onSelect();
+    emblaApi.on('select', onSelect);
+    return () => {
+      emblaApi.off('select', onSelect);
+    };
+  }, [emblaApi, onSelect]);
+
+  const handlePlayPause = (index: number) => {
+    const iframe = tiktokIframeRefs.current[index];
+    if (iframe) {
       const message = {
         'x-tiktok-player': true,
-        'type': isPlaying ? 'pause' : 'play'
+        'type': isPlaying[index] ? 'pause' : 'play'
       };
-      tiktokIframeRef.current.contentWindow?.postMessage(message, '*');
-      setIsPlaying(!isPlaying);
+      iframe.contentWindow?.postMessage(message, '*');
+      setIsPlaying(prev => {
+        const newState = [...prev];
+        newState[index] = !newState[index];
+        return newState;
+      });
     }
   };
 
@@ -114,39 +149,84 @@ export default function MediaSection() {
           </motion.div>
 
           <motion.div variants={item}>
-            <motion.div
-              whileHover={{ y: -8, transition: { duration: 0.3 } }}
-              className="relative group mx-auto w-80"
-            >
-              <div className="relative rounded-xl overflow-hidden shadow-lg bg-card border border-border">
-                <div className="w-full h-[500px] overflow-hidden">
-                  <iframe
-                    ref={tiktokIframeRef}
-                    src="https://www.tiktok.com/player/v1/7552593633812303122?controls=1"
-                    className="w-full h-full"
-                    frameBorder="0"
-                    scrolling="no"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    title="Dr. Paws TikTok Video"
-                    data-testid="video-tiktok-1"
-                    style={{ overflow: 'hidden' }}
-                  />
+            <div className="relative mx-auto w-80">
+              <div className="overflow-hidden" ref={emblaRef}>
+                <div className="flex">
+                  {tiktokVideos.map((video, index) => (
+                    <div key={video.id} className="flex-[0_0_100%] min-w-0">
+                      <motion.div
+                        whileHover={{ y: -8, transition: { duration: 0.3 } }}
+                        className="relative group"
+                      >
+                        <div className="relative rounded-xl overflow-hidden shadow-lg bg-card border border-border">
+                          <div className="w-full h-[500px] overflow-hidden">
+                            <iframe
+                              ref={(el) => (tiktokIframeRefs.current[index] = el)}
+                              src={`https://www.tiktok.com/player/v1/${video.id}?controls=1`}
+                              className="w-full h-full"
+                              frameBorder="0"
+                              scrolling="no"
+                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                              allowFullScreen
+                              title={video.title}
+                              data-testid={`video-tiktok-${index + 1}`}
+                              style={{ overflow: 'hidden' }}
+                            />
+                          </div>
+                          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-10">
+                            <Button
+                              size="icon"
+                              variant="default"
+                              onClick={() => handlePlayPause(index)}
+                              className="rounded-full shadow-lg"
+                              data-testid={`button-tiktok-play-pause-${index + 1}`}
+                            >
+                              {isPlaying[index] ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5" />}
+                            </Button>
+                          </div>
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        </div>
+                      </motion.div>
+                    </div>
+                  ))}
                 </div>
-                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-10">
-                  <Button
-                    size="icon"
-                    variant="default"
-                    onClick={handlePlayPause}
-                    className="rounded-full shadow-lg"
-                    data-testid="button-tiktok-play-pause"
-                  >
-                    {isPlaying ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5" />}
-                  </Button>
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
-            </motion.div>
+
+              <Button
+                size="icon"
+                variant="outline"
+                onClick={scrollPrev}
+                className="absolute left-2 top-1/2 transform -translate-y-1/2 z-20 rounded-full shadow-lg bg-background/80 backdrop-blur-sm"
+                data-testid="button-carousel-prev"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </Button>
+
+              <Button
+                size="icon"
+                variant="outline"
+                onClick={scrollNext}
+                className="absolute right-2 top-1/2 transform -translate-y-1/2 z-20 rounded-full shadow-lg bg-background/80 backdrop-blur-sm"
+                data-testid="button-carousel-next"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </Button>
+
+              <div className="flex justify-center gap-2 mt-4">
+                {tiktokVideos.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => emblaApi?.scrollTo(index)}
+                    className={`w-2 h-2 rounded-full transition-all ${
+                      index === selectedIndex
+                        ? 'bg-primary w-6'
+                        : 'bg-primary/30'
+                    }`}
+                    data-testid={`button-carousel-dot-${index + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
           </motion.div>
         </motion.div>
       </div>
