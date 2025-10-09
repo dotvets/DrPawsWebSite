@@ -49,13 +49,13 @@ export default function HeartbeatDivider() {
           />
         </svg>
         
-        {/* Moving logo and text - much slower */}
+        {/* Moving logo and text - slower with larger logo */}
         <div className="ecg-moving-content">
           <div className="flex flex-col items-center gap-1">
             <img 
               src={drPawsLogo} 
               alt="Dr. Paws" 
-              className="h-5 md:h-6"
+              className="h-6 md:h-8"
             />
             <p className="text-base md:text-xl font-light tracking-wide text-black/80 whitespace-nowrap" style={{ fontFamily: 'Poppins, sans-serif' }}>
               all about we care
@@ -72,7 +72,7 @@ export default function HeartbeatDivider() {
         }
         
         .ecg-moving-content {
-          animation: ecg-content-move 40s linear infinite;
+          animation: ecg-content-move 55s linear infinite;
           position: absolute;
           top: 50%;
           left: 0;
