@@ -5,8 +5,6 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { Play, Pause, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import useEmblaCarousel from 'embla-carousel-react';
-import video1 from '@assets/video-2023-03-05.mp4';
-import video2 from '@assets/video-2023-04-08.mp4';
 
 const container = {
   hidden: { opacity: 0 },
@@ -16,11 +14,6 @@ const container = {
       staggerChildren: 0.2
     }
   }
-};
-
-const item = {
-  hidden: { opacity: 0, y: 30 },
-  show: { opacity: 1, y: 0 }
 };
 
 const tiktokVideos = [
@@ -44,18 +37,40 @@ export default function MediaSection() {
   const isInView = useInView(ref, { once: false, amount: 0.2 });
   const { t } = useLanguage();
 
+  const pauseAllVideos = useCallback(() => {
+    tiktokIframeRefs.current.forEach((iframe) => {
+      if (iframe) {
+        iframe.contentWindow?.postMessage({
+          'x-tiktok-player': true,
+          'type': 'pause'
+        }, '*');
+      }
+    });
+    setIsPlaying(tiktokVideos.map(() => false));
+  }, []);
+
   const scrollPrev = useCallback(() => {
-    if (emblaApi) emblaApi.scrollPrev();
-  }, [emblaApi]);
+    if (emblaApi) {
+      pauseAllVideos();
+      emblaApi.scrollPrev();
+    }
+  }, [emblaApi, pauseAllVideos]);
 
   const scrollNext = useCallback(() => {
-    if (emblaApi) emblaApi.scrollNext();
-  }, [emblaApi]);
+    if (emblaApi) {
+      pauseAllVideos();
+      emblaApi.scrollNext();
+    }
+  }, [emblaApi, pauseAllVideos]);
 
   const onSelect = useCallback(() => {
     if (!emblaApi) return;
-    setSelectedIndex(emblaApi.selectedScrollSnap());
-  }, [emblaApi]);
+    const newIndex = emblaApi.selectedScrollSnap();
+    if (newIndex !== selectedIndex) {
+      pauseAllVideos();
+    }
+    setSelectedIndex(newIndex);
+  }, [emblaApi, selectedIndex, pauseAllVideos]);
 
   useEffect(() => {
     if (!emblaApi) return;
@@ -69,14 +84,21 @@ export default function MediaSection() {
   const handlePlayPause = (index: number) => {
     const iframe = tiktokIframeRefs.current[index];
     if (iframe) {
+      const newPlayingState = !isPlaying[index];
+      
+      if (newPlayingState) {
+        pauseAllVideos();
+      }
+      
       const message = {
         'x-tiktok-player': true,
-        'type': isPlaying[index] ? 'pause' : 'play'
+        'type': newPlayingState ? 'play' : 'pause'
       };
       iframe.contentWindow?.postMessage(message, '*');
+      
       setIsPlaying(prev => {
         const newState = [...prev];
-        newState[index] = !newState[index];
+        newState[index] = newPlayingState;
         return newState;
       });
     }
@@ -113,128 +135,89 @@ export default function MediaSection() {
           variants={container}
           initial="hidden"
           animate={isInView ? "show" : "hidden"}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-start"
+          className="flex justify-center"
         >
-          <motion.div variants={item}>
-            <motion.div
-              whileHover={{ y: -8, transition: { duration: 0.3 } }}
-              className="relative group"
-            >
-              <div className="relative rounded-xl overflow-hidden shadow-lg bg-card border border-border">
-                <video
-                  controls
-                  className="w-full aspect-video object-cover"
-                  poster=""
-                  data-testid="video-1"
-                >
-                  <source src={video1} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              </div>
-            </motion.div>
-          </motion.div>
-
-          <motion.div variants={item}>
-            <motion.div
-              whileHover={{ y: -8, transition: { duration: 0.3 } }}
-              className="relative group"
-            >
-              <div className="relative rounded-xl overflow-hidden shadow-lg bg-card border border-border">
-                <video
-                  controls
-                  className="w-full aspect-video object-cover"
-                  poster=""
-                  data-testid="video-2"
-                >
-                  <source src={video2} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              </div>
-            </motion.div>
-          </motion.div>
-
-          <motion.div variants={item}>
-            <div className="relative mx-auto w-80">
-              <div className="overflow-hidden" ref={emblaRef}>
-                <div className="flex">
-                  {tiktokVideos.map((video, index) => (
-                    <div key={video.id} className="flex-[0_0_100%] min-w-0">
-                      <motion.div
-                        whileHover={{ y: -8, transition: { duration: 0.3 } }}
-                        className="relative group"
-                      >
-                        <div className="relative rounded-xl overflow-hidden shadow-lg bg-card border border-border">
-                          <div className="w-full h-[500px] overflow-hidden">
-                            <iframe
-                              ref={(el) => (tiktokIframeRefs.current[index] = el)}
-                              src={`https://www.tiktok.com/player/v1/${video.id}?controls=1`}
-                              className="w-full h-full"
-                              frameBorder="0"
-                              scrolling="no"
-                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                              allowFullScreen
-                              title={video.title}
-                              data-testid={`video-tiktok-${index + 1}`}
-                              style={{ overflow: 'hidden' }}
-                            />
-                          </div>
-                          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-10">
-                            <Button
-                              size="icon"
-                              variant="default"
-                              onClick={() => handlePlayPause(index)}
-                              className="rounded-full shadow-lg"
-                              data-testid={`button-tiktok-play-pause-${index + 1}`}
-                            >
-                              {isPlaying[index] ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5" />}
-                            </Button>
-                          </div>
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div className="relative mx-auto w-80">
+            <div className="overflow-hidden rounded-xl" ref={emblaRef}>
+              <div className="flex touch-pan-y">
+                {tiktokVideos.map((video, index) => (
+                  <div key={video.id} className="flex-[0_0_100%] min-w-0">
+                    <motion.div
+                      whileHover={{ y: -8, transition: { duration: 0.3 } }}
+                      className="relative group"
+                    >
+                      <div className="relative rounded-xl overflow-hidden shadow-lg bg-card border border-border">
+                        <div className="w-full h-[500px] overflow-hidden">
+                          <iframe
+                            ref={(el) => (tiktokIframeRefs.current[index] = el)}
+                            src={`https://www.tiktok.com/player/v1/${video.id}?controls=1`}
+                            className="w-full h-full"
+                            frameBorder="0"
+                            scrolling="no"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                            title={video.title}
+                            data-testid={`video-tiktok-${index + 1}`}
+                            style={{ overflow: 'hidden' }}
+                          />
                         </div>
-                      </motion.div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <Button
-                size="icon"
-                variant="outline"
-                onClick={scrollPrev}
-                className="absolute left-2 top-1/2 transform -translate-y-1/2 z-20 rounded-full shadow-lg bg-background/80 backdrop-blur-sm"
-                data-testid="button-carousel-prev"
-              >
-                <ChevronLeft className="w-5 h-5" />
-              </Button>
-
-              <Button
-                size="icon"
-                variant="outline"
-                onClick={scrollNext}
-                className="absolute right-2 top-1/2 transform -translate-y-1/2 z-20 rounded-full shadow-lg bg-background/80 backdrop-blur-sm"
-                data-testid="button-carousel-next"
-              >
-                <ChevronRight className="w-5 h-5" />
-              </Button>
-
-              <div className="flex justify-center gap-2 mt-4">
-                {tiktokVideos.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => emblaApi?.scrollTo(index)}
-                    className={`w-2 h-2 rounded-full transition-all ${
-                      index === selectedIndex
-                        ? 'bg-primary w-6'
-                        : 'bg-primary/30'
-                    }`}
-                    data-testid={`button-carousel-dot-${index + 1}`}
-                  />
+                        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-10">
+                          <Button
+                            size="icon"
+                            variant="default"
+                            onClick={() => handlePlayPause(index)}
+                            className="rounded-full shadow-lg"
+                            data-testid={`button-tiktok-play-pause-${index + 1}`}
+                          >
+                            {isPlaying[index] ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5" />}
+                          </Button>
+                        </div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      </div>
+                    </motion.div>
+                  </div>
                 ))}
               </div>
             </div>
-          </motion.div>
+
+            <Button
+              size="icon"
+              variant="outline"
+              onClick={scrollPrev}
+              className="absolute left-2 top-1/2 transform -translate-y-1/2 z-20 rounded-full shadow-lg bg-background/80 backdrop-blur-sm"
+              data-testid="button-carousel-prev"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </Button>
+
+            <Button
+              size="icon"
+              variant="outline"
+              onClick={scrollNext}
+              className="absolute right-2 top-1/2 transform -translate-y-1/2 z-20 rounded-full shadow-lg bg-background/80 backdrop-blur-sm"
+              data-testid="button-carousel-next"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </Button>
+
+            <div className="flex justify-center gap-2 mt-4">
+              {tiktokVideos.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => {
+                    pauseAllVideos();
+                    emblaApi?.scrollTo(index);
+                  }}
+                  className={`w-2 h-2 rounded-full transition-all ${
+                    index === selectedIndex
+                      ? 'bg-primary w-6'
+                      : 'bg-primary/30'
+                  }`}
+                  data-testid={`button-carousel-dot-${index + 1}`}
+                />
+              ))}
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>
