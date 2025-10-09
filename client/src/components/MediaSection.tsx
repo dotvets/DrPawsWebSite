@@ -57,7 +57,7 @@ export default function MediaSection() {
           variants={container}
           initial="hidden"
           animate={isInView ? "show" : "hidden"}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-start"
         >
           <motion.div variants={item}>
             <motion.div
@@ -102,12 +102,12 @@ export default function MediaSection() {
           <motion.div variants={item}>
             <motion.div
               whileHover={{ y: -8, transition: { duration: 0.3 } }}
-              className="relative group"
+              className="relative group mx-auto max-w-sm"
             >
               <div className="relative rounded-xl overflow-hidden shadow-lg bg-card border border-border">
                 <iframe
                   src="https://www.tiktok.com/embed/v2/7552593633812303122"
-                  className="w-full aspect-video"
+                  className="w-full aspect-[9/16]"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
