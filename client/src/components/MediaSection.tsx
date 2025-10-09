@@ -138,20 +138,17 @@ export default function MediaSection() {
           className="flex justify-center"
         >
           <div className="relative mx-auto w-80">
-            <div className="overflow-hidden rounded-xl" ref={emblaRef}>
-              <div className="flex touch-pan-y">
+            <div className="overflow-hidden rounded-xl cursor-grab active:cursor-grabbing" ref={emblaRef}>
+              <div className="flex" style={{ touchAction: 'pan-y pinch-zoom' }}>
                 {tiktokVideos.map((video, index) => (
                   <div key={video.id} className="flex-[0_0_100%] min-w-0">
-                    <motion.div
-                      whileHover={{ y: -8, transition: { duration: 0.3 } }}
-                      className="relative group"
-                    >
+                    <div className="relative group px-2">
                       <div className="relative rounded-xl overflow-hidden shadow-lg bg-card border border-border">
                         <div className="w-full h-[500px] overflow-hidden">
                           <iframe
                             ref={(el) => (tiktokIframeRefs.current[index] = el)}
                             src={`https://www.tiktok.com/player/v1/${video.id}?controls=1`}
-                            className="w-full h-full"
+                            className="w-full h-full pointer-events-none"
                             frameBorder="0"
                             scrolling="no"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -166,7 +163,7 @@ export default function MediaSection() {
                             size="icon"
                             variant="default"
                             onClick={() => handlePlayPause(index)}
-                            className="rounded-full shadow-lg"
+                            className="rounded-full shadow-lg pointer-events-auto"
                             data-testid={`button-tiktok-play-pause-${index + 1}`}
                           >
                             {isPlaying[index] ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5" />}
@@ -174,7 +171,7 @@ export default function MediaSection() {
                         </div>
                         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                       </div>
-                    </motion.div>
+                    </div>
                   </div>
                 ))}
               </div>
