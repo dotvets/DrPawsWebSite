@@ -49,7 +49,7 @@ export default function HeartbeatDivider() {
           />
         </svg>
         
-        {/* Moving logo and text - slower and full screen travel */}
+        {/* Moving logo and text - much slower */}
         <div className="ecg-moving-content">
           <div className="flex flex-col items-center gap-1">
             <img 
@@ -72,7 +72,7 @@ export default function HeartbeatDivider() {
         }
         
         .ecg-moving-content {
-          animation: ecg-content-move 25s linear infinite;
+          animation: ecg-content-move 40s linear infinite;
           position: absolute;
           top: 50%;
           left: 0;
