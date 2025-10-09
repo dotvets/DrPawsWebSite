@@ -25,7 +25,14 @@ const item = {
 
 const tiktokVideos = [
   { id: '7552593633812303122', title: 'Dr. Paws TikTok Video 1' },
-  { id: '7557361343527963911', title: 'Dr. Paws TikTok Video 2' }
+  { id: '7557361343527963911', title: 'Dr. Paws TikTok Video 2' },
+  { id: '7552940508834811143', title: 'Dr. Paws TikTok Video 3' },
+  { id: '7553295576721263879', title: 'Dr. Paws TikTok Video 4' },
+  { id: '7556635120439233810', title: 'Dr. Paws TikTok Video 5' },
+  { id: '7559220822280310024', title: 'Dr. Paws TikTok Video 6' },
+  { id: '7558145357599739144', title: 'Dr. Paws TikTok Video 7' },
+  { id: '7557789738485288210', title: 'Dr. Paws TikTok Video 8' },
+  { id: '7554400143768898834', title: 'Dr. Paws TikTok Video 9' }
 ];
 
 export default function MediaSection() {
