@@ -110,10 +110,12 @@ export default function MediaSection() {
                     src="https://www.tiktok.com/embed/v2/7552593633812303122"
                     className="w-full h-full"
                     frameBorder="0"
+                    scrolling="no"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                     title="Dr. Paws TikTok Video"
                     data-testid="video-tiktok-1"
+                    style={{ overflow: 'hidden' }}
                   />
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
