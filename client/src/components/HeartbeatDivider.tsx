@@ -1,12 +1,10 @@
-import drPawsLogo from '@assets/dr-paws-logo.svg';
-
 export default function HeartbeatDivider() {
   return (
     <div className="my-10 w-full overflow-hidden">
-      <div className="relative h-28 md:h-32 flex items-center justify-center">
+      <div className="relative h-32 md:h-36 flex items-center justify-center">
         <svg
-          className="w-full h-full ecg-svg absolute inset-0"
-          viewBox="0 0 1200 140"
+          className="w-full h-full ecg-svg"
+          viewBox="0 0 1200 150"
           preserveAspectRatio="xMidYMid meet"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -16,7 +14,7 @@ export default function HeartbeatDivider() {
               x="0"
               y="0"
               width="400"
-              height="140"
+              height="150"
               patternUnits="userSpaceOnUse"
             >
               <animateTransform
@@ -49,6 +47,13 @@ export default function HeartbeatDivider() {
               >
                 all about we care
               </text>
+              <image
+                href="/attached_assets/dr-paws-logo.svg"
+                x="57"
+                y="115"
+                width="80"
+                height="20"
+              />
             </pattern>
           </defs>
           
@@ -56,39 +61,16 @@ export default function HeartbeatDivider() {
             x="-400"
             y="0"
             width="2000"
-            height="140"
+            height="150"
             fill="url(#ecg-pattern)"
           />
         </svg>
-        
-        <div className="relative z-10 ecg-logo-container">
-          <img 
-            src={drPawsLogo} 
-            alt="Dr. Paws" 
-            className="h-5 md:h-6"
-          />
-        </div>
       </div>
       
       <style>{`
         @media (min-width: 768px) {
           .ecg-path {
             stroke-width: 2.5;
-          }
-        }
-        
-        .ecg-logo-container {
-          animation: ecg-logo-scroll 7s linear infinite;
-          position: absolute;
-          bottom: 8px;
-        }
-        
-        @keyframes ecg-logo-scroll {
-          0% {
-            left: 0%;
-          }
-          100% {
-            left: 100%;
           }
         }
       `}</style>
