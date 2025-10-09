@@ -9,9 +9,8 @@ import video1 from '@assets/video-2023-03-05.mp4';
 import video2 from '@assets/video-2023-04-08.mp4';
 
 const videos = [
-  { src: video1, id: 1, type: 'local' },
-  { src: video2, id: 2, type: 'local' },
-  { src: 'https://www.youtube.com/embed/qjS8UaQBInQ', id: 3, type: 'youtube' },
+  { src: video1, id: 1 },
+  { src: video2, id: 2 },
 ];
 
 export default function MediaSection() {
@@ -78,30 +77,16 @@ export default function MediaSection() {
                     className="relative group"
                   >
                     <div className="relative rounded-xl overflow-hidden shadow-xl bg-card border border-border mx-auto max-w-sm">
-                      {video.type === 'local' ? (
-                        <>
-                          <video
-                            controls
-                            className="w-full h-[500px] md:h-[600px] object-cover"
-                            poster=""
-                            data-testid={`video-${video.id}`}
-                          >
-                            <source src={video.src} type="video/mp4" />
-                            Your browser does not support the video tag.
-                          </video>
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        </>
-                      ) : (
-                        <iframe
-                          src={video.src}
-                          className="w-full h-[500px] md:h-[600px]"
-                          title={`YouTube Short ${video.id}`}
-                          frameBorder="0"
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                          allowFullScreen
-                          data-testid={`video-${video.id}`}
-                        />
-                      )}
+                      <video
+                        controls
+                        className="w-full h-[500px] md:h-[600px] object-cover"
+                        poster=""
+                        data-testid={`video-${video.id}`}
+                      >
+                        <source src={video.src} type="video/mp4" />
+                        Your browser does not support the video tag.
+                      </video>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
                   </motion.div>
                 </div>
