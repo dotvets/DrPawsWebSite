@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
-import { useRef, useCallback } from 'react';
+import { useRef, useCallback, useState, useEffect } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Play, Pause } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import useEmblaCarousel from 'embla-carousel-react';
 import video1 from '@assets/video-2023-03-05.mp4';
@@ -19,6 +19,9 @@ export default function MediaSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false, amount: 0.2 });
   const { t } = useLanguage();
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+  const [playingIndex, setPlayingIndex] = useState<number | null>(null);
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
   const [emblaRef, emblaApi] = useEmblaCarousel({ 
     loop: true,
@@ -32,6 +35,49 @@ export default function MediaSection() {
 
   const scrollNext = useCallback(() => {
     if (emblaApi) emblaApi.scrollNext();
+  }, [emblaApi]);
+
+  const handlePlayPause = (index: number) => {
+    const video = videoRefs.current[index];
+    if (!video) return;
+
+    if (playingIndex === index) {
+      video.pause();
+      setPlayingIndex(null);
+    } else {
+      // Pause all other videos
+      videoRefs.current.forEach((v, i) => {
+        if (v && i !== index) {
+          v.pause();
+        }
+      });
+      video.play();
+      setPlayingIndex(index);
+    }
+  };
+
+  useEffect(() => {
+    if (emblaApi) {
+      const onSelect = () => {
+        const index = emblaApi.selectedScrollSnap();
+        setSelectedIndex(index);
+        
+        // Pause all videos when slide changes
+        videoRefs.current.forEach((video, i) => {
+          if (video && i !== index) {
+            video.pause();
+          }
+        });
+        setPlayingIndex(null);
+      };
+
+      emblaApi.on('select', onSelect);
+      onSelect();
+
+      return () => {
+        emblaApi.off('select', onSelect);
+      };
+    }
   }, [emblaApi]);
 
   return (
@@ -69,7 +115,7 @@ export default function MediaSection() {
         >
           <div className="overflow-hidden" ref={emblaRef}>
             <div className="flex gap-6">
-              {videos.map((video) => (
+              {videos.map((video, index) => (
                 <div
                   key={video.id}
                   className="flex-[0_0_100%] md:flex-[0_0_50%] min-w-0 px-2"
@@ -80,15 +126,33 @@ export default function MediaSection() {
                   >
                     <div className="relative rounded-xl overflow-hidden shadow-xl bg-card border border-border mx-auto max-w-sm">
                       <video
-                        controls
+                        ref={(el) => (videoRefs.current[index] = el)}
                         className="w-full h-[500px] md:h-[600px] object-cover"
                         poster=""
+                        playsInline
                         data-testid={`video-${video.id}`}
                       >
                         <source src={video.src} type="video/mp4" />
                         Your browser does not support the video tag.
                       </video>
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      
+                      {/* Play/Pause Button Overlay */}
+                      <div 
+                        className="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer"
+                        onClick={() => handlePlayPause(index)}
+                      >
+                        <Button
+                          size="icon"
+                          className="h-20 w-20 rounded-full bg-primary/90 hover:bg-primary text-primary-foreground shadow-2xl"
+                          data-testid={`button-play-video-${video.id}`}
+                        >
+                          {playingIndex === index ? (
+                            <Pause className="h-10 w-10" />
+                          ) : (
+                            <Play className="h-10 w-10 ml-1" />
+                          )}
+                        </Button>
+                      </div>
                     </div>
                   </motion.div>
                 </div>
