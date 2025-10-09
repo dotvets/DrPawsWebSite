@@ -9,8 +9,9 @@ import video1 from '@assets/video-2023-03-05.mp4';
 import video2 from '@assets/video-2023-04-08.mp4';
 
 const videos = [
-  { src: video1, id: 1 },
-  { src: video2, id: 2 },
+  { src: video1, id: 1, type: 'mp4' },
+  { src: video2, id: 2, type: 'mp4' },
+  { src: '7552593633812303122', id: 3, type: 'tiktok' },
 ];
 
 export default function MediaSection() {
@@ -77,16 +78,29 @@ export default function MediaSection() {
                     className="relative group"
                   >
                     <div className="relative rounded-xl overflow-hidden shadow-xl bg-card border border-border mx-auto max-w-sm">
-                      <video
-                        controls
-                        className="w-full h-[500px] md:h-[600px] object-cover"
-                        poster=""
-                        data-testid={`video-${video.id}`}
-                      >
-                        <source src={video.src} type="video/mp4" />
-                        Your browser does not support the video tag.
-                      </video>
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      {video.type === 'mp4' ? (
+                        <>
+                          <video
+                            controls
+                            className="w-full h-[500px] md:h-[600px] object-cover"
+                            poster=""
+                            data-testid={`video-${video.id}`}
+                          >
+                            <source src={video.src} type="video/mp4" />
+                            Your browser does not support the video tag.
+                          </video>
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        </>
+                      ) : (
+                        <iframe
+                          src={`https://www.tiktok.com/embed/${video.src}`}
+                          className="w-full h-[500px] md:h-[600px]"
+                          allowFullScreen
+                          scrolling="no"
+                          allow="encrypted-media"
+                          data-testid={`video-${video.id}`}
+                        />
+                      )}
                     </div>
                   </motion.div>
                 </div>
