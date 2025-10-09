@@ -102,18 +102,20 @@ export default function MediaSection() {
           <motion.div variants={item}>
             <motion.div
               whileHover={{ y: -8, transition: { duration: 0.3 } }}
-              className="relative group mx-auto max-w-sm"
+              className="relative group mx-auto w-64"
             >
               <div className="relative rounded-xl overflow-hidden shadow-lg bg-card border border-border">
-                <iframe
-                  src="https://www.tiktok.com/embed/v2/7552593633812303122"
-                  className="w-full aspect-[9/16]"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  title="Dr. Paws TikTok Video"
-                  data-testid="video-tiktok-1"
-                />
+                <div className="w-full h-[500px] overflow-hidden">
+                  <iframe
+                    src="https://www.tiktok.com/embed/v2/7552593633812303122"
+                    className="w-full h-full"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    title="Dr. Paws TikTok Video"
+                    data-testid="video-tiktok-1"
+                  />
+                </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
             </motion.div>
