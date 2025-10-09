@@ -27,7 +27,7 @@ export default function HeartbeatDivider() {
               />
               <path
                 className="ecg-path"
-                d="M0,50 L60,50 L65,45 L70,50 L75,50 L80,50 L85,30 L90,70 L95,50 L100,50 L105,55 L110,50 L115,50 L400,50"
+                d="M0,50 L50,50 L70,35 L90,65 L110,50 L130,50 L150,15 L160,85 L170,50 L220,50 L240,35 L260,65 L280,50 L300,50 L320,50 L340,15 L350,85 L360,50 L400,50"
                 fill="none"
                 stroke="#18ac61"
                 strokeWidth="4"
@@ -35,8 +35,8 @@ export default function HeartbeatDivider() {
                 strokeLinejoin="round"
               />
               <text
-                x="97"
-                y="100"
+                x="200"
+                y="105"
                 fill="black"
                 fillOpacity="0.8"
                 fontSize="16"
@@ -63,7 +63,7 @@ export default function HeartbeatDivider() {
       <style>{`
         @media (min-width: 768px) {
           .ecg-path {
-            stroke-width: 2.5;
+            stroke-width: 3;
           }
         }
       `}</style>
