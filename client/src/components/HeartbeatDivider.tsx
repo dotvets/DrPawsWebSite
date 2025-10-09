@@ -4,29 +4,19 @@ export default function HeartbeatDivider() {
   return (
     <div className="my-10 w-full overflow-hidden">
       <div className="relative h-32 md:h-36 flex items-center justify-center">
-        <svg
-          className="w-full h-full ecg-svg absolute inset-0"
-          viewBox="0 0 1200 140"
-          preserveAspectRatio="xMidYMid meet"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <defs>
-            <pattern
-              id="ecg-pattern"
-              x="0"
-              y="0"
-              width="400"
-              height="140"
-              patternUnits="userSpaceOnUse"
+        <div className="ecg-moving-container">
+          <div className="flex flex-col items-center">
+            <img 
+              src={drPawsLogo} 
+              alt="Dr. Paws" 
+              className="h-5 md:h-6 mb-2"
+            />
+            <svg
+              className="w-full h-12"
+              viewBox="0 0 400 100"
+              preserveAspectRatio="xMidYMid meet"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <animateTransform
-                attributeName="patternTransform"
-                type="translate"
-                from="0 0"
-                to="400 0"
-                dur="7s"
-                repeatCount="indefinite"
-              />
               <path
                 className="ecg-path"
                 d="M0,50 L60,50 L65,45 L70,50 L75,50 L80,50 L85,30 L90,70 L95,50 L100,50 L105,55 L110,50 L115,50 L400,50"
@@ -36,28 +26,10 @@ export default function HeartbeatDivider() {
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
-            </pattern>
-          </defs>
-          
-          <rect
-            x="-400"
-            y="0"
-            width="2000"
-            height="140"
-            fill="url(#ecg-pattern)"
-          />
-        </svg>
-        
-        <div className="relative z-10 ecg-content-container">
-          <div className="flex flex-col items-center gap-2">
-            <p className="text-xl font-light tracking-wide text-black/80" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            </svg>
+            <p className="text-base md:text-xl font-light tracking-wide text-black/80 mt-1" style={{ fontFamily: 'Poppins, sans-serif' }}>
               all about we care
             </p>
-            <img 
-              src={drPawsLogo} 
-              alt="Dr. Paws" 
-              className="h-5 md:h-6"
-            />
           </div>
         </div>
       </div>
@@ -69,19 +41,18 @@ export default function HeartbeatDivider() {
           }
         }
         
-        .ecg-content-container {
-          animation: ecg-content-scroll 7s linear infinite;
+        .ecg-moving-container {
+          animation: ecg-scroll 7s linear infinite;
           position: absolute;
-          top: 55%;
-          transform: translateY(-50%);
+          width: 400px;
         }
         
-        @keyframes ecg-content-scroll {
+        @keyframes ecg-scroll {
           0% {
-            left: 0%;
+            transform: translateX(-400px);
           }
           100% {
-            left: 100%;
+            transform: translateX(calc(100vw));
           }
         }
       `}</style>
