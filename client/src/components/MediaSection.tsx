@@ -57,7 +57,7 @@ export default function MediaSection() {
           variants={container}
           initial="hidden"
           animate={isInView ? "show" : "hidden"}
-          className="grid md:grid-cols-2 gap-8 lg:gap-12"
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           <motion.div variants={item}>
             <motion.div
@@ -94,6 +94,25 @@ export default function MediaSection() {
                   <source src={video2} type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </div>
+            </motion.div>
+          </motion.div>
+
+          <motion.div variants={item}>
+            <motion.div
+              whileHover={{ y: -8, transition: { duration: 0.3 } }}
+              className="relative group"
+            >
+              <div className="relative rounded-xl overflow-hidden shadow-lg bg-card border border-border">
+                <iframe
+                  src="https://evcsaudi-my.sharepoint.com/:v:/g/personal/mohamed_ghazal_elitevetksa_com/EQwMmOZ6HQ1IiVPemtfFHyQBQX7NmznPqVTbHWilMlFUPw?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=yoNOC0&autoplay=0"
+                  className="w-full aspect-video"
+                  frameBorder="0"
+                  allowFullScreen
+                  data-testid="video-onedrive-1"
+                  title="OneDrive Video"
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
             </motion.div>
