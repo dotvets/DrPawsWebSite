@@ -34,6 +34,13 @@ export default function HeartbeatDivider() {
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
+              <image
+                href="/attached_assets/dr-paws-logo.svg"
+                x="67"
+                y="60"
+                width="60"
+                height="30"
+              />
               <text
                 x="97"
                 y="100"
