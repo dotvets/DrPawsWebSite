@@ -106,13 +106,13 @@ export default function MediaSection() {
             >
               <div className="relative rounded-xl overflow-hidden shadow-lg bg-card border border-border">
                 <iframe
-                  src="https://www.youtube.com/embed/oirTxzJnj_c?modestbranding=1&controls=1&rel=0&showinfo=0&fs=1&iv_load_policy=3"
+                  src="https://www.tiktok.com/embed/v2/7552593633812303122"
                   className="w-full aspect-video"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
-                  title="Dr. Paws Clinic Video"
-                  data-testid="video-youtube-1"
+                  title="Dr. Paws TikTok Video"
+                  data-testid="video-tiktok-1"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
