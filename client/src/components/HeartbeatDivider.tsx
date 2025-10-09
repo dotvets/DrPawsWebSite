@@ -36,14 +36,15 @@ export default function HeartbeatDivider() {
               />
               <image
                 href="/attached_assets/dr-paws-logo.svg"
-                x="67"
-                y="60"
-                width="60"
-                height="30"
+                x="62"
+                y="68"
+                width="70"
+                height="22"
+                preserveAspectRatio="xMidYMid meet"
               />
               <text
                 x="97"
-                y="100"
+                y="105"
                 fill="black"
                 fillOpacity="0.8"
                 fontSize="16"
