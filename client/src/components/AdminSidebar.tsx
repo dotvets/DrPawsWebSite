@@ -26,7 +26,7 @@ const menuItems = [
 const dropdownItems = [
   {
     title: 'Service Packages',
-    url: '#',
+    url: '/admin/service-packages',
     icon: Package,
   }
 ];
