@@ -39,6 +39,7 @@ export type ServicePackage = typeof servicePackages.$inferSelect;
 export const customerReviews = pgTable("customer_reviews", {
   id: serial("id").primaryKey(),
   name: text("name").notNull(),
+  nameAr: text("name_ar"),
   rating: integer("rating").notNull(),
   message: text("message").notNull(),
 });
