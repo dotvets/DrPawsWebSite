@@ -1,4 +1,4 @@
-import { type User, type InsertUser, type ServicePackage, type InsertServicePackage } from "@shared/schema";
+import { type User, type InsertUser, type ServicePackage, type InsertServicePackage, type CustomerReview, type InsertCustomerReview } from "@shared/schema";
 import { randomUUID } from "crypto";
 
 // modify the interface with any CRUD methods
@@ -15,6 +15,13 @@ export interface IStorage {
   createServicePackage(pkg: InsertServicePackage): Promise<ServicePackage>;
   updateServicePackage(id: number, pkg: Partial<InsertServicePackage>): Promise<ServicePackage | undefined>;
   deleteServicePackage(id: number): Promise<boolean>;
+
+  // Customer Reviews
+  getAllCustomerReviews(): Promise<CustomerReview[]>;
+  getCustomerReview(id: number): Promise<CustomerReview | undefined>;
+  createCustomerReview(review: InsertCustomerReview): Promise<CustomerReview>;
+  updateCustomerReview(id: number, review: Partial<InsertCustomerReview>): Promise<CustomerReview | undefined>;
+  deleteCustomerReview(id: number): Promise<boolean>;
 }
 
 export class MemStorage implements IStorage {
