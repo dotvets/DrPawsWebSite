@@ -238,6 +238,7 @@ export default function AdminServicePackages() {
                           placeholder="e.g., الرعاية الأساسية"
                           data-testid="input-package-name-ar"
                           {...field}
+                          value={field.value || ""}
                         />
                       </FormControl>
                       <FormMessage />
@@ -294,6 +295,7 @@ export default function AdminServicePackages() {
                           placeholder="e.g., /شهرياً"
                           data-testid="input-package-period-ar"
                           {...field}
+                          value={field.value || ""}
                         />
                       </FormControl>
                       <FormMessage />
