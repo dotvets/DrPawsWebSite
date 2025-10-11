@@ -1,7 +1,7 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { insertServicePackageSchema } from "@shared/schema";
+import { insertServicePackageSchema, insertCustomerReviewSchema } from "@shared/schema";
 import { z } from "zod";
 
 export async function registerRoutes(app: Express): Promise<Server> {
@@ -76,6 +76,80 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.status(204).send();
     } catch (error) {
       res.status(500).json({ error: "Failed to delete service package" });
+    }
+  });
+
+  // Customer Reviews Routes
+
+  // Get all customer reviews
+  app.get("/api/customer-reviews", async (req, res) => {
+    try {
+      const reviews = await storage.getAllCustomerReviews();
+      res.json(reviews);
+    } catch (error) {
+      console.error("Error fetching customer reviews:", error);
+      res.status(500).json({ error: "Failed to fetch customer reviews", details: error instanceof Error ? error.message : String(error) });
+    }
+  });
+
+  // Get single customer review
+  app.get("/api/customer-reviews/:id", async (req, res) => {
+    try {
+      const id = parseInt(req.params.id);
+      const review = await storage.getCustomerReview(id);
+      if (!review) {
+        return res.status(404).json({ error: "Customer review not found" });
+      }
+      res.json(review);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch customer review" });
+    }
+  });
+
+  // Create customer review
+  app.post("/api/customer-reviews", async (req, res) => {
+    try {
+      const data = insertCustomerReviewSchema.parse(req.body);
+      const review = await storage.createCustomerReview(data);
+      res.status(201).json(review);
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        return res.status(400).json({ error: "Invalid data", details: error.errors });
+      }
+      console.error("Error creating customer review:", error);
+      res.status(500).json({ error: "Failed to create customer review", details: error instanceof Error ? error.message : String(error) });
+    }
+  });
+
+  // Update customer review
+  app.put("/api/customer-reviews/:id", async (req, res) => {
+    try {
+      const id = parseInt(req.params.id);
+      const data = insertCustomerReviewSchema.partial().parse(req.body);
+      const review = await storage.updateCustomerReview(id, data);
+      if (!review) {
+        return res.status(404).json({ error: "Customer review not found" });
+      }
+      res.json(review);
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        return res.status(400).json({ error: "Invalid data", details: error.errors });
+      }
+      res.status(500).json({ error: "Failed to update customer review" });
+    }
+  });
+
+  // Delete customer review
+  app.delete("/api/customer-reviews/:id", async (req, res) => {
+    try {
+      const id = parseInt(req.params.id);
+      const success = await storage.deleteCustomerReview(id);
+      if (!success) {
+        return res.status(404).json({ error: "Customer review not found" });
+      }
+      res.status(204).send();
+    } catch (error) {
+      res.status(500).json({ error: "Failed to delete customer review" });
     }
   });
 
