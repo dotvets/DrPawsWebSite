@@ -29,6 +29,7 @@ import { AdminSidebar } from "@/components/AdminSidebar";
 import { useToast } from "@/hooks/use-toast";
 import { insertCustomerReviewSchema, type CustomerReview } from "@shared/schema";
 import { apiRequest, queryClient } from "@/lib/queryClient";
+import ServicePackagesDisplay from "@/components/ServicePackagesDisplay";
 
 const formSchema = insertCustomerReviewSchema;
 
@@ -334,6 +335,12 @@ export default function AdminCustomerReviews() {
                   )}
                 </CardContent>
               </Card>
+
+              <ServicePackagesDisplay 
+                showHeader={true}
+                asSection={false}
+                className="mt-8"
+              />
             </div>
           </main>
         </div>
