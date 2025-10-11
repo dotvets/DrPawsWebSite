@@ -25,7 +25,7 @@ export default function ReviewsSection() {
     text: review.message,
   }));
 
-  const duplicatedReviews = reviews.length > 0 ? [...reviews, ...reviews] : [];
+  const duplicatedReviews = reviews.length >= 4 ? [...reviews, ...reviews] : reviews;
 
   const ReviewCard = ({ review }: { review: typeof reviews[0] }) => (
     <div
@@ -97,25 +97,33 @@ export default function ReviewsSection() {
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
-          <motion.div
-            key={language}
-            className="flex gap-6"
-            animate={{
-              x: isPaused ? undefined : [0, -((300 + 24) * reviews.length)],
-            }}
-            transition={{
-              x: {
-                repeat: Infinity,
-                repeatType: "loop",
-                duration: 40,
-                ease: "linear",
-              },
-            }}
-          >
-            {duplicatedReviews.map((review, index) => (
-              <ReviewCard key={`${review.id}-${index}`} review={review} />
-            ))}
-          </motion.div>
+          {reviews.length >= 4 ? (
+            <motion.div
+              key={language}
+              className="flex gap-6"
+              animate={{
+                x: isPaused ? undefined : [0, -((300 + 24) * duplicatedReviews.length / 2)],
+              }}
+              transition={{
+                x: {
+                  repeat: Infinity,
+                  repeatType: "loop",
+                  duration: 40,
+                  ease: "linear",
+                },
+              }}
+            >
+              {duplicatedReviews.map((review, index) => (
+                <ReviewCard key={`${review.id}-${index}`} review={review} />
+              ))}
+            </motion.div>
+          ) : (
+            <div className="flex gap-6 justify-center flex-wrap">
+              {duplicatedReviews.map((review, index) => (
+                <ReviewCard key={`${review.id}-${index}`} review={review} />
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </section>
