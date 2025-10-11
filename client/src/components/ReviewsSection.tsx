@@ -1,9 +1,11 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Star } from 'lucide-react';
+import { type CustomerReview } from '@shared/schema';
 
 export default function ReviewsSection() {
   const ref = useRef(null);
@@ -11,66 +13,19 @@ export default function ReviewsSection() {
   const { t, language } = useLanguage();
   const [isPaused, setIsPaused] = useState(false);
 
-  const reviews = [
-    {
-      id: 1,
-      name: t('reviews.1.name'),
-      avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Ahmed',
-      rating: 5,
-      text: t('reviews.1.text'),
-    },
-    {
-      id: 2,
-      name: t('reviews.2.name'),
-      avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah',
-      rating: 5,
-      text: t('reviews.2.text'),
-    },
-    {
-      id: 3,
-      name: t('reviews.3.name'),
-      avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Mohammed',
-      rating: 4,
-      text: t('reviews.3.text'),
-    },
-    {
-      id: 4,
-      name: t('reviews.4.name'),
-      avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Emily',
-      rating: 5,
-      text: t('reviews.4.text'),
-    },
-    {
-      id: 5,
-      name: t('reviews.5.name'),
-      avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Khalid',
-      rating: 5,
-      text: t('reviews.5.text'),
-    },
-    {
-      id: 6,
-      name: t('reviews.6.name'),
-      avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Jennifer',
-      rating: 5,
-      text: t('reviews.6.text'),
-    },
-    {
-      id: 7,
-      name: t('reviews.7.name'),
-      avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Omar',
-      rating: 4,
-      text: t('reviews.7.text'),
-    },
-    {
-      id: 8,
-      name: t('reviews.8.name'),
-      avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Lisa',
-      rating: 5,
-      text: t('reviews.8.text'),
-    },
-  ];
+  const { data: dbReviews = [], isLoading } = useQuery<CustomerReview[]>({
+    queryKey: ["/api/customer-reviews"],
+  });
 
-  const duplicatedReviews = [...reviews, ...reviews];
+  const reviews = dbReviews.map(review => ({
+    id: review.id,
+    name: review.name,
+    avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=${review.name}`,
+    rating: review.rating,
+    text: review.message,
+  }));
+
+  const duplicatedReviews = reviews.length > 0 ? [...reviews, ...reviews] : [];
 
   const ReviewCard = ({ review }: { review: typeof reviews[0] }) => (
     <div
@@ -106,6 +61,23 @@ export default function ReviewsSection() {
       </p>
     </div>
   );
+
+  if (isLoading) {
+    return (
+      <section ref={ref} className="py-20 bg-card overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6">
+          <h2 className="font-display text-4xl font-medium text-foreground text-center mb-16">
+            {t('reviews.headline')}
+          </h2>
+          <p className="text-center text-muted-foreground">Loading reviews...</p>
+        </div>
+      </section>
+    );
+  }
+
+  if (reviews.length === 0) {
+    return null;
+  }
 
   return (
     <section ref={ref} className="py-20 bg-card overflow-hidden">
