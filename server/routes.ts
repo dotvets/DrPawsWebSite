@@ -13,7 +13,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const packages = await storage.getAllServicePackages();
       res.json(packages);
     } catch (error) {
-      res.status(500).json({ error: "Failed to fetch service packages" });
+      console.error("Error fetching service packages:", error);
+      res.status(500).json({ error: "Failed to fetch service packages", details: error instanceof Error ? error.message : String(error) });
     }
   });
 
@@ -41,7 +42,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
       if (error instanceof z.ZodError) {
         return res.status(400).json({ error: "Invalid data", details: error.errors });
       }
-      res.status(500).json({ error: "Failed to create service package" });
+      console.error("Error creating service package:", error);
+      res.status(500).json({ error: "Failed to create service package", details: error instanceof Error ? error.message : String(error) });
     }
   });
 
