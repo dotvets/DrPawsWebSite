@@ -1,4 +1,4 @@
-import { Home, ChevronDown, Package } from 'lucide-react';
+import { Home, ChevronDown, Package, MessageSquare } from 'lucide-react';
 import {
   Sidebar,
   SidebarContent,
@@ -28,6 +28,11 @@ const dropdownItems = [
     title: 'Service Packages',
     url: '/admin/service-packages',
     icon: Package,
+  },
+  {
+    title: 'Customer Reviews',
+    url: '/admin/customer-reviews',
+    icon: MessageSquare,
   }
 ];
 
