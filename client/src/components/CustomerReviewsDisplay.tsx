@@ -92,7 +92,7 @@ export default function CustomerReviewsDisplay({
                     <div className="flex justify-between items-start gap-3 mb-4">
                       <div className={`flex-1 ${language === 'ar' ? 'text-right' : 'text-left'}`}>
                         <h3 className="font-semibold text-lg text-foreground" data-testid={`text-name-${review.id}`}>
-                          {review.name}
+                          {language === 'ar' && review.nameAr ? review.nameAr : review.name}
                         </h3>
                         <div className={`flex gap-1 mt-1 ${language === 'ar' ? 'flex-row-reverse' : ''}`} data-testid={`rating-${review.id}`}>
                           {Array.from({ length: 5 }).map((_, i) => (
