@@ -33,6 +33,11 @@ const dropdownItems = [
     title: 'Customer Reviews',
     url: '/admin/customer-reviews',
     icon: MessageSquare,
+  },
+  {
+    title: 'Customers Reviews',
+    url: '/admin/customers-reviews',
+    icon: MessageSquare,
   }
 ];
 
