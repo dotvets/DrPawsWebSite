@@ -1,4 +1,4 @@
-import { Home } from 'lucide-react';
+import { Home, ChevronDown, Package } from 'lucide-react';
 import {
   Sidebar,
   SidebarContent,
@@ -8,7 +8,11 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  SidebarMenuSub,
+  SidebarMenuSubItem,
+  SidebarMenuSubButton,
 } from '@/components/ui/sidebar';
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import { useLocation } from 'wouter';
 
 const menuItems = [
@@ -16,6 +20,14 @@ const menuItems = [
     title: 'Home Page',
     url: '/',
     icon: Home,
+  }
+];
+
+const dropdownItems = [
+  {
+    title: 'Service Packages',
+    url: '#',
+    icon: Package,
   }
 ];
 
@@ -44,6 +56,36 @@ export function AdminSidebar() {
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
+              
+              <Collapsible defaultOpen className="group/collapsible">
+                <SidebarMenuItem>
+                  <CollapsibleTrigger asChild>
+                    <SidebarMenuButton className="text-white/90 hover:bg-[#18ac61] hover:text-white" data-testid="button-dropdown-menu">
+                      <Package />
+                      <span>Management</span>
+                      <ChevronDown className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180" />
+                    </SidebarMenuButton>
+                  </CollapsibleTrigger>
+                  <CollapsibleContent>
+                    <SidebarMenuSub>
+                      {dropdownItems.map((subItem) => (
+                        <SidebarMenuSubItem key={subItem.title}>
+                          <SidebarMenuSubButton
+                            asChild
+                            className="text-white/80 hover:bg-[#18ac61] hover:text-white"
+                            data-testid={`link-admin-${subItem.title.toLowerCase().replace(/\s+/g, '-')}`}
+                          >
+                            <a href={subItem.url}>
+                              <subItem.icon className="w-4 h-4" />
+                              <span>{subItem.title}</span>
+                            </a>
+                          </SidebarMenuSubButton>
+                        </SidebarMenuSubItem>
+                      ))}
+                    </SidebarMenuSub>
+                  </CollapsibleContent>
+                </SidebarMenuItem>
+              </Collapsible>
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
