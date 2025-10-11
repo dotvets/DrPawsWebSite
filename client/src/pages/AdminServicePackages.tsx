@@ -25,6 +25,7 @@ import { apiRequest, queryClient } from "@/lib/queryClient";
 
 const formSchema = insertServicePackageSchema.extend({
   features: z.string().min(1, "At least one feature is required"),
+  featuresAr: z.string().optional(),
 });
 
 type FormData = z.infer<typeof formSchema>;
@@ -34,6 +35,7 @@ export default function AdminServicePackages() {
   const [, setLocation] = useLocation();
   const [editingId, setEditingId] = useState<number | null>(null);
   const [featuresInput, setFeaturesInput] = useState("");
+  const [featuresArInput, setFeaturesArInput] = useState("");
 
   useEffect(() => {
     const isAuthenticated = localStorage.getItem('adminAuthenticated') === 'true';
@@ -50,25 +52,31 @@ export default function AdminServicePackages() {
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
+      nameAr: "",
       price: "",
       period: "",
+      periodAr: "",
       popular: false,
       features: "",
+      featuresAr: "",
     },
   });
 
   const createMutation = useMutation({
     mutationFn: async (data: FormData) => {
       const featuresArray = data.features.split("\n").filter(f => f.trim());
+      const featuresArArray = data.featuresAr ? data.featuresAr.split("\n").filter(f => f.trim()) : [];
       return apiRequest("POST", "/api/service-packages", {
         ...data,
         features: featuresArray,
+        featuresAr: featuresArArray.length > 0 ? featuresArArray : null,
       });
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["/api/service-packages"] });
       form.reset();
       setFeaturesInput("");
+      setFeaturesArInput("");
       toast({
         title: "Success",
         description: "Service package created successfully",
@@ -86,15 +94,18 @@ export default function AdminServicePackages() {
   const updateMutation = useMutation({
     mutationFn: async ({ id, data }: { id: number; data: FormData }) => {
       const featuresArray = data.features.split("\n").filter(f => f.trim());
+      const featuresArArray = data.featuresAr ? data.featuresAr.split("\n").filter(f => f.trim()) : [];
       return apiRequest("PUT", `/api/service-packages/${id}`, {
         ...data,
         features: featuresArray,
+        featuresAr: featuresArArray.length > 0 ? featuresArArray : null,
       });
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["/api/service-packages"] });
       form.reset();
       setFeaturesInput("");
+      setFeaturesArInput("");
       setEditingId(null);
       toast({
         title: "Success",
@@ -141,13 +152,18 @@ export default function AdminServicePackages() {
   function handleEdit(pkg: ServicePackage) {
     setEditingId(pkg.id);
     const featuresText = pkg.features.join("\n");
+    const featuresArText = pkg.featuresAr ? pkg.featuresAr.join("\n") : "";
     setFeaturesInput(featuresText);
+    setFeaturesArInput(featuresArText);
     form.reset({
       name: pkg.name,
+      nameAr: pkg.nameAr || "",
       price: pkg.price,
       period: pkg.period,
+      periodAr: pkg.periodAr || "",
       popular: pkg.popular,
       features: featuresText,
+      featuresAr: featuresArText,
     });
   }
 
@@ -155,6 +171,7 @@ export default function AdminServicePackages() {
     setEditingId(null);
     form.reset();
     setFeaturesInput("");
+    setFeaturesArInput("");
   }
 
   const style = {
@@ -197,11 +214,29 @@ export default function AdminServicePackages() {
                   name="name"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Package Name</FormLabel>
+                      <FormLabel>Package Name (English)</FormLabel>
                       <FormControl>
                         <Input
                           placeholder="e.g., Basic Care"
                           data-testid="input-package-name"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="nameAr"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Package Name (Arabic)</FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder="e.g., الرعاية الأساسية"
+                          data-testid="input-package-name-ar"
                           {...field}
                         />
                       </FormControl>
@@ -234,7 +269,7 @@ export default function AdminServicePackages() {
                     name="period"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Period</FormLabel>
+                        <FormLabel>Period (English)</FormLabel>
                         <FormControl>
                           <Input
                             placeholder="e.g., /month"
@@ -250,10 +285,28 @@ export default function AdminServicePackages() {
 
                 <FormField
                   control={form.control}
+                  name="periodAr"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Period (Arabic)</FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder="e.g., /شهرياً"
+                          data-testid="input-package-period-ar"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
                   name="features"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Features (one per line)</FormLabel>
+                      <FormLabel>Features (English - one per line)</FormLabel>
                       <FormControl>
                         <textarea
                           className="flex min-h-[120px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
@@ -262,6 +315,29 @@ export default function AdminServicePackages() {
                           value={featuresInput}
                           onChange={(e) => {
                             setFeaturesInput(e.target.value);
+                            field.onChange(e.target.value);
+                          }}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="featuresAr"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Features (Arabic - one per line)</FormLabel>
+                      <FormControl>
+                        <textarea
+                          className="flex min-h-[120px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                          placeholder="ميزة 1&#10;ميزة 2&#10;ميزة 3"
+                          data-testid="input-package-features-ar"
+                          value={featuresArInput}
+                          onChange={(e) => {
+                            setFeaturesArInput(e.target.value);
                             field.onChange(e.target.value);
                           }}
                         />
