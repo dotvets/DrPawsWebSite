@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import { useQuery, useMutation } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useLocation } from "wouter";
-import { Plus, Pencil, Trash2, X, Star } from "lucide-react";
+import { Plus, Pencil, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
@@ -29,7 +29,7 @@ import { AdminSidebar } from "@/components/AdminSidebar";
 import { useToast } from "@/hooks/use-toast";
 import { insertCustomerReviewSchema, type CustomerReview } from "@shared/schema";
 import { apiRequest, queryClient } from "@/lib/queryClient";
-import ServicePackagesDisplay from "@/components/ServicePackagesDisplay";
+import CustomerReviewsDisplay from "@/components/CustomerReviewsDisplay";
 
 const formSchema = insertCustomerReviewSchema;
 
@@ -47,9 +47,6 @@ export default function AdminCustomerReviews() {
     }
   }, [setLocation]);
 
-  const { data: reviews = [], isLoading } = useQuery<CustomerReview[]>({
-    queryKey: ["/api/customer-reviews"],
-  });
 
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
@@ -271,75 +268,13 @@ export default function AdminCustomerReviews() {
                 </CardContent>
               </Card>
 
-              <Card>
-                <CardHeader>
-                  <CardTitle>Existing Customer Reviews</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  {isLoading ? (
-                    <p>Loading reviews...</p>
-                  ) : reviews.length === 0 ? (
-                    <p className="text-muted-foreground">No customer reviews yet.</p>
-                  ) : (
-                    <div className="space-y-4">
-                      {reviews.map((review) => (
-                        <Card key={review.id} data-testid={`card-review-${review.id}`}>
-                          <CardContent className="pt-6">
-                            <div className="flex justify-between items-start">
-                              <div className="flex-1">
-                                <div className="flex items-center gap-3 mb-2">
-                                  <h3 className="font-semibold text-lg" data-testid={`text-name-${review.id}`}>
-                                    {review.name}
-                                  </h3>
-                                  <div className="flex items-center gap-1" data-testid={`rating-${review.id}`}>
-                                    {Array.from({ length: 5 }).map((_, i) => (
-                                      <Star
-                                        key={i}
-                                        className={`w-4 h-4 ${
-                                          i < review.rating
-                                            ? "fill-yellow-400 text-yellow-400"
-                                            : "fill-gray-300 text-gray-300"
-                                        }`}
-                                      />
-                                    ))}
-                                  </div>
-                                </div>
-                                <p className="text-muted-foreground" data-testid={`text-message-${review.id}`}>
-                                  {review.message}
-                                </p>
-                              </div>
-                              <div className="flex gap-2">
-                                <Button
-                                  variant="outline"
-                                  size="sm"
-                                  onClick={() => handleEdit(review)}
-                                  data-testid={`button-edit-${review.id}`}
-                                >
-                                  <Pencil className="w-4 h-4" />
-                                </Button>
-                                <Button
-                                  variant="destructive"
-                                  size="sm"
-                                  onClick={() => deleteMutation.mutate(review.id)}
-                                  disabled={deleteMutation.isPending}
-                                  data-testid={`button-delete-${review.id}`}
-                                >
-                                  <Trash2 className="w-4 h-4" />
-                                </Button>
-                              </div>
-                            </div>
-                          </CardContent>
-                        </Card>
-                      ))}
-                    </div>
-                  )}
-                </CardContent>
-              </Card>
-
-              <ServicePackagesDisplay 
+              <CustomerReviewsDisplay 
                 showHeader={true}
                 asSection={false}
                 className="mt-8"
+                showActions={true}
+                onEdit={handleEdit}
+                onDelete={(id) => deleteMutation.mutate(id)}
               />
             </div>
           </main>
