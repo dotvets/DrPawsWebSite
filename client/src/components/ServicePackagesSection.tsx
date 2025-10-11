@@ -5,7 +5,9 @@ import { Badge } from '@/components/ui/badge';
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
+import { useQuery } from '@tanstack/react-query';
 import { useLanguage } from '@/contexts/LanguageContext';
+import type { ServicePackage } from '@shared/schema';
 
 const container = {
   hidden: { opacity: 0 },
@@ -27,50 +29,9 @@ export default function ServicePackagesSection() {
   const isInView = useInView(ref, { once: false, amount: 0.2 });
   const { t } = useLanguage();
 
-  const packages = [
-    {
-      name: t('packages.basic.name'),
-      price: t('packages.basic.price'),
-      period: t('packages.basic.period'),
-      popular: false,
-      features: [
-        t('packages.basic.feature1'),
-        t('packages.basic.feature2'),
-        t('packages.basic.feature3'),
-        t('packages.basic.feature4'),
-        t('packages.basic.feature5'),
-      ],
-    },
-    {
-      name: t('packages.complete.name'),
-      price: t('packages.complete.price'),
-      period: t('packages.complete.period'),
-      popular: true,
-      features: [
-        t('packages.complete.feature1'),
-        t('packages.complete.feature2'),
-        t('packages.complete.feature3'),
-        t('packages.complete.feature4'),
-        t('packages.complete.feature5'),
-        t('packages.complete.feature6'),
-      ],
-    },
-    {
-      name: t('packages.premium.name'),
-      price: t('packages.premium.price'),
-      period: t('packages.premium.period'),
-      popular: false,
-      features: [
-        t('packages.premium.feature1'),
-        t('packages.premium.feature2'),
-        t('packages.premium.feature3'),
-        t('packages.premium.feature4'),
-        t('packages.premium.feature5'),
-        t('packages.premium.feature6'),
-        t('packages.premium.feature7'),
-      ],
-    },
-  ];
+  const { data: packages = [], isLoading } = useQuery<ServicePackage[]>({
+    queryKey: ["/api/service-packages"],
+  });
 
   const scrollToContact = () => {
     const contactSection = document.getElementById('contact');
@@ -105,14 +66,23 @@ export default function ServicePackagesSection() {
           </p>
         </motion.div>
 
-        <motion.div 
-          variants={container}
-          initial="hidden"
-          animate={isInView ? "show" : "hidden"}
-          className="grid md:grid-cols-3 gap-8"
-        >
-          {packages.map((pkg, index) => (
-            <motion.div key={index} variants={item}>
+        {isLoading ? (
+          <div className="text-center py-12">
+            <p className="text-foreground/60" data-testid="text-loading-packages">Loading packages...</p>
+          </div>
+        ) : packages.length === 0 ? (
+          <div className="text-center py-12">
+            <p className="text-foreground/60" data-testid="text-no-packages">No packages available at the moment.</p>
+          </div>
+        ) : (
+          <motion.div 
+            variants={container}
+            initial="hidden"
+            animate={isInView ? "show" : "hidden"}
+            className="grid md:grid-cols-3 gap-8"
+          >
+            {packages.map((pkg, index) => (
+              <motion.div key={pkg.id} variants={item}>
               <motion.div
                 whileHover={{ y: -8, transition: { duration: 0.3 } }}
                 className="h-full"
@@ -164,6 +134,7 @@ export default function ServicePackagesSection() {
             </motion.div>
           ))}
         </motion.div>
+        )}
       </div>
     </section>
   );

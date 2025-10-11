@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { useLocation } from "wouter";
 import { Plus, Pencil, Trash2, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -16,6 +17,8 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { AdminSidebar } from "@/components/AdminSidebar";
 import { useToast } from "@/hooks/use-toast";
 import { insertServicePackageSchema, type ServicePackage } from "@shared/schema";
 import { apiRequest, queryClient } from "@/lib/queryClient";
@@ -28,8 +31,16 @@ type FormData = z.infer<typeof formSchema>;
 
 export default function AdminServicePackages() {
   const { toast } = useToast();
+  const [, setLocation] = useLocation();
   const [editingId, setEditingId] = useState<number | null>(null);
   const [featuresInput, setFeaturesInput] = useState("");
+
+  useEffect(() => {
+    const isAuthenticated = localStorage.getItem('adminAuthenticated') === 'true';
+    if (!isAuthenticated) {
+      setLocation('/login-admin');
+    }
+  }, [setLocation]);
 
   const { data: packages = [], isLoading } = useQuery<ServicePackage[]>({
     queryKey: ["/api/service-packages"],
@@ -146,14 +157,30 @@ export default function AdminServicePackages() {
     setFeaturesInput("");
   }
 
+  const style = {
+    '--sidebar-width': '16rem',
+    '--sidebar-width-icon': '3rem',
+  };
+
   return (
-    <div className="p-6 space-y-6">
-      <div>
-        <h1 className="text-3xl font-bold text-foreground">Service Packages</h1>
-        <p className="text-muted-foreground mt-1">
-          Manage service packages that appear on the website
-        </p>
-      </div>
+    <SidebarProvider style={style as React.CSSProperties}>
+      <div className="flex h-screen w-full">
+        <AdminSidebar />
+        <div className="flex flex-col flex-1">
+          <header className="flex items-center gap-4 p-4 border-b bg-[#264653]">
+            <SidebarTrigger className="text-white" data-testid="button-sidebar-toggle" />
+            <h1 className="text-xl font-display text-white" data-testid="text-page-title">
+              Service Packages Management
+            </h1>
+          </header>
+          <main className="flex-1 overflow-auto">
+            <div className="p-6 space-y-6">
+              <div>
+                <h2 className="text-3xl font-bold text-foreground">Service Packages</h2>
+                <p className="text-muted-foreground mt-1">
+                  Manage service packages that appear on the website
+                </p>
+              </div>
 
       <div className="grid lg:grid-cols-2 gap-6">
         <Card>
@@ -368,6 +395,10 @@ export default function AdminServicePackages() {
           </CardContent>
         </Card>
       </div>
-    </div>
+            </div>
+          </main>
+        </div>
+      </div>
+    </SidebarProvider>
   );
 }
