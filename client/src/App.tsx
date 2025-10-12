@@ -9,6 +9,7 @@ import Home from "@/pages/Home";
 import About from "@/pages/About";
 import Services from "@/pages/Services";
 import Blog from "@/pages/Blog";
+import BookNow from "@/pages/BookNow";
 import LoginAdmin from "@/pages/LoginAdmin";
 import AdminDashboard from "@/pages/AdminDashboard";
 import AdminServicePackages from "@/pages/AdminServicePackages";
@@ -24,6 +25,7 @@ function Router() {
       <Route path="/about" component={About} />
       <Route path="/services" component={Services} />
       <Route path="/blog" component={Blog} />
+      <Route path="/book-now" component={BookNow} />
       <Route path="/login-admin" component={LoginAdmin} />
       <Route path="/admin-dashboard" component={AdminDashboard} />
       <Route path="/admin/service-packages" component={AdminServicePackages} />
