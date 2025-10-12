@@ -83,6 +83,64 @@ export default function BookNow() {
                 {t('bookNow.riyadhBranches')}
               </h3>
               
+              {language === 'ar' && (
+                <Card className="mb-6 bg-primary/5 border-primary/20" data-testid="card-booking-help">
+                  <CardHeader>
+                    <CardTitle className="text-lg flex items-center gap-2">
+                      <Info className="w-5 h-5 text-primary" />
+                      {t('bookNow.helpTitle')}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-3">
+                    <p className="text-sm text-foreground/80 mb-4" data-testid="text-help-note">
+                      {t('bookNow.helpNote')}
+                    </p>
+                    <div className="grid md:grid-cols-2 gap-x-6 gap-y-2 text-sm">
+                      <div className="flex items-center gap-2">
+                        <span className="font-medium text-primary">•</span>
+                        <span><strong>Select Date:</strong> {t('bookNow.field.selectDate')}</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="font-medium text-primary">•</span>
+                        <span><strong>Select Time:</strong> {t('bookNow.field.selectTime')}</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="font-medium text-primary">•</span>
+                        <span><strong>Pet Name:</strong> {t('bookNow.field.petName')}</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="font-medium text-primary">•</span>
+                        <span><strong>Owner Name:</strong> {t('bookNow.field.ownerName')}</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="font-medium text-primary">•</span>
+                        <span><strong>Phone Number:</strong> {t('bookNow.field.phoneNumber')}</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="font-medium text-primary">•</span>
+                        <span><strong>Email:</strong> {t('bookNow.field.email')}</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="font-medium text-primary">•</span>
+                        <span><strong>Pet Type:</strong> {t('bookNow.field.petType')}</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="font-medium text-primary">•</span>
+                        <span><strong>Service:</strong> {t('bookNow.field.service')}</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="font-medium text-primary">•</span>
+                        <span><strong>Notes/Comments:</strong> {t('bookNow.field.notes')}</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="font-medium text-primary">•</span>
+                        <span><strong>Submit/Book:</strong> {t('bookNow.field.submit')}</span>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              )}
+              
               <div className="grid md:grid-cols-2 gap-6">
                 {riyadhBranches.map((branch) => (
                   <Card key={branch.id} className="overflow-hidden" data-testid={`card-branch-${branch.id}`}>
