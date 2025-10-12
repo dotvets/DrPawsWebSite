@@ -128,6 +128,18 @@ const translations = {
     'contact.submit': 'Submit',
     'contact.success': 'Thank you! We will contact you soon.',
     
+    // Book Now Page
+    'bookNow.title': 'Book Now',
+    'bookNow.welcome': 'We\'re happy that you want to book and be part of our family.',
+    'bookNow.chooseBranch': 'Choose from our branches for booking',
+    'bookNow.riyadh': 'Riyadh',
+    'bookNow.riyadhBranches': 'Riyadh Branches',
+    'bookNow.matherBranch': 'Al-Mather Branch',
+    'bookNow.sahafahBranch': 'Al-Sahafa Branch',
+    'bookNow.jeddah': 'Jeddah',
+    'bookNow.jeddahBranches': 'Jeddah Branches',
+    'bookNow.comingSoon': 'Coming Soon',
+    
     // About Page
     'aboutPage.header': 'Dr. Paws Veterinary Care Center',
     'aboutPage.subheader': 'Expertise You Can Trust',
@@ -389,6 +401,18 @@ const translations = {
     'contact.message': 'الرسالة',
     'contact.submit': 'إرسال',
     'contact.success': 'شكراً لك! سنتواصل معك قريباً.',
+    
+    // Book Now Page
+    'bookNow.title': 'احجز الآن',
+    'bookNow.welcome': 'نحن سعداء لرغبتك في الحجز وأن تصبح جزءًا من عائلتنا.',
+    'bookNow.chooseBranch': 'اختر من فروعنا للحجز',
+    'bookNow.riyadh': 'الرياض',
+    'bookNow.riyadhBranches': 'فروع الرياض',
+    'bookNow.matherBranch': 'فرع المعذر',
+    'bookNow.sahafahBranch': 'فرع الصحافة',
+    'bookNow.jeddah': 'جدة',
+    'bookNow.jeddahBranches': 'فروع جدة',
+    'bookNow.comingSoon': 'قريباً',
     
     // About Page
     'aboutPage.header': 'عيادات د. باوز البيطرية بالرياض',
