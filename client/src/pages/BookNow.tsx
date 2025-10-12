@@ -5,7 +5,7 @@ import { useRef, useEffect } from 'react';
 import Header from '@/components/Header';
 import HeartbeatDivider from '@/components/HeartbeatDivider';
 import Footer from '@/components/Footer';
-import { MapPin, Clock, Info } from 'lucide-react';
+import { MapPin, Clock } from 'lucide-react';
 
 export default function BookNow() {
   const { t, language } = useLanguage();
@@ -20,12 +20,12 @@ export default function BookNow() {
     {
       id: 'sahafa',
       name: t('bookNow.sahafahBranch'),
-      iframeUrl: `https://vet.digitail.io/clinics/dr-paws-sahafa-tel-920003045?widget&lang=${language}`,
+      iframeUrl: 'https://vet.digitail.io/clinics/dr-paws-sahafa-tel-920003045?widget',
     },
     {
       id: 'mather',
       name: t('bookNow.matherBranch'),
-      iframeUrl: `https://vet.digitail.io/clinics/dr-paws-mathar-phone-920003045?widget&lang=${language}`,
+      iframeUrl: 'https://vet.digitail.io/clinics/dr-paws-mathar-phone-920003045?widget',
     },
   ];
 
@@ -83,64 +83,6 @@ export default function BookNow() {
                 {t('bookNow.riyadhBranches')}
               </h3>
               
-              {language === 'ar' && (
-                <Card className="mb-6 bg-primary/5 border-primary/20" data-testid="card-booking-help">
-                  <CardHeader>
-                    <CardTitle className="text-lg flex items-center gap-2">
-                      <Info className="w-5 h-5 text-primary" />
-                      {t('bookNow.helpTitle')}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-3">
-                    <p className="text-sm text-foreground/80 mb-4" data-testid="text-help-note">
-                      {t('bookNow.helpNote')}
-                    </p>
-                    <div className="grid md:grid-cols-2 gap-x-6 gap-y-2 text-sm">
-                      <div className="flex items-center gap-2">
-                        <span className="font-medium text-primary">•</span>
-                        <span><strong>Select Date:</strong> {t('bookNow.field.selectDate')}</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <span className="font-medium text-primary">•</span>
-                        <span><strong>Select Time:</strong> {t('bookNow.field.selectTime')}</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <span className="font-medium text-primary">•</span>
-                        <span><strong>Pet Name:</strong> {t('bookNow.field.petName')}</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <span className="font-medium text-primary">•</span>
-                        <span><strong>Owner Name:</strong> {t('bookNow.field.ownerName')}</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <span className="font-medium text-primary">•</span>
-                        <span><strong>Phone Number:</strong> {t('bookNow.field.phoneNumber')}</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <span className="font-medium text-primary">•</span>
-                        <span><strong>Email:</strong> {t('bookNow.field.email')}</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <span className="font-medium text-primary">•</span>
-                        <span><strong>Pet Type:</strong> {t('bookNow.field.petType')}</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <span className="font-medium text-primary">•</span>
-                        <span><strong>Service:</strong> {t('bookNow.field.service')}</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <span className="font-medium text-primary">•</span>
-                        <span><strong>Notes/Comments:</strong> {t('bookNow.field.notes')}</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <span className="font-medium text-primary">•</span>
-                        <span><strong>Submit/Book:</strong> {t('bookNow.field.submit')}</span>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              )}
-              
               <div className="grid md:grid-cols-2 gap-6">
                 {riyadhBranches.map((branch) => (
                   <Card key={branch.id} className="overflow-hidden" data-testid={`card-branch-${branch.id}`}>
@@ -153,7 +95,6 @@ export default function BookNow() {
                     <CardContent className="p-0">
                       <div className="relative w-full" style={{ height: '600px' }}>
                         <iframe
-                          key={`${branch.id}-${language}`}
                           src={branch.iframeUrl}
                           height="600"
                           width="100%"
