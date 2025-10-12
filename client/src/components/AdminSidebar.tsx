@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Home, ChevronDown, Package, MessageSquare, FileText, Users, Handshake } from 'lucide-react';
 import { Link, useLocation } from 'wouter';
 import {
@@ -33,6 +33,15 @@ export function AdminSidebar() {
   const [location] = useLocation();
   const [homePageOpen, setHomePageOpen] = useState(false);
   const [aboutPageOpen, setAboutPageOpen] = useState(false);
+
+  useEffect(() => {
+    if (location === '/admin/service-packages' || location === '/admin/customers-reviews') {
+      setHomePageOpen(true);
+    }
+    if (location === '/admin/about/our-doctors' || location === '/admin/about/our-partners') {
+      setAboutPageOpen(true);
+    }
+  }, [location]);
 
   return (
     <Sidebar>
