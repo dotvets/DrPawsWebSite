@@ -1,5 +1,5 @@
 import { MapPin, Phone, Clock, Mail } from 'lucide-react';
-import { SiFacebook, SiInstagram, SiX, SiWhatsapp } from 'react-icons/si';
+import { SiFacebook, SiInstagram, SiX, SiWhatsapp, SiSnapchat } from 'react-icons/si';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
 import logoSvg from '@assets/dr-paws-logo.svg';
@@ -108,7 +108,9 @@ export default function Footer() {
                 <motion.a
                   whileHover={{ scale: 1.2, rotate: 5 }}
                   whileTap={{ scale: 0.9 }}
-                  href="#"
+                  href="https://www.facebook.com/share/19YLB7ZUxH/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center hover-elevate active-elevate-2"
                   data-testid="link-facebook"
                   aria-label="Facebook"
@@ -118,7 +120,9 @@ export default function Footer() {
                 <motion.a
                   whileHover={{ scale: 1.2, rotate: 5 }}
                   whileTap={{ scale: 0.9 }}
-                  href="#"
+                  href="https://www.instagram.com/drpawssa?igsh=MW4zbTJhNmRrNjRidA=="
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center hover-elevate active-elevate-2"
                   data-testid="link-instagram"
                   aria-label="Instagram"
@@ -128,7 +132,9 @@ export default function Footer() {
                 <motion.a
                   whileHover={{ scale: 1.2, rotate: 5 }}
                   whileTap={{ scale: 0.9 }}
-                  href="#"
+                  href="https://x.com/drpawssa"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center hover-elevate active-elevate-2"
                   data-testid="link-twitter"
                   aria-label="X (Twitter)"
@@ -138,12 +144,26 @@ export default function Footer() {
                 <motion.a
                   whileHover={{ scale: 1.2, rotate: 5 }}
                   whileTap={{ scale: 0.9 }}
-                  href="#"
+                  href="https://wa.me/920003035"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center hover-elevate active-elevate-2"
                   data-testid="link-whatsapp"
                   aria-label="WhatsApp"
                 >
                   <SiWhatsapp className="w-5 h-5" />
+                </motion.a>
+                <motion.a
+                  whileHover={{ scale: 1.2, rotate: 5 }}
+                  whileTap={{ scale: 0.9 }}
+                  href="https://www.snapchat.com/@drpawssa?sender_web_id=f7ef6909-6b8c-47f1-93ab-33fb6dea9af9&device_type=android&is_copy_url=true"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center hover-elevate active-elevate-2"
+                  data-testid="link-snapchat"
+                  aria-label="Snapchat"
+                >
+                  <SiSnapchat className="w-5 h-5" />
                 </motion.a>
               </div>
             </div>
