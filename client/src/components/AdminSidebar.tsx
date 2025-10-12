@@ -1,4 +1,4 @@
-import { Home, ChevronDown, Package, MessageSquare } from 'lucide-react';
+import { Home, ChevronDown, Package, MessageSquare, FileText, Users, Handshake } from 'lucide-react';
 import {
   Sidebar,
   SidebarContent,
@@ -92,6 +92,47 @@ export function AdminSidebar() {
                           </SidebarMenuSubButton>
                         </SidebarMenuSubItem>
                       ))}
+                    </SidebarMenuSub>
+                  </CollapsibleContent>
+                </SidebarMenuItem>
+              </Collapsible>
+
+              <Collapsible defaultOpen className="group/collapsible">
+                <SidebarMenuItem>
+                  <CollapsibleTrigger asChild>
+                    <SidebarMenuButton className="text-white/90 hover:bg-[#18ac61] hover:text-white" data-testid="button-dropdown-about">
+                      <FileText />
+                      <span>About Page</span>
+                      <ChevronDown className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180" />
+                    </SidebarMenuButton>
+                  </CollapsibleTrigger>
+                  <CollapsibleContent>
+                    <SidebarMenuSub>
+                      <div className="px-3 py-1.5 text-xs font-medium text-white/60">Management</div>
+                      <SidebarMenuSubItem>
+                        <SidebarMenuSubButton
+                          asChild
+                          className="text-white/80 hover:bg-[#18ac61] hover:text-white"
+                          data-testid="link-admin-our-doctors"
+                        >
+                          <a href="/admin/about/our-doctors">
+                            <Users className="w-4 h-4" />
+                            <span>Our Doctors</span>
+                          </a>
+                        </SidebarMenuSubButton>
+                      </SidebarMenuSubItem>
+                      <SidebarMenuSubItem>
+                        <SidebarMenuSubButton
+                          asChild
+                          className="text-white/80 hover:bg-[#18ac61] hover:text-white"
+                          data-testid="link-admin-our-partners"
+                        >
+                          <a href="/admin/about/our-partners">
+                            <Handshake className="w-4 h-4" />
+                            <span>Our Partners</span>
+                          </a>
+                        </SidebarMenuSubButton>
+                      </SidebarMenuSubItem>
                     </SidebarMenuSub>
                   </CollapsibleContent>
                 </SidebarMenuItem>
