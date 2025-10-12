@@ -13,15 +13,6 @@ import {
   SidebarMenuSubButton,
 } from '@/components/ui/sidebar';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
-import { useLocation } from 'wouter';
-
-const menuItems = [
-  {
-    title: 'Home Page',
-    url: '/',
-    icon: Home,
-  }
-];
 
 const dropdownItems = [
   {
@@ -42,8 +33,6 @@ const dropdownItems = [
 ];
 
 export function AdminSidebar() {
-  const [location] = useLocation();
-
   return (
     <Sidebar>
       <SidebarContent className="bg-[#264653]">
@@ -51,33 +40,18 @@ export function AdminSidebar() {
           <SidebarGroupLabel className="text-white/80">Admin Menu</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {menuItems.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton
-                    asChild
-                    className="text-white/90 hover:bg-[#18ac61] hover:text-white data-[active=true]:bg-[#18ac61] data-[active=true]:text-white"
-                    data-active={location === item.url}
-                    data-testid={`link-admin-${item.title.toLowerCase().replace(/\s+/g, '-')}`}
-                  >
-                    <a href={item.url}>
-                      <item.icon />
-                      <span>{item.title}</span>
-                    </a>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-              
               <Collapsible defaultOpen className="group/collapsible">
                 <SidebarMenuItem>
                   <CollapsibleTrigger asChild>
-                    <SidebarMenuButton className="text-white/90 hover:bg-[#18ac61] hover:text-white" data-testid="button-dropdown-menu">
-                      <Package />
-                      <span>Management</span>
+                    <SidebarMenuButton className="text-white/90 hover:bg-[#18ac61] hover:text-white" data-testid="button-dropdown-home">
+                      <Home />
+                      <span>Home Page</span>
                       <ChevronDown className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180" />
                     </SidebarMenuButton>
                   </CollapsibleTrigger>
                   <CollapsibleContent>
                     <SidebarMenuSub>
+                      <div className="px-3 py-1.5 text-xs font-medium text-white/60">Management</div>
                       {dropdownItems.map((subItem) => (
                         <SidebarMenuSubItem key={subItem.title}>
                           <SidebarMenuSubButton
