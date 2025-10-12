@@ -1,5 +1,5 @@
 import { Home, ChevronDown, Package, MessageSquare, FileText, Users, Handshake } from 'lucide-react';
-import { Link } from 'wouter';
+import { Link, useLocation } from 'wouter';
 import {
   Sidebar,
   SidebarContent,
@@ -22,11 +22,6 @@ const dropdownItems = [
     icon: Package,
   },
   {
-    title: 'Customer Reviews',
-    url: '/admin/customer-reviews',
-    icon: MessageSquare,
-  },
-  {
     title: 'Customers Reviews',
     url: '/admin/customers-reviews',
     icon: MessageSquare,
@@ -34,6 +29,8 @@ const dropdownItems = [
 ];
 
 export function AdminSidebar() {
+  const [location] = useLocation();
+
   return (
     <Sidebar>
       <SidebarContent className="bg-[#264653]">
@@ -41,7 +38,7 @@ export function AdminSidebar() {
           <SidebarGroupLabel className="text-white/80">Admin Menu</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              <Collapsible defaultOpen className="group/collapsible">
+              <Collapsible className="group/collapsible">
                 <SidebarMenuItem>
                   <CollapsibleTrigger asChild>
                     <SidebarMenuButton className="text-white/90 hover:bg-[#18ac61] hover:text-white" data-testid="button-dropdown-home">
@@ -57,7 +54,11 @@ export function AdminSidebar() {
                         <SidebarMenuSubItem key={subItem.title}>
                           <SidebarMenuSubButton
                             asChild
-                            className="text-white/80 hover:bg-[#18ac61] hover:text-white"
+                            className={`${
+                              location === subItem.url
+                                ? 'bg-yellow-400 text-gray-900'
+                                : 'text-white/80 hover:bg-[#18ac61] hover:text-white'
+                            }`}
                             data-testid={`link-admin-${subItem.title.toLowerCase().replace(/\s+/g, '-')}`}
                           >
                             <Link to={subItem.url}>
@@ -72,7 +73,7 @@ export function AdminSidebar() {
                 </SidebarMenuItem>
               </Collapsible>
 
-              <Collapsible defaultOpen className="group/collapsible">
+              <Collapsible className="group/collapsible">
                 <SidebarMenuItem>
                   <CollapsibleTrigger asChild>
                     <SidebarMenuButton className="text-white/90 hover:bg-[#18ac61] hover:text-white" data-testid="button-dropdown-about">
@@ -87,7 +88,11 @@ export function AdminSidebar() {
                       <SidebarMenuSubItem>
                         <SidebarMenuSubButton
                           asChild
-                          className="text-white/80 hover:bg-[#18ac61] hover:text-white"
+                          className={`${
+                            location === '/admin/about/our-doctors'
+                              ? 'bg-yellow-400 text-gray-900'
+                              : 'text-white/80 hover:bg-[#18ac61] hover:text-white'
+                          }`}
                           data-testid="link-admin-our-doctors"
                         >
                           <Link to="/admin/about/our-doctors">
@@ -99,7 +104,11 @@ export function AdminSidebar() {
                       <SidebarMenuSubItem>
                         <SidebarMenuSubButton
                           asChild
-                          className="text-white/80 hover:bg-[#18ac61] hover:text-white"
+                          className={`${
+                            location === '/admin/about/our-partners'
+                              ? 'bg-yellow-400 text-gray-900'
+                              : 'text-white/80 hover:bg-[#18ac61] hover:text-white'
+                          }`}
                           data-testid="link-admin-our-partners"
                         >
                           <Link to="/admin/about/our-partners">
