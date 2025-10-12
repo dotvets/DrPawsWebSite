@@ -1,4 +1,5 @@
 import { Home, ChevronDown, Package, MessageSquare, FileText, Users, Handshake } from 'lucide-react';
+import { Link } from 'wouter';
 import {
   Sidebar,
   SidebarContent,
@@ -59,10 +60,10 @@ export function AdminSidebar() {
                             className="text-white/80 hover:bg-[#18ac61] hover:text-white"
                             data-testid={`link-admin-${subItem.title.toLowerCase().replace(/\s+/g, '-')}`}
                           >
-                            <a href={subItem.url}>
+                            <Link to={subItem.url}>
                               <subItem.icon className="w-4 h-4" />
                               <span>{subItem.title}</span>
-                            </a>
+                            </Link>
                           </SidebarMenuSubButton>
                         </SidebarMenuSubItem>
                       ))}
@@ -89,10 +90,10 @@ export function AdminSidebar() {
                           className="text-white/80 hover:bg-[#18ac61] hover:text-white"
                           data-testid="link-admin-our-doctors"
                         >
-                          <a href="/admin/about/our-doctors">
+                          <Link to="/admin/about/our-doctors">
                             <Users className="w-4 h-4" />
                             <span>Our Doctors</span>
-                          </a>
+                          </Link>
                         </SidebarMenuSubButton>
                       </SidebarMenuSubItem>
                       <SidebarMenuSubItem>
@@ -101,10 +102,10 @@ export function AdminSidebar() {
                           className="text-white/80 hover:bg-[#18ac61] hover:text-white"
                           data-testid="link-admin-our-partners"
                         >
-                          <a href="/admin/about/our-partners">
+                          <Link to="/admin/about/our-partners">
                             <Handshake className="w-4 h-4" />
                             <span>Our Partners</span>
-                          </a>
+                          </Link>
                         </SidebarMenuSubButton>
                       </SidebarMenuSubItem>
                     </SidebarMenuSub>
