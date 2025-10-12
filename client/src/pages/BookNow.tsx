@@ -1,7 +1,7 @@
 import { motion, useInView } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect } from 'react';
 import Header from '@/components/Header';
 import HeartbeatDivider from '@/components/HeartbeatDivider';
 import Footer from '@/components/Footer';
@@ -11,7 +11,6 @@ export default function BookNow() {
   const { t, language } = useLanguage();
   const heroRef = useRef(null);
   const heroInView = useInView(heroRef, { once: false, amount: 0.3 });
-  const [selectedBranch, setSelectedBranch] = useState<string | null>(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
