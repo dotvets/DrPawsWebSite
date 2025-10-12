@@ -20,12 +20,12 @@ export default function BookNow() {
     {
       id: 'sahafa',
       name: t('bookNow.sahafahBranch'),
-      iframeUrl: 'https://vet.digitail.io/clinics/dr-paws-sahafa-tel-920003045?widget',
+      iframeUrl: `https://vet.digitail.io/clinics/dr-paws-sahafa-tel-920003045?widget&lang=${language}`,
     },
     {
       id: 'mather',
       name: t('bookNow.matherBranch'),
-      iframeUrl: 'https://vet.digitail.io/clinics/dr-paws-mathar-phone-920003045?widget',
+      iframeUrl: `https://vet.digitail.io/clinics/dr-paws-mathar-phone-920003045?widget&lang=${language}`,
     },
   ];
 
@@ -95,6 +95,7 @@ export default function BookNow() {
                     <CardContent className="p-0">
                       <div className="relative w-full" style={{ height: '600px' }}>
                         <iframe
+                          key={`${branch.id}-${language}`}
                           src={branch.iframeUrl}
                           height="600"
                           width="100%"
