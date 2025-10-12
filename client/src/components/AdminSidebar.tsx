@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Home, ChevronDown, Package, MessageSquare, FileText, Users, Handshake } from 'lucide-react';
 import { Link, useLocation } from 'wouter';
 import {
@@ -30,6 +31,8 @@ const dropdownItems = [
 
 export function AdminSidebar() {
   const [location] = useLocation();
+  const [homePageOpen, setHomePageOpen] = useState(false);
+  const [aboutPageOpen, setAboutPageOpen] = useState(false);
 
   return (
     <Sidebar>
@@ -38,7 +41,7 @@ export function AdminSidebar() {
           <SidebarGroupLabel className="text-white/80">Admin Menu</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              <Collapsible className="group/collapsible">
+              <Collapsible open={homePageOpen} onOpenChange={setHomePageOpen} className="group/collapsible">
                 <SidebarMenuItem>
                   <CollapsibleTrigger asChild>
                     <SidebarMenuButton className="text-white/90 hover:bg-[#18ac61] hover:text-white" data-testid="button-dropdown-home">
@@ -73,7 +76,7 @@ export function AdminSidebar() {
                 </SidebarMenuItem>
               </Collapsible>
 
-              <Collapsible className="group/collapsible">
+              <Collapsible open={aboutPageOpen} onOpenChange={setAboutPageOpen} className="group/collapsible">
                 <SidebarMenuItem>
                   <CollapsibleTrigger asChild>
                     <SidebarMenuButton className="text-white/90 hover:bg-[#18ac61] hover:text-white" data-testid="button-dropdown-about">
