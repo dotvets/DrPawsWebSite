@@ -5,6 +5,7 @@ import { useRef, useEffect } from 'react';
 import Header from '@/components/Header';
 import HeartbeatDivider from '@/components/HeartbeatDivider';
 import Footer from '@/components/Footer';
+import GoogleTranslateWidget from '@/components/GoogleTranslateWidget';
 import { MapPin, Clock } from 'lucide-react';
 
 export default function BookNow() {
@@ -31,6 +32,7 @@ export default function BookNow() {
 
   return (
     <div className="min-h-screen">
+      <GoogleTranslateWidget />
       <Header />
 
       <motion.section
