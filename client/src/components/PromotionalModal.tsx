@@ -6,6 +6,7 @@ import { Label } from '@/components/ui/label';
 import { X, Gift } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { apiRequest, queryClient } from '@/lib/queryClient';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface PromotionalModalProps {
   open: boolean;
@@ -14,6 +15,7 @@ interface PromotionalModalProps {
 
 export default function PromotionalModal({ open, onClose }: PromotionalModalProps) {
   const { toast } = useToast();
+  const { t, language } = useLanguage();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     firstName: '',
@@ -29,23 +31,23 @@ export default function PromotionalModal({ open, onClose }: PromotionalModalProp
       await apiRequest('POST', '/api/opening-discount', formData);
 
       toast({
-        title: 'تم التسجيل بنجاح!',
-        description: 'سنتواصل معك قريباً بشأن عرض الافتتاح الخاص',
+        title: t('promo.successTitle'),
+        description: t('promo.successMessage'),
       });
 
       setFormData({ firstName: '', lastName: '', phoneNumber: '' });
       onClose();
     } catch (error: any) {
-      let errorMessage = 'حدث خطأ أثناء التسجيل، يرجى المحاولة مرة أخرى';
+      let errorMessage = t('promo.errorGeneric');
       
       if (error instanceof Error) {
         if (error.message.includes('409') || error.message.includes('Phone number already registered')) {
-          errorMessage = 'رقم الهاتف مسجل مسبقاً';
+          errorMessage = t('promo.errorDuplicate');
         }
       }
       
       toast({
-        title: 'خطأ',
+        title: t('promo.errorTitle'),
         description: errorMessage,
         variant: 'destructive',
       });
@@ -56,14 +58,14 @@ export default function PromotionalModal({ open, onClose }: PromotionalModalProp
 
   return (
     <Dialog open={open} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-[500px] p-0 overflow-hidden" dir="rtl">
+      <DialogContent className="sm:max-w-[500px] p-0 overflow-hidden" dir={language === 'ar' ? 'rtl' : 'ltr'}>
         <button
           onClick={onClose}
-          className="absolute left-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none z-10"
+          className={`absolute top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none z-10 ${language === 'ar' ? 'left-4' : 'right-4'}`}
           data-testid="button-close-modal"
         >
           <X className="h-5 w-5" />
-          <span className="sr-only">إغلاق</span>
+          <span className="sr-only">{t('promo.close')}</span>
         </button>
 
         <div className="bg-gradient-to-br from-primary/10 to-primary/5 p-8 text-center border-b">
@@ -72,10 +74,10 @@ export default function PromotionalModal({ open, onClose }: PromotionalModalProp
           </div>
           <DialogHeader>
             <DialogTitle className="text-2xl font-bold text-primary mb-2">
-              عرض افتتاح فرع جدة!
+              {t('promo.title')}
             </DialogTitle>
             <DialogDescription className="text-lg text-foreground/90">
-              ترقبوا افتتاح فرعنا في جدة! سجل بياناتك الآن واحصل على خصم 20% لمدة 6 أشهر بعد الافتتاح
+              {t('promo.description')}
             </DialogDescription>
           </DialogHeader>
         </div>
@@ -83,38 +85,38 @@ export default function PromotionalModal({ open, onClose }: PromotionalModalProp
         <form onSubmit={handleSubmit} className="p-6 space-y-6">
           <div className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="firstName" className="text-right">
-                الاسم الأول <span className="text-destructive">*</span>
+              <Label htmlFor="firstName" className={language === 'ar' ? 'text-right' : 'text-left'}>
+                {t('promo.firstName')} <span className="text-destructive">{t('promo.required')}</span>
               </Label>
               <Input
                 id="firstName"
                 value={formData.firstName}
                 onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
                 required
-                dir="rtl"
-                placeholder="أدخل الاسم الأول"
+                dir={language === 'ar' ? 'rtl' : 'ltr'}
+                placeholder={t('promo.firstNamePlaceholder')}
                 data-testid="input-first-name"
               />
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="lastName" className="text-right">
-                الاسم الأخير <span className="text-destructive">*</span>
+              <Label htmlFor="lastName" className={language === 'ar' ? 'text-right' : 'text-left'}>
+                {t('promo.lastName')} <span className="text-destructive">{t('promo.required')}</span>
               </Label>
               <Input
                 id="lastName"
                 value={formData.lastName}
                 onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
                 required
-                dir="rtl"
-                placeholder="أدخل الاسم الأخير"
+                dir={language === 'ar' ? 'rtl' : 'ltr'}
+                placeholder={t('promo.lastNamePlaceholder')}
                 data-testid="input-last-name"
               />
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="phoneNumber" className="text-right">
-                رقم الهاتف <span className="text-destructive">*</span>
+              <Label htmlFor="phoneNumber" className={language === 'ar' ? 'text-right' : 'text-left'}>
+                {t('promo.phoneNumber')} <span className="text-destructive">{t('promo.required')}</span>
               </Label>
               <Input
                 id="phoneNumber"
@@ -123,7 +125,7 @@ export default function PromotionalModal({ open, onClose }: PromotionalModalProp
                 onChange={(e) => setFormData({ ...formData, phoneNumber: e.target.value })}
                 required
                 dir="ltr"
-                placeholder="05xxxxxxxx"
+                placeholder={t('promo.phoneNumberPlaceholder')}
                 data-testid="input-phone-number"
               />
             </div>
@@ -135,7 +137,7 @@ export default function PromotionalModal({ open, onClose }: PromotionalModalProp
             disabled={isSubmitting}
             data-testid="button-submit-registration"
           >
-            {isSubmitting ? 'جاري التسجيل...' : 'سجل الآن واحصل على الخصم'}
+            {isSubmitting ? t('promo.submitting') : t('promo.submit')}
           </Button>
         </form>
       </DialogContent>
