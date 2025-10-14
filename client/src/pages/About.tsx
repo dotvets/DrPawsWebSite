@@ -345,32 +345,44 @@ export default function About() {
                   </CardContent>
                 </Card>
               ) : (
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-8" data-testid="partners-grid">
-                  {partners.map((partner) => (
-                    <motion.div
-                      key={partner.id}
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      animate={partnersInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
-                      transition={{ duration: 0.5 }}
-                      className="flex items-center justify-center"
-                      data-testid={`partner-${partner.id}`}
-                    >
-                      <Card className="w-full hover-elevate">
-                        <CardContent className="p-6 flex items-center justify-center h-48">
-                          {partner.logoUrl ? (
-                            <img
-                              src={partner.logoUrl}
-                              alt={partner.name}
-                              className="max-w-full max-h-full object-contain"
-                              data-testid={`img-partner-${partner.id}`}
-                            />
-                          ) : (
-                            <Upload className="w-12 h-12 text-muted-foreground" />
-                          )}
-                        </CardContent>
-                      </Card>
-                    </motion.div>
-                  ))}
+                <div className="overflow-hidden" data-testid="partners-grid">
+                  <motion.div
+                    className="flex gap-8"
+                    animate={{
+                      x: [0, -1 * (partners.length * 280)],
+                    }}
+                    transition={{
+                      x: {
+                        repeat: Infinity,
+                        repeatType: "loop",
+                        duration: partners.length * 5,
+                        ease: "linear",
+                      },
+                    }}
+                  >
+                    {[...partners, ...partners].map((partner, index) => (
+                      <div
+                        key={`${partner.id}-${index}`}
+                        className="flex-shrink-0 w-64"
+                        data-testid={`partner-${partner.id}-${index}`}
+                      >
+                        <Card className="hover-elevate">
+                          <CardContent className="p-6 flex items-center justify-center h-48">
+                            {partner.logoUrl ? (
+                              <img
+                                src={partner.logoUrl}
+                                alt={partner.name}
+                                className="max-w-full max-h-full object-contain"
+                                data-testid={`img-partner-${partner.id}-${index}`}
+                              />
+                            ) : (
+                              <Upload className="w-12 h-12 text-muted-foreground" />
+                            )}
+                          </CardContent>
+                        </Card>
+                      </div>
+                    ))}
+                  </motion.div>
                 </div>
               )}
             </motion.div>
