@@ -98,13 +98,13 @@ export default function PromotionalModal({ open, onClose }: PromotionalModalProp
   };
 
   return (
-    <Dialog open={open}>
-      <DialogContent className="sm:max-w-[500px] p-0 overflow-hidden" dir={language === 'ar' ? 'rtl' : 'ltr'} onPointerDownOutside={(e) => e.preventDefault()} onEscapeKeyDown={(e) => e.preventDefault()}>
+    <Dialog open={open} onOpenChange={onClose}>
+      <DialogContent className="sm:max-w-[500px] p-0 overflow-hidden" dir={language === 'ar' ? 'rtl' : 'ltr'}>
         <Button
           variant="ghost"
           size="sm"
           onClick={() => setLanguage(language === 'en' ? 'ar' : 'en')}
-          className={`absolute top-4 flex items-center gap-2 z-10 ${language === 'ar' ? 'left-4' : 'right-4'}`}
+          className={`absolute top-4 flex items-center gap-2 z-10 ${language === 'ar' ? 'right-12' : 'left-4'}`}
           data-testid="button-language-switcher"
         >
           <Globe className="w-4 h-4" />
