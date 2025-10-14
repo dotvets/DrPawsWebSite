@@ -7,6 +7,7 @@ import { Gift, Globe } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { apiRequest, queryClient } from '@/lib/queryClient';
 import { useLanguage } from '@/contexts/LanguageContext';
+import confetti from 'canvas-confetti';
 
 interface PromotionalModalProps {
   open: boolean;
@@ -52,6 +53,51 @@ export default function PromotionalModal({ open, onClose }: PromotionalModalProp
     return () => clearTimeout(timeoutId);
   }, [formData.phoneNumber, t]);
 
+  const showCelebration = () => {
+    const colors = ['#18ac61', '#f4a261', '#e76f51', '#264653', '#2a9d8f'];
+    
+    // First burst from center
+    confetti({
+      particleCount: 100,
+      spread: 70,
+      origin: { y: 0.6 },
+      colors: colors
+    });
+
+    // Left side burst
+    setTimeout(() => {
+      confetti({
+        particleCount: 50,
+        angle: 60,
+        spread: 55,
+        origin: { x: 0 },
+        colors: colors
+      });
+    }, 100);
+
+    // Right side burst
+    setTimeout(() => {
+      confetti({
+        particleCount: 50,
+        angle: 120,
+        spread: 55,
+        origin: { x: 1 },
+        colors: colors
+      });
+    }, 100);
+
+    // Final center burst
+    setTimeout(() => {
+      confetti({
+        particleCount: 80,
+        spread: 100,
+        origin: { y: 0.6 },
+        colors: colors,
+        ticks: 200
+      });
+    }, 250);
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -71,13 +117,20 @@ export default function PromotionalModal({ open, onClose }: PromotionalModalProp
     try {
       await apiRequest('POST', '/api/opening-discount', formData);
 
+      // Show celebration effect
+      showCelebration();
+
       toast({
         title: t('promo.successTitle'),
         description: t('promo.successMessage'),
       });
 
       setFormData({ firstName: '', lastName: '', phoneNumber: '' });
-      onClose();
+      
+      // Close modal after celebration
+      setTimeout(() => {
+        onClose();
+      }, 1500);
     } catch (error: any) {
       let errorMessage = t('promo.errorGeneric');
       
