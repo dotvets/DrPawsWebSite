@@ -3,7 +3,7 @@ import { useQuery, useMutation } from "@tanstack/react-query";
 import { useForm, UseFormReturn } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useLocation } from "wouter";
-import { Plus, Pencil, Trash2, X } from "lucide-react";
+import { X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Form } from "@/components/ui/form";
@@ -13,23 +13,23 @@ import { useToast } from "@/hooks/use-toast";
 import { apiRequest, queryClient } from "@/lib/queryClient";
 import { ZodSchema } from "zod";
 
-interface AdminManagementConfig<TFormData, TEntity> {
+interface AdminManagementProps {
   entityName: string;
   entityNamePlural: string;
   apiEndpoint: string;
-  formSchema: ZodSchema<TFormData>;
-  defaultValues: TFormData;
+  formSchema: ZodSchema<any>;
+  defaultValues: any;
   description?: string;
-  transformDataForSubmit?: (data: TFormData) => any;
-  transformDataForEdit?: (entity: TEntity) => TFormData;
-  renderFormFields: (form: UseFormReturn<TFormData>, editingId: number | null, customState?: any) => ReactNode;
+  transformDataForSubmit?: (data: any) => any;
+  transformDataForEdit?: (entity: any) => any;
+  renderFormFields: (form: UseFormReturn<any>, editingId: number | null, customState?: any) => ReactNode;
   renderTableColumns: () => { header: string; width?: string }[];
-  renderTableRow: (item: TEntity, onEdit: (item: TEntity) => void, onDelete: (id: number) => void) => ReactNode;
+  renderTableRow: (item: any, onEdit: (item: any) => void, onDelete: (id: number) => void) => ReactNode;
   customState?: any;
   onCustomStateChange?: (state: any) => void;
 }
 
-export function AdminManagement<TFormData extends Record<string, any>, TEntity extends { id: number }>({
+export function AdminManagement({
   entityName,
   entityNamePlural,
   apiEndpoint,
@@ -37,13 +37,13 @@ export function AdminManagement<TFormData extends Record<string, any>, TEntity e
   defaultValues,
   description,
   transformDataForSubmit = (data) => data,
-  transformDataForEdit = (entity) => entity as unknown as TFormData,
+  transformDataForEdit = (entity) => entity,
   renderFormFields,
   renderTableColumns,
   renderTableRow,
   customState,
   onCustomStateChange,
-}: AdminManagementConfig<TFormData, TEntity>) {
+}: AdminManagementProps) {
   const { toast } = useToast();
   const [, setLocation] = useLocation();
   const [editingId, setEditingId] = useState<number | null>(null);
@@ -55,17 +55,17 @@ export function AdminManagement<TFormData extends Record<string, any>, TEntity e
     }
   }, [setLocation]);
 
-  const { data: items = [], isLoading } = useQuery<TEntity[]>({
+  const { data: items = [], isLoading } = useQuery<any[]>({
     queryKey: [apiEndpoint],
   });
 
-  const form = useForm<TFormData>({
+  const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues,
   });
 
   const createMutation = useMutation({
-    mutationFn: async (data: TFormData) => {
+    mutationFn: async (data: any) => {
       const transformedData = transformDataForSubmit(data);
       return apiRequest("POST", apiEndpoint, transformedData);
     },
@@ -90,7 +90,7 @@ export function AdminManagement<TFormData extends Record<string, any>, TEntity e
   });
 
   const updateMutation = useMutation({
-    mutationFn: async ({ id, data }: { id: number; data: TFormData }) => {
+    mutationFn: async ({ id, data }: { id: number; data: any }) => {
       const transformedData = transformDataForSubmit(data);
       return apiRequest("PUT", `${apiEndpoint}/${id}`, transformedData);
     },
@@ -135,7 +135,7 @@ export function AdminManagement<TFormData extends Record<string, any>, TEntity e
     },
   });
 
-  function onSubmit(data: TFormData) {
+  function onSubmit(data: any) {
     if (editingId !== null) {
       updateMutation.mutate({ id: editingId, data });
     } else {
@@ -143,7 +143,7 @@ export function AdminManagement<TFormData extends Record<string, any>, TEntity e
     }
   }
 
-  function handleEdit(item: TEntity) {
+  function handleEdit(item: any) {
     setEditingId(item.id);
     const formData = transformDataForEdit(item);
     form.reset(formData);
