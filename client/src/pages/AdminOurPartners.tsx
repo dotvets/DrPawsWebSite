@@ -36,10 +36,10 @@ export default function AdminOurPartners() {
       return;
     }
 
-    if (file.size > 5 * 1024 * 1024) {
+    if (file.size > 500 * 1024) {
       toast({
         title: "Error",
-        description: "Image size must be less than 5MB",
+        description: "Image size must be less than 500KB",
         variant: "destructive",
       });
       return;
@@ -173,7 +173,7 @@ export default function AdminOurPartners() {
                       {field.value ? "Change Logo" : "Upload Logo"}
                     </Button>
                     <p className="text-xs text-muted-foreground mt-2">
-                      Supported formats: PNG, JPG, JPEG. Max size: 5MB
+                      Supported formats: PNG, JPG, JPEG. Max size: 500KB
                     </p>
                   </div>
                 </div>
