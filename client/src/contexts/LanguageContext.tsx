@@ -292,6 +292,25 @@ const translations = {
     'footer.fri': 'Fri: 03:00 PM – 10:00 PM',
     'footer.email': 'info@drpaws-sa.com',
     'footer.follow': 'Stay in touch',
+    
+    // Promotional Modal
+    'promo.title': 'Jeddah Branch Opening!',
+    'promo.description': 'Coming soon! Register now and get 20% discount for 6 months after opening',
+    'promo.firstName': 'First Name',
+    'promo.lastName': 'Last Name',
+    'promo.phoneNumber': 'Phone Number',
+    'promo.required': '*',
+    'promo.firstNamePlaceholder': 'Enter your first name',
+    'promo.lastNamePlaceholder': 'Enter your last name',
+    'promo.phoneNumberPlaceholder': '05xxxxxxxx',
+    'promo.submit': 'Register Now and Get Discount',
+    'promo.submitting': 'Registering...',
+    'promo.successTitle': 'Registration Successful!',
+    'promo.successMessage': 'We will contact you soon about the special opening offer',
+    'promo.errorTitle': 'Error',
+    'promo.errorGeneric': 'Registration failed, please try again',
+    'promo.errorDuplicate': 'Phone number already registered',
+    'promo.close': 'Close',
   },
   ar: {
     // Navigation
@@ -574,6 +593,25 @@ const translations = {
     'footer.fri': 'يوم الجمعة: من 3:00 مساءً حتى 10:00 مساءً',
     'footer.email': 'info@drpaws-sa.com',
     'footer.follow': 'تابعنا',
+    
+    // Promotional Modal
+    'promo.title': 'عرض افتتاح فرع جدة!',
+    'promo.description': 'ترقبوا افتتاح فرعنا في جدة! سجل بياناتك الآن واحصل على خصم 20% لمدة 6 أشهر بعد الافتتاح',
+    'promo.firstName': 'الاسم الأول',
+    'promo.lastName': 'الاسم الأخير',
+    'promo.phoneNumber': 'رقم الهاتف',
+    'promo.required': '*',
+    'promo.firstNamePlaceholder': 'أدخل الاسم الأول',
+    'promo.lastNamePlaceholder': 'أدخل الاسم الأخير',
+    'promo.phoneNumberPlaceholder': '05xxxxxxxx',
+    'promo.submit': 'سجل الآن واحصل على الخصم',
+    'promo.submitting': 'جاري التسجيل...',
+    'promo.successTitle': 'تم التسجيل بنجاح!',
+    'promo.successMessage': 'سنتواصل معك قريباً بشأن عرض الافتتاح الخاص',
+    'promo.errorTitle': 'خطأ',
+    'promo.errorGeneric': 'حدث خطأ أثناء التسجيل، يرجى المحاولة مرة أخرى',
+    'promo.errorDuplicate': 'رقم الهاتف مسجل مسبقاً',
+    'promo.close': 'إغلاق',
   },
 };
 
