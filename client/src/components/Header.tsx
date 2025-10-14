@@ -16,8 +16,8 @@ export default function Header() {
     { name: t('nav.about'), path: '/about' },
     { name: t('nav.services'), path: '/services' },
     { name: t('nav.blog'), path: '/blog' },
-    { name: t('bookNow.title'), path: '/book-now' },
     { name: t('nav.contact'), path: '#contact' },
+    { name: t('bookNow.title'), path: '/book-now' },
   ];
 
   const handleNavClick = (path: string) => {
