@@ -104,6 +104,11 @@ export class DbStorage implements IStorage {
     const result = await db.insert(openingDiscount).values(discount).returning();
     return result[0];
   }
+
+  async checkPhoneNumberExists(phoneNumber: string): Promise<boolean> {
+    const result = await db.select().from(openingDiscount).where(eq(openingDiscount.phoneNumber, phoneNumber));
+    return result.length > 0;
+  }
 }
 
 export const storage = new DbStorage();

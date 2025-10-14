@@ -310,6 +310,7 @@ const translations = {
     'promo.errorTitle': 'Error',
     'promo.errorGeneric': 'Registration failed, please try again',
     'promo.errorDuplicate': 'Phone number already registered',
+    'promo.phoneAlreadyRegistered': 'This number has already been registered before.',
     'promo.close': 'Close',
   },
   ar: {
@@ -611,6 +612,7 @@ const translations = {
     'promo.errorTitle': 'خطأ',
     'promo.errorGeneric': 'حدث خطأ أثناء التسجيل، يرجى المحاولة مرة أخرى',
     'promo.errorDuplicate': 'رقم الهاتف مسجل مسبقاً',
+    'promo.phoneAlreadyRegistered': 'هذا الرقم تم تسجيله من قبل.',
     'promo.close': 'إغلاق',
   },
 };

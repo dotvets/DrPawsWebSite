@@ -304,6 +304,18 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   // Opening Discount Routes
 
+  // Check if phone number exists
+  app.get("/api/opening-discount/check-phone/:phoneNumber", async (req, res) => {
+    try {
+      const phoneNumber = req.params.phoneNumber;
+      const exists = await storage.checkPhoneNumberExists(phoneNumber);
+      res.status(200).json({ exists });
+    } catch (error) {
+      console.error("Error checking phone number:", error);
+      res.status(500).json({ error: "Failed to check phone number" });
+    }
+  });
+
   // Create opening discount registration
   app.post("/api/opening-discount", async (req, res) => {
     try {

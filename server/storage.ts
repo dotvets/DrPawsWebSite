@@ -32,6 +32,7 @@ export interface IStorage {
 
   // Opening Discount
   createOpeningDiscount(discount: InsertOpeningDiscount): Promise<OpeningDiscount>;
+  checkPhoneNumberExists(phoneNumber: string): Promise<boolean>;
 }
 
 export class MemStorage implements IStorage {
@@ -91,6 +92,54 @@ export class MemStorage implements IStorage {
 
   async deleteServicePackage(id: number): Promise<boolean> {
     return this.packages.delete(id);
+  }
+
+  async getAllCustomerReviews(): Promise<CustomerReview[]> {
+    throw new Error("Not implemented");
+  }
+
+  async getCustomerReview(id: number): Promise<CustomerReview | undefined> {
+    throw new Error("Not implemented");
+  }
+
+  async createCustomerReview(review: InsertCustomerReview): Promise<CustomerReview> {
+    throw new Error("Not implemented");
+  }
+
+  async updateCustomerReview(id: number, review: Partial<InsertCustomerReview>): Promise<CustomerReview | undefined> {
+    throw new Error("Not implemented");
+  }
+
+  async deleteCustomerReview(id: number): Promise<boolean> {
+    throw new Error("Not implemented");
+  }
+
+  async getAllPartners(): Promise<Partner[]> {
+    throw new Error("Not implemented");
+  }
+
+  async getPartner(id: number): Promise<Partner | undefined> {
+    throw new Error("Not implemented");
+  }
+
+  async createPartner(partner: InsertPartner): Promise<Partner> {
+    throw new Error("Not implemented");
+  }
+
+  async updatePartner(id: number, partner: Partial<InsertPartner>): Promise<Partner | undefined> {
+    throw new Error("Not implemented");
+  }
+
+  async deletePartner(id: number): Promise<boolean> {
+    throw new Error("Not implemented");
+  }
+
+  async createOpeningDiscount(discount: InsertOpeningDiscount): Promise<OpeningDiscount> {
+    throw new Error("Not implemented");
+  }
+
+  async checkPhoneNumberExists(phoneNumber: string): Promise<boolean> {
+    throw new Error("Not implemented");
   }
 }
 

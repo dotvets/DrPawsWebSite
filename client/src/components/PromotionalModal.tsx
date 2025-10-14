@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { X, Gift } from 'lucide-react';
+import { X, Gift, Globe } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { apiRequest, queryClient } from '@/lib/queryClient';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -15,16 +15,51 @@ interface PromotionalModalProps {
 
 export default function PromotionalModal({ open, onClose }: PromotionalModalProps) {
   const { toast } = useToast();
-  const { t, language } = useLanguage();
+  const { t, language, setLanguage } = useLanguage();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [phoneError, setPhoneError] = useState<string | null>(null);
+  const [isCheckingPhone, setIsCheckingPhone] = useState(false);
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
     phoneNumber: '',
   });
 
+  // Debounce phone number validation
+  useEffect(() => {
+    const checkPhone = async () => {
+      if (formData.phoneNumber.length >= 10) {
+        setIsCheckingPhone(true);
+        try {
+          const response = await fetch(`/api/opening-discount/check-phone/${formData.phoneNumber}`);
+          const data = await response.json();
+          if (data.exists) {
+            setPhoneError(t('promo.phoneAlreadyRegistered'));
+          } else {
+            setPhoneError(null);
+          }
+        } catch (error) {
+          console.error('Error checking phone:', error);
+        } finally {
+          setIsCheckingPhone(false);
+        }
+      } else {
+        setPhoneError(null);
+      }
+    };
+
+    const timeoutId = setTimeout(checkPhone, 500);
+    return () => clearTimeout(timeoutId);
+  }, [formData.phoneNumber, t]);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Prevent submission if phone error exists
+    if (phoneError) {
+      return;
+    }
+    
     setIsSubmitting(true);
 
     try {
@@ -68,6 +103,17 @@ export default function PromotionalModal({ open, onClose }: PromotionalModalProp
           <span className="sr-only">{t('promo.close')}</span>
         </button>
 
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={() => setLanguage(language === 'en' ? 'ar' : 'en')}
+          className={`absolute top-4 flex items-center gap-2 z-10 ${language === 'ar' ? 'right-12' : 'left-12'}`}
+          data-testid="button-language-switcher"
+        >
+          <Globe className="w-4 h-4" />
+          {language === 'en' ? 'العربية' : 'English'}
+        </Button>
+
         <div className="bg-gradient-to-br from-primary/10 to-primary/5 p-8 text-center border-b">
           <div className="mx-auto w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mb-4">
             <Gift className="w-8 h-8 text-primary" />
@@ -85,13 +131,19 @@ export default function PromotionalModal({ open, onClose }: PromotionalModalProp
         <form onSubmit={handleSubmit} className="p-6 space-y-6">
           <div className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="firstName" className={language === 'ar' ? 'text-right' : 'text-left'}>
-                {t('promo.firstName')} <span className="text-destructive">{t('promo.required')}</span>
-              </Label>
+              <div className="flex justify-between items-center">
+                <Label htmlFor="firstName" className={language === 'ar' ? 'text-right' : 'text-left'}>
+                  {t('promo.firstName')} <span className="text-destructive">{t('promo.required')}</span>
+                </Label>
+                <span className="text-xs text-muted-foreground">
+                  {formData.firstName.length}/20
+                </span>
+              </div>
               <Input
                 id="firstName"
                 value={formData.firstName}
                 onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
+                maxLength={20}
                 required
                 dir={language === 'ar' ? 'rtl' : 'ltr'}
                 placeholder={t('promo.firstNamePlaceholder')}
@@ -100,13 +152,19 @@ export default function PromotionalModal({ open, onClose }: PromotionalModalProp
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="lastName" className={language === 'ar' ? 'text-right' : 'text-left'}>
-                {t('promo.lastName')} <span className="text-destructive">{t('promo.required')}</span>
-              </Label>
+              <div className="flex justify-between items-center">
+                <Label htmlFor="lastName" className={language === 'ar' ? 'text-right' : 'text-left'}>
+                  {t('promo.lastName')} <span className="text-destructive">{t('promo.required')}</span>
+                </Label>
+                <span className="text-xs text-muted-foreground">
+                  {formData.lastName.length}/20
+                </span>
+              </div>
               <Input
                 id="lastName"
                 value={formData.lastName}
                 onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
+                maxLength={20}
                 required
                 dir={language === 'ar' ? 'rtl' : 'ltr'}
                 placeholder={t('promo.lastNamePlaceholder')}
@@ -115,26 +173,38 @@ export default function PromotionalModal({ open, onClose }: PromotionalModalProp
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="phoneNumber" className={language === 'ar' ? 'text-right' : 'text-left'}>
-                {t('promo.phoneNumber')} <span className="text-destructive">{t('promo.required')}</span>
-              </Label>
+              <div className="flex justify-between items-center">
+                <Label htmlFor="phoneNumber" className={language === 'ar' ? 'text-right' : 'text-left'}>
+                  {t('promo.phoneNumber')} <span className="text-destructive">{t('promo.required')}</span>
+                </Label>
+                <span className="text-xs text-muted-foreground">
+                  {formData.phoneNumber.length}/10
+                </span>
+              </div>
               <Input
                 id="phoneNumber"
                 type="tel"
                 value={formData.phoneNumber}
-                onChange={(e) => setFormData({ ...formData, phoneNumber: e.target.value })}
+                onChange={(e) => setFormData({ ...formData, phoneNumber: e.target.value.replace(/\D/g, '') })}
+                maxLength={10}
                 required
                 dir="ltr"
                 placeholder={t('promo.phoneNumberPlaceholder')}
                 data-testid="input-phone-number"
+                className={phoneError ? 'border-destructive' : ''}
               />
+              {phoneError && (
+                <p className="text-sm text-destructive" data-testid="text-phone-error">
+                  {phoneError}
+                </p>
+              )}
             </div>
           </div>
 
           <Button
             type="submit"
             className="w-full"
-            disabled={isSubmitting}
+            disabled={isSubmitting || !!phoneError}
             data-testid="button-submit-registration"
           >
             {isSubmitting ? t('promo.submitting') : t('promo.submit')}
