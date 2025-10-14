@@ -1,5 +1,5 @@
 import { db } from "./db";
-import { users, servicePackages, customerReviews, partners, type User, type InsertUser, type ServicePackage, type InsertServicePackage, type CustomerReview, type InsertCustomerReview, type Partner, type InsertPartner } from "@shared/schema";
+import { users, servicePackages, customerReviews, partners, openingDiscount, type User, type InsertUser, type ServicePackage, type InsertServicePackage, type CustomerReview, type InsertCustomerReview, type Partner, type InsertPartner, type OpeningDiscount, type InsertOpeningDiscount } from "@shared/schema";
 import { eq } from "drizzle-orm";
 import { IStorage } from "./storage";
 
@@ -98,6 +98,11 @@ export class DbStorage implements IStorage {
   async deletePartner(id: number): Promise<boolean> {
     const result = await db.delete(partners).where(eq(partners.id, id)).returning();
     return result.length > 0;
+  }
+
+  async createOpeningDiscount(discount: InsertOpeningDiscount): Promise<OpeningDiscount> {
+    const result = await db.insert(openingDiscount).values(discount).returning();
+    return result[0];
   }
 }
 

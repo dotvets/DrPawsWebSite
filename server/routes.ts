@@ -1,7 +1,7 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { insertServicePackageSchema, insertCustomerReviewSchema, insertPartnerSchema } from "@shared/schema";
+import { insertServicePackageSchema, insertCustomerReviewSchema, insertPartnerSchema, insertOpeningDiscountSchema } from "@shared/schema";
 import { z } from "zod";
 import { ObjectStorageService, ObjectNotFoundError } from "./objectStorage";
 
@@ -299,6 +299,29 @@ export async function registerRoutes(app: Express): Promise<Server> {
     } catch (error) {
       console.error("Error setting partner logo:", error);
       res.status(500).json({ error: "Internal server error" });
+    }
+  });
+
+  // Opening Discount Routes
+
+  // Create opening discount registration
+  app.post("/api/opening-discount", async (req, res) => {
+    try {
+      const data = insertOpeningDiscountSchema.parse(req.body);
+      const registration = await storage.createOpeningDiscount(data);
+      res.status(201).json(registration);
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        return res.status(400).json({ error: "Invalid data", details: error.errors });
+      }
+      console.error("Error creating opening discount registration:", error);
+      
+      // Check for unique constraint violation
+      if (error && typeof error === 'object' && 'code' in error && error.code === '23505') {
+        return res.status(409).json({ error: "Phone number already registered" });
+      }
+      
+      res.status(500).json({ error: "Failed to register", details: error instanceof Error ? error.message : String(error) });
     }
   });
 
