@@ -62,6 +62,8 @@ export const partners = pgTable("partners", {
 
 export const insertPartnerSchema = createInsertSchema(partners).omit({
   id: true,
+}).extend({
+  logoUrl: z.string().optional(),
 });
 
 export type InsertPartner = z.infer<typeof insertPartnerSchema>;
