@@ -16,18 +16,14 @@ export default function Home() {
   const [showPromoModal, setShowPromoModal] = useState(false);
 
   useEffect(() => {
-    const hasSeenPromo = localStorage.getItem('hasSeenJeddahPromo');
-    if (!hasSeenPromo) {
-      const timer = setTimeout(() => {
-        setShowPromoModal(true);
-      }, 1500);
-      return () => clearTimeout(timer);
-    }
+    const timer = setTimeout(() => {
+      setShowPromoModal(true);
+    }, 1500);
+    return () => clearTimeout(timer);
   }, []);
 
   const handleClosePromo = () => {
     setShowPromoModal(false);
-    localStorage.setItem('hasSeenJeddahPromo', 'true');
   };
 
   return (
