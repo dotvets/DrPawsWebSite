@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { z } from "zod";
-import { Pencil, Trash2, Upload } from "lucide-react";
+import { Pencil, Trash2, Upload, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   FormControl,
@@ -24,7 +24,6 @@ type FormData = z.infer<typeof formSchema>;
 
 export default function AdminOurPartners() {
   const { toast } = useToast();
-  const [uploadingId, setUploadingId] = useState<number | null>(null);
 
   const uploadLogoMutation = useMutation({
     mutationFn: async ({ id, logoURL }: { id: number; logoURL: string }) => {
@@ -32,23 +31,22 @@ export default function AdminOurPartners() {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["/api/partners"] });
-      setUploadingId(null);
       toast({
         title: "Success",
-        description: "Logo uploaded successfully",
+        description: "Logo updated successfully",
       });
     },
     onError: () => {
       toast({
         title: "Error",
-        description: "Failed to upload logo",
+        description: "Failed to update logo",
         variant: "destructive",
       });
     },
   });
 
   async function handleGetUploadParameters() {
-    const response = await apiRequest("POST", "/api/objects/upload", {});
+    const response = await apiRequest("POST", "/api/objects/upload", {}) as unknown as { uploadURL: string };
     return {
       method: "PUT" as const,
       url: response.uploadURL,
@@ -60,6 +58,19 @@ export default function AdminOurPartners() {
       const uploadURL = result.successful[0].uploadURL;
       if (uploadURL) {
         uploadLogoMutation.mutate({ id: partnerId, logoURL: uploadURL });
+      }
+    }
+  }
+
+  function handleFormLogoUpload(form: UseFormReturn<FormData>, result: UploadResult<Record<string, unknown>, Record<string, unknown>>) {
+    if (result.successful && result.successful[0]) {
+      const uploadURL = result.successful[0].uploadURL;
+      if (uploadURL) {
+        form.setValue("logoUrl", uploadURL);
+        toast({
+          title: "Success",
+          description: "Logo uploaded successfully",
+        });
       }
     }
   }
@@ -99,7 +110,7 @@ export default function AdminOurPartners() {
                 <FormItem>
                   <FormLabel>Partner Name (Arabic)</FormLabel>
                   <FormControl>
-                    <Input {...field} placeholder="أدخل اسم الشريك" data-testid="input-name-ar" />
+                    <Input {...field} value={field.value || ""} placeholder="أدخل اسم الشريك" data-testid="input-name-ar" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -111,9 +122,42 @@ export default function AdminOurPartners() {
             name="logoUrl"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Logo URL (Upload after creating partner)</FormLabel>
+                <FormLabel>Partner Logo</FormLabel>
+                <div className="flex items-center gap-4">
+                  {field.value ? (
+                    <div className="flex items-center gap-4 flex-1">
+                      <img
+                        src={field.value}
+                        alt="Partner logo preview"
+                        className="w-20 h-20 object-contain bg-white rounded border"
+                        data-testid="img-logo-preview"
+                      />
+                      <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                        <Check className="w-4 h-4 text-green-600" />
+                        Logo uploaded
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="flex items-center gap-4 flex-1">
+                      <div className="w-20 h-20 bg-muted rounded flex items-center justify-center">
+                        <Upload className="w-8 h-8 text-muted-foreground" />
+                      </div>
+                      <p className="text-sm text-muted-foreground">No logo uploaded yet</p>
+                    </div>
+                  )}
+                  <ObjectUploader
+                    maxNumberOfFiles={1}
+                    maxFileSize={5242880}
+                    onGetUploadParameters={handleGetUploadParameters}
+                    onComplete={(result) => handleFormLogoUpload(form, result)}
+                    buttonClassName="h-9"
+                  >
+                    <Upload className="w-4 h-4 mr-2" />
+                    {field.value ? "Change Logo" : "Upload Logo"}
+                  </ObjectUploader>
+                </div>
                 <FormControl>
-                  <Input {...field} placeholder="Logo will be uploaded after creation" disabled data-testid="input-logo-url" />
+                  <Input {...field} type="hidden" />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -159,7 +203,7 @@ export default function AdminOurPartners() {
                 buttonClassName="h-9"
               >
                 <Upload className="w-4 h-4 mr-2" />
-                Upload Logo
+                Update Logo
               </ObjectUploader>
               <Button
                 size="icon"
