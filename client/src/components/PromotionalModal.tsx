@@ -157,7 +157,7 @@ export default function PromotionalModal({ open, onClose }: PromotionalModalProp
 
   return (
     <Dialog open={open} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-[500px] p-0 overflow-hidden" dir={language === 'ar' ? 'rtl' : 'ltr'}>
+      <DialogContent className="max-w-[95vw] sm:max-w-[500px] p-0 overflow-hidden" dir={language === 'ar' ? 'rtl' : 'ltr'}>
         {!showSuccess ? (
           <>
             <Button
@@ -171,21 +171,21 @@ export default function PromotionalModal({ open, onClose }: PromotionalModalProp
               {language === 'en' ? 'العربية' : 'English'}
             </Button>
 
-            <div className="bg-gradient-to-br from-primary/10 to-primary/5 p-8 text-center border-b">
+            <div className="bg-gradient-to-br from-primary/10 to-primary/5 p-4 sm:p-8 text-center border-b">
               <div className="mx-auto w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mb-4">
                 <Gift className="w-8 h-8 text-primary" />
               </div>
               <DialogHeader>
-                <DialogTitle className="text-2xl font-bold text-primary mb-2">
+                <DialogTitle className="text-xl sm:text-2xl font-bold text-primary mb-2">
                   {t('promo.title')}
                 </DialogTitle>
-                <DialogDescription className="text-lg text-foreground/90">
+                <DialogDescription className="text-base sm:text-lg text-foreground/90">
                   {t('promo.description')}
                 </DialogDescription>
               </DialogHeader>
             </div>
 
-            <form onSubmit={handleSubmit} className="p-6 space-y-6">
+            <form onSubmit={handleSubmit} className="p-4 sm:p-6 space-y-4 sm:space-y-6">
               <div className="space-y-4">
                 <div className="space-y-2">
                   <div className="flex justify-between items-center">
@@ -269,19 +269,19 @@ export default function PromotionalModal({ open, onClose }: PromotionalModalProp
             </form>
           </>
         ) : (
-          <div className="p-8 text-center space-y-6">
+          <div className="p-4 sm:p-8 text-center space-y-4 sm:space-y-6">
             <div className="mx-auto w-20 h-20 bg-primary/20 rounded-full flex items-center justify-center mb-4">
               <Gift className="w-10 h-10 text-primary" />
             </div>
             
             <div className="space-y-3">
-              <h3 className="text-2xl font-bold text-primary">
+              <h3 className="text-xl sm:text-2xl font-bold text-primary">
                 {t('promo.successSubscription')}
               </h3>
-              <p className="text-lg text-foreground/80">
+              <p className="text-base sm:text-lg text-foreground/80">
                 {t('promo.subscriptionCode')}
               </p>
-              <p className="text-2xl font-bold text-primary" dir="ltr">
+              <p className="text-xl sm:text-2xl font-bold text-primary" dir="ltr">
                 {submittedPhone}
               </p>
             </div>
