@@ -7,6 +7,7 @@ import HeartbeatDivider from '@/components/HeartbeatDivider';
 import Footer from '@/components/Footer';
 import { MapPin, Clock, Phone } from 'lucide-react';
 import { SiWhatsapp } from 'react-icons/si';
+import vetExamImage from '@assets/generated_images/Vet_examining_golden_retriever_19654044.png';
 
 export default function BookNow() {
   const { t, language } = useLanguage();
@@ -43,9 +44,15 @@ export default function BookNow() {
         initial={{ opacity: 0 }}
         animate={heroInView ? { opacity: 1 } : { opacity: 0 }}
         transition={{ duration: 0.6 }}
-        className="relative py-20 bg-gradient-to-br from-primary/5 to-accent/5"
+        className="relative py-32 bg-gradient-to-br from-primary/5 to-accent/5 overflow-hidden"
       >
-        <div className="max-w-7xl mx-auto px-6">
+        <div 
+          className="absolute inset-0 bg-cover bg-center opacity-20"
+          style={{ backgroundImage: `url(${vetExamImage})` }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/70 to-background/90" />
+        
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
           <motion.div
             initial={{ y: 30, opacity: 0 }}
             animate={heroInView ? { y: 0, opacity: 1 } : { y: 30, opacity: 0 }}
@@ -147,6 +154,7 @@ export default function BookNow() {
         </div>
       </section>
 
+      {/* Online Booking Program Section */}
       <section className="py-16 bg-background">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
@@ -156,156 +164,48 @@ export default function BookNow() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl font-bold text-primary mb-4" data-testid="text-booking-methods-title">
-              {t('bookNow.bookingMethods')}
+            <h2 className="text-3xl font-bold text-primary mb-4" data-testid="text-program-booking">
+              {t('bookNow.programBooking')}
             </h2>
+            <p className="text-foreground/70" data-testid="text-riyadh-branches-program">
+              {t('bookNow.riyadhBranches')}
+            </p>
           </motion.div>
 
-          <div className="space-y-16">
-            {/* Book via WhatsApp */}
-            <motion.div
-              initial={{ y: 30, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: false, amount: 0.2 }}
-              transition={{ duration: 0.6 }}
-            >
-              <h3 className="text-2xl font-semibold text-primary mb-6 flex items-center gap-2" data-testid="text-whatsapp-booking">
-                <SiWhatsapp className="w-6 h-6 text-primary" />
-                {t('bookNow.whatsappBooking')}
-              </h3>
-              
-              <div className="mb-6">
-                <h4 className="text-xl font-medium mb-4 flex items-center gap-2" data-testid="text-riyadh-branches">
-                  <MapPin className="w-5 h-5 text-primary" />
-                  {t('bookNow.riyadhBranches')}
-                </h4>
-                
-                <div className="grid md:grid-cols-2 gap-6">
-                  {riyadhBranches.map((branch) => (
-                    <Card key={branch.id} className="hover-elevate" data-testid={`card-whatsapp-${branch.id}`}>
-                      <CardContent className="p-6">
-                        <div className="flex items-center justify-between gap-4">
-                          <div className="flex items-center gap-3">
-                            <MapPin className="w-5 h-5 text-primary" />
-                            <span className="font-medium" data-testid={`text-branch-${branch.id}-name`}>
-                              {branch.name}
-                            </span>
-                          </div>
-                          <a
-                            href={`https://wa.me/${branch.whatsapp.replace(/\s/g, '')}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center justify-center w-12 h-12 rounded-full bg-primary text-primary-foreground hover-elevate active-elevate-2"
-                            data-testid={`link-whatsapp-${branch.id}`}
-                          >
-                            <SiWhatsapp className="w-6 h-6" />
-                          </a>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Book by Phone */}
-            <motion.div
-              initial={{ y: 30, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: false, amount: 0.2 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-            >
-              <h3 className="text-2xl font-semibold text-primary mb-6 flex items-center gap-2" data-testid="text-phone-booking">
-                <Phone className="w-6 h-6 text-primary" />
-                {t('bookNow.phoneBooking')}
-              </h3>
-              
-              <div className="mb-6">
-                <h4 className="text-xl font-medium mb-4 flex items-center gap-2" data-testid="text-riyadh-branches-phone">
-                  <MapPin className="w-5 h-5 text-primary" />
-                  {t('bookNow.riyadhBranches')}
-                </h4>
-                
-                <div className="grid md:grid-cols-2 gap-6">
-                  {riyadhBranches.map((branch) => (
-                    <Card key={branch.id} className="hover-elevate" data-testid={`card-phone-${branch.id}`}>
-                      <CardContent className="p-6">
-                        <div className="flex items-center justify-between gap-4">
-                          <div className="flex items-center gap-3">
-                            <MapPin className="w-5 h-5 text-primary" />
-                            <span className="font-medium" data-testid={`text-branch-${branch.id}-name-phone`}>
-                              {branch.name}
-                            </span>
-                          </div>
-                          <a
-                            href={`tel:${branch.phone.replace(/\s/g, '')}`}
-                            className="flex items-center gap-2 text-primary hover:underline"
-                            data-testid={`link-phone-${branch.id}`}
-                          >
-                            <Phone className="w-5 h-5" />
-                            <span className="font-semibold" data-testid={`text-phone-${branch.id}`}>
-                              {branch.phone}
-                            </span>
-                          </a>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Book through our program */}
-            <motion.div
-              initial={{ y: 30, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: false, amount: 0.2 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              <h3 className="text-2xl font-semibold text-primary mb-6" data-testid="text-program-booking">
-                {t('bookNow.programBooking')}
-              </h3>
-              
-              <div className="mb-6">
-                <h4 className="text-xl font-medium mb-4 flex items-center gap-2" data-testid="text-riyadh-branches-program">
-                  <MapPin className="w-5 h-5 text-primary" />
-                  {t('bookNow.riyadhBranches')}
-                </h4>
-                
-                <div className="grid md:grid-cols-2 gap-6">
-                  {riyadhBranches.map((branch) => (
-                    <Card key={branch.id} id={`program-${branch.id}`} className="overflow-hidden scroll-mt-24" data-testid={`card-program-${branch.id}`}>
-                      <CardHeader className="pb-3">
-                        <CardTitle className="text-xl flex items-center gap-2" data-testid={`text-program-branch-${branch.id}-name`}>
-                          <MapPin className="w-5 h-5 text-primary" />
-                          {branch.name}
-                        </CardTitle>
-                      </CardHeader>
-                      <CardContent className="p-0">
-                        <div className="relative w-full" style={{ height: '600px' }}>
-                          <iframe
-                            src={branch.iframeUrl}
-                            height="600"
-                            width="100%"
-                            frameBorder="0"
-                            title={`${branch.name} Booking`}
-                            className="w-full h-full"
-                            data-testid={`iframe-branch-${branch.id}`}
-                          />
-                        </div>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
+          <div className="space-y-12">
+            {/* Program Booking Cards */}
+            <div className="grid md:grid-cols-2 gap-6">
+              {riyadhBranches.map((branch) => (
+                <Card key={branch.id} id={`program-${branch.id}`} className="overflow-hidden scroll-mt-24" data-testid={`card-program-${branch.id}`}>
+                  <CardHeader className="pb-3">
+                    <CardTitle className="text-xl flex items-center gap-2" data-testid={`text-program-branch-${branch.id}-name`}>
+                      <MapPin className="w-5 h-5 text-primary" />
+                      {branch.name}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="p-0">
+                    <div className="relative w-full" style={{ height: '600px' }}>
+                      <iframe
+                        src={branch.iframeUrl}
+                        height="600"
+                        width="100%"
+                        frameBorder="0"
+                        title={`${branch.name} Booking`}
+                        className="w-full h-full"
+                        data-testid={`iframe-branch-${branch.id}`}
+                      />
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
 
             {/* Jeddah Branches - Coming Soon */}
             <motion.div
               initial={{ y: 30, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
               viewport={{ once: false, amount: 0.2 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
+              transition={{ duration: 0.6 }}
             >
               <h3 className="text-2xl font-semibold text-primary mb-6 flex items-center gap-2" data-testid="text-jeddah-branches">
                 <MapPin className="w-6 h-6 text-primary" />
