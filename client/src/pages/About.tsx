@@ -356,7 +356,7 @@ export default function About() {
                       data-testid={`partner-${partner.id}`}
                     >
                       <Card className="w-full hover-elevate">
-                        <CardContent className="p-6 flex items-center justify-center h-32">
+                        <CardContent className="p-6 flex items-center justify-center h-48">
                           {partner.logoUrl ? (
                             <img
                               src={partner.logoUrl}
