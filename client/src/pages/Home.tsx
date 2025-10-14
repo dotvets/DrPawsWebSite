@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import Header from '@/components/Header';
 import HeroSlider from '@/components/HeroSlider';
 import AboutSection from '@/components/AboutSection';
@@ -9,8 +10,26 @@ import ReviewsSection from '@/components/ReviewsSection';
 import ContactSection from '@/components/ContactSection';
 import HeartbeatDivider from '@/components/HeartbeatDivider';
 import Footer from '@/components/Footer';
+import PromotionalModal from '@/components/PromotionalModal';
 
 export default function Home() {
+  const [showPromoModal, setShowPromoModal] = useState(false);
+
+  useEffect(() => {
+    const hasSeenPromo = localStorage.getItem('hasSeenJeddahPromo');
+    if (!hasSeenPromo) {
+      const timer = setTimeout(() => {
+        setShowPromoModal(true);
+      }, 1500);
+      return () => clearTimeout(timer);
+    }
+  }, []);
+
+  const handleClosePromo = () => {
+    setShowPromoModal(false);
+    localStorage.setItem('hasSeenJeddahPromo', 'true');
+  };
+
   return (
     <div className="min-h-screen">
       <Header />
@@ -28,6 +47,8 @@ export default function Home() {
       <ContactSection />
       <HeartbeatDivider />
       <Footer />
+      
+      <PromotionalModal open={showPromoModal} onClose={handleClosePromo} />
     </div>
   );
 }

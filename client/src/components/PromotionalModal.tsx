@@ -26,13 +26,7 @@ export default function PromotionalModal({ open, onClose }: PromotionalModalProp
     setIsSubmitting(true);
 
     try {
-      await apiRequest('/api/opening-discount', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+      await apiRequest('POST', '/api/opening-discount', formData);
 
       toast({
         title: 'تم التسجيل بنجاح!',
@@ -42,9 +36,13 @@ export default function PromotionalModal({ open, onClose }: PromotionalModalProp
       setFormData({ firstName: '', lastName: '', phoneNumber: '' });
       onClose();
     } catch (error: any) {
-      const errorMessage = error?.error === 'Phone number already registered' 
-        ? 'رقم الهاتف مسجل مسبقاً'
-        : 'حدث خطأ أثناء التسجيل، يرجى المحاولة مرة أخرى';
+      let errorMessage = 'حدث خطأ أثناء التسجيل، يرجى المحاولة مرة أخرى';
+      
+      if (error instanceof Error) {
+        if (error.message.includes('409') || error.message.includes('Phone number already registered')) {
+          errorMessage = 'رقم الهاتف مسجل مسبقاً';
+        }
+      }
       
       toast({
         title: 'خطأ',
