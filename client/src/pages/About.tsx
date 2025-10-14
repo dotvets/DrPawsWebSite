@@ -357,12 +357,16 @@ export default function About() {
                     >
                       <Card className="w-full hover-elevate">
                         <CardContent className="p-6 flex items-center justify-center h-32">
-                          <img
-                            src={partner.logoUrl}
-                            alt={partner.name}
-                            className="max-w-full max-h-full object-contain"
-                            data-testid={`img-partner-${partner.id}`}
-                          />
+                          {partner.logoUrl ? (
+                            <img
+                              src={partner.logoUrl}
+                              alt={partner.name}
+                              className="max-w-full max-h-full object-contain"
+                              data-testid={`img-partner-${partner.id}`}
+                            />
+                          ) : (
+                            <Upload className="w-12 h-12 text-muted-foreground" />
+                          )}
                         </CardContent>
                       </Card>
                     </motion.div>

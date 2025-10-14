@@ -57,7 +57,7 @@ export const partners = pgTable("partners", {
   id: serial("id").primaryKey(),
   name: text("name").notNull(),
   nameAr: text("name_ar"),
-  logoUrl: text("logo_url").notNull(),
+  logoUrl: text("logo_url"),
 });
 
 export const insertPartnerSchema = createInsertSchema(partners).omit({
