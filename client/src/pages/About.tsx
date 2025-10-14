@@ -349,7 +349,7 @@ export default function About() {
                   <motion.div
                     className="flex gap-8"
                     animate={{
-                      x: [0, -1 * (partners.length * 280)],
+                      x: [-280 * partners.length, 0],
                     }}
                     transition={{
                       x: {
@@ -360,7 +360,7 @@ export default function About() {
                       },
                     }}
                   >
-                    {[...partners, ...partners].map((partner, index) => (
+                    {[...partners, ...partners, ...partners].map((partner, index) => (
                       <div
                         key={`${partner.id}-${index}`}
                         className="flex-shrink-0 w-64"
