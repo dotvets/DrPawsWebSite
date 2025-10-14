@@ -71,13 +71,17 @@ export type Partner = typeof partners.$inferSelect;
 
 export const openingDiscount = pgTable("opening_discount", {
   id: serial("id").primaryKey(),
-  firstName: text("first_name").notNull(),
-  lastName: text("last_name").notNull(),
-  phoneNumber: text("phone_number").notNull().unique(),
+  firstName: varchar("first_name", { length: 50 }).notNull(),
+  lastName: varchar("last_name", { length: 50 }).notNull(),
+  phoneNumber: varchar("phone_number", { length: 15 }).notNull().unique(),
 });
 
 export const insertOpeningDiscountSchema = createInsertSchema(openingDiscount).omit({
   id: true,
+}).extend({
+  firstName: z.string().max(20, "First name must be 20 characters or less"),
+  lastName: z.string().max(20, "Last name must be 20 characters or less"),
+  phoneNumber: z.string().max(10, "Phone number must be 10 digits or less").regex(/^[0-9]+$/, "Phone number must contain only digits"),
 });
 
 export type InsertOpeningDiscount = z.infer<typeof insertOpeningDiscountSchema>;
