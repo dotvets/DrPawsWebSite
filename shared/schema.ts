@@ -68,3 +68,17 @@ export const insertPartnerSchema = createInsertSchema(partners).omit({
 
 export type InsertPartner = z.infer<typeof insertPartnerSchema>;
 export type Partner = typeof partners.$inferSelect;
+
+export const openingDiscount = pgTable("opening_discount", {
+  id: serial("id").primaryKey(),
+  firstName: text("first_name").notNull(),
+  lastName: text("last_name").notNull(),
+  phoneNumber: text("phone_number").notNull().unique(),
+});
+
+export const insertOpeningDiscountSchema = createInsertSchema(openingDiscount).omit({
+  id: true,
+});
+
+export type InsertOpeningDiscount = z.infer<typeof insertOpeningDiscountSchema>;
+export type OpeningDiscount = typeof openingDiscount.$inferSelect;
