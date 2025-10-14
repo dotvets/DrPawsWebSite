@@ -3,7 +3,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } f
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { X, Gift, Globe } from 'lucide-react';
+import { Gift, Globe } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { apiRequest, queryClient } from '@/lib/queryClient';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -55,6 +55,12 @@ export default function PromotionalModal({ open, onClose }: PromotionalModalProp
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
+    // Validate phone number length
+    if (formData.phoneNumber.length !== 10) {
+      setPhoneError(t('promo.phoneNumberMustBe10Digits'));
+      return;
+    }
+    
     // Prevent submission if phone error exists
     if (phoneError) {
       return;
@@ -92,22 +98,13 @@ export default function PromotionalModal({ open, onClose }: PromotionalModalProp
   };
 
   return (
-    <Dialog open={open} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-[500px] p-0 overflow-hidden" dir={language === 'ar' ? 'rtl' : 'ltr'}>
-        <button
-          onClick={onClose}
-          className={`absolute top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none z-10 ${language === 'ar' ? 'left-4' : 'right-4'}`}
-          data-testid="button-close-modal"
-        >
-          <X className="h-5 w-5" />
-          <span className="sr-only">{t('promo.close')}</span>
-        </button>
-
+    <Dialog open={open}>
+      <DialogContent className="sm:max-w-[500px] p-0 overflow-hidden" dir={language === 'ar' ? 'rtl' : 'ltr'} onPointerDownOutside={(e) => e.preventDefault()} onEscapeKeyDown={(e) => e.preventDefault()}>
         <Button
           variant="ghost"
           size="sm"
           onClick={() => setLanguage(language === 'en' ? 'ar' : 'en')}
-          className={`absolute top-4 flex items-center gap-2 z-10 ${language === 'ar' ? 'right-12' : 'left-12'}`}
+          className={`absolute top-4 flex items-center gap-2 z-10 ${language === 'ar' ? 'left-4' : 'right-4'}`}
           data-testid="button-language-switcher"
         >
           <Globe className="w-4 h-4" />

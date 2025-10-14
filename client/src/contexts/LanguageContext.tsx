@@ -311,6 +311,7 @@ const translations = {
     'promo.errorGeneric': 'Registration failed, please try again',
     'promo.errorDuplicate': 'Phone number already registered',
     'promo.phoneAlreadyRegistered': 'This number has already been registered before.',
+    'promo.phoneNumberMustBe10Digits': 'The phone number must be 10 digits.',
     'promo.close': 'Close',
   },
   ar: {
@@ -613,6 +614,7 @@ const translations = {
     'promo.errorGeneric': 'حدث خطأ أثناء التسجيل، يرجى المحاولة مرة أخرى',
     'promo.errorDuplicate': 'رقم الهاتف مسجل مسبقاً',
     'promo.phoneAlreadyRegistered': 'هذا الرقم تم تسجيله من قبل.',
+    'promo.phoneNumberMustBe10Digits': 'رقم الهاتف يجب أن يكون 10 أرقام.',
     'promo.close': 'إغلاق',
   },
 };

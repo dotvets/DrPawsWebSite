@@ -121,6 +121,7 @@ Static assets (images) are stored in `attached_assets/` directory and accessed v
 
 ## Recent Changes
 
+- **2025-10-14**: Promotional modal enhancements: removed close button, made modal non-closable (no outside click/escape), added phone number exact length validation (must be 10 digits), character limits with live counters (firstName: 20, lastName: 20, phone: 10), real-time duplicate phone detection, in-modal language switcher with Globe icon
 - **2025-10-04**: Full homepage implementation with sticky header, hero slider, about section, services section, service packages, why choose us section, contact form, and footer
 - **2025-10-04**: All animations updated to trigger on every scroll (up/down) using framer-motion with once:false
 - **2025-10-04**: Dr. Paws logo downloaded and integrated into header
