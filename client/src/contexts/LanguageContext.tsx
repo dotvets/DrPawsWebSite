@@ -313,6 +313,9 @@ const translations = {
     'promo.phoneAlreadyRegistered': 'This number has already been registered before.',
     'promo.phoneNumberMustBe10Digits': 'The phone number must be 10 digits.',
     'promo.close': 'Close',
+    'promo.successSubscription': 'You have successfully subscribed to the offer!',
+    'promo.subscriptionCode': 'Your subscription code is',
+    'promo.okButton': 'OK',
   },
   ar: {
     // Navigation
@@ -616,6 +619,9 @@ const translations = {
     'promo.phoneAlreadyRegistered': 'هذا الرقم تم تسجيله من قبل.',
     'promo.phoneNumberMustBe10Digits': 'رقم الهاتف يجب أن يكون 10 أرقام.',
     'promo.close': 'إغلاق',
+    'promo.successSubscription': 'تم الاشتراك في العرض بنجاح!',
+    'promo.subscriptionCode': 'رمز الاشتراك الخاص بك هو',
+    'promo.okButton': 'تم',
   },
 };
 

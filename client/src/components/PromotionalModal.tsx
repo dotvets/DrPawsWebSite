@@ -20,6 +20,8 @@ export default function PromotionalModal({ open, onClose }: PromotionalModalProp
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [phoneError, setPhoneError] = useState<string | null>(null);
   const [isCheckingPhone, setIsCheckingPhone] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [submittedPhone, setSubmittedPhone] = useState('');
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -52,6 +54,12 @@ export default function PromotionalModal({ open, onClose }: PromotionalModalProp
     const timeoutId = setTimeout(checkPhone, 500);
     return () => clearTimeout(timeoutId);
   }, [formData.phoneNumber, t]);
+
+  const handleOkClick = () => {
+    setShowSuccess(false);
+    setSubmittedPhone('');
+    onClose();
+  };
 
   const showCelebration = () => {
     const colors = ['#18ac61', '#f4a261', '#e76f51', '#264653', '#2a9d8f'];
@@ -117,20 +125,17 @@ export default function PromotionalModal({ open, onClose }: PromotionalModalProp
     try {
       await apiRequest('POST', '/api/opening-discount', formData);
 
+      // Store the phone number for success message
+      setSubmittedPhone(formData.phoneNumber);
+
       // Show celebration effect
       showCelebration();
 
-      toast({
-        title: t('promo.successTitle'),
-        description: t('promo.successMessage'),
-      });
-
-      setFormData({ firstName: '', lastName: '', phoneNumber: '' });
-      
-      // Close modal after celebration
+      // Show success message after celebration
       setTimeout(() => {
-        onClose();
-      }, 1500);
+        setShowSuccess(true);
+        setFormData({ firstName: '', lastName: '', phoneNumber: '' });
+      }, 1000);
     } catch (error: any) {
       let errorMessage = t('promo.errorGeneric');
       
@@ -153,113 +158,143 @@ export default function PromotionalModal({ open, onClose }: PromotionalModalProp
   return (
     <Dialog open={open} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-[500px] p-0 overflow-hidden" dir={language === 'ar' ? 'rtl' : 'ltr'}>
-        <Button
-          variant="ghost"
-          size="sm"
-          onClick={() => setLanguage(language === 'en' ? 'ar' : 'en')}
-          className={`absolute top-4 flex items-center gap-2 z-10 ${language === 'ar' ? 'right-12' : 'left-4'}`}
-          data-testid="button-language-switcher"
-        >
-          <Globe className="w-4 h-4" />
-          {language === 'en' ? 'العربية' : 'English'}
-        </Button>
+        {!showSuccess ? (
+          <>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setLanguage(language === 'en' ? 'ar' : 'en')}
+              className={`absolute top-4 flex items-center gap-2 z-10 ${language === 'ar' ? 'right-12' : 'left-4'}`}
+              data-testid="button-language-switcher"
+            >
+              <Globe className="w-4 h-4" />
+              {language === 'en' ? 'العربية' : 'English'}
+            </Button>
 
-        <div className="bg-gradient-to-br from-primary/10 to-primary/5 p-8 text-center border-b">
-          <div className="mx-auto w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mb-4">
-            <Gift className="w-8 h-8 text-primary" />
+            <div className="bg-gradient-to-br from-primary/10 to-primary/5 p-8 text-center border-b">
+              <div className="mx-auto w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mb-4">
+                <Gift className="w-8 h-8 text-primary" />
+              </div>
+              <DialogHeader>
+                <DialogTitle className="text-2xl font-bold text-primary mb-2">
+                  {t('promo.title')}
+                </DialogTitle>
+                <DialogDescription className="text-lg text-foreground/90">
+                  {t('promo.description')}
+                </DialogDescription>
+              </DialogHeader>
+            </div>
+
+            <form onSubmit={handleSubmit} className="p-6 space-y-6">
+              <div className="space-y-4">
+                <div className="space-y-2">
+                  <div className="flex justify-between items-center">
+                    <Label htmlFor="firstName" className={language === 'ar' ? 'text-right' : 'text-left'}>
+                      {t('promo.firstName')} <span className="text-destructive">{t('promo.required')}</span>
+                    </Label>
+                    <span className="text-xs text-muted-foreground">
+                      {formData.firstName.length}/20
+                    </span>
+                  </div>
+                  <Input
+                    id="firstName"
+                    value={formData.firstName}
+                    onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
+                    maxLength={20}
+                    required
+                    dir={language === 'ar' ? 'rtl' : 'ltr'}
+                    placeholder={t('promo.firstNamePlaceholder')}
+                    data-testid="input-first-name"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <div className="flex justify-between items-center">
+                    <Label htmlFor="lastName" className={language === 'ar' ? 'text-right' : 'text-left'}>
+                      {t('promo.lastName')} <span className="text-destructive">{t('promo.required')}</span>
+                    </Label>
+                    <span className="text-xs text-muted-foreground">
+                      {formData.lastName.length}/20
+                    </span>
+                  </div>
+                  <Input
+                    id="lastName"
+                    value={formData.lastName}
+                    onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
+                    maxLength={20}
+                    required
+                    dir={language === 'ar' ? 'rtl' : 'ltr'}
+                    placeholder={t('promo.lastNamePlaceholder')}
+                    data-testid="input-last-name"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <div className="flex justify-between items-center">
+                    <Label htmlFor="phoneNumber" className={language === 'ar' ? 'text-right' : 'text-left'}>
+                      {t('promo.phoneNumber')} <span className="text-destructive">{t('promo.required')}</span>
+                    </Label>
+                    <span className="text-xs text-muted-foreground">
+                      {formData.phoneNumber.length}/10
+                    </span>
+                  </div>
+                  <Input
+                    id="phoneNumber"
+                    type="tel"
+                    value={formData.phoneNumber}
+                    onChange={(e) => setFormData({ ...formData, phoneNumber: e.target.value.replace(/\D/g, '') })}
+                    maxLength={10}
+                    required
+                    dir="ltr"
+                    placeholder={t('promo.phoneNumberPlaceholder')}
+                    data-testid="input-phone-number"
+                    className={phoneError ? 'border-destructive' : ''}
+                  />
+                  {phoneError && (
+                    <p className="text-sm text-destructive" data-testid="text-phone-error">
+                      {phoneError}
+                    </p>
+                  )}
+                </div>
+              </div>
+
+              <Button
+                type="submit"
+                className="w-full"
+                disabled={isSubmitting || !!phoneError}
+                data-testid="button-submit-registration"
+              >
+                {isSubmitting ? t('promo.submitting') : t('promo.submit')}
+              </Button>
+            </form>
+          </>
+        ) : (
+          <div className="p-8 text-center space-y-6">
+            <div className="mx-auto w-20 h-20 bg-primary/20 rounded-full flex items-center justify-center mb-4">
+              <Gift className="w-10 h-10 text-primary" />
+            </div>
+            
+            <div className="space-y-3">
+              <h3 className="text-2xl font-bold text-primary">
+                {t('promo.successSubscription')}
+              </h3>
+              <p className="text-lg text-foreground/80">
+                {t('promo.subscriptionCode')}
+              </p>
+              <p className="text-2xl font-bold text-primary" dir="ltr">
+                {submittedPhone}
+              </p>
+            </div>
+
+            <Button
+              onClick={handleOkClick}
+              className="w-full mt-6"
+              data-testid="button-ok-success"
+            >
+              {t('promo.okButton')}
+            </Button>
           </div>
-          <DialogHeader>
-            <DialogTitle className="text-2xl font-bold text-primary mb-2">
-              {t('promo.title')}
-            </DialogTitle>
-            <DialogDescription className="text-lg text-foreground/90">
-              {t('promo.description')}
-            </DialogDescription>
-          </DialogHeader>
-        </div>
-
-        <form onSubmit={handleSubmit} className="p-6 space-y-6">
-          <div className="space-y-4">
-            <div className="space-y-2">
-              <div className="flex justify-between items-center">
-                <Label htmlFor="firstName" className={language === 'ar' ? 'text-right' : 'text-left'}>
-                  {t('promo.firstName')} <span className="text-destructive">{t('promo.required')}</span>
-                </Label>
-                <span className="text-xs text-muted-foreground">
-                  {formData.firstName.length}/20
-                </span>
-              </div>
-              <Input
-                id="firstName"
-                value={formData.firstName}
-                onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                maxLength={20}
-                required
-                dir={language === 'ar' ? 'rtl' : 'ltr'}
-                placeholder={t('promo.firstNamePlaceholder')}
-                data-testid="input-first-name"
-              />
-            </div>
-
-            <div className="space-y-2">
-              <div className="flex justify-between items-center">
-                <Label htmlFor="lastName" className={language === 'ar' ? 'text-right' : 'text-left'}>
-                  {t('promo.lastName')} <span className="text-destructive">{t('promo.required')}</span>
-                </Label>
-                <span className="text-xs text-muted-foreground">
-                  {formData.lastName.length}/20
-                </span>
-              </div>
-              <Input
-                id="lastName"
-                value={formData.lastName}
-                onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-                maxLength={20}
-                required
-                dir={language === 'ar' ? 'rtl' : 'ltr'}
-                placeholder={t('promo.lastNamePlaceholder')}
-                data-testid="input-last-name"
-              />
-            </div>
-
-            <div className="space-y-2">
-              <div className="flex justify-between items-center">
-                <Label htmlFor="phoneNumber" className={language === 'ar' ? 'text-right' : 'text-left'}>
-                  {t('promo.phoneNumber')} <span className="text-destructive">{t('promo.required')}</span>
-                </Label>
-                <span className="text-xs text-muted-foreground">
-                  {formData.phoneNumber.length}/10
-                </span>
-              </div>
-              <Input
-                id="phoneNumber"
-                type="tel"
-                value={formData.phoneNumber}
-                onChange={(e) => setFormData({ ...formData, phoneNumber: e.target.value.replace(/\D/g, '') })}
-                maxLength={10}
-                required
-                dir="ltr"
-                placeholder={t('promo.phoneNumberPlaceholder')}
-                data-testid="input-phone-number"
-                className={phoneError ? 'border-destructive' : ''}
-              />
-              {phoneError && (
-                <p className="text-sm text-destructive" data-testid="text-phone-error">
-                  {phoneError}
-                </p>
-              )}
-            </div>
-          </div>
-
-          <Button
-            type="submit"
-            className="w-full"
-            disabled={isSubmitting || !!phoneError}
-            data-testid="button-submit-registration"
-          >
-            {isSubmitting ? t('promo.submitting') : t('promo.submit')}
-          </Button>
-        </form>
+        )}
       </DialogContent>
     </Dialog>
   );
