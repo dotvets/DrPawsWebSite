@@ -1,7 +1,7 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { insertServicePackageSchema, insertCustomerReviewSchema } from "@shared/schema";
+import { insertServicePackageSchema, insertCustomerReviewSchema, insertPartnerSchema } from "@shared/schema";
 import { z } from "zod";
 
 export async function registerRoutes(app: Express): Promise<Server> {
@@ -150,6 +150,80 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.status(204).send();
     } catch (error) {
       res.status(500).json({ error: "Failed to delete customer review" });
+    }
+  });
+
+  // Partners Routes
+
+  // Get all partners
+  app.get("/api/partners", async (req, res) => {
+    try {
+      const partners = await storage.getAllPartners();
+      res.json(partners);
+    } catch (error) {
+      console.error("Error fetching partners:", error);
+      res.status(500).json({ error: "Failed to fetch partners", details: error instanceof Error ? error.message : String(error) });
+    }
+  });
+
+  // Get single partner
+  app.get("/api/partners/:id", async (req, res) => {
+    try {
+      const id = parseInt(req.params.id);
+      const partner = await storage.getPartner(id);
+      if (!partner) {
+        return res.status(404).json({ error: "Partner not found" });
+      }
+      res.json(partner);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch partner" });
+    }
+  });
+
+  // Create partner
+  app.post("/api/partners", async (req, res) => {
+    try {
+      const data = insertPartnerSchema.parse(req.body);
+      const partner = await storage.createPartner(data);
+      res.status(201).json(partner);
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        return res.status(400).json({ error: "Invalid data", details: error.errors });
+      }
+      console.error("Error creating partner:", error);
+      res.status(500).json({ error: "Failed to create partner", details: error instanceof Error ? error.message : String(error) });
+    }
+  });
+
+  // Update partner
+  app.put("/api/partners/:id", async (req, res) => {
+    try {
+      const id = parseInt(req.params.id);
+      const data = insertPartnerSchema.partial().parse(req.body);
+      const partner = await storage.updatePartner(id, data);
+      if (!partner) {
+        return res.status(404).json({ error: "Partner not found" });
+      }
+      res.json(partner);
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        return res.status(400).json({ error: "Invalid data", details: error.errors });
+      }
+      res.status(500).json({ error: "Failed to update partner" });
+    }
+  });
+
+  // Delete partner
+  app.delete("/api/partners/:id", async (req, res) => {
+    try {
+      const id = parseInt(req.params.id);
+      const success = await storage.deletePartner(id);
+      if (!success) {
+        return res.status(404).json({ error: "Partner not found" });
+      }
+      res.status(204).send();
+    } catch (error) {
+      res.status(500).json({ error: "Failed to delete partner" });
     }
   });
 

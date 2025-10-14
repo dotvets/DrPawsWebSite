@@ -52,3 +52,17 @@ export const insertCustomerReviewSchema = createInsertSchema(customerReviews).om
 
 export type InsertCustomerReview = z.infer<typeof insertCustomerReviewSchema>;
 export type CustomerReview = typeof customerReviews.$inferSelect;
+
+export const partners = pgTable("partners", {
+  id: serial("id").primaryKey(),
+  name: text("name").notNull(),
+  nameAr: text("name_ar"),
+  logoUrl: text("logo_url").notNull(),
+});
+
+export const insertPartnerSchema = createInsertSchema(partners).omit({
+  id: true,
+});
+
+export type InsertPartner = z.infer<typeof insertPartnerSchema>;
+export type Partner = typeof partners.$inferSelect;

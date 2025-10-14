@@ -1,5 +1,5 @@
 import { db } from "./db";
-import { users, servicePackages, customerReviews, type User, type InsertUser, type ServicePackage, type InsertServicePackage, type CustomerReview, type InsertCustomerReview } from "@shared/schema";
+import { users, servicePackages, customerReviews, partners, type User, type InsertUser, type ServicePackage, type InsertServicePackage, type CustomerReview, type InsertCustomerReview, type Partner, type InsertPartner } from "@shared/schema";
 import { eq } from "drizzle-orm";
 import { IStorage } from "./storage";
 
@@ -70,6 +70,33 @@ export class DbStorage implements IStorage {
 
   async deleteCustomerReview(id: number): Promise<boolean> {
     const result = await db.delete(customerReviews).where(eq(customerReviews.id, id)).returning();
+    return result.length > 0;
+  }
+
+  async getAllPartners(): Promise<Partner[]> {
+    return await db.select().from(partners);
+  }
+
+  async getPartner(id: number): Promise<Partner | undefined> {
+    const result = await db.select().from(partners).where(eq(partners.id, id));
+    return result[0];
+  }
+
+  async createPartner(partner: InsertPartner): Promise<Partner> {
+    const result = await db.insert(partners).values(partner).returning();
+    return result[0];
+  }
+
+  async updatePartner(id: number, partner: Partial<InsertPartner>): Promise<Partner | undefined> {
+    const result = await db.update(partners)
+      .set(partner)
+      .where(eq(partners.id, id))
+      .returning();
+    return result[0];
+  }
+
+  async deletePartner(id: number): Promise<boolean> {
+    const result = await db.delete(partners).where(eq(partners.id, id)).returning();
     return result.length > 0;
   }
 }
