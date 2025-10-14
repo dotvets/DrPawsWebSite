@@ -15,11 +15,17 @@ import teamImage from '@assets/generated_images/Veterinary_team_professional_pho
 import vetExamImage from '@assets/generated_images/Vet_examining_golden_retriever_19654044.png';
 import consultationImage from '@assets/generated_images/Vet_consultation_with_cat_owner_7978144f.png';
 import equipmentImage from '@assets/generated_images/Modern_veterinary_equipment_room_49dc6345.png';
+import { useQuery } from '@tanstack/react-query';
+import type { Partner } from '@shared/schema';
 
 export default function About() {
   const { t } = useLanguage();
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const { data: partners = [] } = useQuery<Partner[]>({
+    queryKey: ["/api/partners"],
+  });
 
   const heroRef = useRef(null);
   const whoWeAreRef = useRef(null);
@@ -332,11 +338,37 @@ export default function About() {
               animate={partnersInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <Card data-testid="card-partners-placeholder">
-                <CardContent className="py-12 text-center">
-                  <p className="text-muted-foreground text-lg">{t('aboutPage.partners.noInfo')}</p>
-                </CardContent>
-              </Card>
+              {partners.length === 0 ? (
+                <Card data-testid="card-partners-placeholder">
+                  <CardContent className="py-12 text-center">
+                    <p className="text-muted-foreground text-lg">{t('aboutPage.partners.noInfo')}</p>
+                  </CardContent>
+                </Card>
+              ) : (
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-8" data-testid="partners-grid">
+                  {partners.map((partner) => (
+                    <motion.div
+                      key={partner.id}
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={partnersInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+                      transition={{ duration: 0.5 }}
+                      className="flex items-center justify-center"
+                      data-testid={`partner-${partner.id}`}
+                    >
+                      <Card className="w-full hover-elevate">
+                        <CardContent className="p-6 flex items-center justify-center h-32">
+                          <img
+                            src={partner.logoUrl}
+                            alt={partner.name}
+                            className="max-w-full max-h-full object-contain"
+                            data-testid={`img-partner-${partner.id}`}
+                          />
+                        </CardContent>
+                      </Card>
+                    </motion.div>
+                  ))}
+                </div>
+              )}
             </motion.div>
           </motion.section>
 
