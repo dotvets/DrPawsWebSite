@@ -71,7 +71,7 @@ const createEmailTemplate = (params: DiscountEmailParams): string => {
               <table width="100%" cellpadding="0" cellspacing="0" style="margin: 30px 0;">
                 <tr>
                   <td style="background: linear-gradient(135deg, #f4a261 0%, #e76f51 100%); border-radius: 8px; padding: 30px; text-align: center;">
-                    <p style="margin: 0 0 10px; color: #ffffff; font-size: 16px; font-weight: 500;">رمز الخصم الخاص بك</p>
+                    <p style="margin: 0 0 10px; color: #ffffff; font-size: 16px; font-weight: 500;">رمز الخصم الخاص بك (رقم هاتفك)</p>
                     <p style="margin: 0; color: #ffffff; font-size: 36px; font-weight: 700; letter-spacing: 2px; font-family: 'Courier New', monospace;">${discountCode}</p>
                   </td>
                 </tr>
@@ -86,7 +86,7 @@ const createEmailTemplate = (params: DiscountEmailParams): string => {
                       <li style="margin-bottom: 10px;">خصم <strong>20%</strong> على جميع خدماتنا</li>
                       <li style="margin-bottom: 10px;">صالح لمدة <strong>6 أشهر</strong> من تاريخ التسجيل</li>
                       <li style="margin-bottom: 10px;">يمكن استخدامه في جميع زياراتك</li>
-                      <li>متاح في جميع فروعنا (الرياض - جدة)</li>
+                      <li>متاح في جميع فروع جدة</li>
                     </ul>
                   </td>
                 </tr>
@@ -164,7 +164,7 @@ const createEmailTemplate = (params: DiscountEmailParams): string => {
               <table width="100%" cellpadding="0" cellspacing="0" style="margin: 30px 0;">
                 <tr>
                   <td style="background: linear-gradient(135deg, #f4a261 0%, #e76f51 100%); border-radius: 8px; padding: 30px; text-align: center;">
-                    <p style="margin: 0 0 10px; color: #ffffff; font-size: 16px; font-weight: 500;">Your Discount Code</p>
+                    <p style="margin: 0 0 10px; color: #ffffff; font-size: 16px; font-weight: 500;">Your Discount Code (Your Phone Number)</p>
                     <p style="margin: 0; color: #ffffff; font-size: 36px; font-weight: 700; letter-spacing: 2px; font-family: 'Courier New', monospace;">${discountCode}</p>
                   </td>
                 </tr>
@@ -179,7 +179,7 @@ const createEmailTemplate = (params: DiscountEmailParams): string => {
                       <li style="margin-bottom: 10px;"><strong>20% discount</strong> on all our services</li>
                       <li style="margin-bottom: 10px;">Valid for <strong>6 months</strong> from registration date</li>
                       <li style="margin-bottom: 10px;">Can be used on all your visits</li>
-                      <li>Available at all our branches (Riyadh - Jeddah)</li>
+                      <li>Available at all Jeddah Branches</li>
                     </ul>
                   </td>
                 </tr>
