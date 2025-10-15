@@ -110,6 +110,11 @@ Currently not implemented. The user schema exists but authentication flow (login
 - `connect-pg-simple` - PostgreSQL session store for Express
 - `date-fns` - Date utility library
 
+**Email Services:**
+- `@microsoft/microsoft-graph-client` - Microsoft Graph API client for sending emails
+- `@azure/identity` - Azure authentication for Microsoft 365 integration
+- `nodemailer` - Email sending library (legacy, replaced by Graph API)
+
 **Development Tools:**
 - `@replit/*` plugins - Vite plugins for Replit environment (error overlay, dev banner, cartographer)
 - `tsx` - TypeScript execution for development
@@ -121,6 +126,19 @@ Static assets (images) are stored in `attached_assets/` directory and accessed v
 
 ## Recent Changes
 
+- **2025-10-15**: Email confirmation system implemented using Microsoft Graph API:
+  - Sends bilingual (Arabic/English) discount confirmation emails from info@drpaws-sa.com
+  - Beautiful HTML email template with gradient design matching brand colors
+  - Displays discount code (user's phone number) prominently in email
+  - Email includes offer details: 20% discount for 6 months, available at all Jeddah branches
+  - Azure App Registration configured with Mail.Send permission
+  - Automatic email sending upon successful registration
+  - Error handling: registration succeeds even if email fails
+- **2025-10-15**: Email field added to promotional modal:
+  - Required field with 50-character limit and live counter
+  - Email format validation
+  - Real-time duplicate email detection via debounced API check
+  - Saved to database with unique constraint
 - **2025-10-14**: Promotional modal enhancements: removed close button, made modal non-closable (no outside click/escape), added phone number exact length validation (must be 10 digits), character limits with live counters (firstName: 20, lastName: 20, phone: 10), real-time duplicate phone detection, in-modal language switcher with Globe icon
 - **2025-10-04**: Full homepage implementation with sticky header, hero slider, about section, services section, service packages, why choose us section, contact form, and footer
 - **2025-10-04**: All animations updated to trigger on every scroll (up/down) using framer-motion with once:false
