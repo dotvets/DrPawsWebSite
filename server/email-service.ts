@@ -38,17 +38,20 @@ const createEmailTemplate = (params: DiscountEmailParams): string => {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <title>رمز الخصم الخاص بك</title>
 </head>
-<body style="margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f5f5f5;">
+<body style="margin: 0; padding: 0; font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f5f5f5;">
   <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #f5f5f5; padding: 40px 20px;">
     <tr>
       <td align="center">
         <table width="600" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
           <!-- Header -->
           <tr>
-            <td style="background: linear-gradient(135deg, #18ac61 0%, #15a057 100%); padding: 40px 30px; text-align: center;">
-              <h1 style="margin: 0; color: #ffffff; font-size: 32px; font-weight: 600;">🎉 مرحباً بك في عائلة د. باوز!</h1>
+            <td style="background: linear-gradient(135deg, #17a35b 0%, #139049 100%); padding: 40px 30px; text-align: center;">
+              <h1 style="margin: 0; color: #ffffff; font-size: 32px; font-weight: 600; font-family: 'Rubik', sans-serif;">🎉 مرحباً بك في عائلة د. باوز!</h1>
             </td>
           </tr>
           
@@ -81,7 +84,7 @@ const createEmailTemplate = (params: DiscountEmailParams): string => {
               <table width="100%" cellpadding="0" cellspacing="0" style="margin: 30px 0; background-color: #f8f9fa; border-radius: 8px; padding: 20px;">
                 <tr>
                   <td>
-                    <h3 style="margin: 0 0 15px; color: #18ac61; font-size: 20px;">✨ تفاصيل العرض</h3>
+                    <h3 style="margin: 0 0 15px; color: #17a35b; font-size: 20px; font-family: 'Rubik', sans-serif;">✨ تفاصيل العرض</h3>
                     <ul style="margin: 0; padding: 0 0 0 25px; color: #555555; line-height: 1.8;">
                       <li style="margin-bottom: 10px;">خصم <strong>20%</strong> على جميع خدماتنا</li>
                       <li style="margin-bottom: 10px;">صالح لمدة <strong>6 أشهر</strong> من تاريخ التسجيل</li>
@@ -102,7 +105,7 @@ const createEmailTemplate = (params: DiscountEmailParams): string => {
               
               <p style="margin: 20px 0 0; color: #555555; font-size: 16px; line-height: 1.6;">
                 مع أطيب التحيات،<br>
-                <strong style="color: #18ac61;">فريق د. باوز</strong>
+                <strong style="color: #17a35b;">فريق د. باوز</strong>
               </p>
             </td>
           </tr>
@@ -131,17 +134,20 @@ const createEmailTemplate = (params: DiscountEmailParams): string => {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <title>Your Discount Code</title>
 </head>
-<body style="margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f5f5f5;">
+<body style="margin: 0; padding: 0; font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f5f5f5;">
   <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #f5f5f5; padding: 40px 20px;">
     <tr>
       <td align="center">
         <table width="600" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
           <!-- Header -->
           <tr>
-            <td style="background: linear-gradient(135deg, #18ac61 0%, #15a057 100%); padding: 40px 30px; text-align: center;">
-              <h1 style="margin: 0; color: #ffffff; font-size: 32px; font-weight: 600;">🎉 Welcome to Dr. Paws Family!</h1>
+            <td style="background: linear-gradient(135deg, #17a35b 0%, #139049 100%); padding: 40px 30px; text-align: center;">
+              <h1 style="margin: 0; color: #ffffff; font-size: 32px; font-weight: 600; font-family: 'Rubik', sans-serif;">🎉 Welcome to Dr. Paws Family!</h1>
             </td>
           </tr>
           
@@ -174,7 +180,7 @@ const createEmailTemplate = (params: DiscountEmailParams): string => {
               <table width="100%" cellpadding="0" cellspacing="0" style="margin: 30px 0; background-color: #f8f9fa; border-radius: 8px; padding: 20px;">
                 <tr>
                   <td>
-                    <h3 style="margin: 0 0 15px; color: #18ac61; font-size: 20px;">✨ Offer Details</h3>
+                    <h3 style="margin: 0 0 15px; color: #17a35b; font-size: 20px; font-family: 'Rubik', sans-serif;">✨ Offer Details</h3>
                     <ul style="margin: 0; padding: 0 0 0 25px; color: #555555; line-height: 1.8;">
                       <li style="margin-bottom: 10px;"><strong>20% discount</strong> on all our services</li>
                       <li style="margin-bottom: 10px;">Valid for <strong>6 months</strong> from registration date</li>
@@ -195,7 +201,7 @@ const createEmailTemplate = (params: DiscountEmailParams): string => {
               
               <p style="margin: 20px 0 0; color: #555555; font-size: 16px; line-height: 1.6;">
                 Best regards,<br>
-                <strong style="color: #18ac61;">Dr. Paws Team</strong>
+                <strong style="color: #17a35b;">Dr. Paws Team</strong>
               </p>
             </td>
           </tr>
