@@ -1,17 +1,24 @@
-import nodemailer from 'nodemailer';
+import { Client } from '@microsoft/microsoft-graph-client';
+import { ClientSecretCredential } from '@azure/identity';
 
-const transporter = nodemailer.createTransport({
-  host: 'smtp.office365.com',
-  port: 587,
-  secure: false, // Use STARTTLS
-  auth: {
-    user: process.env.MICROSOFT365_EMAIL,
-    pass: process.env.MICROSOFT365_PASSWORD,
-  },
-  tls: {
-    ciphers: 'SSLv3'
-  }
-});
+// Initialize Azure credentials
+const credential = new ClientSecretCredential(
+  process.env.AZURE_TENANT_ID!,
+  process.env.AZURE_CLIENT_ID!,
+  process.env.AZURE_CLIENT_SECRET!
+);
+
+// Initialize Graph client
+const getGraphClient = () => {
+  return Client.initWithMiddleware({
+    authProvider: {
+      getAccessToken: async () => {
+        const token = await credential.getToken('https://graph.microsoft.com/.default');
+        return token.token;
+      }
+    }
+  });
+};
 
 interface DiscountEmailParams {
   firstName: string;
@@ -223,12 +230,29 @@ export const sendDiscountConfirmationEmail = async (params: DiscountEmailParams)
   const htmlContent = createEmailTemplate(params);
   
   try {
-    await transporter.sendMail({
-      from: `"Dr. Paws" <${process.env.MICROSOFT365_EMAIL}>`,
-      to: email,
-      subject: subject,
-      html: htmlContent,
-    });
+    const client = getGraphClient();
+    
+    const sendMail = {
+      message: {
+        subject: subject,
+        body: {
+          contentType: 'HTML',
+          content: htmlContent
+        },
+        toRecipients: [
+          {
+            emailAddress: {
+              address: email
+            }
+          }
+        ]
+      },
+      saveToSentItems: 'true'
+    };
+
+    await client
+      .api(`/users/${process.env.MICROSOFT365_EMAIL}/sendMail`)
+      .post(sendMail);
     
     console.log(`Discount confirmation email sent successfully to ${email}`);
   } catch (error) {
