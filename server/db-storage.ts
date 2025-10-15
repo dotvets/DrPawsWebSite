@@ -109,6 +109,11 @@ export class DbStorage implements IStorage {
     const result = await db.select().from(openingDiscount).where(eq(openingDiscount.phoneNumber, phoneNumber));
     return result.length > 0;
   }
+
+  async checkEmailExists(email: string): Promise<boolean> {
+    const result = await db.select().from(openingDiscount).where(eq(openingDiscount.emailAddress, email));
+    return result.length > 0;
+  }
 }
 
 export const storage = new DbStorage();

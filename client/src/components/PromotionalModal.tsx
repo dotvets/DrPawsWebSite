@@ -19,12 +19,15 @@ export default function PromotionalModal({ open, onClose }: PromotionalModalProp
   const { t, language, setLanguage } = useLanguage();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [phoneError, setPhoneError] = useState<string | null>(null);
+  const [emailError, setEmailError] = useState<string | null>(null);
   const [isCheckingPhone, setIsCheckingPhone] = useState(false);
+  const [isCheckingEmail, setIsCheckingEmail] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const [submittedPhone, setSubmittedPhone] = useState('');
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
+    emailAddress: '',
     phoneNumber: '',
   });
 
@@ -54,6 +57,41 @@ export default function PromotionalModal({ open, onClose }: PromotionalModalProp
     const timeoutId = setTimeout(checkPhone, 500);
     return () => clearTimeout(timeoutId);
   }, [formData.phoneNumber, t]);
+
+  // Debounce email validation
+  useEffect(() => {
+    const checkEmail = async () => {
+      // Simple email validation regex
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      
+      if (formData.emailAddress.length > 0) {
+        if (!emailRegex.test(formData.emailAddress)) {
+          setEmailError(t('promo.invalidEmail'));
+          return;
+        }
+
+        setIsCheckingEmail(true);
+        try {
+          const response = await fetch(`/api/opening-discount/check-email/${encodeURIComponent(formData.emailAddress)}`);
+          const data = await response.json();
+          if (data.exists) {
+            setEmailError(t('promo.emailAlreadyRegistered'));
+          } else {
+            setEmailError(null);
+          }
+        } catch (error) {
+          console.error('Error checking email:', error);
+        } finally {
+          setIsCheckingEmail(false);
+        }
+      } else {
+        setEmailError(null);
+      }
+    };
+
+    const timeoutId = setTimeout(checkEmail, 500);
+    return () => clearTimeout(timeoutId);
+  }, [formData.emailAddress, t]);
 
   const handleOkClick = () => {
     setShowSuccess(false);
@@ -115,8 +153,8 @@ export default function PromotionalModal({ open, onClose }: PromotionalModalProp
       return;
     }
     
-    // Prevent submission if phone error exists
-    if (phoneError) {
+    // Prevent submission if phone or email error exists
+    if (phoneError || emailError) {
       return;
     }
     
@@ -134,7 +172,7 @@ export default function PromotionalModal({ open, onClose }: PromotionalModalProp
       // Show success message after celebration
       setTimeout(() => {
         setShowSuccess(true);
-        setFormData({ firstName: '', lastName: '', phoneNumber: '' });
+        setFormData({ firstName: '', lastName: '', emailAddress: '', phoneNumber: '' });
       }, 1000);
     } catch (error: any) {
       let errorMessage = t('promo.errorGeneric');
@@ -231,6 +269,34 @@ export default function PromotionalModal({ open, onClose }: PromotionalModalProp
 
                 <div className="space-y-2">
                   <div className="flex justify-between items-center">
+                    <Label htmlFor="emailAddress" className={language === 'ar' ? 'text-right' : 'text-left'}>
+                      {t('promo.email')} <span className="text-destructive">{t('promo.required')}</span>
+                    </Label>
+                    <span className="text-xs text-muted-foreground">
+                      {formData.emailAddress.length}/50
+                    </span>
+                  </div>
+                  <Input
+                    id="emailAddress"
+                    type="email"
+                    value={formData.emailAddress}
+                    onChange={(e) => setFormData({ ...formData, emailAddress: e.target.value })}
+                    maxLength={50}
+                    required
+                    dir="ltr"
+                    placeholder={t('promo.emailPlaceholder')}
+                    data-testid="input-email"
+                    className={emailError ? 'border-destructive' : ''}
+                  />
+                  {emailError && (
+                    <p className="text-sm text-destructive" data-testid="text-email-error">
+                      {emailError}
+                    </p>
+                  )}
+                </div>
+
+                <div className="space-y-2">
+                  <div className="flex justify-between items-center">
                     <Label htmlFor="phoneNumber" className={language === 'ar' ? 'text-right' : 'text-left'}>
                       {t('promo.phoneNumber')} <span className="text-destructive">{t('promo.required')}</span>
                     </Label>
@@ -261,7 +327,7 @@ export default function PromotionalModal({ open, onClose }: PromotionalModalProp
               <Button
                 type="submit"
                 className="w-full"
-                disabled={isSubmitting || !!phoneError}
+                disabled={isSubmitting || !!phoneError || !!emailError}
                 data-testid="button-submit-registration"
               >
                 {isSubmitting ? t('promo.submitting') : t('promo.submit')}

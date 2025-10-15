@@ -316,6 +316,18 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Check if email exists
+  app.get("/api/opening-discount/check-email/:email", async (req, res) => {
+    try {
+      const email = req.params.email;
+      const exists = await storage.checkEmailExists(email);
+      res.status(200).json({ exists });
+    } catch (error) {
+      console.error("Error checking email:", error);
+      res.status(500).json({ error: "Failed to check email" });
+    }
+  });
+
   // Create opening discount registration
   app.post("/api/opening-discount", async (req, res) => {
     try {

@@ -33,6 +33,7 @@ export interface IStorage {
   // Opening Discount
   createOpeningDiscount(discount: InsertOpeningDiscount): Promise<OpeningDiscount>;
   checkPhoneNumberExists(phoneNumber: string): Promise<boolean>;
+  checkEmailExists(email: string): Promise<boolean>;
 }
 
 export class MemStorage implements IStorage {
@@ -139,6 +140,10 @@ export class MemStorage implements IStorage {
   }
 
   async checkPhoneNumberExists(phoneNumber: string): Promise<boolean> {
+    throw new Error("Not implemented");
+  }
+
+  async checkEmailExists(email: string): Promise<boolean> {
     throw new Error("Not implemented");
   }
 }
