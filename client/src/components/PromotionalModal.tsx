@@ -161,7 +161,10 @@ export default function PromotionalModal({ open, onClose }: PromotionalModalProp
     setIsSubmitting(true);
 
     try {
-      await apiRequest('POST', '/api/opening-discount', formData);
+      await apiRequest('POST', '/api/opening-discount', {
+        ...formData,
+        language
+      });
 
       // Store the phone number for success message
       setSubmittedPhone(formData.phoneNumber);

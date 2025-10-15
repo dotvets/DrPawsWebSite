@@ -4,6 +4,7 @@ import { storage } from "./storage";
 import { insertServicePackageSchema, insertCustomerReviewSchema, insertPartnerSchema, insertOpeningDiscountSchema } from "@shared/schema";
 import { z } from "zod";
 import { ObjectStorageService, ObjectNotFoundError } from "./objectStorage";
+import { sendDiscountConfirmationEmail } from "./email-service";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Service Packages Routes
@@ -333,6 +334,21 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const data = insertOpeningDiscountSchema.parse(req.body);
       const registration = await storage.createOpeningDiscount(data);
+      
+      // Send confirmation email
+      try {
+        await sendDiscountConfirmationEmail({
+          firstName: data.firstName,
+          lastName: data.lastName,
+          email: data.emailAddress,
+          discountCode: data.phoneNumber,
+          language: req.body.language || 'en',
+        });
+      } catch (emailError) {
+        console.error("Error sending confirmation email:", emailError);
+        // Don't fail the registration if email fails
+      }
+      
       res.status(201).json(registration);
     } catch (error) {
       if (error instanceof z.ZodError) {
