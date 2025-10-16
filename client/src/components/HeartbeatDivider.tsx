@@ -1,5 +1,3 @@
-import drPawsLogo from '@assets/dr-paws-logo.svg';
-
 export default function HeartbeatDivider() {
   return (
     <div className="my-10 w-full overflow-hidden">
@@ -48,39 +46,12 @@ export default function HeartbeatDivider() {
             fill="url(#ecg-pattern)"
           />
         </svg>
-        
-        {/* Moving logo - much slower */}
-        <div className="ecg-moving-content">
-          <img 
-            src={drPawsLogo} 
-            alt="Dr. Paws" 
-            className="h-5 md:h-6"
-          />
-        </div>
       </div>
       
       <style>{`
         @media (min-width: 768px) {
           .ecg-path {
             stroke-width: 2.5;
-          }
-        }
-        
-        .ecg-moving-content {
-          animation: ecg-content-move 40s linear infinite;
-          position: absolute;
-          top: 50%;
-          left: 0;
-          transform: translateY(-50%);
-          will-change: transform;
-        }
-        
-        @keyframes ecg-content-move {
-          0% {
-            transform: translate(-100%, -50%);
-          }
-          100% {
-            transform: translate(100vw, -50%);
           }
         }
       `}</style>
