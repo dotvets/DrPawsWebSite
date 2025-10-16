@@ -320,6 +320,7 @@ const translations = {
     'promo.successSubscription': 'You have successfully subscribed to the offer!',
     'promo.subscriptionCode': 'Your subscription code is',
     'promo.okButton': 'OK',
+    'promo.doNotShowAgain': 'Do not show again',
   },
   ar: {
     // Navigation
@@ -630,6 +631,7 @@ const translations = {
     'promo.successSubscription': 'تم الاشتراك في العرض بنجاح!',
     'promo.subscriptionCode': 'رمز الاشتراك الخاص بك هو',
     'promo.okButton': 'تم',
+    'promo.doNotShowAgain': 'لا تظهر مرة أخرى',
   },
 };
 

@@ -3,6 +3,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } f
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { Checkbox } from '@/components/ui/checkbox';
 import { Gift, Globe } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { apiRequest, queryClient } from '@/lib/queryClient';
@@ -24,6 +25,7 @@ export default function PromotionalModal({ open, onClose }: PromotionalModalProp
   const [isCheckingEmail, setIsCheckingEmail] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const [submittedPhone, setSubmittedPhone] = useState('');
+  const [doNotShowAgain, setDoNotShowAgain] = useState(false);
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -96,6 +98,9 @@ export default function PromotionalModal({ open, onClose }: PromotionalModalProp
   const handleOkClick = () => {
     setShowSuccess(false);
     setSubmittedPhone('');
+    if (doNotShowAgain) {
+      localStorage.setItem('hasSeenPromoModal', 'true');
+    }
     onClose();
   };
 
@@ -201,18 +206,38 @@ export default function PromotionalModal({ open, onClose }: PromotionalModalProp
       <DialogContent className="max-w-[95vw] sm:max-w-[500px] p-0 overflow-hidden" dir={language === 'ar' ? 'rtl' : 'ltr'}>
         {!showSuccess ? (
           <>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setLanguage(language === 'en' ? 'ar' : 'en')}
-              className={`absolute top-4 flex items-center gap-2 z-10 ${language === 'ar' ? 'right-12' : 'left-4'}`}
-              data-testid="button-language-switcher"
-            >
-              <Globe className="w-4 h-4" />
-              {language === 'en' ? 'العربية' : 'English'}
-            </Button>
+            <div className="absolute top-4 z-10 w-full px-4">
+              <div className="flex items-center justify-between">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setLanguage(language === 'en' ? 'ar' : 'en')}
+                  className="flex items-center gap-2"
+                  data-testid="button-language-switcher"
+                >
+                  <Globe className="w-4 h-4" />
+                  {language === 'en' ? 'العربية' : 'English'}
+                </Button>
+                
+                <div className="flex items-center gap-2" dir={language === 'ar' ? 'rtl' : 'ltr'}>
+                  <Checkbox 
+                    id="doNotShowAgain" 
+                    checked={doNotShowAgain}
+                    onCheckedChange={(checked) => setDoNotShowAgain(checked as boolean)}
+                    data-testid="checkbox-do-not-show"
+                  />
+                  <Label 
+                    htmlFor="doNotShowAgain" 
+                    className="text-sm cursor-pointer"
+                    data-testid="label-do-not-show"
+                  >
+                    {t('promo.doNotShowAgain')}
+                  </Label>
+                </div>
+              </div>
+            </div>
 
-            <div className="bg-gradient-to-br from-primary/10 to-primary/5 p-4 sm:p-8 text-center border-b">
+            <div className="bg-gradient-to-br from-primary/10 to-primary/5 p-4 sm:p-8 pt-12 text-center border-b">
               <div className="mx-auto w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mb-4">
                 <Gift className="w-8 h-8 text-primary" />
               </div>
