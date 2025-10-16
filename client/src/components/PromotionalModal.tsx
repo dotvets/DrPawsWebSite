@@ -201,13 +201,20 @@ export default function PromotionalModal({ open, onClose }: PromotionalModalProp
     }
   };
 
+  const handleCloseModal = () => {
+    if (doNotShowAgain) {
+      localStorage.setItem('hasSeenPromoModal', 'true');
+    }
+    onClose();
+  };
+
   return (
-    <Dialog open={open} onOpenChange={onClose}>
-      <DialogContent className="max-w-[95vw] sm:max-w-[500px] p-0 overflow-hidden" dir={language === 'ar' ? 'rtl' : 'ltr'}>
+    <Dialog open={open} onOpenChange={handleCloseModal}>
+      <DialogContent className="max-w-[95vw] sm:max-w-[500px] p-0 overflow-hidden [&>button]:z-50" dir={language === 'ar' ? 'rtl' : 'ltr'}>
         {!showSuccess ? (
           <>
             <div className="absolute top-4 z-10 w-full px-4">
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between pt-[15px]">
                 <Button
                   variant="ghost"
                   size="sm"
