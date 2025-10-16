@@ -184,6 +184,7 @@ export default function Blog() {
             <p 
               className="text-lg text-foreground/70 leading-relaxed"
               data-testid={`content-${post.id}`}
+              style={{ paddingBottom: '30px' }}
             >
               {content}
             </p>
