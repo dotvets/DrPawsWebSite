@@ -3,6 +3,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useRef, useEffect } from 'react';
 import Header from '@/components/Header';
+import ECGAnimation from '@/components/ECGAnimation';
 import HeartbeatDivider from '@/components/HeartbeatDivider';
 import Footer from '@/components/Footer';
 import { MapPin, Clock, Phone } from 'lucide-react';
@@ -38,6 +39,7 @@ export default function BookNow() {
   return (
     <div className="min-h-screen">
       <Header />
+      <ECGAnimation />
 
       <motion.section
         ref={heroRef}

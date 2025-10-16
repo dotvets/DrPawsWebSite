@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import Header from '@/components/Header';
+import ECGAnimation from '@/components/ECGAnimation';
 import HeroSlider from '@/components/HeroSlider';
 import AboutSection from '@/components/AboutSection';
 import ServicesSection from '@/components/ServicesSection';
@@ -34,6 +35,7 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       <Header />
+      <ECGAnimation />
       <HeroSlider />
       <div id="about">
         <AboutSection />

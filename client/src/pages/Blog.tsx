@@ -3,6 +3,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { useRef, useEffect } from 'react';
 import Header from '@/components/Header';
+import ECGAnimation from '@/components/ECGAnimation';
 import Footer from '@/components/Footer';
 import { Calendar, User, Dog, Cat, Bird, Syringe, UtensilsCrossed, type LucideIcon } from 'lucide-react';
 import { Link } from 'wouter';
@@ -213,6 +214,7 @@ export default function Blog() {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
+      <ECGAnimation />
 
       <main className="flex-1 relative z-10">
         {/* Hero Section */}

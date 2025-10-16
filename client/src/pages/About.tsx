@@ -8,6 +8,7 @@ import { Label } from '@/components/ui/label';
 import { useState, useRef, useEffect } from 'react';
 import { useToast } from '@/hooks/use-toast';
 import Header from '@/components/Header';
+import ECGAnimation from '@/components/ECGAnimation';
 import HeartbeatDivider from '@/components/HeartbeatDivider';
 import Footer from '@/components/Footer';
 import { Heart, Users, Building2, Stethoscope, Upload } from 'lucide-react';
@@ -102,6 +103,7 @@ export default function About() {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
+      <ECGAnimation />
       
       <main className="flex-1 relative z-10">
         <motion.div

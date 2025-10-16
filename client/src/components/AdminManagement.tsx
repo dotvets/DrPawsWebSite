@@ -12,6 +12,7 @@ import { AdminSidebar } from "@/components/AdminSidebar";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest, queryClient } from "@/lib/queryClient";
 import { ZodSchema } from "zod";
+import ECGAnimation from "@/components/ECGAnimation";
 
 interface AdminManagementProps {
   entityName: string;
@@ -181,6 +182,7 @@ export function AdminManagement({
               {entityNamePlural} Management
             </h1>
           </header>
+          <ECGAnimation />
           <main className="flex-1 overflow-auto">
             <div className="p-6 space-y-6">
               <div>

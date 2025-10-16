@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { useState, useRef, useEffect } from 'react';
 import { Link } from 'wouter';
 import Header from '@/components/Header';
+import ECGAnimation from '@/components/ECGAnimation';
 import HeartbeatDivider from '@/components/HeartbeatDivider';
 import Footer from '@/components/Footer';
 import {
@@ -754,6 +755,7 @@ Our home care veterinary services are designed to provide accessible and compass
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
+      <ECGAnimation />
 
       <main className="flex-1 relative z-10">
         {/* Hero Section */}

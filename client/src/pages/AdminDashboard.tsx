@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useLocation } from 'wouter';
 import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
 import { AdminSidebar } from '@/components/AdminSidebar';
+import ECGAnimation from '@/components/ECGAnimation';
 
 export default function AdminDashboard() {
   const [, setLocation] = useLocation();
@@ -29,6 +30,7 @@ export default function AdminDashboard() {
               Admin Dashboard
             </h1>
           </header>
+          <ECGAnimation />
           <main className="flex-1 overflow-auto p-6 bg-background">
             <div className="max-w-7xl mx-auto">
               <h2 className="text-2xl font-display mb-4" data-testid="text-welcome">
