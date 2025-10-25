@@ -3,6 +3,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useLocation } from 'wouter';
 import heroImage1 from '@assets/generated_images/Vet_examining_golden_retriever_19654044.png';
 import heroImage2 from '@assets/generated_images/Vet_consultation_with_cat_owner_7978144f.png';
 import heroImage3 from '@assets/generated_images/Modern_veterinary_equipment_room_49dc6345.png';
@@ -16,6 +17,7 @@ const slides = [
 export default function HeroSlider() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const { t } = useLanguage();
+  const [, setLocation] = useLocation();
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -30,11 +32,6 @@ export default function HeroSlider() {
 
   const prevSlide = () => {
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-  };
-
-  const scrollToContact = () => {
-    const contactSection = document.getElementById('contact');
-    contactSection?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -98,7 +95,7 @@ export default function HeroSlider() {
             <Button
               size="lg"
               className="px-8 py-6 text-lg transition-transform hover:scale-105"
-              onClick={scrollToContact}
+              onClick={() => setLocation('/book-now')}
               data-testid="button-book-appointment"
             >
               {t('hero.cta')}
