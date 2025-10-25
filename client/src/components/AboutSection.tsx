@@ -36,7 +36,19 @@ export default function AboutSection() {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <h2 className="font-display text-4xl font-medium text-foreground mb-6" data-testid="text-about-headline">
-              {t('about.headline')}
+              {t('about.headline').includes('،') ? (
+                <>
+                  {t('about.headline').split('،')[0]}،
+                  <br />
+                  {t('about.headline').split('،')[1]}
+                </>
+              ) : (
+                <>
+                  Committed to Your Pet's Well-being,
+                  <br />
+                  Every Step of the Way
+                </>
+              )}
             </h2>
             <p className="text-lg text-foreground/80 leading-relaxed mb-8" data-testid="text-about-paragraph">
               {t('about.description')}
