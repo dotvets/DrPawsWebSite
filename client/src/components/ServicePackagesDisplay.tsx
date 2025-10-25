@@ -7,6 +7,7 @@ import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useLocation } from 'wouter';
 import type { ServicePackage } from '@shared/schema';
 
 const container = {
@@ -40,21 +41,17 @@ export default function ServicePackagesDisplay({
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false, amount: 0.2 });
   const { t, language } = useLanguage();
+  const [, setLocation] = useLocation();
 
   const { data: packages = [], isLoading } = useQuery<ServicePackage[]>({
     queryKey: ["/api/service-packages"],
   });
 
-  const scrollToContact = () => {
-    const contactSection = document.getElementById('contact');
-    contactSection?.scrollIntoView({ behavior: 'smooth' });
-  };
-
   const handlePackageClick = () => {
     if (onPackageClick) {
       onPackageClick();
     } else {
-      scrollToContact();
+      setLocation('/book-now');
     }
   };
 

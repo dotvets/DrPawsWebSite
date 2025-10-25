@@ -9,6 +9,8 @@ import Footer from '@/components/Footer';
 import { MapPin, Clock, Phone } from 'lucide-react';
 import { SiWhatsapp } from 'react-icons/si';
 import vetExamImage from '@assets/generated_images/Vet_examining_golden_retriever_19654044.png';
+import vetConsultationImage from '@assets/generated_images/Vet_consultation_with_cat_owner_7978144f.png';
+import vetEquipmentImage from '@assets/generated_images/Modern_veterinary_equipment_room_49dc6345.png';
 
 export default function BookNow() {
   const { t, language } = useLanguage();
@@ -158,6 +160,40 @@ export default function BookNow() {
               </Card>
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Visual Section with Images */}
+      <section className="py-12 bg-background">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid md:grid-cols-2 gap-8">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: false, amount: 0.3 }}
+              transition={{ duration: 0.6 }}
+            >
+              <img 
+                src={vetConsultationImage} 
+                alt="Veterinary consultation" 
+                className="rounded-xl w-full h-full object-cover shadow-md"
+                data-testid="img-vet-consultation"
+              />
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: false, amount: 0.3 }}
+              transition={{ duration: 0.6 }}
+            >
+              <img 
+                src={vetEquipmentImage} 
+                alt="Modern veterinary equipment" 
+                className="rounded-xl w-full h-full object-cover shadow-md"
+                data-testid="img-vet-equipment"
+              />
+            </motion.div>
+          </div>
         </div>
       </section>
 
