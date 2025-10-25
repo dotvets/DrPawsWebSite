@@ -120,17 +120,19 @@ export default function BookNow() {
               <Card className="text-center hover-elevate" data-testid="card-quick-phone">
                 <CardContent className="p-6">
                   <Phone className="w-10 h-10 text-primary mx-auto mb-4" />
-                  <h3 className="font-semibold text-lg mb-4" data-testid="text-quick-phone-title">{t('bookNow.phoneBooking')}</h3>
-                  <div className="space-y-3">
+                  <h3 className="font-semibold text-lg mb-4 text-center" data-testid="text-quick-phone-title">
+                    {t('bookNow.phoneBooking')}
+                  </h3>
+                  <div className="space-y-2 text-sm">
                     {riyadhBranches.map((branch) => (
-                      <div key={`quick-phone-${branch.id}`} className="flex items-center justify-between gap-2">
-                        <span className="text-sm text-foreground/70">{branch.name}</span>
+                      <div key={`quick-phone-${branch.id}`} className="flex justify-center items-center gap-3">
+                        <span className="text-foreground/70 w-32 text-right">{branch.name}:</span>
                         <a
                           href={`tel:${branch.phone.replace(/\s/g, '')}`}
-                          className="text-primary hover:underline text-sm font-semibold"
+                          className="text-primary hover:underline font-semibold font-mono tracking-wide w-36 text-left"
                           data-testid={`link-quick-phone-${branch.id}`}
                         >
-                          {branch.phone}
+                          {branch.phone.replace(/(\d{2})\s(\d{4})\s(\d{4})/, '$1\u00A0$2\u00A0$3')}
                         </a>
                       </div>
                     ))}
