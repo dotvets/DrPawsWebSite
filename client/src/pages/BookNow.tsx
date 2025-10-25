@@ -123,14 +123,14 @@ export default function BookNow() {
                   <h3 className="font-semibold text-lg mb-4" data-testid="text-quick-phone-title">{t('bookNow.phoneBooking')}</h3>
                   <div className="space-y-3">
                     {riyadhBranches.map((branch) => (
-                      <div key={`quick-phone-${branch.id}`} className="flex items-center gap-3">
-                        <span className="inline-block w-32 text-sm text-foreground/70">{branch.name}</span>
+                      <div key={`quick-phone-${branch.id}`} className="flex items-center justify-between gap-2">
+                        <span className="text-sm text-foreground/70">{branch.name}</span>
                         <a
                           href={`tel:${branch.phone.replace(/\s/g, '')}`}
                           className="text-primary hover:underline text-sm font-semibold"
                           data-testid={`link-quick-phone-${branch.id}`}
                         >
-                          {branch.phone.trim()}
+                          {branch.phone}
                         </a>
                       </div>
                     ))}
