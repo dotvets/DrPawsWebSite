@@ -124,7 +124,7 @@ export default function BookNow() {
                   <div className="space-y-3">
                     {riyadhBranches.map((branch) => (
                       <div key={`quick-phone-${branch.id}`} className="flex items-center justify-between gap-2">
-                        <span className="text-sm text-foreground/70">{branch.name}</span>
+                        <span className="inline-block w-32 text-sm text-foreground/70">{branch.name}</span>
                         <a
                           href={`tel:${branch.phone.replace(/\s/g, '')}`}
                           className="text-primary hover:underline text-sm font-semibold"
