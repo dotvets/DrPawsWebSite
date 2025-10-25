@@ -191,7 +191,7 @@ export default function Blog() {
             </p>
 
             {/* CTA Button */}
-            <Link href="/#contact">
+            <Link href="/book-now">
               <Button 
                 size="lg"
                 className="bg-[#18ac61] text-white"
@@ -281,7 +281,7 @@ export default function Blog() {
                 : 'Our Veterinary Team is Here to Help'
               }
             </p>
-            <Link href="/#contact">
+            <Link href="/book-now">
               <Button 
                 size="lg"
                 className="bg-[#18ac61] text-white"
