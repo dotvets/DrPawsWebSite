@@ -84,6 +84,11 @@ export default function BookNow() {
               {t('bookNow.bookingMethods')}
             </h2>
             
+            <h3 className="text-2xl font-semibold text-primary mb-6 flex items-center gap-2" data-testid="text-riyadh-branches">
+              <MapPin className="w-6 h-6 text-primary" />
+              {t('bookNow.riyadhBranches')}
+            </h3>
+            
             <div className="grid md:grid-cols-3 gap-6 mb-8">
               {/* WhatsApp Quick Access */}
               <Card className="text-center hover-elevate" data-testid="card-quick-whatsapp">

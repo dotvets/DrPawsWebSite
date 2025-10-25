@@ -289,7 +289,7 @@ const translations = {
     'footer.matherMapUrl': 'https://maps.app.goo.gl/PzCrrqSLmnCE487c9',
     'footer.hours': 'Working Hours',
     'footer.satThu': 'Saturday - Thursday : From 09:00 AM to 11:00 PM',
-    'footer.fri': 'Friday 03:00 PM to 11:00 PM',
+    'footer.fri': 'Friday : From 03:00 PM to 11:00 PM',
     'footer.email': 'info@drpaws-sa.com',
     'footer.follow': 'Stay in touch',
     

@@ -44,7 +44,7 @@ export default function AboutSection() {
                 </>
               ) : (
                 <>
-                  Committed to Your Pet's Well-being,
+                  Committed to Your Pet's <span className="whitespace-nowrap">Well-being,</span>
                   <br />
                   Every Step of the Way
                 </>
