@@ -738,7 +738,7 @@ Our home care veterinary services are designed to provide accessible and compass
             )}
 
             {/* Book appointment button */}
-            <Link href="/#contact">
+            <Link href="/book-now">
               <Button
                 className="w-full"
                 data-testid={`button-book-${service.id}`}
