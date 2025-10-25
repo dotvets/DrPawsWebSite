@@ -288,8 +288,8 @@ const translations = {
     'footer.matherPhone': '05 3135 3667',
     'footer.matherMapUrl': 'https://maps.app.goo.gl/PzCrrqSLmnCE487c9',
     'footer.hours': 'Working Hours',
-    'footer.satThu': 'Sat – Thu: 09:00 AM – 10:00 PM',
-    'footer.fri': 'Fri: 03:00 PM – 10:00 PM',
+    'footer.satThu': 'Saturday - Thursday : From 09:00 AM to 11:00 PM',
+    'footer.fri': 'Friday 03:00 PM to 11:00 PM',
     'footer.email': 'info@drpaws-sa.com',
     'footer.follow': 'Stay in touch',
     
@@ -599,8 +599,8 @@ const translations = {
     'footer.matherPhone': '05 3135 3667',
     'footer.matherMapUrl': 'https://maps.app.goo.gl/PzCrrqSLmnCE487c9',
     'footer.hours': 'ساعات العمل',
-    'footer.satThu': 'من السبت إلى الخميس: من 9:00 صباحًا حتى 10:00 مساءً',
-    'footer.fri': 'يوم الجمعة: من 3:00 مساءً حتى 10:00 مساءً',
+    'footer.satThu': 'من السبت إلى الخميس : من 9:00 صباحًا حتى 11:00 مساءً',
+    'footer.fri': 'يوم الجمعة من 3:00 مساءً حتى 11:00 مساءً',
     'footer.email': 'info@drpaws-sa.com',
     'footer.follow': 'تابعنا',
     
