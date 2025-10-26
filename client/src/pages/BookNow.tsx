@@ -62,6 +62,17 @@ export default function BookNow() {
     return () => clearInterval(interval);
   }, []);
 
+  // Convert English numerals to Arabic-Indic numerals
+  const toArabicNumerals = (num: number): string => {
+    const arabicNumerals = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
+    return num.toString().split('').map(digit => arabicNumerals[parseInt(digit)]).join('');
+  };
+
+  // Format number based on language
+  const formatNumber = (num: number): string => {
+    return language === 'ar' ? toArabicNumerals(num) : num.toString();
+  };
+
   const riyadhBranches = [
     {
       id: 'sahafa',
@@ -331,27 +342,27 @@ export default function BookNow() {
                   {/* Countdown Timer */}
                   <div className="grid grid-cols-3 md:grid-cols-6 gap-4 max-w-3xl mx-auto">
                     <div className="flex flex-col items-center p-3 bg-primary/5 rounded-lg">
-                      <span className="text-3xl font-bold text-primary" data-testid="countdown-months">{countdown.months}</span>
+                      <span className="text-3xl font-bold text-primary" data-testid="countdown-months">{formatNumber(countdown.months)}</span>
                       <span className="text-sm text-foreground/60 mt-1">{language === 'ar' ? 'شهور' : 'Months'}</span>
                     </div>
                     <div className="flex flex-col items-center p-3 bg-primary/5 rounded-lg">
-                      <span className="text-3xl font-bold text-primary" data-testid="countdown-weeks">{countdown.weeks}</span>
+                      <span className="text-3xl font-bold text-primary" data-testid="countdown-weeks">{formatNumber(countdown.weeks)}</span>
                       <span className="text-sm text-foreground/60 mt-1">{language === 'ar' ? 'أسابيع' : 'Weeks'}</span>
                     </div>
                     <div className="flex flex-col items-center p-3 bg-primary/5 rounded-lg">
-                      <span className="text-3xl font-bold text-primary" data-testid="countdown-days">{countdown.days}</span>
+                      <span className="text-3xl font-bold text-primary" data-testid="countdown-days">{formatNumber(countdown.days)}</span>
                       <span className="text-sm text-foreground/60 mt-1">{language === 'ar' ? 'أيام' : 'Days'}</span>
                     </div>
                     <div className="flex flex-col items-center p-3 bg-primary/5 rounded-lg">
-                      <span className="text-3xl font-bold text-primary" data-testid="countdown-hours">{countdown.hours}</span>
+                      <span className="text-3xl font-bold text-primary" data-testid="countdown-hours">{formatNumber(countdown.hours)}</span>
                       <span className="text-sm text-foreground/60 mt-1">{language === 'ar' ? 'ساعات' : 'Hours'}</span>
                     </div>
                     <div className="flex flex-col items-center p-3 bg-primary/5 rounded-lg">
-                      <span className="text-3xl font-bold text-primary" data-testid="countdown-minutes">{countdown.minutes}</span>
+                      <span className="text-3xl font-bold text-primary" data-testid="countdown-minutes">{formatNumber(countdown.minutes)}</span>
                       <span className="text-sm text-foreground/60 mt-1">{language === 'ar' ? 'دقائق' : 'Minutes'}</span>
                     </div>
                     <div className="flex flex-col items-center p-3 bg-primary/5 rounded-lg">
-                      <span className="text-3xl font-bold text-primary" data-testid="countdown-seconds">{countdown.seconds}</span>
+                      <span className="text-3xl font-bold text-primary" data-testid="countdown-seconds">{formatNumber(countdown.seconds)}</span>
                       <span className="text-sm text-foreground/60 mt-1">{language === 'ar' ? 'ثواني' : 'Seconds'}</span>
                     </div>
                   </div>

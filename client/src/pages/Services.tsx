@@ -722,21 +722,6 @@ Our home care veterinary services are designed to provide accessible and compass
               </Button>
             )}
 
-            {/* Emergency contact info */}
-            {service.emergency && (
-              <div className="mb-4 p-3 bg-[#e9c46a]/10 rounded-md">
-                <p className="text-sm font-semibold text-[#264653] mb-2">
-                  {language === 'ar' ? 'أرقام الطوارئ:' : 'Emergency Numbers:'}
-                </p>
-                <p className="text-sm text-foreground/80">
-                  {language === 'ar' ? 'فرع الصحافة: ' : 'Al-Sahafa Branch: '}05520 30564
-                </p>
-                <p className="text-sm text-foreground/80">
-                  {language === 'ar' ? 'فرع الماثر: ' : 'Al-Mather Branch: '}05313 53667
-                </p>
-              </div>
-            )}
-
             {/* Book appointment button */}
             <Link href="/book-now">
               <Button
