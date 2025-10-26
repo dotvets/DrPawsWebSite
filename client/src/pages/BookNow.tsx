@@ -127,16 +127,18 @@ export default function BookNow() {
               {t('bookNow.bookingMethods')}
             </h2>
             
-            <h3 className={`text-2xl font-semibold text-primary mb-6 flex items-center gap-2 ${language === 'ar' ? 'flex-row-reverse text-right w-full' : ''}`} data-testid="text-riyadh-branches">
-              <lord-icon
-                src="https://cdn.lordicon.com/dfwzmvnc.json"
-                trigger="loop"
-                delay="1500"
-                colors="primary:#18ac61,secondary:#264653"
-                style={{ width: '90px', height: '90px' }}
-              />
-              {t('bookNow.riyadhBranches')}
-            </h3>
+            <div className={`${language === 'ar' ? 'flex justify-end' : ''}`}>
+              <h3 className={`text-2xl font-semibold text-primary mb-6 flex items-center gap-2 ${language === 'ar' ? 'flex-row-reverse text-right' : ''}`} data-testid="text-riyadh-branches">
+                <lord-icon
+                  src="https://cdn.lordicon.com/dfwzmvnc.json"
+                  trigger="loop"
+                  delay="1500"
+                  colors="primary:#18ac61,secondary:#264653"
+                  style={{ width: '90px', height: '90px' }}
+                />
+                {t('bookNow.riyadhBranches')}
+              </h3>
+            </div>
             
             <div className="grid md:grid-cols-3 gap-6 mb-8">
               {/* WhatsApp Quick Access */}
@@ -298,16 +300,18 @@ export default function BookNow() {
               viewport={{ once: false, amount: 0.2 }}
               transition={{ duration: 0.6 }}
             >
-              <h3 className={`text-2xl font-semibold text-primary mb-6 flex items-center gap-2 ${language === 'ar' ? 'flex-row-reverse text-right w-full' : ''}`} data-testid="text-jeddah-branches">
-                <lord-icon
-                  src="https://cdn.lordicon.com/dfwzmvnc.json"
-                  trigger="loop"
-                  delay="1500"
-                  colors="primary:#18ac61,secondary:#264653"
-                  style={{ width: '90px', height: '90px' }}
-                />
-                {t('bookNow.jeddahBranches')}
-              </h3>
+              <div className={`${language === 'ar' ? 'flex justify-end' : ''}`}>
+                <h3 className={`text-2xl font-semibold text-primary mb-6 flex items-center gap-2 ${language === 'ar' ? 'flex-row-reverse text-right' : ''}`} data-testid="text-jeddah-branches">
+                  <lord-icon
+                    src="https://cdn.lordicon.com/dfwzmvnc.json"
+                    trigger="loop"
+                    delay="1500"
+                    colors="primary:#18ac61,secondary:#264653"
+                    style={{ width: '90px', height: '90px' }}
+                  />
+                  {t('bookNow.jeddahBranches')}
+                </h3>
+              </div>
               
               <Card className="text-center py-12" data-testid="card-jeddah-coming-soon">
                 <CardContent>
