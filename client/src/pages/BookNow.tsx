@@ -1,12 +1,12 @@
 import { motion, useInView } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import Header from '@/components/Header';
 import ECGAnimation from '@/components/ECGAnimation';
 import HeartbeatDivider from '@/components/HeartbeatDivider';
 import Footer from '@/components/Footer';
-import { MapPin, Clock, Phone } from 'lucide-react';
+import { MapPin, Phone } from 'lucide-react';
 import { SiWhatsapp } from 'react-icons/si';
 import vetExamImage from '@assets/generated_images/Vet_examining_golden_retriever_19654044.png';
 import vetConsultationImage from '@assets/generated_images/Vet_consultation_with_cat_owner_7978144f.png';
@@ -17,8 +17,49 @@ export default function BookNow() {
   const heroRef = useRef(null);
   const heroInView = useInView(heroRef, { once: false, amount: 0.3 });
 
+  // Countdown timer state
+  const [countdown, setCountdown] = useState({
+    months: 0,
+    weeks: 0,
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
+
   useEffect(() => {
     window.scrollTo(0, 0);
+  }, []);
+
+  // Countdown timer logic
+  useEffect(() => {
+    const targetDate = new Date('2026-01-01T00:00:00').getTime();
+
+    const updateCountdown = () => {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      if (distance < 0) {
+        setCountdown({ months: 0, weeks: 0, days: 0, hours: 0, minutes: 0, seconds: 0 });
+        return;
+      }
+
+      const months = Math.floor(distance / (1000 * 60 * 60 * 24 * 30));
+      const remainingAfterMonths = distance % (1000 * 60 * 60 * 24 * 30);
+      const weeks = Math.floor(remainingAfterMonths / (1000 * 60 * 60 * 24 * 7));
+      const remainingAfterWeeks = remainingAfterMonths % (1000 * 60 * 60 * 24 * 7);
+      const days = Math.floor(remainingAfterWeeks / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((remainingAfterWeeks % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((remainingAfterWeeks % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((remainingAfterWeeks % (1000 * 60)) / 1000);
+
+      setCountdown({ months, weeks, days, hours, minutes, seconds });
+    };
+
+    updateCountdown();
+    const interval = setInterval(updateCountdown, 1000);
+
+    return () => clearInterval(interval);
   }, []);
 
   const riyadhBranches = [
@@ -86,8 +127,14 @@ export default function BookNow() {
               {t('bookNow.bookingMethods')}
             </h2>
             
-            <h3 className="text-2xl font-semibold text-primary mb-6 flex items-center gap-2" data-testid="text-riyadh-branches">
-              <MapPin className="w-6 h-6 text-primary" />
+            <h3 className={`text-2xl font-semibold text-primary mb-6 flex items-center gap-2 ${language === 'ar' ? 'flex-row-reverse' : ''}`} data-testid="text-riyadh-branches">
+              <lord-icon
+                src="https://cdn.lordicon.com/dfwzmvnc.json"
+                trigger="loop"
+                delay="1500"
+                colors="primary:#18ac61,secondary:#264653"
+                style={{ width: '90px', height: '90px' }}
+              />
               {t('bookNow.riyadhBranches')}
             </h3>
             
@@ -145,7 +192,6 @@ export default function BookNow() {
                 <CardContent className="p-6">
                   <MapPin className="w-10 h-10 text-primary mx-auto mb-4" />
                   <h3 className="font-semibold text-lg mb-4" data-testid="text-quick-program-title">{t('bookNow.programBooking')}</h3>
-                  <p className="text-sm text-foreground/70 mb-4">{t('bookNow.chooseBranch')}</p>
                   <div className="flex flex-col gap-2">
                     {riyadhBranches.map((branch) => (
                       <a
@@ -252,17 +298,59 @@ export default function BookNow() {
               viewport={{ once: false, amount: 0.2 }}
               transition={{ duration: 0.6 }}
             >
-              <h3 className="text-2xl font-semibold text-primary mb-6 flex items-center gap-2" data-testid="text-jeddah-branches">
-                <MapPin className="w-6 h-6 text-primary" />
+              <h3 className={`text-2xl font-semibold text-primary mb-6 flex items-center gap-2 ${language === 'ar' ? 'flex-row-reverse' : ''}`} data-testid="text-jeddah-branches">
+                <lord-icon
+                  src="https://cdn.lordicon.com/dfwzmvnc.json"
+                  trigger="loop"
+                  delay="1500"
+                  colors="primary:#18ac61,secondary:#264653"
+                  style={{ width: '90px', height: '90px' }}
+                />
                 {t('bookNow.jeddahBranches')}
               </h3>
               
               <Card className="text-center py-12" data-testid="card-jeddah-coming-soon">
                 <CardContent>
-                  <Clock className="w-16 h-16 mx-auto mb-4 text-primary/40" />
-                  <p className="text-2xl font-semibold text-foreground/60" data-testid="text-coming-soon">
+                  <div className="flex justify-center mb-6">
+                    <lord-icon
+                      src="https://cdn.lordicon.com/mmsmhvsw.json"
+                      trigger="loop"
+                      delay="1000"
+                      colors="primary:#18ac61,secondary:#264653"
+                      style={{ width: '90px', height: '90px' }}
+                    />
+                  </div>
+                  <p className="text-2xl font-semibold text-foreground mb-6" data-testid="text-coming-soon">
                     {t('bookNow.comingSoon')}
                   </p>
+                  
+                  {/* Countdown Timer */}
+                  <div className="grid grid-cols-3 md:grid-cols-6 gap-4 max-w-3xl mx-auto">
+                    <div className="flex flex-col items-center p-3 bg-primary/5 rounded-lg">
+                      <span className="text-3xl font-bold text-primary" data-testid="countdown-months">{countdown.months}</span>
+                      <span className="text-sm text-foreground/60 mt-1">{language === 'ar' ? 'شهور' : 'Months'}</span>
+                    </div>
+                    <div className="flex flex-col items-center p-3 bg-primary/5 rounded-lg">
+                      <span className="text-3xl font-bold text-primary" data-testid="countdown-weeks">{countdown.weeks}</span>
+                      <span className="text-sm text-foreground/60 mt-1">{language === 'ar' ? 'أسابيع' : 'Weeks'}</span>
+                    </div>
+                    <div className="flex flex-col items-center p-3 bg-primary/5 rounded-lg">
+                      <span className="text-3xl font-bold text-primary" data-testid="countdown-days">{countdown.days}</span>
+                      <span className="text-sm text-foreground/60 mt-1">{language === 'ar' ? 'أيام' : 'Days'}</span>
+                    </div>
+                    <div className="flex flex-col items-center p-3 bg-primary/5 rounded-lg">
+                      <span className="text-3xl font-bold text-primary" data-testid="countdown-hours">{countdown.hours}</span>
+                      <span className="text-sm text-foreground/60 mt-1">{language === 'ar' ? 'ساعات' : 'Hours'}</span>
+                    </div>
+                    <div className="flex flex-col items-center p-3 bg-primary/5 rounded-lg">
+                      <span className="text-3xl font-bold text-primary" data-testid="countdown-minutes">{countdown.minutes}</span>
+                      <span className="text-sm text-foreground/60 mt-1">{language === 'ar' ? 'دقائق' : 'Minutes'}</span>
+                    </div>
+                    <div className="flex flex-col items-center p-3 bg-primary/5 rounded-lg">
+                      <span className="text-3xl font-bold text-primary" data-testid="countdown-seconds">{countdown.seconds}</span>
+                      <span className="text-sm text-foreground/60 mt-1">{language === 'ar' ? 'ثواني' : 'Seconds'}</span>
+                    </div>
+                  </div>
                 </CardContent>
               </Card>
             </motion.div>

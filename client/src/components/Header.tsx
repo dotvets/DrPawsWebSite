@@ -11,14 +11,18 @@ export default function Header() {
   const [location] = useLocation();
   const { language, setLanguage, t } = useLanguage();
 
-  const navItems = [
+  const mainNavItems = [
     { name: t('nav.home'), path: '/' },
     { name: t('nav.about'), path: '/about' },
     { name: t('nav.services'), path: '/services' },
     { name: t('nav.blog'), path: '/blog' },
-    { name: t('nav.contact'), path: '#contact' },
-    { name: t('bookNow.title'), path: '/book-now' },
   ];
+
+  const contactNavItem = { name: t('nav.contact'), path: '#contact' };
+  const bookNowNavItem = { name: t('bookNow.title'), path: '/book-now' };
+  
+  // For mobile menu - include all items including Book Now
+  const navItems = [...mainNavItems, contactNavItem, bookNowNavItem];
 
   const handleNavClick = (path: string) => {
     if (path.startsWith('#')) {
@@ -49,35 +53,38 @@ export default function Header() {
           </Link>
 
           <div className="hidden md:flex items-center gap-8">
-            {navItems.map((item) => (
-              item.path.startsWith('#') ? (
-                <motion.button
-                  key={item.name}
-                  onClick={() => handleNavClick(item.path)}
+            {/* Main navigation items */}
+            {mainNavItems.map((item) => (
+              <Link key={item.name} href={item.path}>
+                <motion.span
                   whileHover={{ y: -2 }}
-                  className="text-foreground/80 hover:text-primary font-medium transition-colors relative group"
+                  className={`inline-block text-foreground/80 hover:text-primary font-medium transition-colors relative group ${
+                    location === item.path ? 'text-primary' : ''
+                  }`}
                   data-testid={`link-${item.name.toLowerCase().replace(' ', '-')}`}
                 >
                   {item.name}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
-                </motion.button>
-              ) : (
-                <Link key={item.name} href={item.path}>
-                  <motion.span
-                    whileHover={{ y: -2 }}
-                    className={`inline-block text-foreground/80 hover:text-primary font-medium transition-colors relative group ${
-                      location === item.path ? 'text-primary' : ''
-                    }`}
-                    data-testid={`link-${item.name.toLowerCase().replace(' ', '-')}`}
-                  >
-                    {item.name}
-                    <span className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 ${
-                      location === item.path ? 'w-full' : 'w-0 group-hover:w-full'
-                    }`}></span>
-                  </motion.span>
-                </Link>
-              )
+                  <span className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 ${
+                    location === item.path ? 'w-full' : 'w-0 group-hover:w-full'
+                  }`}></span>
+                </motion.span>
+              </Link>
             ))}
+            
+            {/* Visual separator */}
+            <div className="h-6 w-px bg-border"></div>
+            
+            {/* Contact section - grouped with phone */}
+            <motion.button
+              onClick={() => handleNavClick(contactNavItem.path)}
+              whileHover={{ y: -2 }}
+              className="text-foreground/80 hover:text-primary font-medium transition-colors relative group"
+              data-testid="link-contact-us"
+            >
+              {contactNavItem.name}
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+            </motion.button>
+            
             <motion.a
               href="tel:920003045"
               whileHover={{ scale: 1.05 }}
@@ -94,6 +101,7 @@ export default function Header() {
               />
               <span>920003045</span>
             </motion.a>
+            
             <Button
               variant="ghost"
               size="sm"

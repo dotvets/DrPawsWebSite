@@ -9,7 +9,7 @@ import teamImage from '@assets/generated_images/Veterinary_team_professional_pho
 export default function AboutSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false, amount: 0.3 });
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [, setLocation] = useLocation();
 
   return (
@@ -36,7 +36,7 @@ export default function AboutSection() {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <h2 className="font-display text-4xl font-medium text-foreground mb-6" data-testid="text-about-headline">
-              {t('about.headline').includes('،') ? (
+              {language === 'ar' ? (
                 <>
                   {t('about.headline').split('،')[0]}،
                   <br />
