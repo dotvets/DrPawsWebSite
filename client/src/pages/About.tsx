@@ -5,22 +5,28 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import { useToast } from '@/hooks/use-toast';
 import Header from '@/components/Header';
 import ECGAnimation from '@/components/ECGAnimation';
 import HeartbeatDivider from '@/components/HeartbeatDivider';
 import Footer from '@/components/Footer';
-import { Heart, Users, Building2, Stethoscope, Upload } from 'lucide-react';
+import { Heart, Users, Building2, Stethoscope, Upload, ChevronLeft, ChevronRight } from 'lucide-react';
 import teamImage from '@assets/generated_images/Veterinary_team_professional_photo_a4845f6b.png';
 import vetExamImage from '@assets/generated_images/Vet_examining_golden_retriever_19654044.png';
 import consultationImage from '@assets/generated_images/Vet_consultation_with_cat_owner_7978144f.png';
 import equipmentImage from '@assets/generated_images/Modern_veterinary_equipment_room_49dc6345.png';
+import drMahmoudReda from '@assets/Dr Mahmoud Reda_1761496171222.png';
+import drHassanEmbaby from '@assets/Dr Hassan Embaby_1761496171223.png';
+import drMohamedKelany from '@assets/Dr Mohamed Kelany_1761496171224.png';
+import drMohamedAbdulla from '@assets/Dr Mohamed Abdulla_1761496171225.png';
+import drHeshamAlMatrein from '@assets/Dr Hesham AlMatrein _1761496171225.png';
 import { useQuery } from '@tanstack/react-query';
 import type { Partner } from '@shared/schema';
+import useEmblaCarousel from 'embla-carousel-react';
 
 export default function About() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -99,6 +105,49 @@ export default function About() {
       description: t('aboutPage.whyChoose.reason4.description'),
     },
   ];
+
+  const doctors = [
+    {
+      id: 1,
+      nameEn: 'Dr. Mahmoud Reda',
+      nameAr: 'د. محمود رضا',
+      image: drMahmoudReda,
+    },
+    {
+      id: 2,
+      nameEn: 'Dr. Hassan Embaby',
+      nameAr: 'د. حسن عنابي',
+      image: drHassanEmbaby,
+    },
+    {
+      id: 3,
+      nameEn: 'Dr. Mohamed Kelany',
+      nameAr: 'د. محمد كيلاني',
+      image: drMohamedKelany,
+    },
+    {
+      id: 4,
+      nameEn: 'Dr. Mohamed Abdulla',
+      nameAr: 'د. محمد عبدالله',
+      image: drMohamedAbdulla,
+    },
+    {
+      id: 5,
+      nameEn: 'Dr. Hesham AlMatrein',
+      nameAr: 'د. هشام المطرين',
+      image: drHeshamAlMatrein,
+    },
+  ];
+
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'center' });
+
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev();
+  }, [emblaApi]);
+
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext();
+  }, [emblaApi]);
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -309,11 +358,61 @@ export default function About() {
                 <p className="text-lg text-foreground/90" data-testid="text-doctors-description">
                   {t('aboutPage.doctors.description')}
                 </p>
-                <Card data-testid="card-doctors-placeholder">
-                  <CardContent className="py-12 text-center">
-                    <p className="text-muted-foreground text-lg">{t('aboutPage.doctors.noInfo')}</p>
-                  </CardContent>
-                </Card>
+                
+                {/* Doctor Carousel */}
+                <div className="relative">
+                  <div className="overflow-hidden" ref={emblaRef}>
+                    <div className="flex gap-4">
+                      {doctors.map((doctor) => (
+                        <div
+                          key={doctor.id}
+                          className="flex-shrink-0 flex-grow-0 basis-[85%] md:basis-[60%] lg:basis-[45%]"
+                          data-testid={`doctor-slide-${doctor.id}`}
+                        >
+                          <Card className="overflow-hidden hover-elevate">
+                            <CardContent className="p-0">
+                              <div className="relative aspect-[3/4] overflow-hidden">
+                                <motion.img
+                                  whileHover={{ scale: 1.05 }}
+                                  transition={{ duration: 0.3 }}
+                                  src={doctor.image}
+                                  alt={language === 'ar' ? doctor.nameAr : doctor.nameEn}
+                                  className="w-full h-full object-cover"
+                                  data-testid={`img-doctor-${doctor.id}`}
+                                />
+                              </div>
+                              <div className="p-6 text-center bg-gradient-to-b from-background to-primary/5">
+                                <h3 className="text-xl font-semibold text-primary" data-testid={`text-doctor-name-${doctor.id}`}>
+                                  {language === 'ar' ? doctor.nameAr : doctor.nameEn}
+                                </h3>
+                              </div>
+                            </CardContent>
+                          </Card>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  {/* Navigation Buttons */}
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm hover:bg-background"
+                    onClick={scrollPrev}
+                    data-testid="button-doctor-prev"
+                  >
+                    <ChevronLeft className="w-6 h-6" />
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm hover:bg-background"
+                    onClick={scrollNext}
+                    data-testid="button-doctor-next"
+                  >
+                    <ChevronRight className="w-6 h-6" />
+                  </Button>
+                </div>
               </motion.div>
             </div>
           </motion.section>
