@@ -324,20 +324,65 @@ export default function About() {
 
           <motion.section ref={doctorsRef} variants={itemVariants}>
             <div className="grid md:grid-cols-2 gap-12 items-center">
+              {/* Doctor Carousel - Left Side */}
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 animate={doctorsInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
                 transition={{ duration: 0.8 }}
+                className="relative"
               >
-                <motion.img
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.3 }}
-                  src={consultationImage}
-                  alt="Veterinarian consultation with pet owner"
-                  className="rounded-xl w-full h-auto object-cover shadow-md"
-                  data-testid="img-doctors"
-                />
+                <div className="overflow-hidden rounded-xl" ref={emblaRef}>
+                  <div className="flex gap-4">
+                    {doctors.map((doctor) => (
+                      <div
+                        key={doctor.id}
+                        className="flex-shrink-0 flex-grow-0 basis-full"
+                        data-testid={`doctor-slide-${doctor.id}`}
+                      >
+                        <div className="overflow-hidden rounded-xl shadow-md">
+                          <div className="relative aspect-[3/4] overflow-hidden">
+                            <motion.img
+                              whileHover={{ scale: 1.05 }}
+                              transition={{ duration: 0.3 }}
+                              src={doctor.image}
+                              alt={language === 'ar' ? doctor.nameAr : doctor.nameEn}
+                              className="w-full h-full object-cover"
+                              data-testid={`img-doctor-${doctor.id}`}
+                            />
+                          </div>
+                          <div className="p-6 text-center bg-gradient-to-b from-background to-primary/5">
+                            <h3 className="text-2xl font-semibold text-primary" data-testid={`text-doctor-name-${doctor.id}`}>
+                              {language === 'ar' ? doctor.nameAr : doctor.nameEn}
+                            </h3>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                
+                {/* Navigation Buttons */}
+                <Button
+                  variant="outline"
+                  size="icon"
+                  className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm hover:bg-background"
+                  onClick={scrollPrev}
+                  data-testid="button-doctor-prev"
+                >
+                  <ChevronLeft className="w-6 h-6" />
+                </Button>
+                <Button
+                  variant="outline"
+                  size="icon"
+                  className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm hover:bg-background"
+                  onClick={scrollNext}
+                  data-testid="button-doctor-next"
+                >
+                  <ChevronRight className="w-6 h-6" />
+                </Button>
               </motion.div>
+              
+              {/* Content - Right Side */}
               <motion.div
                 initial={{ opacity: 0, x: 50 }}
                 animate={doctorsInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
@@ -355,64 +400,45 @@ export default function About() {
                   />
                   {t('aboutPage.doctors.title')}
                 </h2>
-                <p className="text-lg text-foreground/90" data-testid="text-doctors-description">
+                <p className="text-lg text-foreground/90 leading-relaxed" data-testid="text-doctors-description">
                   {t('aboutPage.doctors.description')}
                 </p>
-                
-                {/* Doctor Carousel */}
-                <div className="relative">
-                  <div className="overflow-hidden" ref={emblaRef}>
-                    <div className="flex gap-4">
-                      {doctors.map((doctor) => (
-                        <div
-                          key={doctor.id}
-                          className="flex-shrink-0 flex-grow-0 basis-[85%] md:basis-[60%] lg:basis-[45%]"
-                          data-testid={`doctor-slide-${doctor.id}`}
-                        >
-                          <Card className="overflow-hidden hover-elevate">
-                            <CardContent className="p-0">
-                              <div className="relative aspect-[3/4] overflow-hidden">
-                                <motion.img
-                                  whileHover={{ scale: 1.05 }}
-                                  transition={{ duration: 0.3 }}
-                                  src={doctor.image}
-                                  alt={language === 'ar' ? doctor.nameAr : doctor.nameEn}
-                                  className="w-full h-full object-cover"
-                                  data-testid={`img-doctor-${doctor.id}`}
-                                />
-                              </div>
-                              <div className="p-6 text-center bg-gradient-to-b from-background to-primary/5">
-                                <h3 className="text-xl font-semibold text-primary" data-testid={`text-doctor-name-${doctor.id}`}>
-                                  {language === 'ar' ? doctor.nameAr : doctor.nameEn}
-                                </h3>
-                              </div>
-                            </CardContent>
-                          </Card>
+                <Card className="border-primary/20">
+                  <CardContent className="p-6">
+                    <div className="space-y-4">
+                      <div className="flex items-center gap-3">
+                        <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                          <Stethoscope className="w-6 h-6 text-primary" />
                         </div>
-                      ))}
+                        <div>
+                          <h4 className="font-semibold text-foreground">
+                            {language === 'ar' ? 'خبرة واسعة' : 'Extensive Experience'}
+                          </h4>
+                          <p className="text-sm text-muted-foreground">
+                            {language === 'ar' 
+                              ? 'فريق من الأطباء البيطريين المؤهلين تأهيلاً عالياً'
+                              : 'Highly qualified veterinary team'}
+                          </p>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                          <Heart className="w-6 h-6 text-primary" />
+                        </div>
+                        <div>
+                          <h4 className="font-semibold text-foreground">
+                            {language === 'ar' ? 'رعاية شاملة' : 'Comprehensive Care'}
+                          </h4>
+                          <p className="text-sm text-muted-foreground">
+                            {language === 'ar' 
+                              ? 'خدمات بيطرية متكاملة لحيوانك الأليف'
+                              : 'Complete veterinary services for your pet'}
+                          </p>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                  
-                  {/* Navigation Buttons */}
-                  <Button
-                    variant="outline"
-                    size="icon"
-                    className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm hover:bg-background"
-                    onClick={scrollPrev}
-                    data-testid="button-doctor-prev"
-                  >
-                    <ChevronLeft className="w-6 h-6" />
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="icon"
-                    className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm hover:bg-background"
-                    onClick={scrollNext}
-                    data-testid="button-doctor-next"
-                  >
-                    <ChevronRight className="w-6 h-6" />
-                  </Button>
-                </div>
+                  </CardContent>
+                </Card>
               </motion.div>
             </div>
           </motion.section>
