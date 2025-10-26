@@ -144,7 +144,9 @@ export default function About() {
     { 
       loop: true, 
       align: 'center',
-      direction: language === 'ar' ? 'rtl' : 'ltr'
+      direction: language === 'ar' ? 'rtl' : 'ltr',
+      duration: 25,
+      inViewThreshold: 0
     },
     [Autoplay({ delay: 3000, stopOnInteraction: false })]
   );
