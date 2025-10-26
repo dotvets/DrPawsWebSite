@@ -323,63 +323,66 @@ export default function About() {
           </motion.section>
 
           <motion.section ref={doctorsRef} variants={itemVariants}>
-            <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="flex flex-col lg:flex-row gap-12 items-center justify-center">
               {/* Doctor Carousel - Left Side */}
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 animate={doctorsInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
                 transition={{ duration: 0.8 }}
-                className="relative"
+                className="w-full max-w-[400px] sm:max-w-none sm:w-[500px] sm:min-w-[500px] mx-auto"
               >
-                <div className="overflow-hidden rounded-xl" ref={emblaRef}>
-                  <div className="flex gap-4">
-                    {doctors.map((doctor) => (
-                      <div
-                        key={doctor.id}
-                        className="flex-shrink-0 flex-grow-0 basis-full"
-                        data-testid={`doctor-slide-${doctor.id}`}
-                      >
-                        <div className="overflow-hidden rounded-xl shadow-md">
-                          <div className="relative aspect-[3/4] overflow-hidden">
-                            <motion.img
-                              whileHover={{ scale: 1.05 }}
-                              transition={{ duration: 0.3 }}
-                              src={doctor.image}
-                              alt={language === 'ar' ? doctor.nameAr : doctor.nameEn}
-                              className="w-full h-full object-cover"
-                              data-testid={`img-doctor-${doctor.id}`}
-                            />
-                          </div>
-                          <div className="p-6 text-center bg-gradient-to-b from-background to-primary/5">
-                            <h3 className="text-2xl font-semibold text-primary" data-testid={`text-doctor-name-${doctor.id}`}>
-                              {language === 'ar' ? doctor.nameAr : doctor.nameEn}
-                            </h3>
+                {/* Carousel Container */}
+                <div className="w-full relative">
+                  <div className="overflow-hidden rounded-xl" ref={emblaRef}>
+                    <div className="flex">
+                      {doctors.map((doctor) => (
+                        <div
+                          key={doctor.id}
+                          className="flex-shrink-0 flex-grow-0 basis-full"
+                          data-testid={`doctor-slide-${doctor.id}`}
+                        >
+                          <div className="overflow-visible rounded-xl shadow-md">
+                            <div className="relative w-full aspect-square overflow-hidden rounded-xl">
+                              <motion.img
+                                whileHover={{ scale: 1.05 }}
+                                transition={{ duration: 0.3 }}
+                                src={doctor.image}
+                                alt={language === 'ar' ? doctor.nameAr : doctor.nameEn}
+                                className="w-full h-full object-cover"
+                                data-testid={`img-doctor-${doctor.id}`}
+                              />
+                            </div>
+                            <div className="p-6 text-center bg-gradient-to-b from-background to-primary/5 rounded-b-xl">
+                              <h3 className="text-2xl font-semibold text-primary" data-testid={`text-doctor-name-${doctor.id}`}>
+                                {language === 'ar' ? doctor.nameAr : doctor.nameEn}
+                              </h3>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
+                  
+                  {/* Navigation Arrows - Overlaid on image sides */}
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="absolute left-4 top-[35%] -translate-y-1/2 z-20 h-12 w-12 md:h-14 md:w-14 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-110 transition-all shadow-xl"
+                    onClick={scrollPrev}
+                    data-testid="button-doctor-prev"
+                  >
+                    <ChevronLeft className="w-6 h-6 md:w-7 md:h-7" />
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="absolute right-4 top-[35%] -translate-y-1/2 z-20 h-12 w-12 md:h-14 md:w-14 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-110 transition-all shadow-xl"
+                    onClick={scrollNext}
+                    data-testid="button-doctor-next"
+                  >
+                    <ChevronRight className="w-6 h-6 md:w-7 md:h-7" />
+                  </Button>
                 </div>
-                
-                {/* Navigation Buttons */}
-                <Button
-                  variant="outline"
-                  size="icon"
-                  className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm hover:bg-background"
-                  onClick={scrollPrev}
-                  data-testid="button-doctor-prev"
-                >
-                  <ChevronLeft className="w-6 h-6" />
-                </Button>
-                <Button
-                  variant="outline"
-                  size="icon"
-                  className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm hover:bg-background"
-                  onClick={scrollNext}
-                  data-testid="button-doctor-next"
-                >
-                  <ChevronRight className="w-6 h-6" />
-                </Button>
               </motion.div>
               
               {/* Content - Right Side */}
