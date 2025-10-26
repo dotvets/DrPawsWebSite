@@ -117,7 +117,7 @@ export default function About() {
     {
       id: 2,
       nameEn: 'Dr. Hassan Embaby',
-      nameAr: 'د. حسن عنابي',
+      nameAr: 'د. حسن امبابي',
       image: drHassanEmbaby,
     },
     {
@@ -146,7 +146,7 @@ export default function About() {
       align: 'center',
       direction: language === 'ar' ? 'rtl' : 'ltr'
     },
-    [Autoplay({ delay: 2000, stopOnInteraction: false })]
+    [Autoplay({ delay: 3000, stopOnInteraction: false })]
   );
 
   return (
