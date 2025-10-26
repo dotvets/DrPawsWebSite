@@ -128,7 +128,7 @@ export default function BookNow() {
             </h2>
             
             <div className={`${language === 'ar' ? 'flex justify-start' : ''}`}>
-              <h3 className={`text-2xl font-semibold text-primary mb-6 flex items-center gap-2 ${language === 'ar' ? 'flex-row-reverse text-right' : ''}`} data-testid="text-riyadh-branches">
+              <h3 className={`text-2xl font-semibold text-primary mb-6 flex items-center gap-2 ${language === 'ar' ? 'text-right' : ''}`} data-testid="text-riyadh-branches">
                 <lord-icon
                   src="https://cdn.lordicon.com/dfwzmvnc.json"
                   trigger="loop"
@@ -301,7 +301,7 @@ export default function BookNow() {
               transition={{ duration: 0.6 }}
             >
               <div className={`${language === 'ar' ? 'flex justify-start' : ''}`}>
-                <h3 className={`text-2xl font-semibold text-primary mb-6 flex items-center gap-2 ${language === 'ar' ? 'flex-row-reverse text-right' : ''}`} data-testid="text-jeddah-branches">
+                <h3 className={`text-2xl font-semibold text-primary mb-6 flex items-center gap-2 ${language === 'ar' ? 'text-right' : ''}`} data-testid="text-jeddah-branches">
                   <lord-icon
                     src="https://cdn.lordicon.com/dfwzmvnc.json"
                     trigger="loop"
