@@ -127,7 +127,7 @@ export default function BookNow() {
               {t('bookNow.bookingMethods')}
             </h2>
             
-            <div className={`${language === 'ar' ? 'flex justify-end' : ''}`}>
+            <div className={`${language === 'ar' ? 'flex justify-start' : ''}`}>
               <h3 className={`text-2xl font-semibold text-primary mb-6 flex items-center gap-2 ${language === 'ar' ? 'flex-row-reverse text-right' : ''}`} data-testid="text-riyadh-branches">
                 <lord-icon
                   src="https://cdn.lordicon.com/dfwzmvnc.json"
@@ -300,7 +300,7 @@ export default function BookNow() {
               viewport={{ once: false, amount: 0.2 }}
               transition={{ duration: 0.6 }}
             >
-              <div className={`${language === 'ar' ? 'flex justify-end' : ''}`}>
+              <div className={`${language === 'ar' ? 'flex justify-start' : ''}`}>
                 <h3 className={`text-2xl font-semibold text-primary mb-6 flex items-center gap-2 ${language === 'ar' ? 'flex-row-reverse text-right' : ''}`} data-testid="text-jeddah-branches">
                   <lord-icon
                     src="https://cdn.lordicon.com/dfwzmvnc.json"
