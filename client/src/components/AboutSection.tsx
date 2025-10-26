@@ -38,9 +38,9 @@ export default function AboutSection() {
             <h2 className="font-display text-4xl font-medium text-foreground mb-6" data-testid="text-about-headline">
               {language === 'ar' ? (
                 <>
-                  {t('about.headline').split('،')[0]}،
+                  {t('about.headline').split(':')[0]}:
                   <br />
-                  {t('about.headline').split('،')[1]}
+                  {t('about.headline').split(':')[1]}
                 </>
               ) : (
                 <>

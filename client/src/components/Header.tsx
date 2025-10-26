@@ -16,13 +16,13 @@ export default function Header() {
     { name: t('nav.about'), path: '/about' },
     { name: t('nav.services'), path: '/services' },
     { name: t('nav.blog'), path: '/blog' },
+    { name: t('bookNow.title'), path: '/book-now' },
   ];
 
   const contactNavItem = { name: t('nav.contact'), path: '#contact' };
-  const bookNowNavItem = { name: t('bookNow.title'), path: '/book-now' };
   
-  // For mobile menu - include all items including Book Now
-  const navItems = [...mainNavItems, contactNavItem, bookNowNavItem];
+  // For mobile menu - include all items including Contact Us
+  const navItems = [...mainNavItems, contactNavItem];
 
   const handleNavClick = (path: string) => {
     if (path.startsWith('#')) {
