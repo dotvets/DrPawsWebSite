@@ -11,7 +11,7 @@ import Header from '@/components/Header';
 import ECGAnimation from '@/components/ECGAnimation';
 import HeartbeatDivider from '@/components/HeartbeatDivider';
 import Footer from '@/components/Footer';
-import { Heart, Users, Building2, Stethoscope, Upload, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Heart, Users, Building2, Stethoscope, Upload } from 'lucide-react';
 import teamImage from '@assets/generated_images/Veterinary_team_professional_photo_a4845f6b.png';
 import vetExamImage from '@assets/generated_images/Vet_examining_golden_retriever_19654044.png';
 import consultationImage from '@assets/generated_images/Vet_consultation_with_cat_owner_7978144f.png';
@@ -24,6 +24,7 @@ import drHeshamAlMatrein from '@assets/Dr Hesham AlMatrein _1761496171225.png';
 import { useQuery } from '@tanstack/react-query';
 import type { Partner } from '@shared/schema';
 import useEmblaCarousel from 'embla-carousel-react';
+import Autoplay from 'embla-carousel-autoplay';
 
 export default function About() {
   const { t, language } = useLanguage();
@@ -139,15 +140,14 @@ export default function About() {
     },
   ];
 
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'center' });
-
-  const scrollPrev = useCallback(() => {
-    if (emblaApi) emblaApi.scrollPrev();
-  }, [emblaApi]);
-
-  const scrollNext = useCallback(() => {
-    if (emblaApi) emblaApi.scrollNext();
-  }, [emblaApi]);
+  const [emblaRef] = useEmblaCarousel(
+    { 
+      loop: true, 
+      align: 'center',
+      direction: language === 'ar' ? 'rtl' : 'ltr'
+    },
+    [Autoplay({ delay: 2000, stopOnInteraction: false })]
+  );
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -332,7 +332,7 @@ export default function About() {
                 className="w-full max-w-[400px] sm:max-w-none sm:w-[500px] sm:min-w-[500px] mx-auto"
               >
                 {/* Carousel Container */}
-                <div className="w-full relative">
+                <div className="w-full">
                   <div className="overflow-hidden rounded-xl" ref={emblaRef}>
                     <div className="flex">
                       {doctors.map((doctor) => (
@@ -362,26 +362,6 @@ export default function About() {
                       ))}
                     </div>
                   </div>
-                  
-                  {/* Navigation Arrows - Overlaid on image sides */}
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className="absolute left-4 top-[35%] -translate-y-1/2 z-20 h-12 w-12 md:h-14 md:w-14 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-110 transition-all shadow-xl"
-                    onClick={scrollPrev}
-                    data-testid="button-doctor-prev"
-                  >
-                    <ChevronLeft className="w-6 h-6 md:w-7 md:h-7" />
-                  </Button>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className="absolute right-4 top-[35%] -translate-y-1/2 z-20 h-12 w-12 md:h-14 md:w-14 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-110 transition-all shadow-xl"
-                    onClick={scrollNext}
-                    data-testid="button-doctor-next"
-                  >
-                    <ChevronRight className="w-6 h-6 md:w-7 md:h-7" />
-                  </Button>
                 </div>
               </motion.div>
               
