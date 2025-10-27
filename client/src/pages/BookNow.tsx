@@ -164,7 +164,7 @@ export default function BookNow() {
                         href={`https://wa.me/966${branch.whatsapp.replace(/^0/, '').replace(/\s/g, '')}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 hover-elevate rounded-lg px-3 py-2"
+                        className="flex items-center gap-2 hover-elevate rounded-lg"
                         data-testid={`link-quick-whatsapp-${branch.id}`}
                       >
                         <span className="text-sm text-foreground/70">{branch.name}</span>

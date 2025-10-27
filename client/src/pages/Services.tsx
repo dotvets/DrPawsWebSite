@@ -1,4 +1,4 @@
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -669,35 +669,38 @@ Our home care veterinary services are designed to provide accessible and compass
             </p>
 
             {/* Expanded content - shown when Read More is clicked */}
-            {isExpanded && (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: 'auto' }}
-                exit={{ opacity: 0, height: 0 }}
-                transition={{ duration: 0.3, ease: 'easeOut' }}
-              >
-                {/* Full content */}
-                {service.fullContent && (
-                  <div className="mb-4 text-foreground/80 whitespace-pre-line">
-                    {service.fullContent}
-                  </div>
-                )}
+            <AnimatePresence initial={false}>
+              {isExpanded && (
+                <motion.div
+                  key={`expanded-${service.id}`}
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.3, ease: 'easeOut' }}
+                >
+                  {/* Full content */}
+                  {service.fullContent && (
+                    <div className="mb-4 text-foreground/80 whitespace-pre-line">
+                      {service.fullContent}
+                    </div>
+                  )}
 
-                {/* Features list */}
-                <ul className="space-y-2 mb-4">
-                  {service.features.map((feature, idx) => (
-                    <li
-                      key={idx}
-                      className="text-sm text-foreground/70 flex items-start gap-2"
-                      data-testid={`feature-service-${service.id}-${idx}`}
-                    >
-                      <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#18ac61] mt-2 flex-shrink-0" />
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            )}
+                  {/* Features list */}
+                  <ul className="space-y-2 mb-4">
+                    {service.features.map((feature, idx) => (
+                      <li
+                        key={idx}
+                        className="text-sm text-foreground/70 flex items-start gap-2"
+                        data-testid={`feature-service-${service.id}-${idx}`}
+                      >
+                        <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#18ac61] mt-2 flex-shrink-0" />
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              )}
+            </AnimatePresence>
 
             {/* Read More / Show Less button */}
             {service.fullContent && (
