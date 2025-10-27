@@ -32,10 +32,13 @@ export default function MediaSection() {
   const ref = useRef(null);
   const tiktokIframeRefs = useRef<(HTMLIFrameElement | null)[]>([]);
   const [isPlaying, setIsPlaying] = useState<boolean[]>(tiktokVideos.map(() => false));
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
+  const { t, language } = useLanguage();
+  const [emblaRef, emblaApi] = useEmblaCarousel({ 
+    loop: true,
+    direction: language === 'ar' ? 'rtl' : 'ltr'
+  });
   const [selectedIndex, setSelectedIndex] = useState(0);
   const isInView = useInView(ref, { once: false, amount: 0.2 });
-  const { t } = useLanguage();
 
   const pauseAllVideos = useCallback(() => {
     tiktokIframeRefs.current.forEach((iframe) => {

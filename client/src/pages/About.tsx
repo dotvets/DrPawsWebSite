@@ -461,7 +461,7 @@ export default function About() {
                   <motion.div
                     className="flex gap-8"
                     animate={{
-                      x: [-280 * partners.length, 0],
+                      x: language === 'ar' ? [288 * partners.length, 0] : [-288 * partners.length, 0],
                     }}
                     transition={{
                       x: {
