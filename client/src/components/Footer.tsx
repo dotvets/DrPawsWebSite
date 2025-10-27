@@ -187,7 +187,7 @@ export default function Footer() {
               aria-label="Call DotVets"
             >
               <Phone className="w-4 h-4" />
-              <span>+966 548336693</span>
+              <span dir="ltr">+966 548336693</span>
             </a>
             <span className="text-white/40">|</span>
             <a 
