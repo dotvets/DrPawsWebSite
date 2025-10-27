@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -25,14 +24,6 @@ export default function HeroSlider() {
     }, 6000);
     return () => clearInterval(timer);
   }, []);
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-  };
 
   return (
     <div className="relative h-[85vh] overflow-hidden">
@@ -103,27 +94,6 @@ export default function HeroSlider() {
           </motion.div>
         </div>
       </div>
-
-      <motion.button
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
-        onClick={prevSlide}
-        className="absolute left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/20 hover-elevate active-elevate-2 text-white backdrop-blur-sm transition-all"
-        data-testid="button-prev-slide"
-        aria-label="Previous slide"
-      >
-        <ChevronLeft className="w-6 h-6" />
-      </motion.button>
-      <motion.button
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
-        onClick={nextSlide}
-        className="absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/20 hover-elevate active-elevate-2 text-white backdrop-blur-sm transition-all"
-        data-testid="button-next-slide"
-        aria-label="Next slide"
-      >
-        <ChevronRight className="w-6 h-6" />
-      </motion.button>
 
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2">
         {slides.map((_, index) => (
