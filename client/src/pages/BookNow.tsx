@@ -198,7 +198,7 @@ export default function BookNow() {
                           href={branch.bookingUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-foreground/70 hover:text-primary hover:underline transition-colors"
+                          className={`text-foreground/70 hover:text-primary hover:underline transition-colors ${language === 'ar' ? 'pl-[10px]' : ''}`}
                         >
                           {branch.name}
                         </a>
