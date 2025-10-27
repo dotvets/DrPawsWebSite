@@ -79,14 +79,14 @@ export default function BookNow() {
       name: t('bookNow.sahafahBranch'),
       whatsapp: t('bookNow.sahafahWhatsApp'),
       phone: t('bookNow.sahafahPhone'),
-      iframeUrl: 'https://vet.digitail.io/clinics/dr-paws-sahafa-tel-920003045?widget',
+      bookingUrl: `https://vet.digitail.io/clinics/dr-paws-sahafa-tel-920003045?lang=${language}`,
     },
     {
       id: 'mather',
       name: t('bookNow.matherBranch'),
       whatsapp: t('bookNow.matherWhatsApp'),
       phone: t('bookNow.matherPhone'),
-      iframeUrl: 'https://vet.digitail.io/clinics/dr-paws-mathar-phone-920003045?widget',
+      bookingUrl: `https://vet.digitail.io/clinics/dr-paws-mathar-phone-920003045?lang=${language}`,
     },
   ];
 
@@ -159,17 +159,26 @@ export default function BookNow() {
                   <h3 className="font-semibold text-lg mb-4" data-testid="text-quick-whatsapp-title">{t('bookNow.whatsappBooking')}</h3>
                   <div className="space-y-3 flex flex-col items-center">
                     {riyadhBranches.map((branch) => (
-                      <a
-                        key={`quick-wa-${branch.id}`}
-                        href={`https://wa.me/966${branch.whatsapp.replace(/^0/, '').replace(/\s/g, '')}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 hover-elevate rounded-lg"
-                        data-testid={`link-quick-whatsapp-${branch.id}`}
-                      >
-                        <span className="text-sm text-foreground/70">{branch.name}</span>
-                        <SiWhatsapp className="w-5 h-5 text-primary" />
-                      </a>
+                      <div key={`quick-wa-${branch.id}`} className="flex items-center gap-2">
+                        <a
+                          href={branch.bookingUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-sm text-foreground/70 hover:text-primary hover:underline transition-colors"
+                          data-testid={`link-branch-${branch.id}`}
+                        >
+                          {branch.name}
+                        </a>
+                        <a
+                          href={`https://wa.me/966${branch.whatsapp.replace(/^0/, '').replace(/\s/g, '')}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="hover-elevate rounded-lg"
+                          data-testid={`link-quick-whatsapp-${branch.id}`}
+                        >
+                          <SiWhatsapp className="w-5 h-5 text-primary" />
+                        </a>
+                      </div>
                     ))}
                   </div>
                 </CardContent>
@@ -185,7 +194,15 @@ export default function BookNow() {
                   <div className="space-y-2 text-sm flex flex-col items-center">
                     {riyadhBranches.map((branch) => (
                       <div key={`quick-phone-${branch.id}`} className="flex items-center gap-3">
-                        <span className="text-foreground/70">{branch.name}:</span>
+                        <a
+                          href={branch.bookingUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-foreground/70 hover:text-primary hover:underline transition-colors"
+                        >
+                          {branch.name}
+                        </a>
+                        <span className="text-foreground/70">:</span>
                         <a
                           href={`tel:${branch.phone.replace(/\s/g, '')}`}
                           className="text-primary hover:underline font-semibold font-mono tracking-wide"
@@ -209,7 +226,9 @@ export default function BookNow() {
                     {riyadhBranches.map((branch) => (
                       <a
                         key={`quick-program-${branch.id}`}
-                        href={`#program-${branch.id}`}
+                        href={branch.bookingUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="text-primary hover:underline text-sm"
                         data-testid={`link-quick-program-${branch.id}`}
                       >
@@ -258,118 +277,73 @@ export default function BookNow() {
         </div>
       </section>
 
-      {/* Online Booking Program Section */}
+      {/* Jeddah Branches - Coming Soon */}
       <section className="py-16 bg-background">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
             initial={{ y: 30, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: false, amount: 0.3 }}
+            viewport={{ once: false, amount: 0.2 }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12"
           >
-            <h2 className="text-3xl font-bold text-primary mb-4" data-testid="text-program-booking">
-              {t('bookNow.programBooking')}
-            </h2>
-            <p className="text-foreground/70" data-testid="text-riyadh-branches-program">
-              {t('bookNow.riyadhBranches')}
-            </p>
-          </motion.div>
-
-          <div className="space-y-12">
-            {/* Program Booking Cards */}
-            <div className="grid md:grid-cols-2 gap-6">
-              {riyadhBranches.map((branch) => (
-                <Card key={branch.id} id={`program-${branch.id}`} className="overflow-hidden scroll-mt-24" data-testid={`card-program-${branch.id}`}>
-                  <CardHeader className="pb-3">
-                    <CardTitle className="text-xl flex items-center gap-2" data-testid={`text-program-branch-${branch.id}-name`}>
-                      <MapPin className="w-5 h-5 text-primary" />
-                      {branch.name}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="p-0">
-                    <div className="relative w-full" style={{ height: '600px' }}>
-                      <iframe
-                        src={branch.iframeUrl}
-                        height="600"
-                        width="100%"
-                        frameBorder="0"
-                        title={`${branch.name} Booking`}
-                        className="w-full h-full"
-                        data-testid={`iframe-branch-${branch.id}`}
-                      />
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
+            <div className={`${language === 'ar' ? 'flex justify-start' : ''}`}>
+              <h3 className={`text-2xl font-semibold text-primary mb-6 flex items-center gap-2 ${language === 'ar' ? 'text-right' : ''}`} data-testid="text-jeddah-branches">
+                <lord-icon
+                  src="https://cdn.lordicon.com/dfwzmvnc.json"
+                  trigger="loop"
+                  delay="1500"
+                  colors="primary:#18ac61,secondary:#264653"
+                  style={{ width: '90px', height: '90px' }}
+                />
+                {t('bookNow.jeddahBranches')}
+              </h3>
             </div>
-
-            {/* Jeddah Branches - Coming Soon */}
-            <motion.div
-              initial={{ y: 30, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: false, amount: 0.2 }}
-              transition={{ duration: 0.6 }}
-            >
-              <div className={`${language === 'ar' ? 'flex justify-start' : ''}`}>
-                <h3 className={`text-2xl font-semibold text-primary mb-6 flex items-center gap-2 ${language === 'ar' ? 'text-right' : ''}`} data-testid="text-jeddah-branches">
+            
+            <Card className="text-center py-12" data-testid="card-jeddah-coming-soon">
+              <CardContent>
+                <div className="flex justify-center mb-6">
                   <lord-icon
-                    src="https://cdn.lordicon.com/dfwzmvnc.json"
+                    src="https://cdn.lordicon.com/mmsmhvsw.json"
                     trigger="loop"
-                    delay="1500"
+                    delay="1000"
                     colors="primary:#18ac61,secondary:#264653"
                     style={{ width: '90px', height: '90px' }}
                   />
-                  {t('bookNow.jeddahBranches')}
-                </h3>
-              </div>
-              
-              <Card className="text-center py-12" data-testid="card-jeddah-coming-soon">
-                <CardContent>
-                  <div className="flex justify-center mb-6">
-                    <lord-icon
-                      src="https://cdn.lordicon.com/mmsmhvsw.json"
-                      trigger="loop"
-                      delay="1000"
-                      colors="primary:#18ac61,secondary:#264653"
-                      style={{ width: '90px', height: '90px' }}
-                    />
+                </div>
+                <p className="text-2xl font-semibold text-foreground mb-6" data-testid="text-coming-soon">
+                  {t('bookNow.comingSoon')}
+                </p>
+                
+                {/* Countdown Timer */}
+                <div className="grid grid-cols-3 md:grid-cols-6 gap-4 max-w-3xl mx-auto">
+                  <div className="flex flex-col items-center p-3 bg-primary/5 rounded-lg">
+                    <span className="text-3xl font-bold text-primary" data-testid="countdown-months">{formatNumber(countdown.months)}</span>
+                    <span className="text-sm text-foreground/60 mt-1">{language === 'ar' ? 'شهور' : 'Months'}</span>
                   </div>
-                  <p className="text-2xl font-semibold text-foreground mb-6" data-testid="text-coming-soon">
-                    {t('bookNow.comingSoon')}
-                  </p>
-                  
-                  {/* Countdown Timer */}
-                  <div className="grid grid-cols-3 md:grid-cols-6 gap-4 max-w-3xl mx-auto">
-                    <div className="flex flex-col items-center p-3 bg-primary/5 rounded-lg">
-                      <span className="text-3xl font-bold text-primary" data-testid="countdown-months">{formatNumber(countdown.months)}</span>
-                      <span className="text-sm text-foreground/60 mt-1">{language === 'ar' ? 'شهور' : 'Months'}</span>
-                    </div>
-                    <div className="flex flex-col items-center p-3 bg-primary/5 rounded-lg">
-                      <span className="text-3xl font-bold text-primary" data-testid="countdown-weeks">{formatNumber(countdown.weeks)}</span>
-                      <span className="text-sm text-foreground/60 mt-1">{language === 'ar' ? 'أسابيع' : 'Weeks'}</span>
-                    </div>
-                    <div className="flex flex-col items-center p-3 bg-primary/5 rounded-lg">
-                      <span className="text-3xl font-bold text-primary" data-testid="countdown-days">{formatNumber(countdown.days)}</span>
-                      <span className="text-sm text-foreground/60 mt-1">{language === 'ar' ? 'أيام' : 'Days'}</span>
-                    </div>
-                    <div className="flex flex-col items-center p-3 bg-primary/5 rounded-lg">
-                      <span className="text-3xl font-bold text-primary" data-testid="countdown-hours">{formatNumber(countdown.hours)}</span>
-                      <span className="text-sm text-foreground/60 mt-1">{language === 'ar' ? 'ساعات' : 'Hours'}</span>
-                    </div>
-                    <div className="flex flex-col items-center p-3 bg-primary/5 rounded-lg">
-                      <span className="text-3xl font-bold text-primary" data-testid="countdown-minutes">{formatNumber(countdown.minutes)}</span>
-                      <span className="text-sm text-foreground/60 mt-1">{language === 'ar' ? 'دقائق' : 'Minutes'}</span>
-                    </div>
-                    <div className="flex flex-col items-center p-3 bg-primary/5 rounded-lg">
-                      <span className="text-3xl font-bold text-primary" data-testid="countdown-seconds">{formatNumber(countdown.seconds)}</span>
-                      <span className="text-sm text-foreground/60 mt-1">{language === 'ar' ? 'ثواني' : 'Seconds'}</span>
-                    </div>
+                  <div className="flex flex-col items-center p-3 bg-primary/5 rounded-lg">
+                    <span className="text-3xl font-bold text-primary" data-testid="countdown-weeks">{formatNumber(countdown.weeks)}</span>
+                    <span className="text-sm text-foreground/60 mt-1">{language === 'ar' ? 'أسابيع' : 'Weeks'}</span>
                   </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          </div>
+                  <div className="flex flex-col items-center p-3 bg-primary/5 rounded-lg">
+                    <span className="text-3xl font-bold text-primary" data-testid="countdown-days">{formatNumber(countdown.days)}</span>
+                    <span className="text-sm text-foreground/60 mt-1">{language === 'ar' ? 'أيام' : 'Days'}</span>
+                  </div>
+                  <div className="flex flex-col items-center p-3 bg-primary/5 rounded-lg">
+                    <span className="text-3xl font-bold text-primary" data-testid="countdown-hours">{formatNumber(countdown.hours)}</span>
+                    <span className="text-sm text-foreground/60 mt-1">{language === 'ar' ? 'ساعات' : 'Hours'}</span>
+                  </div>
+                  <div className="flex flex-col items-center p-3 bg-primary/5 rounded-lg">
+                    <span className="text-3xl font-bold text-primary" data-testid="countdown-minutes">{formatNumber(countdown.minutes)}</span>
+                    <span className="text-sm text-foreground/60 mt-1">{language === 'ar' ? 'دقائق' : 'Minutes'}</span>
+                  </div>
+                  <div className="flex flex-col items-center p-3 bg-primary/5 rounded-lg">
+                    <span className="text-3xl font-bold text-primary" data-testid="countdown-seconds">{formatNumber(countdown.seconds)}</span>
+                    <span className="text-sm text-foreground/60 mt-1">{language === 'ar' ? 'ثواني' : 'Seconds'}</span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
         </div>
       </section>
 
