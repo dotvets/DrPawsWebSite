@@ -289,7 +289,7 @@ const translations = {
     'footer.matherMapUrl': 'https://maps.app.goo.gl/PzCrrqSLmnCE487c9',
     'footer.hours': 'Working Hours',
     'footer.satThu': 'Saturday - Thursday : From 09:00 AM to 11:00 PM',
-    'footer.fri': 'Friday : From 03:00 PM to 11:00 PM',
+    'footer.fri': 'Friday : From 02:00 PM to 11:00 PM',
     'footer.email': 'info@drpaws-sa.com',
     'footer.follow': 'Stay in touch',
     
@@ -600,7 +600,7 @@ const translations = {
     'footer.matherMapUrl': 'https://maps.app.goo.gl/PzCrrqSLmnCE487c9',
     'footer.hours': 'ساعات العمل',
     'footer.satThu': 'من السبت إلى الخميس : من 9:00 صباحًا حتى 11:00 مساءً',
-    'footer.fri': 'يوم الجمعة من 3:00 مساءً حتى 11:00 مساءً',
+    'footer.fri': 'يوم الجمعة من 2:00 مساءً حتى 11:00 مساءً',
     'footer.email': 'info@drpaws-sa.com',
     'footer.follow': 'تابعنا',
     
