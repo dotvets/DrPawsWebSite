@@ -52,7 +52,14 @@ export default function Services() {
   }, []);
 
   const toggleExpand = (id: number) => {
-    setExpandedCards(prev => ({ ...prev, [id]: !prev[id] }));
+    setExpandedCards(prev => {
+      // If the clicked card is already open, close it
+      if (prev[id]) {
+        return { [id]: false };
+      }
+      // Otherwise, close all others and open only this one
+      return { [id]: true };
+    });
   };
 
   const services = [
