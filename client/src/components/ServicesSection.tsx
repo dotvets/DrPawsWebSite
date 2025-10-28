@@ -90,13 +90,9 @@ export default function ServicesSection() {
               >
                 <Card className="h-full hover-elevate" data-testid={`card-service-${index}`}>
                   <CardHeader>
-                    <motion.div 
-                      className="mb-4"
-                      whileHover={{ rotate: 360, scale: 1.1 }}
-                      transition={{ duration: 0.6 }}
-                    >
+                    <div className="mb-4">
                       <service.icon className="w-12 h-12 text-[hsl(27,87%,67%)]" />
-                    </motion.div>
+                    </div>
                     <CardTitle className="text-xl mb-2">{service.title}</CardTitle>
                     <CardDescription className="text-base">{service.description}</CardDescription>
                   </CardHeader>
